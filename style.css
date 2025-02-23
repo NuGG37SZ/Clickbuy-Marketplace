@@ -70,3 +70,30 @@ body {
 .btn-success:hover {
     background-color: #22A760;
 }
+
+.registration-section {
+    width: 500px;
+    margin: 0 auto;
+    height: 500px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.registration-section form {
+    margin-top: 50px;
+    padding: 30px;
+}
+
+.reg-button-div {
+    display: flex;
+    justify-content: center;
+}
+
+
+#registation-btn {
+    background-color: #4C51BF;
+}
+
+.title-reg {
+    text-align: center;
+}
