@@ -89,11 +89,58 @@ body {
     justify-content: center;
 }
 
-
 #registation-btn {
     background-color: #4C51BF;
 }
 
 .title-reg {
     text-align: center;
+}
+
+.profile-container {
+    width: 1320px;
+    margin: 30px auto;
+}
+
+.left-panel {
+    background-color: white;
+    border-radius: 20px;
+    height: 500px;
+    width: 350px;
+    padding: 20px;
+}
+
+.img-name-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-name-div a{
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 10px;
+    color: black;
+}
+
+.img-name-div a:hover {
+    color: #4C51BF;
+}
+
+.discount-history-balance {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.card-discount {
+    width: 150px;
+    height: 75px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: #F5F7FA;
+}
+
+.card-discount label {
+    font-size: 15px;
+    color: #b0b0b2;
 }
