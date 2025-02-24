@@ -225,10 +225,17 @@ body {
 }
 
 .card-right-panel {
+    display: flex;
+    justify-content: space-between;
     background-color: white;
     width: 300px;
     height: 100px;
     border-radius: 20px;
+    padding: 15px;
+}
+
+.card-right-panel img {
+    margin-top: 15px;
 }
 
 .feedback {
@@ -237,6 +244,30 @@ body {
     margin-left: 20px;
     margin-top: 20px;
     border-radius: 20px;
+    padding: 15px;
+}
+
+.services {
+    display: flex;
+    justify-content: space-between;
+}
+
+.service {
+    background-color: #F5F7FA;
+    height: 70px;
+    width: 300px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.service p {
+    margin-left: 20px;
+}
+
+.items-service {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 15px;
 }
 
 .title-delivery {
@@ -253,4 +284,8 @@ body {
 
 .title-delivery a:hover {
     color: #5A67D8;
+}
+
+#count-goods, #my-goods, #goods-no-comment {
+    color: #b0b0b2; 
 }
