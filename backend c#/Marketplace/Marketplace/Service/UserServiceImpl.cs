@@ -1,7 +1,9 @@
-﻿using UserService.DTO;
+﻿using UserService.Db;
+using UserService.DTO;
 using UserService.Entity;
 using UserService.Mapper;
 using UserService.Repository;
+using UserService.Utils;
 
 namespace UserService.Service
 {
@@ -35,8 +37,16 @@ namespace UserService.Service
 
         public void Update(int id, UserDTO userDTO)
         {
-            User currentUser = UserMapper.MapUserDTOToUser(userDTO); 
-            _userRepository.Update(id, currentUser);
+            UserDTO? currentUser = GetById(id);
+
+            if (currentUser != null)
+            {
+                currentUser.Login = userDTO.Login;
+                currentUser.Password = userDTO.Password;
+                currentUser.Email = userDTO.Email;
+                currentUser.Role = userDTO.Role;
+                _userRepository.Update(id, UserMapper.MapUserDTOToUser(currentUser));
+            }
         }
     }
 }

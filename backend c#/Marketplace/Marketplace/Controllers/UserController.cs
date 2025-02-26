@@ -16,7 +16,7 @@ namespace Marketplace.Controllers
         }
 
         [HttpGet]
-        [Route("/users")]
+        [Route("users")]
         public IActionResult GetAll()
         {
             List<UserDTO> users = _userService.GetAll();
@@ -27,6 +27,49 @@ namespace Marketplace.Controllers
             }
  
             return Ok(users);
+        }
+
+        [HttpGet]
+        [Route("users/{id}")]
+        public IActionResult GetById(int id)
+        {
+            UserDTO? userDto = _userService.GetById(id);
+            if (userDto == null)
+            {
+                return NotFound("User not found.");
+            }
+            return Ok(userDto);
+        }
+
+        [HttpPost]
+        [Route("users/create")]
+        public IActionResult Create([FromBody] UserDTO userDTO)
+        {
+            _userService.Create(userDTO);
+            return Created("create", userDTO);
+        }
+
+        [HttpPut]
+        [Route("users/update/{id}")]
+        public IActionResult Update(int id, [FromBody] UserDTO userDTO)
+        {
+            UserDTO? currentUser = _userService.GetById(id);
+
+            if (currentUser != null)
+            {
+                _userService.Update(id, userDTO);
+                return Ok(currentUser);
+            } 
+           
+            return NotFound("User Not Found!");
+        }
+
+        [HttpDelete]
+        [Route("users/delete/{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            _userService.DeleteById(id);
+            return NoContent();
         }
     }
 }
