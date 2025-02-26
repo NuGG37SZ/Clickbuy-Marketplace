@@ -74,9 +74,27 @@ body {
 .registration-section {
     width: 500px;
     margin: 0 auto;
-    height: 500px;
+    height: 550px;
     background-color: white;
     border-radius: 20px;
+}
+
+.auth-section {
+    width: 500px;
+    margin: 0 auto;
+    height: 380px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.auth-section form {
+    margin-top: 50px;
+    padding: 30px;
+}
+
+#auth-btn {
+    color: white;
+    background-color: #4C51BF;
 }
 
 .registration-section form {
@@ -100,6 +118,18 @@ body {
 .profile-container {
     width: 1320px;
     margin: 30px auto;
+}
+
+.redirect-signform {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.redirect-regform {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
 }
 
 .left-panel {

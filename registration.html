@@ -34,7 +34,8 @@
     </div>
 </nav>
 
-<section class="registration-section">
+<!-- Регистрация -->
+<section class="registration-section" style="display: none;">
     <form>
         <h1 class="title-reg">Регистрация</h1>
         <div class="mb-3">
@@ -56,8 +57,34 @@
         <div class="reg-button-div">
             <button type="submit" class="btn btn-dark" id="registation-btn">Регистрация</button>
         </div>
+
+        <div class="redirect-signform">
+            <button type="button" class="btn" id="redirect-sign">Есть аккаунт? Войти</button>
+        </div>
+      </form>
+</section>
+
+<!-- Авторизация -->
+<section class="auth-section">
+    <form>
+        <h1 class="title-reg">Авторизация</h1>
+        <div class="mb-3">
+          <label for="loginInputAuth" class="form-label">Логин</label>
+          <input type="text" class="form-control" id="loginInputAuth">
+        </div>
+        <div class="mb-3">
+          <label for="passwordInputAuth" class="form-label">Пароль</label>
+          <input type="password" class="form-control" id="passwordInputAuth">
+        </div>
+        <div class="reg-button-div">
+            <button type="submit" class="btn" id="auth-btn">Авторизация</button>
+        </div>
+        <div class="redirect-regform">
+            <button type="button" class="btn" id="redirect-reg">Нет аккаунта? Регистрация</button>
+        </div>
       </form>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>    
+<script src="auth.js"></script>
 </body>
