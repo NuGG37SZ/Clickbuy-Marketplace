@@ -4,12 +4,14 @@ const authSection = document.querySelector('.auth-section');
 const regSection = document.querySelector('.registration-section');
 
 redirectSignFormBtn.addEventListener('click', () => {
-    regSection.style.display = 'none';
-    authSection.style.display = 'block';
+    swapDisplay(regSection, authSection);
 })
 
 redirectRegFormBtn.addEventListener('click', () => {
-    authSection.style.display = 'none';
-    regSection.style.display = 'block';
+    swapDisplay(authSection, regSection);
 })
 
+function swapDisplay(first, second) {
+    first.style.display = 'none';
+    second.style.display = 'block';
+}

@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "ContainingType": "Marketplace.Controllers.UserController",
+    "Method": "GetAll",
+    "RelativePath": "users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
