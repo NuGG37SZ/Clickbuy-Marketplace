@@ -58,8 +58,7 @@
               "RelativeToolTip": "Marketplace\\Service\\UserServiceImpl.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAAAAADAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T04:44:33.869Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T04:44:33.869Z"
             },
             {
               "$type": "Document",
@@ -71,8 +70,7 @@
               "RelativeToolTip": "Marketplace\\Utils\\HashFunc.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T04:43:33.149Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T04:43:33.149Z"
             },
             {
               "$type": "Document",
@@ -96,8 +94,7 @@
               "RelativeToolTip": "Marketplace\\Repository\\UserRepositoryImpl.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAAACkAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T19:47:22.085Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T19:47:22.085Z"
             },
             {
               "$type": "Document",
@@ -107,7 +104,7 @@
               "RelativeDocumentMoniker": "Marketplace\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Controllers\\UserController.cs",
               "RelativeToolTip": "Marketplace\\Controllers\\UserController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAAADoAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T18:59:44.915Z",
               "EditorCaption": ""
@@ -122,8 +119,7 @@
               "RelativeToolTip": "Marketplace\\Db\\UserContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T18:43:32.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T18:43:32.179Z"
             },
             {
               "$type": "Document",
