@@ -336,3 +336,11 @@ body {
     margin-left: 10px;
 }
 
+#profile {
+    display: none;
+}
+
+#exit-btn {
+    display: none;
+}
+

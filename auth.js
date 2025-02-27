@@ -3,6 +3,11 @@ const redirectRegFormBtn = document.getElementById('redirect-reg');
 const authSection = document.querySelector('.auth-section');
 const regSection = document.querySelector('.registration-section');
 const authBtn = document.getElementById('auth-btn');
+const signUpBtn = document.getElementById('sign-up-btn');
+const navbar = document.querySelector('.navbar-nav.ms-auto');
+const loginUserProfile = document.getElementById('user-login');
+const profile = document.getElementById('profile');
+const exitBtn = document.getElementById('exit-btn');
 
 redirectSignFormBtn.addEventListener('click', () => {
     swapDisplay(regSection, authSection);
@@ -20,13 +25,31 @@ function swapDisplay(first, second) {
 authBtn.addEventListener('click', () => {
     const loginInput = document.getElementById('loginInputAuth');
     const passwordInput = document.getElementById('passwordInputAuth');
-
-    requestGetUserByLogin(loginInput.textContent);
+    
+    requestGetUserByLogin(loginInput.value)
+        .then(user => {
+            localStorage.setItem('userLogin', user.Login);
+            requestConfirmPassword(passwordInput.value, user.password)
+                .then(response => {
+                    if(response == 200) {
+                        localStorage.setItem('isAuth', 'true');
+                        location.href='index.html';
+                        alert('Вы успешно вошли!');
+                    } else {
+                        alert('Перепроверьте данные!');
+                    }
+                });
+        });
 })
 
+async function requestGetUserByLogin(login) {
+    url = `http://localhost:5098/api/v1/users/getByLogin/${login}`;
+    const response = await fetch(url);
+    return await response.json();
+}
 
-function requestGetUserByLogin(login) {
-    fetch(`http://localhost:5098/users/getByLogin/${login}`)
-        .then(response => response.json())
-        .then(user => console.log(user))
+async function requestConfirmPassword(password, hashPassword) {
+    url = `http://localhost:5098/api/v1/users/passwordСomparison/${password}/${hashPassword}`;
+    const response = await fetch(url);
+    return await response.status;
 }
