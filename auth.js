@@ -3,11 +3,6 @@ const redirectRegFormBtn = document.getElementById('redirect-reg');
 const authSection = document.querySelector('.auth-section');
 const regSection = document.querySelector('.registration-section');
 const authBtn = document.getElementById('auth-btn');
-const signUpBtn = document.getElementById('sign-up-btn');
-const navbar = document.querySelector('.navbar-nav.ms-auto');
-const loginUserProfile = document.getElementById('user-login');
-const profile = document.getElementById('profile');
-const exitBtn = document.getElementById('exit-btn');
 
 redirectSignFormBtn.addEventListener('click', () => {
     swapDisplay(regSection, authSection);
@@ -28,7 +23,8 @@ authBtn.addEventListener('click', () => {
     
     requestGetUserByLogin(loginInput.value)
         .then(user => {
-            localStorage.setItem('userLogin', user.Login);
+            localStorage.setItem('userLogin', user.login);
+            
             requestConfirmPassword(passwordInput.value, user.password)
                 .then(response => {
                     if(response == 200) {
