@@ -25,7 +25,7 @@ authBtn.addEventListener('click', () => {
         .then(user => {
             localStorage.setItem('userLogin', user.login);
             
-            requestConfirmPassword(passwordInput.value, user.password)
+            requestConfirmPassword(user.login, passwordInput.value)
                 .then(response => {
                     if(response == 200) {
                         localStorage.setItem('isAuth', 'true');
@@ -44,8 +44,8 @@ async function requestGetUserByLogin(login) {
     return await response.json();
 }
 
-async function requestConfirmPassword(password, hashPassword) {
-    url = `http://localhost:5098/api/v1/users/passwordСomparison/${password}/${hashPassword}`;
+async function requestConfirmPassword(login, password) {
+    url = `http://localhost:5098/api/v1/users/authenticate/${login}/${password}`;
     const response = await fetch(url);
     return await response.status;
 }

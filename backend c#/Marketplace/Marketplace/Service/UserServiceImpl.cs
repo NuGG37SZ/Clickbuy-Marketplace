@@ -45,11 +45,6 @@ namespace UserService.Service
             return null;
         }
 
-        public bool PasswordСomparison(string password, string hashedPassword)
-        {
-            return HashFunc.VerifyPassword(password, hashedPassword);
-        }
-
         public void Update(int id, UserDTO userDTO)
         {
             UserDTO? currentUser = GetById(id);

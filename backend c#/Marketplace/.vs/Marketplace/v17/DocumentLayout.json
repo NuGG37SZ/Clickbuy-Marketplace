@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\utils\\hashfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\utils\\hashfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\mapper\\usermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\mapper\\usermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\db\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\db\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,24 +23,8 @@
       "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\entity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\db\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\db\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\service\\userserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\service\\userserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\repository\\userrepositoryimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\repository\\userrepositoryimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\mapper\\usermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\mapper\\usermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\marketplace\\utils\\hashfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\utils\\hashfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -51,31 +43,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "UserServiceImpl.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Service\\UserServiceImpl.cs",
-              "RelativeDocumentMoniker": "Marketplace\\Service\\UserServiceImpl.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Service\\UserServiceImpl.cs",
-              "RelativeToolTip": "Marketplace\\Service\\UserServiceImpl.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAAADAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T04:44:33.869Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "HashFunc.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Utils\\HashFunc.cs",
               "RelativeDocumentMoniker": "Marketplace\\Utils\\HashFunc.cs",
               "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Utils\\HashFunc.cs",
               "RelativeToolTip": "Marketplace\\Utils\\HashFunc.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-27T04:43:33.149Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "UserMapper.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Mapper\\UserMapper.cs",
               "RelativeDocumentMoniker": "Marketplace\\Mapper\\UserMapper.cs",
@@ -83,36 +63,25 @@
               "RelativeToolTip": "Marketplace\\Mapper\\UserMapper.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAAACAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T19:48:43.234Z"
+              "WhenOpened": "2025-02-26T19:48:43.234Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserRepositoryImpl.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Repository\\UserRepositoryImpl.cs",
-              "RelativeDocumentMoniker": "Marketplace\\Repository\\UserRepositoryImpl.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Repository\\UserRepositoryImpl.cs",
-              "RelativeToolTip": "Marketplace\\Repository\\UserRepositoryImpl.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAAACkAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T19:47:22.085Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Marketplace\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Controllers\\UserController.cs",
               "RelativeToolTip": "Marketplace\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAuwDoAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAAAEQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T18:59:44.915Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "UserContext.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Db\\UserContext.cs",
               "RelativeDocumentMoniker": "Marketplace\\Db\\UserContext.cs",
@@ -125,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Entity\\User.cs",
               "RelativeDocumentMoniker": "Marketplace\\Entity\\User.cs",
@@ -138,13 +107,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Program.cs",
               "RelativeDocumentMoniker": "Marketplace\\Program.cs",
               "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\Marketplace\\Program.cs",
               "RelativeToolTip": "Marketplace\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T18:01:08.987Z",
               "EditorCaption": ""

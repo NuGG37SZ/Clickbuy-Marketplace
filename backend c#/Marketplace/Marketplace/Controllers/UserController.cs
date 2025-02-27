@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Update;
 using UserService.DTO;
 using UserService.Service;
+using UserService.Utils;
 
 namespace Marketplace.Controllers
 {
@@ -56,15 +57,18 @@ namespace Marketplace.Controllers
         }
 
         [HttpGet]
-        [Route("users/password—omparison/{password}/{hashedPassword}")]
-        public IActionResult ConfirmPassword(string password, string hashedPassword)
+        [Route("users/authenticate/{login}/{password}")]
+        public IActionResult Authenticate(string login, string password)
         {
-            bool confirm = _userService.Password—omparison(password, hashedPassword);
+            string storedHashedPassword = _userService.GetUserByLogin(login).Password;
+            bool isPasswordValid = HashFunc.VerifyPassword(password, storedHashedPassword);
 
-            if (confirm)
-                return Ok();
+            if (isPasswordValid)
+            {
+                return Ok("Authenticated successfully.");
+            }
 
-            return BadRequest("Passwords don't match.");
+            return Unauthorized("Invalid credentials.");
         }
 
         [HttpPost]

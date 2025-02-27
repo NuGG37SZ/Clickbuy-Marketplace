@@ -27,6 +27,27 @@
   },
   {
     "ContainingType": "Marketplace.Controllers.UserController",
+    "Method": "Authenticate",
+    "RelativePath": "api/v1/users/authenticate/{login}/{password}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Marketplace.Controllers.UserController",
     "Method": "Create",
     "RelativePath": "api/v1/users/create",
     "HttpMethod": "POST",
@@ -67,27 +88,6 @@
     "Parameters": [
       {
         "Name": "login",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Marketplace.Controllers.UserController",
-    "Method": "ConfirmPassword",
-    "RelativePath": "api/v1/users/password\u0421omparison/{password}/{hashedPassword}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "password",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "hashedPassword",
         "Type": "System.String",
         "IsRequired": true
       }
