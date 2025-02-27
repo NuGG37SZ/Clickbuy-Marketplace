@@ -13,5 +13,7 @@ namespace UserService.Repository
         void Update(int id, User user);
 
         void DeleteById(int id);
+
+        User? GetUserByLogin(string login);
     }
 }

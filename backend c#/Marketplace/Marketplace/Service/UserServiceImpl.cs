@@ -35,6 +35,21 @@ namespace UserService.Service
             return UserMapper.MapUserToUserDTO(_userRepository.GetById(id));
         }
 
+        public UserDTO? GetUserByLogin(string login)
+        {
+            UserDTO currentUser = UserMapper.MapUserToUserDTO(_userRepository.GetUserByLogin(login));
+
+            if (currentUser != null)
+                return currentUser;
+
+            return null;
+        }
+
+        public bool PasswordСomparison(string password, string hashedPassword)
+        {
+            return HashFunc.VerifyPassword(password, hashedPassword);
+        }
+
         public void Update(int id, UserDTO userDTO)
         {
             UserDTO? currentUser = GetById(id);

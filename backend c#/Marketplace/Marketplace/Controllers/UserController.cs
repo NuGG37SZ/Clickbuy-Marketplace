@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Update;
 using UserService.DTO;
 using UserService.Service;
 
@@ -39,6 +40,31 @@ namespace Marketplace.Controllers
                 return NotFound("User not found.");
             }
             return Ok(userDto);
+        }
+
+        [HttpGet]
+        [Route("users/getByLogin/{login}")]
+        public IActionResult GetByLogin(string login)
+        {
+            UserDTO? userDto = _userService.GetUserByLogin(login);
+
+            if(userDto == null)
+            {
+                return NotFound("User not found.");
+            }
+            return Ok(userDto);
+        }
+
+        [HttpGet]
+        [Route("users/password—omparison/{password}/{hashedPassword}")]
+        public IActionResult ConfirmPassword(string password, string hashedPassword)
+        {
+            bool confirm = _userService.Password—omparison(password, hashedPassword);
+
+            if (confirm)
+                return Ok();
+
+            return BadRequest("Passwords don't match.");
         }
 
         [HttpPost]

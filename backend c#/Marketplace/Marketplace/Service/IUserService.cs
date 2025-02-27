@@ -14,5 +14,9 @@ namespace UserService.Service
         void Update(int id, UserDTO userDTO);
 
         void DeleteById(int id);
+
+        UserDTO? GetUserByLogin(string login);
+
+        bool PasswordСomparison(string password, string hashedPassword);
     }
 }

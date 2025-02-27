@@ -39,6 +39,13 @@ namespace UserService.Repository
                     select user).FirstOrDefault();
         }
 
+        public User? GetUserByLogin(string login)
+        {
+            return (from user in _userContext.Users.ToList()
+                    where user.Login == login
+                    select user).FirstOrDefault();
+        }
+
         public void Update(int id, User user)
         {
             User? currentUser = GetById(id);

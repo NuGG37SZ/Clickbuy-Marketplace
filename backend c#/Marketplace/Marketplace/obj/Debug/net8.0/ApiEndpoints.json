@@ -59,6 +59,43 @@
   },
   {
     "ContainingType": "Marketplace.Controllers.UserController",
+    "Method": "GetByLogin",
+    "RelativePath": "api/v1/users/getByLogin/{login}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "login",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Marketplace.Controllers.UserController",
+    "Method": "ConfirmPassword",
+    "RelativePath": "api/v1/users/password\u0421omparison/{password}/{hashedPassword}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "hashedPassword",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Marketplace.Controllers.UserController",
     "Method": "Update",
     "RelativePath": "api/v1/users/update/{id}",
     "HttpMethod": "PUT",
