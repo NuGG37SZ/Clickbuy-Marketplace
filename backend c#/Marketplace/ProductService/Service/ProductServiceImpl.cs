@@ -1,5 +1,7 @@
-﻿using ProductService.Entity;
+﻿using ProductService.DTO;
+using ProductService.Entity;
 using ProductService.HttpClient;
+using ProductService.Mapper;
 using ProductService.Repository;
 
 namespace ProductService.Service
@@ -16,30 +18,46 @@ namespace ProductService.Service
             _userClient = userClient;
         }
 
-        public List<Product> GetAll()
+        public async Task Create(ProductDTO productDTO)
         {
-            throw new NotImplementedException();
+            UserDTO userDTO = await _userClient.GetUserById(productDTO.UserId);
+
+            if (userDTO != null)
+                await _productRepository.Create(ProductMapper.MapProductDTOToProduct(productDTO));
         }
 
-        public Task<Product> GetById(int id)
+        public async Task DeleteById(int id)
         {
-            throw new NotImplementedException();
+            await _productRepository.DeleteById(id);
         }
 
-        public Task Create(Product product)
+        public List<ProductDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return _productRepository.GetAll()
+                    .Select(u =>ProductMapper.MapProductToProductDTO(u))
+                    .ToList();
         }
 
-        public Task Update(int id, Product product)
+        public async Task<ProductDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            Product product= await _productRepository.GetById(id);
+            return ProductMapper.MapProductToProductDTO(product);
         }
 
-        public Task DeleteById(int id)
+        public async Task Update(int id, ProductDTO productDTO)
         {
-            throw new NotImplementedException();
-        }
+            Product product = await _productRepository.GetById(id);
+            ProductDTO currentProduct = ProductMapper.MapProductToProductDTO(product);
 
+            if(currentProduct != null)
+            {
+                currentProduct.Price = productDTO.Price;
+                currentProduct.Description = productDTO.Description;
+                currentProduct.Count = productDTO.Count;
+                currentProduct.Name = productDTO.Name;
+                currentProduct.UserId = productDTO.UserId;
+                _productRepository.Update(id, ProductMapper.MapProductDTOToProduct(currentProduct));
+            }
+        }
     }
 }

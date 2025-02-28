@@ -11,11 +11,14 @@ namespace ProductService.HttpClient
             _httpClientFactory = httpClientFactory;
         }
 
-        public UserDTO GetUserById(int id)
+        public async Task<UserDTO> GetUserById(int id)
         {
-            
             var httpClient = _httpClientFactory.CreateClient();
+            object? data = await httpClient.GetFromJsonAsync($"http://localhost:5098/users/{id}", typeof(UserDTO));
+            if(data is UserDTO userDTO)
+                return userDTO;
 
+            return null;
         }
     }
 }

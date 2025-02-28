@@ -4,6 +4,6 @@ namespace ProductService.HttpClient
 {
     public interface IUserClient
     {
-        UserDTO GetUserById(int id);
+        Task<UserDTO> GetUserById(int id);
     }
 }

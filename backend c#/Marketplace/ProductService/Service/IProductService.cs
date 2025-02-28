@@ -1,16 +1,16 @@
-﻿using ProductService.Entity;
+﻿using ProductService.DTO;
 
 namespace ProductService.Service
 {
     public interface IProductService 
     {
-        List<Product> GetAll();
+        List<ProductDTO> GetAll();
 
-        Task<Product> GetById(int id);
+        Task<ProductDTO> GetById(int id);
 
-        Task Create(Product product);
+        Task Create(ProductDTO productDTO);
 
-        Task Update(int id, Product product);
+        Task Update(int id, ProductDTO productDTO);
 
         Task DeleteById(int id);
     }
