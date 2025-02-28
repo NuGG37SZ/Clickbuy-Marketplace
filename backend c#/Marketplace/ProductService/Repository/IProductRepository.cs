@@ -4,9 +4,9 @@ namespace ProductService.Repository
 {
     public interface IProductRepository
     {
-        List<Product> GetAll();
+        Task<List<Product>> GetAll();
 
-        Task<Product> GetById(int id);
+        Task<Product?> GetById(int id);
 
         Task Create(Product product);
 

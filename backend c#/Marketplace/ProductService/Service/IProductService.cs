@@ -4,9 +4,9 @@ namespace ProductService.Service
 {
     public interface IProductService 
     {
-        List<ProductDTO> GetAll();
+        Task<List<ProductDTO>> GetAll();
 
-        Task<ProductDTO> GetById(int id);
+        Task<ProductDTO?> GetById(int id);
 
         Task Create(ProductDTO productDTO);
 

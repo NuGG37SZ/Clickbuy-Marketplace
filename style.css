@@ -344,3 +344,8 @@ body {
     display: none;
 }
 
+.left-panel-seller {
+    display: flex;
+    flex-direction: column;
+}
+
