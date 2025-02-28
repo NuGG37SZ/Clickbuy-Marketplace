@@ -1,6 +1,6 @@
 ﻿using ProductService.DTO;
 using ProductService.Entity;
-using ProductService.HttpClient;
+using ProductService.Client;
 using ProductService.Mapper;
 using ProductService.Repository;
 
@@ -31,22 +31,23 @@ namespace ProductService.Service
             await _productRepository.DeleteById(id);
         }
 
-        public List<ProductDTO> GetAll()
+        public async Task<List<ProductDTO>> GetAll()
         {
-            return _productRepository.GetAll()
-                    .Select(u =>ProductMapper.MapProductToProductDTO(u))
-                    .ToList();
+            List<Product> products = await _productRepository.GetAll();
+            return products.Select(ProductMapper.MapProductToProductDTO)
+                            .ToList();
+                    
         }
 
-        public async Task<ProductDTO> GetById(int id)
+        public async Task<ProductDTO?> GetById(int id)
         {
-            Product product= await _productRepository.GetById(id);
+            Product? product = await _productRepository.GetById(id);
             return ProductMapper.MapProductToProductDTO(product);
         }
 
         public async Task Update(int id, ProductDTO productDTO)
         {
-            Product product = await _productRepository.GetById(id);
+            Product? product = await _productRepository.GetById(id);
             ProductDTO currentProduct = ProductMapper.MapProductToProductDTO(product);
 
             if(currentProduct != null)
@@ -56,7 +57,7 @@ namespace ProductService.Service
                 currentProduct.Count = productDTO.Count;
                 currentProduct.Name = productDTO.Name;
                 currentProduct.UserId = productDTO.UserId;
-                _productRepository.Update(id, ProductMapper.MapProductDTOToProduct(currentProduct));
+                await _productRepository.Update(id, ProductMapper.MapProductDTOToProduct(currentProduct));
             }
         }
     }

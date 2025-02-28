@@ -8,6 +8,7 @@ namespace ProductService.Mapper
         public static ProductDTO MapProductToProductDTO(Product product)
         {
             ProductDTO productDTO = new ProductDTO();
+            productDTO.SubcategoriesId = product.SubcategoriesId;
             productDTO.UserId = product.UserId;
             productDTO.Price = product.Price;
             productDTO.Description = product.Description;
@@ -19,6 +20,7 @@ namespace ProductService.Mapper
         public static Product MapProductDTOToProduct(ProductDTO productDTO)
         {
             Product product = new Product();
+            product.SubcategoriesId = productDTO.SubcategoriesId;
             product.UserId = productDTO.UserId;
             product.Price = productDTO.Price;
             product.Description = productDTO.Description;

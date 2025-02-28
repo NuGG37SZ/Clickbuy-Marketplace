@@ -1,4 +1,5 @@
-﻿using ProductService.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using ProductService.Db;
 using ProductService.Entity;
 
 namespace ProductService.Repository
@@ -20,7 +21,7 @@ namespace ProductService.Repository
 
         public async Task DeleteById(int id)
         {
-            Product currentProduct = await GetById(id);
+            Product? currentProduct = await GetById(id);
 
             if (currentProduct != null)
             {
@@ -29,14 +30,14 @@ namespace ProductService.Repository
             }
         }
 
-        public List<Product> GetAll()
+        public async Task<List<Product>> GetAll()
         {
-            return _productContext.Products.ToList();
+            return await _productContext.Products.ToListAsync();
         }
 
-        public async Task<Product> GetById(int id)
+        public async Task<Product?> GetById(int id)
         {
-            Product currentProduct = await _productContext.Products.FindAsync(id);
+            Product? currentProduct = await _productContext.Products.FindAsync(id);
 
             if (currentProduct != null)
                 return currentProduct;
@@ -46,10 +47,11 @@ namespace ProductService.Repository
 
         public async Task Update(int id, Product product)
         {
-            Product currentProduct = await GetById(id);
+            Product? currentProduct = await GetById(id);
 
             if (currentProduct != null)
             {
+                currentProduct.SubcategoriesId = product.SubcategoriesId;
                 currentProduct.UserId = product.UserId;
                 currentProduct.Name = product.Name;
                 currentProduct.Description = product.Description;

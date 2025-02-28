@@ -4,10 +4,8 @@
     {
         public int Id { get; set; }
 
-        public List<Category> Categories { get; set; } = new List<Category>();
+        public List<Subcategories>? Subcategories { get; set; } = new List<Subcategories>();
 
-        public string Name { get; set; }
-
-
+        public string? Name { get; set; }
     }
 }

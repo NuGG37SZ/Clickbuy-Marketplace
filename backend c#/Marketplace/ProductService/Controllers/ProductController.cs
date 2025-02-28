@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductService.DTO;
-using ProductService.Entity;
 using ProductService.Service;
 
 namespace ProductService.Controllers
@@ -18,16 +17,16 @@ namespace ProductService.Controllers
 
         [HttpGet]
         [Route("products")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok(_productService.GetAll());
+            return Ok(await _productService.GetAll());
         }
 
         [HttpGet]
         [Route("products/getById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            ProductDTO productDTO = await _productService.GetById(id);
+            ProductDTO? productDTO = await _productService.GetById(id);
 
             if (productDTO == null)
                 return NotFound("Product Not Found");
@@ -47,6 +46,11 @@ namespace ProductService.Controllers
         [Route("products/update/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ProductDTO productDTO)
         {
+            ProductDTO? currentProductDTO = await _productService.GetById(id);
+
+            if(currentProductDTO == null)
+                return NotFound("Product Not Found");
+
             await _productService.Update(id, productDTO);
             return Ok(productDTO);
         }
@@ -55,6 +59,11 @@ namespace ProductService.Controllers
         [Route("products/delete/{id}")]
         public async Task<IActionResult> DeleteById(int id)
         {
+            ProductDTO? currentProductDTO = await _productService.GetById(id);
+
+            if (currentProductDTO == null)
+                return NotFound("Product Not Found");
+
             await _productService.DeleteById(id);
             return NoContent();
         }

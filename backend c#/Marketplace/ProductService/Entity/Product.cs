@@ -9,6 +9,11 @@ namespace ProductService.Entity
         [Required]
         public int UserId { get; set; }
 
+        [Required]
+        public int SubcategoriesId { get; set; }
+
+        public Subcategories? Subcategories { get; set; }
+
         public string Name { get; set; }
 
         public int Price {  get; set; }

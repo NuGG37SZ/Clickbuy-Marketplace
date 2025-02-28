@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Update;
 using UserService.DTO;
 using UserService.Service;
 using UserService.Utils;
@@ -12,10 +11,8 @@ namespace Marketplace.Controllers
     {
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService)
-        {
-            _userService = userService;
-        }
+        public UserController(IUserService userService) => _userService = userService;
+
 
         [HttpGet]
         [Route("users")]
@@ -98,6 +95,11 @@ namespace Marketplace.Controllers
         [Route("users/delete/{id}")]
         public IActionResult DeleteById(int id)
         {
+            UserDTO? currentUser = _userService.GetById(id);
+
+            if (currentUser == null)
+                return NotFound("User Not Found.");
+
             _userService.DeleteById(id);
             return NoContent();
         }

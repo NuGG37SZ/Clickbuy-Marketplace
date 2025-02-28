@@ -8,8 +8,9 @@ namespace ProductService.Db
         public DbSet<Product> Products { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Subcategories> Subcategories { get; set; }
 
-        public ProductContext()
+        public ProductContext(DbContextOptions<ProductContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
