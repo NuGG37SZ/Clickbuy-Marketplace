@@ -17,7 +17,6 @@ categoryItems.forEach(item => {
         modal.hide();
         categoryText.classList.add('active');
     });
-    
 });
 
 categoryText.addEventListener('click', function(e) {
