@@ -14,10 +14,6 @@ body {
 .card:hover {
     transform: scale(1.05);
 }
-.search-container {
-    max-width: 600px;
-    margin: 20px auto;
-}
 .product-images {
     position: relative;
     text-align: center;
