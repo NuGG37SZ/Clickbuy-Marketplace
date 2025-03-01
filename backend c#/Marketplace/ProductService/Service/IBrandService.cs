@@ -4,13 +4,13 @@ namespace ProductService.Service
 {
     public interface IBrandService
     {
-        Task<List<BrandDTO>> GetAll();
+        Task<List<BrandsDTO>> GetAll();
 
-        Task<BrandDTO?> GetById(int id);
+        Task<BrandsDTO?> GetById(int id);
 
-        Task Create(BrandDTO brandDTO);
+        Task Create(BrandsDTO brandDTO);
 
-        Task Update(int id, BrandDTO brandDTO);
+        Task Update(int id, BrandsDTO brandDTO);
 
         Task DeleteById(int id);
     }

@@ -12,10 +12,14 @@ namespace ProductService.Service
 
         private readonly IUserClient _userClient;
 
-        public ProductServiceImpl(IProductRepository productRepository, IUserClient userClient)
+        private readonly IBrandSubcategoriesService _brandSubcategoriesService;
+
+        public ProductServiceImpl(IProductRepository productRepository, IUserClient userClient, 
+            IBrandSubcategoriesService brandSubcategoriesService)
         {
             _productRepository = productRepository;
             _userClient = userClient;
+            _brandSubcategoriesService = brandSubcategoriesService;
         }
 
         public async Task Create(ProductDTO productDTO)

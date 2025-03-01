@@ -22,7 +22,7 @@ namespace ProductService.Controllers
         [Route("getById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            BrandDTO? brandDTO = await _brandService.GetById(id);
+            BrandsDTO? brandDTO = await _brandService.GetById(id);
 
             if (brandDTO == null)
                 return NotFound("Brand Not Found.");
@@ -32,7 +32,7 @@ namespace ProductService.Controllers
 
         [HttpPost]
         [Route("create")]
-        public async Task<IActionResult> Create([FromBody] BrandDTO brandDTO)
+        public async Task<IActionResult> Create([FromBody] BrandsDTO brandDTO)
         {
             await _brandService.Create(brandDTO);
             return Created("create", brandDTO);
@@ -40,9 +40,9 @@ namespace ProductService.Controllers
 
         [HttpPut]
         [Route("update/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] BrandDTO brandDTO)
+        public async Task<IActionResult> Update(int id, [FromBody] BrandsDTO brandDTO)
         {
-            BrandDTO? currentBrand = await _brandService.GetById(id);
+            BrandsDTO? currentBrand = await _brandService.GetById(id);
 
             if (currentBrand == null)
                 return NotFound("Brand Not Found.");
@@ -55,7 +55,7 @@ namespace ProductService.Controllers
         [Route("delete/{id}")]
         public async Task<IActionResult> DeleteById(int id)
         {
-            BrandDTO? brandDTO = await _brandService.GetById(id);
+            BrandsDTO? brandDTO = await _brandService.GetById(id);
 
             if (brandDTO == null)
                 return NotFound("Brand Not Found.");

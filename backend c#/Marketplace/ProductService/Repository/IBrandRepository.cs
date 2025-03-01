@@ -4,13 +4,13 @@ namespace ProductService.Repository
 {
     public interface IBrandRepository
     {
-        Task<List<Brand>> GetAll();
+        Task<List<Brands>> GetAll();
 
-        Task<Brand?> GetById(int id);
+        Task<Brands?> GetById(int id);
 
-        Task Create(Brand brand);
+        Task Create(Brands brand);
 
-        Task Update(int id, Brand brand);
+        Task Update(int id, Brands brand);
 
         Task DeleteById(int id);
     }

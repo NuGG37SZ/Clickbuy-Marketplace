@@ -5,7 +5,7 @@
 namespace ProductService.Migrations
 {
     /// <inheritdoc />
-    public partial class products_migration : Migration
+    public partial class productV2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,12 +60,14 @@ namespace ProductService.Migrations
                 name: "BrandSubcategories",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     BrandsId = table.Column<int>(type: "INTEGER", nullable: false),
                     SubcategoriesId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BrandSubcategories", x => new { x.BrandsId, x.SubcategoriesId });
+                    table.PrimaryKey("PK_BrandSubcategories", x => x.Id);
                     table.ForeignKey(
                         name: "FK_BrandSubcategories_Brands_BrandsId",
                         column: x => x.BrandsId,
@@ -87,27 +89,43 @@ namespace ProductService.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    SubcategoriesId = table.Column<int>(type: "INTEGER", nullable: false),
+                    BrandsSubcategoriesId = table.Column<int>(type: "INTEGER", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<int>(type: "INTEGER", nullable: false),
                     Count = table.Column<int>(type: "INTEGER", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false)
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    SubcategoriesId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Products_BrandSubcategories_BrandsSubcategoriesId",
+                        column: x => x.BrandsSubcategoriesId,
+                        principalTable: "BrandSubcategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Products_Subcategories_SubcategoriesId",
                         column: x => x.SubcategoriesId,
                         principalTable: "Subcategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BrandSubcategories_BrandsId",
+                table: "BrandSubcategories",
+                column: "BrandsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BrandSubcategories_SubcategoriesId",
                 table: "BrandSubcategories",
                 column: "SubcategoriesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_BrandsSubcategoriesId",
+                table: "Products",
+                column: "BrandsSubcategoriesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_SubcategoriesId",
@@ -124,10 +142,10 @@ namespace ProductService.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BrandSubcategories");
+                name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "BrandSubcategories");
 
             migrationBuilder.DropTable(
                 name: "Brands");

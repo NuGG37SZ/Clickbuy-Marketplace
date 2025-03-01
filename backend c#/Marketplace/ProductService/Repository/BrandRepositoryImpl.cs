@@ -10,7 +10,7 @@ namespace ProductService.Repository
 
         public BrandRepositoryImpl(ProductContext productContext) => _productContext = productContext;
 
-        public async Task Create(Brand brand)
+        public async Task Create(Brands brand)
         {
             await _productContext.Brands.AddAsync(brand);
             await _productContext.SaveChangesAsync();
@@ -18,7 +18,7 @@ namespace ProductService.Repository
 
         public async Task DeleteById(int id)
         {
-            Brand? currentBrand = await _productContext.Brands.FindAsync(id);
+            Brands? currentBrand = await _productContext.Brands.FindAsync(id);
 
             if (currentBrand != null)
             {
@@ -27,14 +27,14 @@ namespace ProductService.Repository
             }
         }
 
-        public async Task<List<Brand>> GetAll()
+        public async Task<List<Brands>> GetAll()
         {
             return await _productContext.Brands.ToListAsync();
         }
 
-        public async Task<Brand?> GetById(int id)
+        public async Task<Brands?> GetById(int id)
         {
-            Brand? currentBrand = await _productContext.Brands.FindAsync(id);
+            Brands? currentBrand = await _productContext.Brands.FindAsync(id);
 
             if(currentBrand != null)
                 return currentBrand;
@@ -42,9 +42,9 @@ namespace ProductService.Repository
             return null;
         }
 
-        public async Task Update(int id, Brand brand)
+        public async Task Update(int id, Brands brand)
         {
-            Brand? currentBrand = await GetById(id);
+            Brands? currentBrand = await GetById(id);
 
             if (currentBrand != null)
             {

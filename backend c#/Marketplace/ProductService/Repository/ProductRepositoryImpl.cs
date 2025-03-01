@@ -51,12 +51,13 @@ namespace ProductService.Repository
 
             if (currentProduct != null)
             {
-                currentProduct.SubcategoriesId = product.SubcategoriesId;
+                currentProduct.BrandsSubcategoriesId = product.BrandsSubcategoriesId;
                 currentProduct.UserId = product.UserId;
                 currentProduct.Name = product.Name;
                 currentProduct.Description = product.Description;
                 currentProduct.Price = product.Price;
                 currentProduct.Count = product.Count;
+                currentProduct.PathToPhoto = product.PathToPhoto;
                 _productContext.Update(currentProduct);
                 await _productContext.SaveChangesAsync();
             }

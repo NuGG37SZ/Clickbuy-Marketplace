@@ -10,8 +10,8 @@ using ProductService.Db;
 namespace ProductService.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20250228175115_products_migration")]
-    partial class products_migration
+    [Migration("20250301211257_productV2")]
+    partial class productV2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,22 +19,7 @@ namespace ProductService.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
 
-            modelBuilder.Entity("BrandSubcategories", b =>
-                {
-                    b.Property<int>("BrandsId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SubcategoriesId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("BrandsId", "SubcategoriesId");
-
-                    b.HasIndex("SubcategoriesId");
-
-                    b.ToTable("BrandSubcategories");
-                });
-
-            modelBuilder.Entity("ProductService.Entity.Brand", b =>
+            modelBuilder.Entity("ProductService.Entity.Brands", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,6 +31,27 @@ namespace ProductService.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("ProductService.Entity.BrandsSubcategories", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BrandsId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SubcategoriesId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandsId");
+
+                    b.HasIndex("SubcategoriesId");
+
+                    b.ToTable("BrandSubcategories");
                 });
 
             modelBuilder.Entity("ProductService.Entity.Category", b =>
@@ -69,6 +75,9 @@ namespace ProductService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("BrandsSubcategoriesId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("Count")
                         .HasColumnType("INTEGER");
 
@@ -83,13 +92,15 @@ namespace ProductService.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("SubcategoriesId")
+                    b.Property<int?>("SubcategoriesId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BrandsSubcategoriesId");
 
                     b.HasIndex("SubcategoriesId");
 
@@ -116,16 +127,16 @@ namespace ProductService.Migrations
                     b.ToTable("Subcategories");
                 });
 
-            modelBuilder.Entity("BrandSubcategories", b =>
+            modelBuilder.Entity("ProductService.Entity.BrandsSubcategories", b =>
                 {
-                    b.HasOne("ProductService.Entity.Brand", null)
-                        .WithMany()
+                    b.HasOne("ProductService.Entity.Brands", null)
+                        .WithMany("BrandsSubcategories")
                         .HasForeignKey("BrandsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ProductService.Entity.Subcategories", null)
-                        .WithMany()
+                        .WithMany("BrandsSubcategories")
                         .HasForeignKey("SubcategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -133,13 +144,17 @@ namespace ProductService.Migrations
 
             modelBuilder.Entity("ProductService.Entity.Product", b =>
                 {
-                    b.HasOne("ProductService.Entity.Subcategories", "Subcategories")
-                        .WithMany("Products")
-                        .HasForeignKey("SubcategoriesId")
+                    b.HasOne("ProductService.Entity.BrandsSubcategories", "BrandsSubcategories")
+                        .WithMany()
+                        .HasForeignKey("BrandsSubcategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Subcategories");
+                    b.HasOne("ProductService.Entity.Subcategories", null)
+                        .WithMany("Products")
+                        .HasForeignKey("SubcategoriesId");
+
+                    b.Navigation("BrandsSubcategories");
                 });
 
             modelBuilder.Entity("ProductService.Entity.Subcategories", b =>
@@ -153,6 +168,11 @@ namespace ProductService.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("ProductService.Entity.Brands", b =>
+                {
+                    b.Navigation("BrandsSubcategories");
+                });
+
             modelBuilder.Entity("ProductService.Entity.Category", b =>
                 {
                     b.Navigation("Subcategories");
@@ -160,6 +180,8 @@ namespace ProductService.Migrations
 
             modelBuilder.Entity("ProductService.Entity.Subcategories", b =>
                 {
+                    b.Navigation("BrandsSubcategories");
+
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

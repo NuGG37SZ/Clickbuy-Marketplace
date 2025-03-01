@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace ProductService.Entity
 {
@@ -9,10 +10,9 @@ namespace ProductService.Entity
         [Required]
         public int UserId { get; set; }
 
-        [Required]
-        public int SubcategoriesId { get; set; }
+        public int BrandsSubcategoriesId { get; set; }
 
-        public Subcategories? Subcategories { get; set; }
+        public BrandsSubcategories? BrandsSubcategories { get; set; }
 
         public string Name { get; set; }
 
@@ -21,5 +21,7 @@ namespace ProductService.Entity
         public int Count { get; set; }
 
         public string Description { get; set; }
+
+        public string PathToPhoto { get; set; }
     }
 }

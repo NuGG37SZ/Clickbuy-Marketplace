@@ -9,24 +9,26 @@ namespace ProductService.Mapper
         {
             ProductDTO productDTO = new ProductDTO();
             productDTO.Id = product.Id;
-            productDTO.SubcategoriesId = product.SubcategoriesId;
+            productDTO.BrandsSubcategoriesId = product.BrandsSubcategoriesId;
             productDTO.UserId = product.UserId;
             productDTO.Price = product.Price;
             productDTO.Description = product.Description;
             productDTO.Name = product.Name;
             productDTO.Count = product.Count;
+            productDTO.PathToPhoto = product.PathToPhoto;
             return productDTO;
         }
 
         public static Product MapProductDTOToProduct(ProductDTO productDTO)
         {
             Product product = new Product();
-            product.SubcategoriesId = productDTO.SubcategoriesId;
+            product.BrandsSubcategoriesId = productDTO.BrandsSubcategoriesId;
             product.UserId = productDTO.UserId;
             product.Price = productDTO.Price;
             product.Description = productDTO.Description;
             product.Name = productDTO.Name;
             product.Count = productDTO.Count;
+            product.PathToPhoto = productDTO.PathToPhoto;
             return product;
         }
     }

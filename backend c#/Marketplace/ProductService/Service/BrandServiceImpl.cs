@@ -11,7 +11,7 @@ namespace ProductService.Service
 
         public BrandServiceImpl(IBrandRepository brandRepository) => _brandRepository = brandRepository;
 
-        public async Task Create(BrandDTO brandDTO)
+        public async Task Create(BrandsDTO brandDTO)
         {
             await _brandRepository.Create(BrandMapper.MapBrandDTOToBrand(brandDTO));
         }
@@ -21,16 +21,16 @@ namespace ProductService.Service
             await _brandRepository.DeleteById(id);    
         }
 
-        public async Task<List<BrandDTO>> GetAll()
+        public async Task<List<BrandsDTO>> GetAll()
         {
-            List<Brand> brands = await _brandRepository.GetAll();
+            List<Brands> brands = await _brandRepository.GetAll();
             return brands.Select(BrandMapper.MapBrandToBrandDTO)
                     .ToList();
         }
 
-        public async Task<BrandDTO?> GetById(int id)
+        public async Task<BrandsDTO?> GetById(int id)
         {
-            Brand? currentBrand = await _brandRepository.GetById(id);
+            Brands? currentBrand = await _brandRepository.GetById(id);
             
             if(currentBrand != null)
                 return BrandMapper.MapBrandToBrandDTO(currentBrand);
@@ -38,9 +38,9 @@ namespace ProductService.Service
             return null;
         }
 
-        public async Task Update(int id, BrandDTO brandDTO)
+        public async Task Update(int id, BrandsDTO brandDTO)
         {
-            BrandDTO? currentBrandDTO = await GetById(id);
+            BrandsDTO? currentBrandDTO = await GetById(id);
 
             if (currentBrandDTO != null)
             {

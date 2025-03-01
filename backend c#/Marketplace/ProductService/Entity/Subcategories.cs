@@ -10,7 +10,7 @@
 
         public List<Product>? Products { get; set; } = new List<Product>();
 
-        public List<Brand>? Brands { get; set; } = new List<Brand>();
+        public List<BrandsSubcategories>? BrandsSubcategories { get; set; } = new List<BrandsSubcategories>();
 
         public string Name { get; set; }
     }

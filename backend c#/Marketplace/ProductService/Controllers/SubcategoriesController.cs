@@ -17,7 +17,6 @@ namespace ProductService.Controllers
         {
             _subcategoriesService = subcategoriesService;
             _categoryService = categoryService;
-
         }
            
         [HttpGet]

@@ -1,6 +1,6 @@
 ﻿namespace ProductService.DTO
 {
-    public class BrandDTO
+    public class BrandsDTO
     {
         public int Id { get; set; }
 

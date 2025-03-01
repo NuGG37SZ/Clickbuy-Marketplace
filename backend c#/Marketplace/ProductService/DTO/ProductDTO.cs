@@ -6,7 +6,7 @@
 
         public int UserId { get; set; }
 
-        public int SubcategoriesId { get; set; }
+        public int BrandsSubcategoriesId { get; set; }
 
         public string Name { get; set; }
 
@@ -16,5 +16,6 @@
 
         public string Description { get; set; }
 
+        public string PathToPhoto { get; set; }
     }
 }

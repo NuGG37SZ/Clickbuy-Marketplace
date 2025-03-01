@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProductService.Client;
 using ProductService.DTO;
 using ProductService.Service;
 
@@ -10,9 +11,16 @@ namespace ProductService.Controllers
     {
         private readonly IProductService _productService;
 
-        public ProductController(IProductService productService)
+        private readonly IUserClient _userClient;
+
+        private readonly IBrandSubcategoriesService _brandSubcategoriesService;
+
+        public ProductController(IProductService productService, IUserClient userClient,
+            IBrandSubcategoriesService brandSubcategoriesService)
         {
             _productService = productService;
+            _userClient = userClient;
+            _brandSubcategoriesService = brandSubcategoriesService;
         }
 
         [HttpGet]
@@ -37,6 +45,13 @@ namespace ProductService.Controllers
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] ProductDTO productDTO)
         {
+            BrandsSubcategoriesDTO? brandSubcategoriesDTO =  
+                await _brandSubcategoriesService.GetById(productDTO.BrandsSubcategoriesId);
+            UserDTO userDTO = await _userClient.GetUserById(productDTO.UserId);
+
+            if (userDTO == null || brandSubcategoriesDTO == null)
+                return NotFound("Error: double check the data");
+
             await _productService.Create(productDTO);
             return Created("create", productDTO);
         }
@@ -45,10 +60,13 @@ namespace ProductService.Controllers
         [Route("update/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ProductDTO productDTO)
         {
+            BrandsSubcategoriesDTO? brandSubcategoriesDTO =
+                await _brandSubcategoriesService.GetById(productDTO.BrandsSubcategoriesId);
+            UserDTO userDTO = await _userClient.GetUserById(productDTO.UserId);
             ProductDTO? currentProductDTO = await _productService.GetById(id);
 
-            if(currentProductDTO == null)
-                return NotFound("Product Not Found");
+            if (userDTO == null || brandSubcategoriesDTO == null)
+                return NotFound("Error: double check the data");
 
             await _productService.Update(id, productDTO);
             return Ok(productDTO);

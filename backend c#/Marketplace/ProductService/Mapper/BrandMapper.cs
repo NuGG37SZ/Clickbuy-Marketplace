@@ -5,17 +5,17 @@ namespace ProductService.Mapper
 {
     public class BrandMapper
     {
-        public static BrandDTO MapBrandToBrandDTO(Brand brand)
+        public static BrandsDTO MapBrandToBrandDTO(Brands brand)
         {
-            BrandDTO brandDTO = new BrandDTO();
+            BrandsDTO brandDTO = new BrandsDTO();
             brandDTO.Id = brand.Id;
             brandDTO.Name = brand.Name;
             return brandDTO;
         }
 
-        public static Brand MapBrandDTOToBrand(BrandDTO brandDTO)
+        public static Brands MapBrandDTOToBrand(BrandsDTO brandDTO)
         {
-            Brand brand = new Brand();
+            Brands brand = new Brands();
             brand.Name = brandDTO.Name;
             return brand;
         }
