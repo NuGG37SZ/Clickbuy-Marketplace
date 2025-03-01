@@ -1,5 +1,84 @@
 [
   {
+    "ContainingType": "ProductService.Controllers.BrandController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/brands",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.BrandController",
+    "Method": "Create",
+    "RelativePath": "api/v1/brands/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "brandDTO",
+        "Type": "ProductService.DTO.BrandDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.BrandController",
+    "Method": "DeleteById",
+    "RelativePath": "api/v1/brands/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.BrandController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/brands/getById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.BrandController",
+    "Method": "Update",
+    "RelativePath": "api/v1/brands/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "brandDTO",
+        "Type": "ProductService.DTO.BrandDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ProductService.Controllers.CategoryController",
     "Method": "GetAll",
     "RelativePath": "api/v1/categories",
@@ -152,6 +231,85 @@
       {
         "Name": "productDTO",
         "Type": "ProductService.DTO.ProductDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.SubcategoriesController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/subcategories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.SubcategoriesController",
+    "Method": "Create",
+    "RelativePath": "api/v1/subcategories/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "subcategoriesDTO",
+        "Type": "ProductService.DTO.SubcategoriesDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.SubcategoriesController",
+    "Method": "DeleteById",
+    "RelativePath": "api/v1/subcategories/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.SubcategoriesController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/subcategories/getById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.SubcategoriesController",
+    "Method": "Update",
+    "RelativePath": "api/v1/subcategories/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "subcategoriesDTO",
+        "Type": "ProductService.DTO.SubcategoriesDTO",
         "IsRequired": true
       }
     ],

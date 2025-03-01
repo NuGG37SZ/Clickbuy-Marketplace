@@ -43,13 +43,13 @@ namespace ProductService.Service
 
         public async Task Update(int id, CategoryDTO categoryDTO)
         {
-            Category? currentCategory = await _categoryRepository.GetById(id);
+            CategoryDTO? currentCategoryDTO = await GetById(id);
 
-            if (currentCategory != null)
+            if (currentCategoryDTO != null)
             {
-                currentCategory.Name = categoryDTO.Name;
+                currentCategoryDTO.Name = categoryDTO.Name;
                 await _categoryRepository.Update(id, 
-                        CategoryMapper.MapCategoryDTOToCategory(categoryDTO));
+                        CategoryMapper.MapCategoryDTOToCategory(currentCategoryDTO));
             }
         }
     }

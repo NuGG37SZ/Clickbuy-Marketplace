@@ -73,7 +73,7 @@ namespace Marketplace.Controllers
         public IActionResult Create([FromBody] UserDTO userDTO)
         {
             _userService.Create(userDTO);
-            return Created("create", userDTO);
+            return Created("users/create", userDTO);
         }
 
         [HttpPut]

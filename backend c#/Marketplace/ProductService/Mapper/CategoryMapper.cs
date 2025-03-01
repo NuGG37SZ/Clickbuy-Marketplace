@@ -8,6 +8,7 @@ namespace ProductService.Mapper
         public static CategoryDTO MapCategoryToCategoryDTO(Category category)
         {
             CategoryDTO categoryDTO = new CategoryDTO();
+            categoryDTO.Id = category.Id;
             categoryDTO.Name = category.Name;
             return categoryDTO;
         }

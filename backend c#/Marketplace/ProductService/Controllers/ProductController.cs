@@ -5,7 +5,7 @@ using ProductService.Service;
 namespace ProductService.Controllers
 {
     [ApiController]
-    [Route("api/v1")]
+    [Route("api/v1/products")]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -16,14 +16,13 @@ namespace ProductService.Controllers
         }
 
         [HttpGet]
-        [Route("products")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _productService.GetAll());
         }
 
         [HttpGet]
-        [Route("products/getById/{id}")]
+        [Route("getById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             ProductDTO? productDTO = await _productService.GetById(id);
@@ -35,15 +34,15 @@ namespace ProductService.Controllers
         }
 
         [HttpPost]
-        [Route("products/create")]
+        [Route("create")]
         public async Task<IActionResult> Create([FromBody] ProductDTO productDTO)
         {
             await _productService.Create(productDTO);
-            return Ok(productDTO);
+            return Created("create", productDTO);
         }
 
         [HttpPut]
-        [Route("products/update/{id}")]
+        [Route("update/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ProductDTO productDTO)
         {
             ProductDTO? currentProductDTO = await _productService.GetById(id);
@@ -56,7 +55,7 @@ namespace ProductService.Controllers
         }
 
         [HttpDelete]
-        [Route("products/delete/{id}")]
+        [Route("delete/{id}")]
         public async Task<IActionResult> DeleteById(int id)
         {
             ProductDTO? currentProductDTO = await _productService.GetById(id);

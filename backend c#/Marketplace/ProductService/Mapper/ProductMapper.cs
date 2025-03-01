@@ -8,6 +8,7 @@ namespace ProductService.Mapper
         public static ProductDTO MapProductToProductDTO(Product product)
         {
             ProductDTO productDTO = new ProductDTO();
+            productDTO.Id = product.Id;
             productDTO.SubcategoriesId = product.SubcategoriesId;
             productDTO.UserId = product.UserId;
             productDTO.Price = product.Price;
