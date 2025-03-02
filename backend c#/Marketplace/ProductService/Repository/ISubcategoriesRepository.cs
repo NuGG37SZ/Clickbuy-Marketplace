@@ -8,6 +8,8 @@ namespace ProductService.Repository
 
         Task<Subcategories?> GetById(int id);
 
+        Task<List<Subcategories>> GetSubcategoriesByCategoryId(int categoryId);
+
         Task Create(Subcategories subcategory);
 
         Task Update(int id, Subcategories subcategory);

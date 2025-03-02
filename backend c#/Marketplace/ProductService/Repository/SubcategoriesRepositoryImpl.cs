@@ -44,6 +44,13 @@ namespace ProductService.Repository
             return null;
         }
 
+        public async Task<List<Subcategories>> GetSubcategoriesByCategoryId(int categoryId)
+        {
+            return await _productContext.Subcategories
+                .Where(sc => sc.CategoryId ==  categoryId)
+                .ToListAsync();
+        }
+
         public async Task Update(int id, Subcategories subcategory)
         {
             Subcategories? currentSubcategories = await GetById(id);

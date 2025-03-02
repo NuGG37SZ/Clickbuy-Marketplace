@@ -20,9 +20,15 @@ builder.Services.AddScoped<ISubcategoriesService, SubcategoriesServiceImpl>();
 builder.Services.AddScoped<IBrandSubcategoriesRepository, BrandSubcategoriesRepositoryImpl>();
 builder.Services.AddScoped<IBrandSubcategoriesService, BrandSubcategoriesServiceImpl>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddCors();
 var app = builder.Build();
 
 app.UseRouting();
+app.UseCors(builder =>
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader()
+);
 app.UseEndpoints(endpoints => endpoints.MapControllers());
 
 app.Run();

@@ -33,6 +33,24 @@ namespace ProductService.Repository
             return await _productContext.BrandSubcategories.ToListAsync();
         }
 
+        public async Task<BrandsSubcategories> GetByBrandAndSubcategories(int brandId, int subcategoryId)
+        {
+            BrandsSubcategories? brandsSubcategories =  await _productContext.BrandSubcategories
+                               .Where(bs => bs.BrandsId == brandId)
+                               .Where(bs => bs.SubcategoriesId == subcategoryId)
+                               .FirstOrDefaultAsync();
+
+            if(brandsSubcategories != null)
+                return brandsSubcategories;
+
+            brandsSubcategories = new BrandsSubcategories();
+            brandsSubcategories.BrandsId = brandId;
+            brandsSubcategories.SubcategoriesId = subcategoryId;
+            await _productContext.BrandSubcategories.AddAsync(brandsSubcategories);
+            await _productContext.SaveChangesAsync();
+            return brandsSubcategories;
+        }
+
         public Task<List<BrandsSubcategories>> GetByBrandId(int id)
         {
            return _productContext.BrandSubcategories

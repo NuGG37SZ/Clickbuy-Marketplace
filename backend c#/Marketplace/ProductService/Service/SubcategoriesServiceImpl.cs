@@ -70,5 +70,21 @@ namespace ProductService.Service
                 );
             }
         }
+
+        public async Task<List<SubcategoriesDTO>> GetSubcategoriesByCategoryId(int categoryId)
+        {
+            CategoryDTO? categoryDTO = await _categoryService.GetById(categoryId);
+            
+            if(categoryDTO != null)
+            {
+                List<Subcategories> subcategories = 
+                    await _subcategoriesRepository.GetSubcategoriesByCategoryId(categoryId);
+                
+                return subcategories
+                    .Select(SubcategoriesMapper.MapSubcategoriesToSubcategoriesDTO)
+                    .ToList();
+            }
+            return [];
+        }
     }
 }

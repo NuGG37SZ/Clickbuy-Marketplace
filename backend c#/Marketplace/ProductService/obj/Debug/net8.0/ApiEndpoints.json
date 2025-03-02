@@ -122,6 +122,27 @@
   },
   {
     "ContainingType": "ProductService.Controllers.BrandSubcategoriesController",
+    "Method": "GetByBrandAndSubcategories",
+    "RelativePath": "api/v1/brandsSubcategories/getByBrandAndSubcategories/{brandId}/{subcategoryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "brandId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "subcategoryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.BrandSubcategoriesController",
     "Method": "GetByBrandId",
     "RelativePath": "api/v1/brandsSubcategories/getByBrandId/{id}",
     "HttpMethod": "GET",
@@ -378,6 +399,22 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.SubcategoriesController",
+    "Method": "GetSubcategoryByCategoryId",
+    "RelativePath": "api/v1/subcategories/getSubcategoryByCategoryId/{categoryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryId",
         "Type": "System.Int32",
         "IsRequired": true
       }

@@ -10,6 +10,8 @@ namespace ProductService.Repository
 
         Task<List<BrandsSubcategories>> GetBySubcategoriesId(int id);
 
+        Task<BrandsSubcategories> GetByBrandAndSubcategories(int brandId, int subcategoryId);
+
         Task<BrandsSubcategories?> GetById(int id);
 
         Task Create(BrandsSubcategories brandSubcategories);

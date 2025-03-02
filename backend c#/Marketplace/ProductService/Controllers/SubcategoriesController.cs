@@ -37,6 +37,18 @@ namespace ProductService.Controllers
             return Ok(currentSubcategoriesDTO);
         }
 
+        [HttpGet]
+        [Route("getSubcategoryByCategoryId/{categoryId}")]
+        public async Task<IActionResult> GetSubcategoryByCategoryId(int categoryId)
+        {
+            CategoryDTO? categoryDTO = await _categoryService.GetById(categoryId);
+             
+            if(categoryDTO == null)
+                return NotFound("Category Not Found.");
+
+            return Ok(await _subcategoriesService.GetSubcategoriesByCategoryId(categoryId));
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] SubcategoriesDTO subcategoriesDTO)

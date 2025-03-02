@@ -64,6 +64,32 @@ namespace ProductService.Controllers
             return Ok(await _brandSubcategoriesService.GetBySubcategoriesId(id));
         }
 
+        [HttpGet]
+        [Route("getByBrandAndSubcategories/{brandId}/{subcategoryId}")]
+        public async Task<IActionResult> GetByBrandAndSubcategories(int brandId, int subcategoryId)
+        {
+            BrandsDTO? brandsDTO = await _brandService.GetById(brandId);
+            SubcategoriesDTO? subcategoriesDTO = await _subcategoriesService.GetById(subcategoryId);
+
+            if(brandsDTO != null && subcategoriesDTO != null)
+            {
+                BrandsSubcategoriesDTO? brandsSubcategoriesDTO =
+                    await _brandSubcategoriesService.GetByBrandAndSubcategories(brandId, subcategoryId);
+
+                if (brandsSubcategoriesDTO == null)
+                {
+                    brandsSubcategoriesDTO = new BrandsSubcategoriesDTO();
+                    brandsSubcategoriesDTO.SubcategoriesId = subcategoryId;
+                    brandsSubcategoriesDTO.BrandsId = brandId;
+                    await _brandSubcategoriesService.Create(brandsSubcategoriesDTO);
+                    return Created($"getByBrandAndSubcategories/{brandId}/{subcategoryId}", brandsSubcategoriesDTO);
+                } 
+                else 
+                    return Ok(brandsSubcategoriesDTO);
+            }
+            return NotFound("Brands or Subcategories do not exist.");
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] BrandsSubcategoriesDTO brandSubcategoriesDTO)

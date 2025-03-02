@@ -53,6 +53,33 @@ namespace ProductService.Service
                 .ToList();
         }
 
+        public async Task<BrandsSubcategoriesDTO> GetByBrandAndSubcategories(int brandId, int subcategoryId)
+        {
+            BrandsDTO? brandDTO = await _brandService.GetById(brandId);
+            SubcategoriesDTO? subcategoriesDTO = await _subcategoriesService.GetById(subcategoryId);
+
+            if(subcategoriesDTO != null && brandDTO != null)
+            {
+                BrandsSubcategoriesDTO brandsSubcategoriesDTO = 
+                    BrandSubcategoriesMapper.MapBrandSubcategoriesToBrandSubcategoriesDTO(
+                        await _brandSubcategoriesRepository.GetByBrandAndSubcategories(brandId, subcategoryId)
+                    );
+
+                if(brandsSubcategoriesDTO == null)
+                {
+                    brandsSubcategoriesDTO = new BrandsSubcategoriesDTO();
+                    brandsSubcategoriesDTO.BrandsId = brandId;
+                    brandsSubcategoriesDTO.SubcategoriesId = subcategoryId;
+                    await _brandSubcategoriesRepository.Create(
+                        BrandSubcategoriesMapper.MapBrandSubcategoriesDTOToBrandSubcategories(brandsSubcategoriesDTO)
+                    );
+                    return brandsSubcategoriesDTO;
+                }
+                return brandsSubcategoriesDTO;
+            }
+            return null;
+        }
+
         public async Task<List<BrandsSubcategoriesDTO>> GetByBrandId(int id)
         {
             BrandsDTO? currentBrandDTO = await _brandService.GetById(id);
