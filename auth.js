@@ -23,7 +23,7 @@ authBtn.addEventListener('click', () => {
     
     requestGetUserByLogin(loginInput.value)
         .then(user => {
-            localStorage.setItem('userLogin', user.login);
+            localStorage.setItem('userId', user.id);
             
             requestConfirmPassword(user.login, passwordInput.value)
                 .then(response => {

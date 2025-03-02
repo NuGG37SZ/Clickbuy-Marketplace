@@ -618,4 +618,123 @@ body {
     max-width: 80%;
 }
 
+.panel-roles {
+    width: 1320px;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto;
+    border: 1px solid black;
+}
+
+.title-panel-roles {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.panels-roles {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.panels-roles a {
+    text-decoration: none;
+    background-color: #0056b3;
+    color: white;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.seller-container {
+    display: flex;
+    width: 1320px;
+    margin: 30px auto;
+}
+
+.left-panel-seller {
+    display: flex;
+}
+
+.sales-operation {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sales-operation button {
+    margin-top: 15px;
+    border: none;
+    background-color: #007bff;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+}
+
+.lines-seller {
+    height: 1000px;
+    width: 3px;
+    border-radius: 20px;
+    background-color: black;
+    margin-left: 30px;
+}
+
+.right-panel-seller {
+    margin-left: 100px;
+}
+
+.right-panel-seller form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.right-panel-seller form div {
+    margin-top: 20px;
+}
+
+.right-panel-seller form div input, select, textarea {
+    width: 100%;
+}
+
+.right-panel-seller form div textarea {
+    height: 200px;
+    resize: none;
+}
+
+.actions-btn {
+    display: flex;
+    flex-direction: column;
+}
+
+.actions-btn button {
+    border: none;
+    background-color: #007bff;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+#create-update-product {
+    display: none;
+}
+
+.all-product-seller {
+    width: 500px;
+}
+
+.navigation-seller-items input {
+    padding: 5px;
+    width: 100%;
+}
+
+#price-product, #count-product {
+    font-size: 18px;
+    font-weight: bold;
+}
 

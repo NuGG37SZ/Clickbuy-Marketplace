@@ -10,6 +10,7 @@ namespace UserService.Mapper
             if(user != null) 
             {
                 UserDTO userDTO = new UserDTO();
+                userDTO.Id = user.Id;
                 userDTO.Login = user.Login;
                 userDTO.Password = user.Password;
                 userDTO.Email = user.Email;
