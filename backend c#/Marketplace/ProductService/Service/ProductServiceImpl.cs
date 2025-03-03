@@ -62,7 +62,7 @@ namespace ProductService.Service
                 currentProduct.Name = productDTO.Name;
                 currentProduct.UserId = productDTO.UserId;
                 currentProduct.BrandsSubcategoriesId = productDTO.BrandsSubcategoriesId;
-                currentProduct.Image = productDTO.Image;
+                currentProduct.ImageUrl = productDTO.ImageUrl;
                 await _productRepository.Update(id, ProductMapper.MapProductDTOToProduct(currentProduct));
             }
         }

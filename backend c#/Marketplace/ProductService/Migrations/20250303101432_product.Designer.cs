@@ -10,8 +10,8 @@ using ProductService.Db;
 namespace ProductService.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20250303051809_product_migration")]
-    partial class product_migration
+    [Migration("20250303101432_product")]
+    partial class product
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,9 +85,9 @@ namespace ProductService.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<byte[]>("Image")
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("BLOB");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
