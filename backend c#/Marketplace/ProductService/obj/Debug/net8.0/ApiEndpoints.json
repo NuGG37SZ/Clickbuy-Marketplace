@@ -349,6 +349,27 @@
   },
   {
     "ContainingType": "ProductService.Controllers.ProductController",
+    "Method": "getByNameAndUserId",
+    "RelativePath": "api/v1/products/getByNameAndUserId/{name}/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.ProductController",
     "Method": "Update",
     "RelativePath": "api/v1/products/update/{id}",
     "HttpMethod": "PUT",

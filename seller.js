@@ -41,6 +41,7 @@ createBtnForm.addEventListener('click', () => {
     let countInpt = document.getElementById('count');
     let descriptionArea = document.getElementById('description');
     let fileInpt = document.getElementById('image-product');
+    let sizeInpt = document.getElementById('size');
 
     let confirmWindow = confirm('Вы точно хотите добавить новый товар?');
     if(confirmWindow) {
@@ -50,7 +51,7 @@ createBtnForm.addEventListener('click', () => {
                 let file = fileInpt.files[0];
                 let reader = new FileReader();
                 reader.readAsDataURL(file);
-
+                
                 reader.onload = function(event) {
                     let imageUrl = event.target.result;
 
@@ -63,8 +64,35 @@ createBtnForm.addEventListener('click', () => {
                         description: descriptionArea.value,
                         imageUrl: imageUrl
                     }
-                    postRequest(`https://localhost:58841/api/v1/products/create`, productCreateModel);
+                    let result = postRequest(`https://localhost:58841/api/v1/products/create`, productCreateModel);
+                    result.then(code => {
+                        if(code === 201) {
+                            getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${nameInpt.value}/${userId}`)
+                            .then(product => {
+                                let sizeText = sizeInpt.value;
+                                let sizes = sizeText.split(', ');
+                                let countText = countInpt.value;
+                                let counts = countText.split(', ');
+
+                                if(sizes.length == counts.length) {
+                                    for(let i = 0; i < sizes.length; i++) {
+                                        let currentSize = sizes[i];
+                                        let currentCount = counts[i];
+
+                                        let productSizes = {
+                                            productId: parseInt(product.id),
+                                            size: currentSize,
+                                            count: parseInt(currentCount),
+                                        }
+                                        postRequest(`https://localhost:58841/api/v1/productSizes/create`, productSizes);
+                                    }
+                                }
+                            })
+                            alert('Вы успешно добавили товар!');
+                        }
+                    })
                 }
+                        
             })
     }
 })
@@ -90,11 +118,7 @@ async function postRequest(url, obj) {
     }
 
     let result = await response.status;
-
-    if(result === 201) {
-        alert('Вы успешно добавили новый товар!');
-        //return result;
-    }
+    return result;
 }
 
 async function deleteRequest(url) {
@@ -158,7 +182,7 @@ categorySelect.addEventListener('change', (e) => {
     fillSubcategoriesSelect(e.target.value);
 })
 
-function cardInsertHtml(product) {   
+function cardInsertHtml(product, count) {   
     return `
                 <div class="card mb-3" style="max-width: 540px; margin-top: 30px;">
                     <div class="row g-0">
@@ -170,7 +194,7 @@ function cardInsertHtml(product) {
                             <h5 class="card-title">${product.name}</h5>
                             <p class="card-text">${product.description}</p>
                             <p class="card-text" id="price-product">Цена: ${product.price}₽</p>  
-                            <p class="card-text" id="count-product">Количество: ${product.count}</p>
+                            <p class="card-text" id="count-product">Количество: ${count}</p>
                             <div style="display: flex; justify-content: end;">
                                 <button class="btn btn-outline-danger" id="delete-product"><i class="bi bi-x-circle-fill"></i></button>
                             </div>
@@ -194,12 +218,16 @@ listProductBtn.addEventListener('click', () => {
 
 productSellerDiv.addEventListener('click', (event) => {
     if (event.target.closest('#delete-product')) {
-        let userId = localStorage.getItem('userId')
-        const card = event.target.closest('.card');
-        const productNameElement = card.querySelector('.card-title');
-        const productName = productNameElement.textContent;
-        deleteRequest(`https://localhost:58841/api/v1/products/deleteByNameAndUserId/${productName}/${userId}`);
-        card.remove();
+        let confirmWindow = confirm('Вы точно хотите удалить данный товар?');
+
+        if(confirmWindow) {
+            let userId = localStorage.getItem('userId')
+            const card = event.target.closest('.card');
+            const productNameElement = card.querySelector('.card-title');
+            const productName = productNameElement.textContent;
+            deleteRequest(`https://localhost:58841/api/v1/products/deleteByNameAndUserId/${productName}/${userId}`);
+            card.remove();
+        }
     }
 })
 

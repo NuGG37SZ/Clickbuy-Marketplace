@@ -14,7 +14,7 @@ namespace ProductService.Service
 
         private readonly IBrandSubcategoriesService _brandSubcategoriesService;
 
-        public ProductServiceImpl(IProductRepository productRepository, IUserClient userClient, 
+        public ProductServiceImpl(IProductRepository productRepository, IUserClient userClient,
             IBrandSubcategoriesService brandSubcategoriesService)
         {
             _productRepository = productRepository;
@@ -45,13 +45,20 @@ namespace ProductService.Service
             List<Product> products = await _productRepository.GetAll();
             return products.Select(ProductMapper.MapProductToProductDTO)
                             .ToList();
-                    
+
         }
 
         public async Task<ProductDTO?> GetById(int id)
         {
             Product? product = await _productRepository.GetById(id);
             return ProductMapper.MapProductToProductDTO(product);
+        }
+
+        public async Task<ProductDTO?> GetByProductNameAndUserId(string name, int userId)
+        { 
+            return ProductMapper.MapProductToProductDTO(
+                await _productRepository.GetByProductNameAndUserId(name, userId)
+            );
         }
 
         public async Task Update(int id, ProductDTO productDTO)
@@ -63,7 +70,6 @@ namespace ProductService.Service
             {
                 currentProduct.Price = productDTO.Price;
                 currentProduct.Description = productDTO.Description;
-                currentProduct.Count = productDTO.Count;
                 currentProduct.Name = productDTO.Name;
                 currentProduct.UserId = productDTO.UserId;
                 currentProduct.BrandsSubcategoriesId = productDTO.BrandsSubcategoriesId;

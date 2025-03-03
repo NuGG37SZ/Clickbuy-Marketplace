@@ -46,7 +46,8 @@ namespace ProductService.Controllers
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] ProductSizesDTO productSizesDTO)
         {
-            return Created("create", _productSizesService.Create(productSizesDTO));
+            await _productSizesService.Create(productSizesDTO);
+            return Created("create", productSizesDTO);
         }
 
         [HttpDelete]

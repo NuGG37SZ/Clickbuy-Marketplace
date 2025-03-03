@@ -60,6 +60,14 @@ namespace ProductService.Repository
             return null;
         }
 
+        public async Task<Product?> GetByProductNameAndUserId(string name, int userId)
+        {
+            return await _productContext.Products
+                            .Where(p => p.Name == name)
+                            .Where (p => p.UserId == userId)
+                            .FirstOrDefaultAsync();
+        }
+
         public async Task Update(int id, Product product)
         {
             Product? currentProduct = await GetById(id);
