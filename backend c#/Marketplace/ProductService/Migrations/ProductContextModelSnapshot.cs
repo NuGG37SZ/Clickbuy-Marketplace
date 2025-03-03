@@ -75,9 +75,6 @@ namespace ProductService.Migrations
                     b.Property<int>("BrandsSubcategoriesId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Count")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -101,6 +98,29 @@ namespace ProductService.Migrations
                     b.HasIndex("BrandsSubcategoriesId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ProductService.Entity.ProductSizes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductSizes");
                 });
 
             modelBuilder.Entity("ProductService.Entity.Subcategories", b =>
@@ -149,6 +169,17 @@ namespace ProductService.Migrations
                     b.Navigation("BrandsSubcategories");
                 });
 
+            modelBuilder.Entity("ProductService.Entity.ProductSizes", b =>
+                {
+                    b.HasOne("ProductService.Entity.Product", "Product")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ProductService.Entity.Subcategories", b =>
                 {
                     b.HasOne("ProductService.Entity.Category", "Category")
@@ -168,6 +199,11 @@ namespace ProductService.Migrations
             modelBuilder.Entity("ProductService.Entity.Category", b =>
                 {
                     b.Navigation("Subcategories");
+                });
+
+            modelBuilder.Entity("ProductService.Entity.Product", b =>
+                {
+                    b.Navigation("ProductSizes");
                 });
 
             modelBuilder.Entity("ProductService.Entity.Subcategories", b =>

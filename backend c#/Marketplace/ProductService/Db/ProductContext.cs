@@ -10,6 +10,7 @@ namespace ProductService.Db
         public DbSet<Category> Categories { get; set; }
         public DbSet<Subcategories> Subcategories { get; set; }
         public DbSet<BrandsSubcategories> BrandSubcategories { get; set; }
+        public DbSet<ProductSizes> ProductSizes { get; set; }
 
         public ProductContext(DbContextOptions<ProductContext> options) : base(options)
         {

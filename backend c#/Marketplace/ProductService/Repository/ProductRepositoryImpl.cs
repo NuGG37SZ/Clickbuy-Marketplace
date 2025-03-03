@@ -71,7 +71,6 @@ namespace ProductService.Repository
                 currentProduct.Name = product.Name;
                 currentProduct.Description = product.Description;
                 currentProduct.Price = product.Price;
-                currentProduct.Count = product.Count;
                 currentProduct.ImageUrl = product.ImageUrl;
                 _productContext.Update(currentProduct);
                 await _productContext.SaveChangesAsync();
