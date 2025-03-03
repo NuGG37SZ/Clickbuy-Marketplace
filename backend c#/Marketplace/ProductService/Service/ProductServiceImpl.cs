@@ -61,6 +61,8 @@ namespace ProductService.Service
                 currentProduct.Count = productDTO.Count;
                 currentProduct.Name = productDTO.Name;
                 currentProduct.UserId = productDTO.UserId;
+                currentProduct.BrandsSubcategoriesId = productDTO.BrandsSubcategoriesId;
+                currentProduct.Image = productDTO.Image;
                 await _productRepository.Update(id, ProductMapper.MapProductDTOToProduct(currentProduct));
             }
         }

@@ -22,6 +22,6 @@ namespace ProductService.Entity
 
         public string Description { get; set; }
 
-        public string PathToPhoto { get; set; }
+        public byte[] Image { get; set; }
     }
 }

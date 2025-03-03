@@ -1,5 +1,7 @@
 const loginUserProfile = document.getElementById('user-login');
-const panelRoles = document.querySelector('.panel-roles');
+const panelRoles = document.querySelector('.panels-roles');
+
+console.log(panelRoles.children);
 
 document.addEventListener("DOMContentLoaded", ()  => {
     checkAuthUser();

@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "Marketplace\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\Controllers\\UserController.cs",
               "RelativeToolTip": "Marketplace\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAACcAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-01T21:33:50.041Z",
               "EditorCaption": ""
@@ -91,8 +91,7 @@
               "RelativeToolTip": "Marketplace\\Mapper\\UserMapper.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAAwAsAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T19:48:43.234Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-26T19:48:43.234Z"
             },
             {
               "$type": "Document",

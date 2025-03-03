@@ -57,7 +57,7 @@ namespace ProductService.Repository
                 currentProduct.Description = product.Description;
                 currentProduct.Price = product.Price;
                 currentProduct.Count = product.Count;
-                currentProduct.PathToPhoto = product.PathToPhoto;
+                currentProduct.Image = product.Image;
                 _productContext.Update(currentProduct);
                 await _productContext.SaveChangesAsync();
             }

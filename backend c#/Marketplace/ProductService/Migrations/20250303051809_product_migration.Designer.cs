@@ -10,8 +10,8 @@ using ProductService.Db;
 namespace ProductService.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20250301211257_productV2")]
-    partial class productV2
+    [Migration("20250303051809_product_migration")]
+    partial class product_migration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,14 +85,15 @@ namespace ProductService.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<byte[]>("Image")
+                        .IsRequired()
+                        .HasColumnType("BLOB");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Price")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("SubcategoriesId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")
@@ -101,8 +102,6 @@ namespace ProductService.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BrandsSubcategoriesId");
-
-                    b.HasIndex("SubcategoriesId");
 
                     b.ToTable("Products");
                 });
@@ -150,10 +149,6 @@ namespace ProductService.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProductService.Entity.Subcategories", null)
-                        .WithMany("Products")
-                        .HasForeignKey("SubcategoriesId");
-
                     b.Navigation("BrandsSubcategories");
                 });
 
@@ -181,8 +176,6 @@ namespace ProductService.Migrations
             modelBuilder.Entity("ProductService.Entity.Subcategories", b =>
                 {
                     b.Navigation("BrandsSubcategories");
-
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

@@ -15,7 +15,7 @@ namespace ProductService.Mapper
             productDTO.Description = product.Description;
             productDTO.Name = product.Name;
             productDTO.Count = product.Count;
-            productDTO.PathToPhoto = product.PathToPhoto;
+            productDTO.Image = product.Image;
             return productDTO;
         }
 
@@ -28,7 +28,7 @@ namespace ProductService.Mapper
             product.Description = productDTO.Description;
             product.Name = productDTO.Name;
             product.Count = productDTO.Count;
-            product.PathToPhoto = productDTO.PathToPhoto;
+            product.Image = productDTO.Image;
             return product;
         }
     }

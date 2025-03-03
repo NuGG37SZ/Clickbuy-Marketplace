@@ -5,7 +5,7 @@
 namespace ProductService.Migrations
 {
     /// <inheritdoc />
-    public partial class productV2 : Migration
+    public partial class product_migration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -94,7 +94,7 @@ namespace ProductService.Migrations
                     Price = table.Column<int>(type: "INTEGER", nullable: false),
                     Count = table.Column<int>(type: "INTEGER", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
-                    SubcategoriesId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Image = table.Column<byte[]>(type: "BLOB", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,11 +105,6 @@ namespace ProductService.Migrations
                         principalTable: "BrandSubcategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Products_Subcategories_SubcategoriesId",
-                        column: x => x.SubcategoriesId,
-                        principalTable: "Subcategories",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -126,11 +121,6 @@ namespace ProductService.Migrations
                 name: "IX_Products_BrandsSubcategoriesId",
                 table: "Products",
                 column: "BrandsSubcategoriesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_SubcategoriesId",
-                table: "Products",
-                column: "SubcategoriesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Subcategories_CategoryId",
