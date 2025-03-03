@@ -10,133 +10,64 @@
 </head>
 <body>
 
-  <!-- Навигация -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold me-3" href="index.html">Click&Buy</a>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold me-3" href="index.html">Click&Buy</a>
 
-        <button class="btn btn-outline-primary me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
-            <i class="bi bi-list"></i> Каталог
-        </button>
+            <button class="btn btn-outline-primary me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
+                <i class="bi bi-list"></i> Каталог
+            </button>
 
-        <form class="search-form">
-            <div class="input-group">
-                <span class="input-group-text search-category" id="selectedCategory" data-bs-toggle="modal" data-bs-target="#categoryModal">
-                    Везде <i class="bi bi-chevron-down"></i>
-                </span>
-                <input class="form-control search-input" type="search" placeholder="Ищи лучшее на Click&Buy" aria-label="Поиск">
-                <button class="search-btn" type="submit">
-                    <i class="bi bi-search"></i>
-                </button>
+            <form class="search-form">
+                <div class="input-group">
+                    <input class="form-control search-input" type="search" placeholder="Ищи лучшее на Click&Buy" aria-label="Поиск">
+                    <button class="search-btn" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="d-flex align-items-center">
+                <ul class="navbar-nav d-flex align-items-center">
+
+                    <li class="nav-item me-3">
+                        <a class="nav-link d-flex align-items-center" href="registration.html" id="sign-up-btn">
+                            <i class="bi bi-person fs-5 me-1"></i> Войти
+                        </a>
+                    </li>
+
+                    <li class="nav-item me-3" id="profile" style="display: none;">
+                        <a class="nav-link d-flex align-items-center" href="profile.html">
+                            <i class="bi bi-person-circle fs-5 me-1"></i> Мой профиль
+                        </a>
+                    </li>
+
+                    <li class="nav-item me-3" id="exit-btn" style="display: none;">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="bi bi-box-arrow-right fs-5 me-1"></i> Выход
+                        </a>
+                    </li>
+
+                    <li class="nav-item me-3">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="bi bi-box-seam fs-5 me-1"></i> Заказы
+                        </a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="bi bi-heart fs-5 me-1"></i> Избранное
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
+                            <i class="bi bi-cart fs-5 me-1"></i> Корзина
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </form>
-
-        <!-- Кнопки справа -->
-        <div class="d-flex align-items-center">
-            <ul class="navbar-nav d-flex align-items-center">
-
-                <li class="nav-item me-3">
-                    <a class="nav-link d-flex align-items-center" href="registration.html" id="sign-up-btn">
-                        <i class="bi bi-person fs-5 me-1"></i> Войти
-                    </a>
-                </li>
-
-                <li class="nav-item me-3" id="profile" style="display: none;">
-                    <a class="nav-link d-flex align-items-center" href="profile.html">
-                        <i class="bi bi-person-circle fs-5 me-1"></i> Мой профиль
-                    </a>
-                </li>
-
-                <li class="nav-item me-3" id="exit-btn" style="display: none;">
-                    <a class="nav-link d-flex align-items-center" href="#">
-                        <i class="bi bi-box-arrow-right fs-5 me-1"></i> Выход
-                    </a>
-                </li>
-
-                <li class="nav-item me-3">
-                    <a class="nav-link d-flex align-items-center" href="#">
-                        <i class="bi bi-box-seam fs-5 me-1"></i> Заказы
-                    </a>
-                </li>
-                <li class="nav-item me-3">
-                    <a class="nav-link d-flex align-items-center" href="#">
-                        <i class="bi bi-heart fs-5 me-1"></i> Избранное
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
-                        <i class="bi bi-cart fs-5 me-1"></i> Корзина
-                    </a>
-                </li>
-            </ul>
         </div>
-    </div>
-  </nav>
-
-<!-- Модальное окно для выбора категории -->
-<div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="categoryModalLabel">
-                  <i class="bi bi-search"></i> Ищите по категориям
-              </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalBtn"></button>
-          </div>
-          <div class="modal-body">
-              <div class="mb-3" style="font-size: 14px;">
-                  <p>Выберите категорию, чтобы начать поиск.</p>
-              </div>
-              <div class="row">
-                  <div class="col-6">
-                      <ul class="list-group">
-                          <li class="list-group-item category-item" data-category="Электроника">
-                              <i class="bi bi-tv"></i> Электроника
-                          </li>
-                          <li class="list-group-item category-item" data-category="Одежда">
-                              <i class="bi bi-bag"></i> Одежда
-                          </li>
-                          <li class="list-group-item category-item" data-category="Продукты">
-                              <i class="bi bi-cup"></i> Продукты
-                          </li>
-                          <li class="list-group-item category-item" data-category="Товары для дома">
-                              <i class="bi bi-house-door"></i> Товары для дома
-                          </li>
-                          <li class="list-group-item category-item" data-category="Книги">
-                              <i class="bi bi-book"></i> Книги
-                          </li>
-                          <li class="list-group-item category-item" data-category="Игры и софт">
-                              <i class="bi bi-controller"></i> Игры и софт
-                          </li>
-                      </ul>
-                  </div>
-                  <div class="col-6">
-                      <ul class="list-group">
-                          <li class="list-group-item category-item" data-category="Автотовары">
-                              <i class="bi bi-car-front"></i> Автотовары
-                          </li>
-                          <li class="list-group-item category-item" data-category="Спортивные товары">
-                              <i class="bi bi-bicycle"></i> Спортивные товары
-                          </li>
-                          <li class="list-group-item category-item" data-category="Товары для детей">
-                              <i class="bi bi-emoji-smile"></i> Товары для детей
-                          </li>
-                          <li class="list-group-item category-item" data-category="Косметика">
-                              <i class="bi bi-heart"></i> Косметика
-                          </li>
-                          <li class="list-group-item category-item" data-category="Музыка">
-                              <i class="bi bi-music-note"></i> Музыка
-                          </li>
-                          <li class="list-group-item category-item" data-category="Камеры и фото">
-                              <i class="bi bi-camera"></i> Камеры и фото
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+    </nav>
 
   <!-- Корзина -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">

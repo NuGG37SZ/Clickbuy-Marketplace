@@ -880,3 +880,31 @@ body {
     font-weight: bold;
 }
 
+.animated-footer {
+    background: linear-gradient(135deg, #1c1c1c, #292929);
+    box-shadow: 0px -3px 10px rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.footer-link {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #fff;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #bbb;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #fff;
+    transform: scale(1.2);
+}

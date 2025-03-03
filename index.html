@@ -21,9 +21,6 @@
 
             <form class="search-form">
                 <div class="input-group">
-                    <span class="input-group-text search-category" id="selectedCategory" data-bs-toggle="modal" data-bs-target="#categoryModal">
-                        Везде <i class="bi bi-chevron-down"></i>
-                    </span>
                     <input class="form-control search-input" type="search" placeholder="Ищи лучшее на Click&Buy" aria-label="Поиск">
                     <button class="search-btn" type="submit">
                         <i class="bi bi-search"></i>
@@ -71,71 +68,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Модальное окно для выбора категории -->
-    <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="categoryModalLabel">
-                        <i class="bi bi-search"></i> Ищите по категориям
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalBtn"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3" style="font-size: 14px;">
-                        <p>Выберите категорию, чтобы начать поиск.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <ul class="list-group">
-                                <li class="list-group-item category-item" data-category="Электроника">
-                                    <i class="bi bi-tv"></i> Электроника
-                                </li>
-                                <li class="list-group-item category-item" data-category="Одежда">
-                                    <i class="bi bi-bag"></i> Одежда
-                                </li>
-                                <li class="list-group-item category-item" data-category="Продукты">
-                                    <i class="bi bi-cup"></i> Продукты
-                                </li>
-                                <li class="list-group-item category-item" data-category="Товары для дома">
-                                    <i class="bi bi-house-door"></i> Товары для дома
-                                </li>
-                                <li class="list-group-item category-item" data-category="Книги">
-                                    <i class="bi bi-book"></i> Книги
-                                </li>
-                                <li class="list-group-item category-item" data-category="Игры и софт">
-                                    <i class="bi bi-controller"></i> Игры и софт
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul class="list-group">
-                                <li class="list-group-item category-item" data-category="Автотовары">
-                                    <i class="bi bi-car-front"></i> Автотовары
-                                </li>
-                                <li class="list-group-item category-item" data-category="Спортивные товары">
-                                    <i class="bi bi-bicycle"></i> Спортивные товары
-                                </li>
-                                <li class="list-group-item category-item" data-category="Товары для детей">
-                                    <i class="bi bi-emoji-smile"></i> Товары для детей
-                                </li>
-                                <li class="list-group-item category-item" data-category="Косметика">
-                                    <i class="bi bi-heart"></i> Косметика
-                                </li>
-                                <li class="list-group-item category-item" data-category="Музыка">
-                                    <i class="bi bi-music-note"></i> Музыка
-                                </li>
-                                <li class="list-group-item category-item" data-category="Камеры и фото">
-                                    <i class="bi bi-camera"></i> Камеры и фото
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Корзина -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -302,8 +234,8 @@
     </div>
 
 
-    <!-- Подвал  -->
-    <footer class="footer mt-5 py-4 bg-dark text-light">
+    <!-- Подвал -->
+    <footer class="footer mt-5 py-4 text-light animated-footer">
         <div class="container text-center">
             <div class="row">
                 <div class="col-md-4">
@@ -313,25 +245,25 @@
                 <div class="col-md-4">
                     <h5>Полезные ссылки</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-light text-decoration-none">О нас</a></li>
-                        <li><a href="#" class="text-light text-decoration-none">Контакты</a></li>
-                        <li><a href="#" class="text-light text-decoration-none">Доставка</a></li>
-                        <li><a href="#" class="text-light text-decoration-none">Политика конфиденциальности</a></li>
+                        <li><a href="#" class="footer-link">О нас</a></li>
+                        <li><a href="#" class="footer-link">Контакты</a></li>
+                        <li><a href="#" class="footer-link">Доставка</a></li>
+                        <li><a href="#" class="footer-link">Политика конфиденциальности</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <h5>Мы в соцсетях</h5>
                     <div class="d-flex justify-content-center">
-                        <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-telegram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-telegram"></i></a>
                     </div>
                 </div>
             </div>
             <hr class="bg-light">
             <p class="mb-0">&copy; 2025 Click&Buy. Все права защищены.</p>
         </div>
-    </footer>
+    </footer>   
 
 
     <script>
