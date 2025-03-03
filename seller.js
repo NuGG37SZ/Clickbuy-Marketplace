@@ -8,6 +8,8 @@ let brandSelect = document.getElementById('brand');
 const productSelect = document.getElementById('products');
 const categorySelect = document.getElementById('category');
 const subcategorySelect = document.getElementById('subcategory');
+const productSellerDiv = document.querySelector('.products-seller');
+let countClickAllProduct = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     fillProductsSelect();
@@ -49,25 +51,19 @@ createBtnForm.addEventListener('click', () => {
                 let reader = new FileReader();
                 reader.readAsDataURL(file);
 
-                reader.onload = function() {
-                    console.log(reader.result);
+                reader.onload = function(event) {
+                    let imageUrl = event.target.result;
 
                     let productCreateModel = {
-                        userId: userId,
-                        brandSubcategoriesId: bs.id,
+                        userId: parseInt(userId),
+                        brandsSubcategoriesId: bs.id,
                         name: nameInpt.value,
-                        price: priceInpt.value,
-                        count: countInpt.value,
+                        price: parseInt(priceInpt.value),
+                        count: parseInt(countInpt.value),
                         description: descriptionArea.value,
-                        image: reader.result
+                        imageUrl: imageUrl
                     }
-
-                    console.log(JSON.stringify(productCreateModel));
-                    
-                    const response = postRequest(`https://localhost:58841/api/v1/products/create`, productCreateModel);
-                    if(response == 201) {
-                        alert('Вы успешно добавили новый товар!');
-                    }
+                    postRequest(`https://localhost:58841/api/v1/products/create`, productCreateModel);
                 }
             })
     }
@@ -88,12 +84,17 @@ async function postRequest(url, obj) {
     });
 
     if (!response.ok) {
-        const errorText = await response.text(); // Получаем текст ошибки
-        throw new Error(`Ошибка ${response.status}: ${errorText}`); // Выводим статус и текст
+        const errorResponse = await response.json();
+        console.error("Ошибка ответа:", errorResponse);
+        throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     let result = await response.status;
-    return result;
+
+    if(result === 201) {
+        alert('Вы успешно добавили новый товар!');
+        return result;
+    }
 }
  
 function fillBrandSelect() {
@@ -141,6 +142,40 @@ function getImageBytes(file) {
 categorySelect.addEventListener('change', (e) => {
     subcategorySelect.options.length = 0;
     fillSubcategoriesSelect(e.target.value);
+})
+
+function cardInsertHtml(product) {   
+    return `
+                <div class="card mb-3" style="max-width: 540px; margin-top: 30px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="${product.imageUrl}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text">${product.description}</p>
+                            <p class="card-text" id="price-product">Цена: ${product.price}₽</p>  
+                            <p class="card-text" id="count-product">Количество: ${product.count}</p>
+                            <div style="display: flex; justify-content: end;">
+                                <button class="btn btn-outline-danger" id="delete-product"><i class="bi bi-x-circle-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+    
+}
+
+listProductBtn.addEventListener('click', () => {
+    getRequest('https://localhost:58841/api/v1/products')
+        .then(listProduct => {
+            listProduct.forEach(product => {
+                if(productSellerDiv.children.length != listProduct.length) {
+                    productSellerDiv.insertAdjacentHTML('beforeend', cardInsertHtml(product));
+                }
+            })
+        })  
 })
 
 

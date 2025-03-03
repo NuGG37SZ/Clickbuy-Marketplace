@@ -49,6 +49,11 @@ namespace ProductService.Controllers
                 await _brandSubcategoriesService.GetById(productDTO.BrandsSubcategoriesId);
             UserDTO userDTO = await _userClient.GetUserById(productDTO.UserId);
 
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (userDTO == null || brandSubcategoriesDTO == null)
                 return NotFound("Error: double check the data");
 
