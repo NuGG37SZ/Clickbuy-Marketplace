@@ -312,6 +312,27 @@
   },
   {
     "ContainingType": "ProductService.Controllers.ProductController",
+    "Method": "DeleteByNameAndUserId",
+    "RelativePath": "api/v1/products/deleteByNameAndUserId/{name}/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.ProductController",
     "Method": "GetById",
     "RelativePath": "api/v1/products/getById/{id}",
     "HttpMethod": "GET",

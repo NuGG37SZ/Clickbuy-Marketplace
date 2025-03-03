@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using ProductService.Db;
 using ProductService.Entity;
 
@@ -26,6 +27,20 @@ namespace ProductService.Repository
             if (currentProduct != null)
             {
                 _productContext.Products.Remove(currentProduct);
+                await _productContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteByProductNameAndUserId(string name, int userId)
+        {
+            Product? currentProduct = await _productContext.Products
+                                        .Where(p => p.Name == name)
+                                        .Where(p => p.UserId == userId)
+                                        .FirstOrDefaultAsync();
+
+            if(currentProduct != null)
+            {
+                _productContext.Remove(currentProduct);
                 await _productContext.SaveChangesAsync();
             }
         }

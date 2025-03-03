@@ -9,7 +9,7 @@ const productSelect = document.getElementById('products');
 const categorySelect = document.getElementById('category');
 const subcategorySelect = document.getElementById('subcategory');
 const productSellerDiv = document.querySelector('.products-seller');
-let countClickAllProduct = 0;
+const deleteProductBtn = document.getElementById('delete-product');
 
 document.addEventListener('DOMContentLoaded', () => {
     fillProductsSelect();
@@ -93,7 +93,21 @@ async function postRequest(url, obj) {
 
     if(result === 201) {
         alert('Вы успешно добавили новый товар!');
-        return result;
+        //return result;
+    }
+}
+
+async function deleteRequest(url) {
+    const response = await fetch(url, { 
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+    });
+    let result = await response.status;
+
+    if(result == 204) {
+        alert('Вы успешно удалили товар!')
     }
 }
  
@@ -168,7 +182,7 @@ function cardInsertHtml(product) {
 }
 
 listProductBtn.addEventListener('click', () => {
-    getRequest('https://localhost:58841/api/v1/products')
+    getRequest(`https://localhost:58841/api/v1/products`)
         .then(listProduct => {
             listProduct.forEach(product => {
                 if(productSellerDiv.children.length != listProduct.length) {
@@ -177,5 +191,17 @@ listProductBtn.addEventListener('click', () => {
             })
         })  
 })
+
+productSellerDiv.addEventListener('click', (event) => {
+    if (event.target.closest('#delete-product')) {
+        let userId = localStorage.getItem('userId')
+        const card = event.target.closest('.card');
+        const productNameElement = card.querySelector('.card-title');
+        const productName = productNameElement.textContent;
+        deleteRequest(`https://localhost:58841/api/v1/products/deleteByNameAndUserId/${productName}/${userId}`);
+        card.remove();
+    }
+})
+
 
 

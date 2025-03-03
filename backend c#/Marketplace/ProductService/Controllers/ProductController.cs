@@ -49,11 +49,6 @@ namespace ProductService.Controllers
                 await _brandSubcategoriesService.GetById(productDTO.BrandsSubcategoriesId);
             UserDTO userDTO = await _userClient.GetUserById(productDTO.UserId);
 
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             if (userDTO == null || brandSubcategoriesDTO == null)
                 return NotFound("Error: double check the data");
 
@@ -87,6 +82,14 @@ namespace ProductService.Controllers
                 return NotFound("Product Not Found");
 
             await _productService.DeleteById(id);
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("deleteByNameAndUserId/{name}/{userId}")]
+        public async Task<IActionResult> DeleteByNameAndUserId(string name, int userId)
+        {
+            await _productService.DeleteByProductNameAndUserId(name, userId);
             return NoContent();
         }
     }

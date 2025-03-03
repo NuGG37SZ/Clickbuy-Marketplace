@@ -35,6 +35,11 @@ namespace ProductService.Service
             await _productRepository.DeleteById(id);
         }
 
+        public async Task DeleteByProductNameAndUserId(string name, int userId)
+        {
+            await _productRepository.DeleteByProductNameAndUserId(name, userId);
+        }
+
         public async Task<List<ProductDTO>> GetAll()
         {
             List<Product> products = await _productRepository.GetAll();

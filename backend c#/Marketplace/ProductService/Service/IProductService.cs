@@ -13,5 +13,7 @@ namespace ProductService.Service
         Task Update(int id, ProductDTO productDTO);
 
         Task DeleteById(int id);
+
+        Task DeleteByProductNameAndUserId(string name, int userId);
     }
 }
