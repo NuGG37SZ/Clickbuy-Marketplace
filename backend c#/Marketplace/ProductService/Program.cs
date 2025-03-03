@@ -19,6 +19,8 @@ builder.Services.AddScoped<ISubcategoriesRepository, SubcategoriesRepositoryImpl
 builder.Services.AddScoped<ISubcategoriesService, SubcategoriesServiceImpl>();
 builder.Services.AddScoped<IBrandSubcategoriesRepository, BrandSubcategoriesRepositoryImpl>();
 builder.Services.AddScoped<IBrandSubcategoriesService, BrandSubcategoriesServiceImpl>();
+builder.Services.AddScoped<IProductSizesRepository, ProductSizesRepositoryImpl>();
+builder.Services.AddScoped<IProductSizesService, ProductSizesServiceImpl>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddCors();
 var app = builder.Build();

@@ -5,7 +5,7 @@
 namespace ProductService.Migrations
 {
     /// <inheritdoc />
-    public partial class product : Migration
+    public partial class productMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -92,7 +92,6 @@ namespace ProductService.Migrations
                     BrandsSubcategoriesId = table.Column<int>(type: "INTEGER", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<int>(type: "INTEGER", nullable: false),
-                    Count = table.Column<int>(type: "INTEGER", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: false)
                 },
@@ -103,6 +102,27 @@ namespace ProductService.Migrations
                         name: "FK_Products_BrandSubcategories_BrandsSubcategoriesId",
                         column: x => x.BrandsSubcategoriesId,
                         principalTable: "BrandSubcategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductSizes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Size = table.Column<string>(type: "TEXT", nullable: false),
+                    Count = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductSizes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductSizes_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -123,6 +143,11 @@ namespace ProductService.Migrations
                 column: "BrandsSubcategoriesId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductSizes_ProductId",
+                table: "ProductSizes",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Subcategories_CategoryId",
                 table: "Subcategories",
                 column: "CategoryId");
@@ -131,6 +156,9 @@ namespace ProductService.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ProductSizes");
+
             migrationBuilder.DropTable(
                 name: "Products");
 

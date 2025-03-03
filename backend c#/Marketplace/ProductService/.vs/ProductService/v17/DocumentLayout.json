@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\productservice\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\productservice\\dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|solutionrelative:dto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\productservice\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|solutionrelative:controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\productservice\\controllers\\brandsubcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|solutionrelative:controllers\\brandsubcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\productservice\\mapper\\productmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|solutionrelative:mapper\\productmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\productservice\\controllers\\productsizescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|solutionrelative:controllers\\productsizescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,66 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Controllers\\ProductController.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAAFgAAAA1AAAAAAAAAA==",
+              "Title": "ProductSizesController.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductSizesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductSizesController.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductSizesController.cs",
+              "RelativeToolTip": "Controllers\\ProductSizesController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T13:55:45.757Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductDTO.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\DTO\\ProductDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\ProductDTO.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\DTO\\ProductDTO.cs",
-              "RelativeToolTip": "DTO\\ProductDTO.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAUwA4AAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T11:06:29.531Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProductMapper.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Mapper\\ProductMapper.cs",
-              "RelativeDocumentMoniker": "Mapper\\ProductMapper.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Mapper\\ProductMapper.cs",
-              "RelativeToolTip": "Mapper\\ProductMapper.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAQwB4AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T10:09:49.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "BrandSubcategoriesController.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\BrandSubcategoriesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BrandSubcategoriesController.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\BrandSubcategoriesController.cs",
-              "RelativeToolTip": "Controllers\\BrandSubcategoriesController.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAAAG0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T05:33:00.587Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "Controllers\\CategoryController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T05:21:45.852Z",
+              "WhenOpened": "2025-03-03T15:25:31.246Z",
               "EditorCaption": ""
             }
           ]
