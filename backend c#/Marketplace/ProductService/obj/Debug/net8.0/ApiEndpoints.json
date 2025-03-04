@@ -464,6 +464,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ProductService.Controllers.ProductSizesController",
+    "Method": "Update",
+    "RelativePath": "api/v1/productSizes/update/{productId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "productSizes",
+        "Type": "System.Collections.Generic.List\u00601[[ProductService.DTO.ProductSizesDTO, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ProductService.Controllers.SubcategoriesController",
     "Method": "GetAll",
     "RelativePath": "api/v1/subcategories",

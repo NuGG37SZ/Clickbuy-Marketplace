@@ -62,5 +62,18 @@ namespace ProductService.Controllers
             await _productSizesService.DeleteById(id);
             return NoContent();
         }
+
+        [HttpPut]
+        [Route("update/{productId}")]
+        public async Task<IActionResult> Update(int productId, [FromBody] List<ProductSizesDTO> productSizes)
+        {
+            List<ProductSizesDTO> productSizesDTOs = await _productSizesService.GetAllByProductId(productId);
+
+            if (productSizesDTOs == null)
+                return NotFound("Could not find products by this id");
+
+            await _productSizesService.Update(productId, productSizes);
+            return Ok(productSizes);
+        }
     }
 }

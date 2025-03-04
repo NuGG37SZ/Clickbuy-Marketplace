@@ -44,5 +44,20 @@ namespace ProductService.Repository
             return await _productContext.ProductSizes
                             .FirstOrDefaultAsync(ps => ps.ProductId == id);
         }
+
+        public async Task Update(int productId, List<ProductSizes> newProductsSizes)
+        {
+            List<ProductSizes> productSizesList = await GetAllByProductId(productId);
+
+            for(int i = 0; i < productSizesList.Count; i++)
+            {
+                productSizesList[i].Size = newProductsSizes[i].Size;
+                productSizesList[i].ProductId = newProductsSizes[i].ProductId;
+                productSizesList[i].Count = newProductsSizes[i].Count;
+            }
+
+            _productContext.ProductSizes.UpdateRange(productSizesList);
+            await _productContext.SaveChangesAsync();
+        }
     }
 }

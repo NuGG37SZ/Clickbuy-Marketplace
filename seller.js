@@ -7,7 +7,7 @@ const updateBtnForm = document.getElementById('update-product');
 let brandSelect = document.getElementById('brand');
 const productSelect = document.getElementById('products');
 const categorySelect = document.getElementById('category');
-const subcategorySelect = document.getElementById('subcategory');
+let subcategorySelect = document.getElementById('subcategory');
 const productSellerDiv = document.querySelector('.products-seller');
 const deleteProductBtn = document.getElementById('delete-product');
 
@@ -89,6 +89,7 @@ createBtnForm.addEventListener('click', () => {
                                 }
                             })
                             alert('Вы успешно добавили товар!');
+                            location.reload();
                         }
                     })
                 }
@@ -109,18 +110,131 @@ productSelect.addEventListener('change', () => {
             descriptionArea.value = product.description;
             let sizeInpt = document.getElementById('size');
             let countInpt = document.getElementById('count');
+            sizeInpt.value = '';
+            countInpt.value = '';
             
             getRequest(`https://localhost:58841/api/v1/productSizes/getAllByProductId/${product.id}`)
                 .then(productSizesList => {
                     productSizesList.forEach(productSize => {
-                        sizeInpt.value += productSize.size;
-                        countInpt.value += productSize.count;
-                        
+                        sizeInpt.value += productSize.size + ', ';
+                        countInpt.value += productSize.count + ', ';
                     })
-                })
-            
-     })
+                    sizeInpt.value = sliceString(sizeInpt.value);
+                    countInpt.value = sliceString(countInpt.value);
+                }) 
+
+            getRequest(`https://localhost:58841/api/v1/brandsSubcategories/getById/${product.brandsSubcategoriesId}`)
+                .then(bs => {
+                    let brandId = bs.brandsId;
+                    let subcategoriesId = bs.subcategoriesId;
+
+                    getRequest(`https://localhost:58841/api/v1/subcategories/getById/${subcategoriesId}`)
+                        .then(sc => {
+                            getRequest(`https://localhost:58841/api/v1/categories/getById/${sc.categoryId}`)
+                                .then(c => {
+                                    categorySelect.value = c.id;
+                                    subcategorySelect.options.length = 0;
+                                    brandSelect.value = brandId;
+                                    fillSubcategoriesSelect(c.id);
+                                })
+                        })
+                })    
+        })
 })
+
+updateBtnForm.addEventListener('click', () => {
+    let nameInpt = document.getElementById('name');
+    let priceInpt = document.getElementById('price');
+    let descriptionArea = document.getElementById('description');
+    let fileInpt = document.getElementById('image-product');
+    let userId = localStorage.getItem('userId');
+
+    getRequest(`https://localhost:58841/api/v1/brandsSubcategories/getByBrandAndSubcategories/${brandSelect.value}/${subcategorySelect.value}`)
+        .then(bs => {
+            let file;
+
+            if(fileInpt.files[0] == undefined) {
+                getRequest(`https://localhost:58841/api/v1/products/getById/${productSelect.value}`)
+                .then(product => {
+                    file = product.imageUrl;
+
+                    let updateProductModel = {
+                        userId: parseInt(userId),
+                        brandsSubcategoriesId: bs.id,
+                        name: nameInpt.value,
+                        price: parseInt(priceInpt.value),
+                        description: descriptionArea.value,
+                        imageUrl: file
+                    }
+
+                    putRequest(`https://localhost:58841/api/v1/products/update/${productSelect.value}`, updateProductModel)
+                        .then(code => { updateProductSizes(code, product) })
+                }) 
+            } else {
+                getRequest(`https://localhost:58841/api/v1/products/getById/${productSelect.value}`)
+                .then(product => {
+                    let file = fileInpt.files[0];
+                    let reader = new FileReader();
+                    reader.readAsDataURL(file);
+
+                    reader.onload = function(event) {
+                        let imageUrl = event.target.result;
+
+                        let updateProductModel = {
+                            userId: parseInt(userId),
+                            brandsSubcategoriesId: bs.id,
+                            name: nameInpt.value,
+                            price: parseInt(priceInpt.value),
+                            description: descriptionArea.value,
+                            imageUrl: imageUrl
+                        }
+        
+                        putRequest(`https://localhost:58841/api/v1/products/update/${productSelect.value}`, updateProductModel)
+                        .then(code => { updateProductSizes(code, product) })
+                        location.reload();
+                    }
+                })
+            }
+        })
+})
+
+function sliceString(str) {
+    let temp = str;
+    temp = temp.slice(0, temp.length - 2);
+    str = temp;
+    return str;
+}
+
+function updateProductSizes(code, product) {
+    let sizeInpt = document.getElementById('size');
+    let countInpt = document.getElementById('count');
+
+    if(code == 200) {
+        let sizeText = sizeInpt.value;
+        let sizes = sizeText.split(', ');
+        let countText = countInpt.value;
+        let counts = countText.split(', ');
+
+        if(sizes.length == counts.length) {
+            let arrayProductSizes = [];
+
+            for(let i = 0; i < sizes.length; i++) {
+                let currentSize = sizes[i];
+                let currentCount = counts[i];
+
+                let productSizes = {
+                    productId: product.id,
+                    size: currentSize,
+                    count: currentCount
+                }
+                arrayProductSizes[i] = productSizes;
+            }
+            putRequest(`https://localhost:58841/api/v1/productSizes/update/${product.id}`, arrayProductSizes); 
+        }
+
+        alert('Вы успешно обновили товар!');
+    }
+}
 
 async function getRequest(url) {
     const response = await fetch(url);
@@ -130,6 +244,25 @@ async function getRequest(url) {
 async function postRequest(url, obj) {
     const response = await fetch(url, { 
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(obj)
+    });
+
+    if (!response.ok) {
+        const errorResponse = await response.json();
+        console.error("Ошибка ответа:", errorResponse);
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    let result = await response.status;
+    return result;
+}
+
+async function putRequest(url, obj) {
+    const response = await fetch(url, { 
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
@@ -196,12 +329,6 @@ function fillProductsSelect() {
         })
 }
 
-function getImageBytes(file) {
-    const reader = new FileReader();
-    let result  = reader.readAsArrayBuffer(file);
-    return result;
-}
-
 categorySelect.addEventListener('change', (e) => {
     subcategorySelect.options.length = 0;
     fillSubcategoriesSelect(e.target.value);
@@ -237,7 +364,7 @@ function sizeCardInsert(productSizes) {
             </div>`
 }
 
-listProductBtn.addEventListener('click', () => {
+listProductBtn.addEventListener('click', () => { 
     getRequest(`https://localhost:58841/api/v1/products`)
         .then(listProduct => {
             listProduct.forEach(product => {

@@ -42,5 +42,14 @@ namespace ProductService.Service
         {
             return ProductSizesMapper.MapProductSizesToProductSizesDTO(await _productSizesRepository?.GetById(id));
         }
+
+        public async Task Update(int productId, List<ProductSizesDTO> newProductsSizes)
+        {
+            List<ProductSizes> productSizes = newProductsSizes
+                .Select(ProductSizesMapper.MapProductSizesDTOToProductSizes)
+                .ToList();
+
+            await _productSizesRepository.Update(productId, productSizes);
+        }
     }
 }
