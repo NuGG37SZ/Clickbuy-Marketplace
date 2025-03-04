@@ -97,6 +97,31 @@ createBtnForm.addEventListener('click', () => {
     }
 })
 
+productSelect.addEventListener('change', () => {
+    let id = productSelect.value;
+    getRequest(`https://localhost:58841/api/v1/products/getById/${id}`)
+        .then(product => {
+            let nameInpt = document.getElementById('name');
+            nameInpt.value = product.name;
+            let priceInpt = document.getElementById('price');
+            priceInpt.value = product.price;
+            let descriptionArea = document.getElementById('description');
+            descriptionArea.value = product.description;
+            let sizeInpt = document.getElementById('size');
+            let countInpt = document.getElementById('count');
+            
+            getRequest(`https://localhost:58841/api/v1/productSizes/getAllByProductId/${product.id}`)
+                .then(productSizesList => {
+                    productSizesList.forEach(productSize => {
+                        sizeInpt.value += productSize.size;
+                        countInpt.value += productSize.count;
+                        
+                    })
+                })
+            
+     })
+})
+
 async function getRequest(url) {
     const response = await fetch(url);
     return await response.json();
@@ -182,7 +207,7 @@ categorySelect.addEventListener('change', (e) => {
     fillSubcategoriesSelect(e.target.value);
 })
 
-function cardInsertHtml(product, count) {   
+function cardInsertHtml(product) {   
     return `
                 <div class="card mb-3" style="max-width: 540px; margin-top: 30px;">
                     <div class="row g-0">
@@ -194,7 +219,8 @@ function cardInsertHtml(product, count) {
                             <h5 class="card-title">${product.name}</h5>
                             <p class="card-text">${product.description}</p>
                             <p class="card-text" id="price-product">Цена: ${product.price}₽</p>  
-                            <p class="card-text" id="count-product">Количество: ${count}</p>
+                            <div class="sizes-cards">
+                            </div>
                             <div style="display: flex; justify-content: end;">
                                 <button class="btn btn-outline-danger" id="delete-product"><i class="bi bi-x-circle-fill"></i></button>
                             </div>
@@ -205,12 +231,28 @@ function cardInsertHtml(product, count) {
     
 }
 
+function sizeCardInsert(productSizes) {
+    return `<div class="size-card">
+                <p>${productSizes.size}</p>
+            </div>`
+}
+
 listProductBtn.addEventListener('click', () => {
     getRequest(`https://localhost:58841/api/v1/products`)
         .then(listProduct => {
             listProduct.forEach(product => {
                 if(productSellerDiv.children.length != listProduct.length) {
-                    productSellerDiv.insertAdjacentHTML('beforeend', cardInsertHtml(product));
+                    productSellerDiv.insertAdjacentHTML('beforeend', cardInsertHtml(product)); 
+                    const lastCard = productSellerDiv.lastElementChild;
+
+                    getRequest(`https://localhost:58841/api/v1/productSizes/getAllByProductId/${product.id}`)
+                        .then(prodcutSizesList => {
+                            prodcutSizesList.sort((a, b) => a.size - b.size);
+                            prodcutSizesList.forEach(productSize => {
+                                const sizesCardContainer = lastCard.querySelector('.sizes-cards');
+                                sizesCardContainer.insertAdjacentHTML('beforeend', sizeCardInsert(productSize));
+                            })  
+                        })
                 }
             })
         })  

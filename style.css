@@ -908,3 +908,20 @@ body {
     color: #fff;
     transform: scale(1.2);
 }
+
+.sizes-cards {
+    display: flex;
+}
+
+.size-card {
+    border: 1px solid black;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+}
+
+.size-card p{
+    margin-bottom: 0px;
+    margin-top: -3px;
+}
