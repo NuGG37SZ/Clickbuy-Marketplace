@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\userservice\\marketplace\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\userservice\\marketplace\\mapper\\usermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EED95A38-CC3D-4A2A-9701-A48D5DB00396}|Marketplace\\UserService.csproj|solutionrelative:marketplace\\mapper\\usermapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -38,11 +42,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\DTO\\UserDTO.cs",
+              "RelativeDocumentMoniker": "Marketplace\\DTO\\UserDTO.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\DTO\\UserDTO.cs",
+              "RelativeToolTip": "Marketplace\\DTO\\UserDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T10:31:18.812Z"
             },
             {
               "$type": "Document",
@@ -52,14 +68,14 @@
               "RelativeDocumentMoniker": "Marketplace\\Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\Controllers\\UserController.cs",
               "RelativeToolTip": "Marketplace\\Controllers\\UserController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAcwD8AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAcwB8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-01T21:33:50.041Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\appsettings.json",
               "RelativeDocumentMoniker": "Marketplace\\appsettings.json",
@@ -71,7 +87,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "HashFunc.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\Utils\\HashFunc.cs",
               "RelativeDocumentMoniker": "Marketplace\\Utils\\HashFunc.cs",
@@ -83,7 +99,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "UserMapper.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\Mapper\\UserMapper.cs",
               "RelativeDocumentMoniker": "Marketplace\\Mapper\\UserMapper.cs",
@@ -95,7 +111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UserContext.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\Db\\UserContext.cs",
               "RelativeDocumentMoniker": "Marketplace\\Db\\UserContext.cs",
@@ -107,7 +123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\Entity\\User.cs",
               "RelativeDocumentMoniker": "Marketplace\\Entity\\User.cs",
@@ -119,7 +135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Marketplace\\Program.cs",
               "RelativeDocumentMoniker": "Marketplace\\Program.cs",
