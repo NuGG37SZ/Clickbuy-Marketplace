@@ -67,7 +67,7 @@ namespace CartService.Controllers
                 return NotFound("Product Not Found.");
 
             await _cartService.Create(cartDTO);
-            return Ok(cartDTO);
+            return Created("create", cartDTO);
         }
 
         [HttpPut]

@@ -925,3 +925,13 @@ body {
     margin-bottom: 0px;
     margin-top: -3px;
 }
+
+.cart-button {
+    display: flex;
+}
+
+.product-creater {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+

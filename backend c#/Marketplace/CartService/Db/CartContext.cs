@@ -7,6 +7,8 @@ namespace CartService.Db
     {
         public DbSet<Cart> Carts { get; set; }
 
+        public DbSet<Favorites> Favorites { get; set; }
+
         public CartContext(DbContextOptions<CartContext> options) : base(options)
         {
             Database.EnsureCreated();

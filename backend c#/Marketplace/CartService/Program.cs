@@ -10,7 +10,8 @@ string? connection = builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddDbContext<CartContext>(options => options.UseSqlite(connection));
 builder.Services.AddScoped<ICartRepository, CartRepositoryImpl>();
 builder.Services.AddScoped<ICartService, CartServiceImpl>();
-builder.Services.AddScoped<ProductClient, ProductClient>();
+builder.Services.AddScoped<IFavoritesRepository, FavoritesRepositoryImpl>();
+builder.Services.AddScoped<IFavoritesService, FavoritesServiceImpl>();
 builder.Services.AddHttpClient<UserClient, UserClient>();
 builder.Services.AddHttpClient<ProductClient, ProductClient>();
 builder.Services.AddCors();
