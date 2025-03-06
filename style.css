@@ -1073,3 +1073,8 @@ body {
     margin-left: 75px;
     max-width: 770px;
 }
+
+.progress {
+    height: 10px;
+    --bs-progress-bar-bg: #5A67D8;
+}
