@@ -25,6 +25,8 @@ function insertCardProduct(product, seller, inFavorite) {
 
                     <p class="product-creater">${seller}</p>
 
+                    <div class="product-sizes"></div>
+
                     <p class="product-description">${product.description}</p>
 
                     <div class="rating-reviews">

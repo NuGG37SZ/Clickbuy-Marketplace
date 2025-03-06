@@ -935,3 +935,141 @@ body {
     margin-bottom: 0;
 }
 
+.product-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 80px auto;
+    width: 1250px;
+}
+
+.product-info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    width: 300px;
+}
+
+#description-product {
+    margin-top: 20px;
+    width: 200px;
+}
+
+.product-info-card-second {
+    background: rgba(251, 249, 249, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+    border-radius: 10px;
+    border: 1px solid transparent;
+    width: 300px;
+    height: 400px;
+    padding: 15px;
+}
+
+.buttons-product {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.buttons-product button {
+    width: 270px;
+}
+
+.buttons-product .btn-outline-primary {
+    border: 1px solid #5A67D8;
+    color: #5A67D8;
+}
+
+.buttons-product .btn-outline-primary:hover {
+    background-color: #5A67D8;
+    color: white;
+}
+
+.delivery-product {
+    display: flex;
+    align-items: flex-start;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.seller-info {
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 230px;
+}
+
+.sizes-product {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.size-product {
+    height: 35px;
+    width: 35px;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.size-product:hover {
+    color: white;
+    background-color: #000000;
+    cursor: pointer;
+}
+
+.img-product img {
+    border-radius: 20px;
+}
+
+.seller-info a {
+    text-decoration: none;
+    color: black;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.all-reviews {
+    margin-top: 40px;
+    width: 800px;
+}
+
+.review-div {
+    width: 800px;
+    height: 300px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.header-review {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-review {
+    display: flex;
+    width: 300px;
+    height: 65px;
+}
+
+.info-user-review p {
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+.text-review {
+    margin-left: 75px;
+    max-width: 770px;
+}
