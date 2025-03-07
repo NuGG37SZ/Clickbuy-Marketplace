@@ -3,7 +3,7 @@ let productContainer = document.querySelector('.row');
 
 getAllFavoriteByUserId();
 
-function insertCardProduct(product, seller) {
+function insertCardProductFavorite(product, seller) {
     return `
         <div class="col-6 col-md-3">
             <div class="product-card">
@@ -48,7 +48,7 @@ function getAllFavoriteByUserId() {
                     .then(product => {
                         getRequest(`http://localhost:5098/api/v1/users/${product.userId}`)
                             .then(seller => {
-                                productContainer.insertAdjacentHTML('beforeend', insertCardProduct(product, seller.login));
+                                productContainer.insertAdjacentHTML('beforeend', insertCardProductFavorite(product, seller.login));
                             })
                     })
             });

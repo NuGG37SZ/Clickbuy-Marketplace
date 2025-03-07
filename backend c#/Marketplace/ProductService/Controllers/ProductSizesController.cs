@@ -10,7 +10,13 @@ namespace ProductService.Controllers
     {
         private readonly IProductSizesService _productSizesService;
 
-        public ProductSizesController(IProductSizesService productSizesService) => _productSizesService = productSizesService;
+        private readonly IProductService _productService;
+
+        public ProductSizesController(IProductSizesService productSizesService, IProductService productService)
+        {
+            _productSizesService = productSizesService;
+            _productService = productService;
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -40,6 +46,19 @@ namespace ProductService.Controllers
                 return NotFound("ProductSizes Not Found.");
 
             return Ok(productSizesDTOs);
+        }
+
+        [HttpGet]
+        [Route("getByProductIdAndSize/{productId}/{size}")]
+        public async Task<IActionResult> GetByProductIdAndSize(int productId, string size)
+        {
+            ProductDTO? productDTO = await _productService.GetById(productId);
+
+            if (productDTO == null)
+                return NotFound("Product Not Found.");
+
+            ProductSizesDTO? productSizesDTO = await _productSizesService.GetByProductIdAndSize(productId, size);
+            return Ok(productSizesDTO);
         }
 
         [HttpPost]

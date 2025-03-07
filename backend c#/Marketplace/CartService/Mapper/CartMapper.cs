@@ -11,6 +11,7 @@ namespace CartService.Mapper
             cartDTO.Id = cart.Id;
             cartDTO.ProductId = cart.ProductId;
             cartDTO.UserId = cart.UserId;
+            cartDTO.ProductSizesId = cart.ProductSizesId;
             return cartDTO;
         }
 
@@ -19,6 +20,7 @@ namespace CartService.Mapper
             Cart cart = new Cart();
             cart.ProductId = cartDTO.ProductId;
             cart.UserId = cartDTO.UserId;
+            cart.ProductSizesId = cartDTO.ProductSizesId;
             return cart;
         }
     }

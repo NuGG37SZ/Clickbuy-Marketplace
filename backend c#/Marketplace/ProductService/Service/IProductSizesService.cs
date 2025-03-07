@@ -8,6 +8,8 @@ namespace ProductService.Service
 
         Task<List<ProductSizesDTO>> GetAllByProductId(int productId);
 
+        Task<ProductSizesDTO?> GetByProductIdAndSize(int productId, string size);
+
         Task<ProductSizesDTO?> GetById(int id);
 
         Task Create(ProductSizesDTO productSizesDTO);

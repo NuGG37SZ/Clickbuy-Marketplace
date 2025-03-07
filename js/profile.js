@@ -1,7 +1,6 @@
 const loginUserProfile = document.getElementById('user-login');
 const panelRoles = document.querySelector('.panels-roles');
-
-console.log(panelRoles.children);
+let userId = localStorage.getItem('userId');
 
 document.addEventListener("DOMContentLoaded", ()  => {
     checkAuthUser();

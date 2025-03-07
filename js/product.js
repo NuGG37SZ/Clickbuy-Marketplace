@@ -1,10 +1,12 @@
 let sellerLogin = localStorage.getItem('userLogin');
 let productName = localStorage.getItem('productName');
+let userId = localStorage.getItem('userId');
 const sizesProduct = document.querySelector('.sizes-product');
 const descriptionButton = document.getElementById('description-product-btn');
 const productDescription = document.getElementById('product-description-card');
 const progressBar = document.querySelector('.progress-bar');
 const countProduct = document.getElementById('product-count-card');
+const addPrdouctToCartBtn = document.getElementById('add-product-cart');
 let hideDescription = 0;
 
 fillCardProduct();
@@ -38,6 +40,25 @@ function insertSizeProduct(size) {
 async function getRequest(url) {
     const response = await fetch(url);
     return await response.json();
+}
+
+async function postRequest(url, obj) {
+    const response = await fetch(url, { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(obj)
+    });
+
+    if (!response.ok) {
+        const errorResponse = await response.json();
+        console.error("Ошибка ответа:", errorResponse);
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    let result = await response.status;
+    return result;
 }
 
 function fillProduct(product) {
@@ -98,3 +119,34 @@ function calculatePercentageOfProduct(count) {
     percent *= 100;
     progressBar.style.width = `${percent}%`;
 }
+
+addPrdouctToCartBtn.addEventListener('click', () => {
+    getRequest(`http://localhost:5098/api/v1/users/getByLogin/${sellerLogin}`)
+        .then(seller => {
+            getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${productName}/${seller.id}`)
+                .then(product => {
+                    let activeSize = document.querySelector('.active-size');
+
+                    if(activeSize != null) {
+                        getRequest(`https://localhost:58841/api/v1/productSizes/getByProductIdAndSize/${product.id}/${activeSize.textContent}`)
+                            .then(ps => {
+                                let cartCreateModel = {
+                                    productId: parseInt(product.id),
+                                    userId: parseInt(seller.id),
+                                    productSizesId: parseInt(ps.id)
+                                };
+                            
+                                postRequest(`https://localhost:7073/api/v1/carts/create`, cartCreateModel)
+                                .then(code => {
+                                    if(code == 201) {
+                                        localStorage.setItem('activeSize', activeSize.textContent);
+                                        alert('Вы добавили товар в корзину');
+                                    }
+                                })
+                            })
+                    } else {
+                        alert('Выберите размер, для того чтобы добавить товар в корзину!');
+                    }    
+                })
+        })
+})

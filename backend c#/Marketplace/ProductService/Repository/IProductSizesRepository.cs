@@ -10,6 +10,8 @@ namespace ProductService.Repository
 
         Task<ProductSizes?> GetById(int id);
 
+        Task<ProductSizes?> GetByProductIdAndSize(int productId, string size);
+
         Task Create(ProductSizes productSizes);
 
         Task DeleteById(int id);

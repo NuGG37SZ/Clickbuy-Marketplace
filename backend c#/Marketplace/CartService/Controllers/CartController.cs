@@ -15,11 +15,15 @@ namespace CartService.Controllers
 
         private readonly ProductClient _productClient;
 
-        public CartController(ICartService cartService, ProductClient productClient, UserClient userClient)
+        private readonly ProductSizesClient _productSizesClient;
+
+        public CartController(ICartService cartService, ProductClient productClient, 
+            UserClient userClient, ProductSizesClient productSizesClient)
         {
             _cartService = cartService;
-            _productClient = productClient;
+            _productClient = productClient; 
             _userClient = userClient;
+            _productSizesClient = productSizesClient;
         }
 
         [HttpGet]
@@ -58,13 +62,16 @@ namespace CartService.Controllers
         {
             UserDTO? userDTO = await _userClient.GetUserById(cartDTO.UserId);
             ProductDTO? productDTO = await _productClient.GetProductById(cartDTO.ProductId);
+            ProductSizesDTO? productSizesDTO = await _productSizesClient.GetProductSizesById(cartDTO.ProductSizesId);
 
-            if (userDTO == null && productDTO == null)
-                return NotFound("User and Product Not Found.");
+            if (userDTO == null && productDTO == null && productSizesDTO == null)
+                return NotFound("User, Product, ProductSizes Not Found.");
             else if (userDTO == null)
                 return NotFound("User Not Found.");
             else if (productDTO == null)
                 return NotFound("Product Not Found.");
+            else if (productSizesDTO == null)
+                return NotFound("ProductSizes Not Found.");
 
             await _cartService.Create(cartDTO);
             return Created("create", cartDTO);

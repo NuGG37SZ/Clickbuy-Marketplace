@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CartService.Migrations
 {
     [DbContext(typeof(CartContext))]
-    [Migration("20250305160908_cartMigration")]
+    [Migration("20250307144901_cartMigration")]
     partial class cartMigration
     {
         /// <inheritdoc />
@@ -27,6 +27,9 @@ namespace CartService.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductSizesId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")

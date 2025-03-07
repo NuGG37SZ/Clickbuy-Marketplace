@@ -41,8 +41,14 @@ namespace ProductService.Repository
 
         public async Task<ProductSizes?> GetById(int id)
         {
+            return await _productContext.ProductSizes.FindAsync(id);
+        }
+
+        public async Task<ProductSizes?> GetByProductIdAndSize(int productId, string size)
+        {
             return await _productContext.ProductSizes
-                            .FirstOrDefaultAsync(ps => ps.ProductId == id);
+                            .Where(p => p.ProductId == productId && p.Size.Equals(size))
+                            .FirstOrDefaultAsync();
         }
 
         public async Task Update(int productId, List<ProductSizes> newProductsSizes)

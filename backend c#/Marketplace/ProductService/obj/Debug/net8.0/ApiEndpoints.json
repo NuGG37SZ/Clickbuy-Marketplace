@@ -465,6 +465,27 @@
   },
   {
     "ContainingType": "ProductService.Controllers.ProductSizesController",
+    "Method": "GetByProductIdAndSize",
+    "RelativePath": "api/v1/productSizes/getByProductIdAndSize/{productId}/{size}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "size",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.ProductSizesController",
     "Method": "Update",
     "RelativePath": "api/v1/productSizes/update/{productId}",
     "HttpMethod": "PUT",

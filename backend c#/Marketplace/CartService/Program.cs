@@ -14,6 +14,7 @@ builder.Services.AddScoped<IFavoritesRepository, FavoritesRepositoryImpl>();
 builder.Services.AddScoped<IFavoritesService, FavoritesServiceImpl>();
 builder.Services.AddHttpClient<UserClient, UserClient>();
 builder.Services.AddHttpClient<ProductClient, ProductClient>();
+builder.Services.AddHttpClient<ProductSizesClient, ProductSizesClient>();
 builder.Services.AddCors();
 builder.Services.AddControllersWithViews();
 

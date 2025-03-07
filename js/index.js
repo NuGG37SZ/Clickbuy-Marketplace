@@ -1,12 +1,12 @@
 const productContainer = document.querySelector('.row');
-let user = localStorage.getItem('userId');
+let userId = localStorage.getItem('userId');
 let productCard = document.querySelector('.product-card');
 
 document.addEventListener('DOMContentLoaded', () => {
     insertCards();
 })
 
-function insertCardProduct(product, seller, inFavorite) {
+function insertCardProductIndex(product, seller, inFavorite) {
     return `
         <div class="col-6 col-md-3">
             <div class="product-card">
@@ -26,8 +26,6 @@ function insertCardProduct(product, seller, inFavorite) {
                     </div>
 
                     <p class="product-creater">${seller}</p>
-
-                    <div class="product-sizes"></div>
 
                     <p class="product-description">${product.description}</p>
 
@@ -78,12 +76,12 @@ function insertCards() {
 }
 
 function checkFavoriteProduct(seller, product) {
-    getRequest(`https://localhost:7073/api/v1/favorites/getByUserIdAndProductId/${user}/${product.id}`)
+    getRequest(`https://localhost:7073/api/v1/favorites/getByUserIdAndProductId/${userId}/${product.id}`)
         .then(fp => {
             if (fp && fp.productId === product.id) {
-                productContainer.insertAdjacentHTML('beforeend', insertCardProduct(product, seller.login, true));
+                productContainer.insertAdjacentHTML('beforeend', insertCardProductIndex(product, seller.login, true));
             } else {
-                productContainer.insertAdjacentHTML('beforeend', insertCardProduct(product, seller.login, false));
+                productContainer.insertAdjacentHTML('beforeend', insertCardProductIndex(product, seller.login, false));
             }
         })
 }
@@ -129,13 +127,13 @@ function checkAddFavoriteProduct(product, img) {
 }
 
 function addProductToWishList(product) {
-    if(user == null) {
+    if(userId == null) {
         alert('Войдите в аккаунт, чтобы добавить товар в избранное!');
     } else {
         const now = new Date();
 
         let cartModel = {
-            userId: user,
+            userId: userId,
             productId: product.id,
             dateAdded: now
         }

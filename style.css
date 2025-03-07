@@ -1079,3 +1079,26 @@ body {
     height: 10px;
     --bs-progress-bar-bg: #5A67D8;
 }
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-order p {
+    font-size: 20px; 
+    margin-left: 15px;
+}
+
+.info-order button {
+    border: 1px solid #5A67D8;
+    color: #5A67D8;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+.info-order button:hover {
+    background-color: #5A67D8;
+    color: white;
+}
