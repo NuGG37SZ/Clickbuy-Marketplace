@@ -39,13 +39,13 @@ authBtn.addEventListener('click', () => {
 })
 
 async function requestGetUserByLogin(login) {
-    url = `http://localhost:5098/api/v1/users/getByLogin/${login}`;
+    url = `https://localhost:5098/api/v1/users/getByLogin/${login}`;
     const response = await fetch(url);
     return await response.json();
 }
 
 async function requestConfirmPassword(login, password) {
-    url = `http://localhost:5098/api/v1/users/authenticate/${login}/${password}`;
+    url = `https://localhost:5098/api/v1/users/authenticate/${login}/${password}`;
     const response = await fetch(url);
     return await response.status;
 }

@@ -26,7 +26,7 @@ registerBtn.addEventListener('click', async () => {
 })
 
 async function createUserRequest(user) {
-    const response = await fetch('http://localhost:5098/api/v1/users/create', { 
+    const response = await fetch('https://localhost:5098/api/v1/users/create', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'

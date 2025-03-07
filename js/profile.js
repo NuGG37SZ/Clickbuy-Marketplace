@@ -19,7 +19,7 @@ function checkAuthUser() {
 }
 
 async function getUserByIdRequest(id) {
-    url = `http://localhost:5098/api/v1/users/${id}`;
+    url = `https://localhost:5098/api/v1/users/${id}`;
     const response = await fetch(url);
     return await response.json();
 }

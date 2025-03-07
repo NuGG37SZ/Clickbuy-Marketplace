@@ -12,7 +12,7 @@ let hideDescription = 0;
 fillCardProduct();
 
 function fillCardProduct() {
-    getRequest(`http://localhost:5098/api/v1/users/getByLogin/${sellerLogin}`)
+    getRequest(`https://localhost:5098/api/v1/users/getByLogin/${sellerLogin}`)
         .then(seller => {
             getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${productName}/${seller.id}`)
                 .then(product => {
@@ -95,7 +95,7 @@ sizesProduct.addEventListener('click', (event) => {
 
         if(activeSize) activeSize.classList.remove('active-size');
         
-        getRequest(`http://localhost:5098/api/v1/users/getByLogin/${sellerLogin}`)
+        getRequest(`https://localhost:5098/api/v1/users/getByLogin/${sellerLogin}`)
             .then(seller => {
                 getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${productName}/${seller.id}`)
                     .then(product => {
@@ -121,7 +121,7 @@ function calculatePercentageOfProduct(count) {
 }
 
 addPrdouctToCartBtn.addEventListener('click', () => {
-    getRequest(`http://localhost:5098/api/v1/users/getByLogin/${sellerLogin}`)
+    getRequest(`https://localhost:5098/api/v1/users/getByLogin/${sellerLogin}`)
         .then(seller => {
             getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${productName}/${seller.id}`)
                 .then(product => {

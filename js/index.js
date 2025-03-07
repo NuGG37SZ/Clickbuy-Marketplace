@@ -67,7 +67,7 @@ function insertCards() {
     getRequest(`https://localhost:58841/api/v1/products`)
         .then(productsList => {
             productsList.forEach(product => {
-                getRequest(`http://localhost:5098/api/v1/users/${product.userId}`)
+                getRequest(`https://localhost:5098/api/v1/users/${product.userId}`)
                     .then(seller => {
                         checkFavoriteProduct(seller, product);
                     })
@@ -94,7 +94,7 @@ productContainer.addEventListener('click', function(event) {
         const seller = card.querySelector('.product-creater').textContent;
         const imgFavorite = card.querySelector('.favorite-img');
 
-        getRequest(`http://localhost:5098/api/v1/users/getByLogin/${seller}`)
+        getRequest(`https://localhost:5098/api/v1/users/getByLogin/${seller}`)
             .then(s => {
                 getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${cardName}/${s.id}`)
                     .then(p => {

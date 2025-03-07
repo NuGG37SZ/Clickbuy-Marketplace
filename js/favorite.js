@@ -46,7 +46,7 @@ function getAllFavoriteByUserId() {
             favoriteList.forEach(favorite => {
                 getRequest(`https://localhost:58841/api/v1/products/getById/${favorite.productId}`)
                     .then(product => {
-                        getRequest(`http://localhost:5098/api/v1/users/${product.userId}`)
+                        getRequest(`https://localhost:5098/api/v1/users/${product.userId}`)
                             .then(seller => {
                                 productContainer.insertAdjacentHTML('beforeend', insertCardProductFavorite(product, seller.login));
                             })
@@ -62,7 +62,7 @@ productContainer.addEventListener('click', function(event) {
         const cardName = card.querySelector('.product-title').textContent;
         const seller = card.querySelector('.product-creater').textContent;
 
-        getRequest(`http://localhost:5098/api/v1/users/getByLogin/${seller}`)
+        getRequest(`https://localhost:5098/api/v1/users/getByLogin/${seller}`)
             .then(s => {
                 getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${cardName}/${s.id}`)
                     .then(p => {

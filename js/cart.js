@@ -35,7 +35,7 @@ async function getProductByCart(cart) {
 }
 
 async function getUserLoginByProduct(product) {
-    const user = await getRequest(`http://localhost:5098/api/v1/users/${product.userId}`);
+    const user = await getRequest(`https://localhost:5098/api/v1/users/${product.userId}`);
     return user.login;  
 }
 
