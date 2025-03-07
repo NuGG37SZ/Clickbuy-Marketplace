@@ -950,7 +950,7 @@ body {
     width: 300px;
 }
 
-#description-product {
+#description-product-btn {
     margin-top: 20px;
     width: 200px;
 }
@@ -998,14 +998,15 @@ body {
     margin-top: 10px;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    gap: 10px;
     width: 230px;
 }
 
 .sizes-product {
     display: flex;
-    justify-content: space-between;
-    width: 200px;
+    flex-wrap: wrap;
+    width: 230px;
+    gap: 10px;
     margin-top: 10px;
 }
 

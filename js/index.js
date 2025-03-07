@@ -1,8 +1,10 @@
 const productContainer = document.querySelector('.row');
 let user = localStorage.getItem('userId');
+let productCard = document.querySelector('.product-card');
 
-console.log(user);
-insertCards();
+document.addEventListener('DOMContentLoaded', () => {
+    insertCards();
+})
 
 function insertCardProduct(product, seller, inFavorite) {
     return `
@@ -102,6 +104,15 @@ productContainer.addEventListener('click', function(event) {
                     });
             });
     }
+
+    if(event.target.closest('.product-info')) {
+        const productInfo = event.target.closest('.product-info');
+        const productName = productInfo.querySelector('.product-title').textContent;
+        const userLogin = productInfo.querySelector('.product-creater').textContent;
+        localStorage.setItem('userLogin', userLogin);
+        localStorage.setItem('productName', productName);
+        location.href = 'product.html';
+    }
 });
 
 function checkAddFavoriteProduct(product, img) {
@@ -128,7 +139,6 @@ function addProductToWishList(product) {
             productId: product.id,
             dateAdded: now
         }
-
         postRequest(`https://localhost:7073/api/v1/favorites/create`, cartModel);
     }
 }

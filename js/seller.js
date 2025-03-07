@@ -77,19 +77,23 @@ createBtnForm.addEventListener('click', () => {
                                 if(sizes.length == counts.length) {
                                     for(let i = 0; i < sizes.length; i++) {
                                         let currentSize = sizes[i];
-                                        let currentCount = counts[i];
+                                        let currentCount = parseInt(counts[i]);
 
-                                        let productSizes = {
-                                            productId: parseInt(product.id),
-                                            size: currentSize,
-                                            count: parseInt(currentCount),
+                                        if(currentCount <= 100) {
+                                            let productSizes = {
+                                                productId: parseInt(product.id),
+                                                size: currentSize,
+                                                count: currentCount,
+                                            }
+                                            postRequest(`https://localhost:58841/api/v1/productSizes/create`, productSizes);
+                                        } else {
+                                            alert('Максимальное количество товаров 100!');
                                         }
-                                        postRequest(`https://localhost:58841/api/v1/productSizes/create`, productSizes);
                                     }
                                 }
+                                alert('Вы успешно добавили товар!');
+                                location.reload();
                             })
-                            alert('Вы успешно добавили товар!');
-                            location.reload();
                         }
                     })
                 }
@@ -190,7 +194,7 @@ updateBtnForm.addEventListener('click', () => {
                         }
         
                         putRequest(`https://localhost:58841/api/v1/products/update/${productSelect.value}`, updateProductModel)
-                        .then(code => { updateProductSizes(code, product) })
+                            .then(code => { updateProductSizes(code, product) })
                         location.reload();
                     }
                 })
@@ -220,19 +224,23 @@ function updateProductSizes(code, product) {
 
             for(let i = 0; i < sizes.length; i++) {
                 let currentSize = sizes[i];
-                let currentCount = counts[i];
+                let currentCount = parseInt(counts[i]);
 
-                let productSizes = {
-                    productId: product.id,
-                    size: currentSize,
-                    count: currentCount
+                if(currentCount >= 100) {   
+                    alert('Количество товара не может быть больше 100!');
+                    return;
+                } else {
+                    let productSizes = {
+                        productId: product.id,
+                        size: currentSize,
+                        count: currentCount
+                    }
+                    arrayProductSizes[i] = productSizes;
                 }
-                arrayProductSizes[i] = productSizes;
             }
             putRequest(`https://localhost:58841/api/v1/productSizes/update/${product.id}`, arrayProductSizes); 
+            alert('Вы успешно обновили товар!');  
         }
-
-        alert('Вы успешно обновили товар!');
     }
 }
 

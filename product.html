@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Навигация -->
@@ -21,7 +23,8 @@
 
             <form class="search-form">
                 <div class="input-group">
-                    <input class="form-control search-input" type="search" placeholder="Ищи лучшее на Click&Buy" aria-label="Поиск">
+                    <input class="form-control search-input" type="search" placeholder="Ищи лучшее на Click&Buy"
+                        aria-label="Поиск">
                     <button class="search-btn" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
@@ -60,7 +63,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">
+                        <a class="nav-link d-flex align-items-center" href="#" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight">
                             <i class="bi bi-cart fs-5 me-1"></i> Корзина
                         </a>
                     </li>
@@ -72,39 +76,39 @@
     <!-- Корзина -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">Моя корзина</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <h5 id="offcanvasRightLabel">Моя корзина</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            
+
         </div>
     </div>
 
     <!-- Категории -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Категории</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Категории</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-        <div class="mt-3">
-            <div class="category">
-                <img src="source/love.png" width="32px" height="32px">
-                <a href="#">Обувь</a>
+            <div class="mt-3">
+                <div class="category">
+                    <img src="source/love.png" width="32px" height="32px">
+                    <a href="#">Обувь</a>
+                </div>
+                <div class="category">
+                    <img src="source/love.png" width="32px" height="32px">
+                    <a href="#">Обувь</a>
+                </div>
+                <div class="category">
+                    <img src="source/love.png" width="32px" height="32px">
+                    <a href="#">Обувь</a>
+                </div>
+                <div class="category">
+                    <img src="source/love.png" width="32px" height="32px">
+                    <a href="#">Обувь</a>
+                </div>
             </div>
-            <div class="category">
-                <img src="source/love.png" width="32px" height="32px">
-                <a href="#">Обувь</a>
-            </div>
-            <div class="category">
-                <img src="source/love.png" width="32px" height="32px">
-                <a href="#">Обувь</a>
-            </div>
-            <div class="category">
-                <img src="source/love.png" width="32px" height="32px">
-                <a href="#">Обувь</a>
-            </div>
-        </div>
         </div>
     </div>
 
@@ -130,7 +134,7 @@
         <!-- Сообщения -->
         <div class="chat-messages">
             <div class="chat-date">28.02.2025</div>
-        
+
             <div class="message support-message">
                 <div class="support-photo">
                     <img src="source/operator.jpg" alt="Оператор">
@@ -143,7 +147,7 @@
                 У меня вопрос по заказу.
                 <span class="message-time">12:13</span>
             </div>
-        </div>    
+        </div>
 
         <div class="chat-input">
             <textarea class="form-control" placeholder="Напишите сообщение"></textarea>
@@ -155,28 +159,27 @@
     <!-- Товар -->
     <div class="product-container">
         <div class="img-product">
-            <img src="source/short.jpg" width="400px" height="400px">
+            <img src="source/short.jpg" width="400px" height="400px" id="product-img-card">
         </div>
         <div class="product-info-card">
-            <p style="font-size: 20px;">Шорты пляжные, для отдыха, лучшее качество</p>
+            <p style="font-size: 20px;" id="product-name-card">Шорты пляжные, для отдыха, лучшее качество</p>
             <div class="rating-products">
                 <span class="star-product">⭐ 4.7</span>
                 <span class="comments-product">💬 120</span>
             </div>
             <div class="sizes-product">
-                <div class="size-product">
-                    <p>45</p>
-                </div>
+                
             </div>
-            <button type="button" class="btn btn-primary" id="description-product">Описание товара</button>
-            <p style="font-size: 12px; margin-top: 10px; display: none;"></p>
+            <button type="button" class="btn btn-primary" id="description-product-btn">Описание товара</button>
+            <p style="font-size: 14px; margin-top: 10px; display: none;" id="product-description-card"></p>
         </div>
         <div class="product-info-card-second">
-            <p style="font-size: 24px;">15000 ₽</p>
+            <p style="font-size: 24px;" id="product-price-card">15000 ₽</p>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 35.99%" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: 35.99%" aria-valuemin="0"
+                    aria-valuemax="100"></div>
             </div>
-            <p style="font-size: 14px; color: gray;">Осталось 20 шт.</p>
+            <p style="font-size: 14px; color: gray;" id="product-count-card">Осталось 20 шт.</p>
             <div class="buttons-product">
                 <button type="button" class="btn btn-primary">Добавить в корзину</button>
                 <button type="button" class="btn btn-outline-primary" style="margin-top: 10px;">Купить сейчас</button>
@@ -185,10 +188,10 @@
                 <img src="source/box.png" alt="delivery" height="24px" width="24px">
                 <p style="margin-left: 5px;">15.03.2025</p>
             </div>
-            
+
             <div class="seller-info">
                 <img src="source/store.png">
-                <a href="#">ООО "КупиПродай"</a>
+                <a href="#" id="seller-product">ООО "КупиПродай"</a>
                 <span class="star-product">⭐ 4.7</span>
             </div>
         </div>
@@ -251,11 +254,13 @@
             <hr class="bg-light">
             <p class="mb-0">&copy; 2025 Click&Buy. Все права защищены.</p>
         </div>
-    </footer>   
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/product.js"></script>
     <script src="js/support.js"></script>
     <script src="js/categoryInput.js"></script>
 </body>
+
 </html>
