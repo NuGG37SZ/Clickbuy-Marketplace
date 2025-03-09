@@ -160,12 +160,65 @@
         </div>
     </div>
 
-
-    <!-- Каталог товаров -->
     <div class="container mt-4">
-        <h2 class="mb-3">Избранное</h2>
-        <div class="row">
+        <h2 class="mb-3">Оплата</h2>
+        <h3 style="text-align: center;">Ваш заказ</h3>
+        <table class="all-product-for-payment">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Название</th>
+                    <th>Цена</th>
+                    <th>Продавец</th>
+                    <th>Размер</th>
+                    <th>Описание</th>
+                    <th>Количество</th>
+                </tr>
+            </thead>
+            <tbody class="tbody-payment">
+                
+            </tbody>
+        </table>
 
+        <p class="sum-payment">Итого: </p>
+        <div id="continue-payment">
+            <button type="button" class="btn btn-danger" id="continue-btn">Продолжить</button>
+        </div>
+
+        <div>
+            <div class="person-data">
+                <h3 style="text-align: center;">Данные для доставки</h3>
+                <form>
+                    <input class="form-control" type="text" placeholder="Имя" aria-label="default input example">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                    <input class="form-control" type="text" placeholder="Адрес" aria-label="default input example">
+                    <input class="form-control" type="tel" placeholder="Номер телефона" aria-label="default input example">
+                    <div style="display: flex; justify-content: center;">
+                        <button type="button" class="btn btn-danger" id="next-payment-btn">Далее</button>
+                    </div>
+                </form>
+            </div>
+            <div class="payment-methods">
+                <h3 style="text-align: center; margin-top: 50px;">Способ оплаты</h3>
+                <div>
+                    <input type="radio" name="group">
+                    <label>Банковская карта MIR</label>
+                    <img src="source/icons8-mir-48.png">
+                </div>
+                <div>
+                    <input type="radio" name="group">
+                    <label>СБП</label>
+                    <img src="source/dark=no, fit=no, icon=yes.png" width="30px" height="30px">
+                </div>
+                <div>
+                    <input type="radio" name="group">
+                    <label>Яндекс Деньги</label>
+                    <img src="source/icons8-яндекс-деньги-48.png" width="32px" height="32px">
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <button type="button" class="btn btn-danger" style="width: 200px;" id="pay-btn">Оплатить</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -202,6 +255,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/payment.js"></script>
     <script src="js/script.js"></script>
     <script src="js/support.js"></script>
     <script src="js/categoryInput.js"></script>

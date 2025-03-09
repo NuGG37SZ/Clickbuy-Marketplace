@@ -114,7 +114,7 @@ productContainer.addEventListener('click', function(event) {
 });
 
 function checkAddFavoriteProduct(product, img) {
-    getRequest(`https://localhost:7073/api/v1/favorites/getByUserId/${user}`)
+    getRequest(`https://localhost:7073/api/v1/favorites/getByUserId/${userId}`)
         .then(fpList => {
             const isAlreadyInFavorites = fpList.some(fp => fp.productId === product.id);
             if (isAlreadyInFavorites) {

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CartService.Migrations
 {
     /// <inheritdoc />
-    public partial class cartMigration : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,8 @@ namespace CartService.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ProductId = table.Column<int>(type: "INTEGER", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProductSizesId = table.Column<int>(type: "INTEGER", nullable: false)
+                    ProductSizesId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Count = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

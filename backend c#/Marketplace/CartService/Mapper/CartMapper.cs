@@ -12,6 +12,7 @@ namespace CartService.Mapper
             cartDTO.ProductId = cart.ProductId;
             cartDTO.UserId = cart.UserId;
             cartDTO.ProductSizesId = cart.ProductSizesId;
+            cartDTO.Count = cart.Count;
             return cartDTO;
         }
 
@@ -21,6 +22,7 @@ namespace CartService.Mapper
             cart.ProductId = cartDTO.ProductId;
             cart.UserId = cartDTO.UserId;
             cart.ProductSizesId = cartDTO.ProductSizesId;
+            cart.Count = cartDTO.Count;
             return cart;
         }
     }

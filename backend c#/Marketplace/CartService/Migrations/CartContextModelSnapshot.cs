@@ -23,6 +23,9 @@ namespace CartService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Count")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("INTEGER");
 

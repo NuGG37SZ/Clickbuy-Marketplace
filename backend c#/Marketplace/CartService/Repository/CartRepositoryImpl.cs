@@ -52,6 +52,8 @@ namespace CartService.Repository
             {
                 currentCart.ProductId = cart.ProductId;
                 currentCart.UserId = cart.UserId;
+                currentCart.ProductSizesId = cart.ProductSizesId;
+                currentCart.Count = cart.Count;
                 _cartContext.Carts.Update(currentCart);
                 await _cartContext.SaveChangesAsync();
             }

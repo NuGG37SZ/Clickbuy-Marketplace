@@ -79,6 +79,15 @@ productContainer.addEventListener('click', function(event) {
                     });
             });
     }
+
+    if (event.target.closest('.product-info')) {
+        const productInfo = event.target.closest('.product-info');
+        const productName = productInfo.querySelector('.product-title').textContent;
+        const userLogin = productInfo.querySelector('.product-creater').textContent;
+        localStorage.setItem('userLogin', userLogin);
+        localStorage.setItem('productName', productName);
+        location.href = 'product.html';
+    }
 });
 
 async function deleteRequest(url) {

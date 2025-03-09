@@ -55,6 +55,18 @@ async function postRequest(url, obj) {
     return result;
 }
 
+async function putRequest(url, obj) {
+    const response = await fetch(url, { 
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(obj)
+    });
+    let result = await response.status;
+    return result;
+}
+
 function fillProduct(product) {
     const productTitle = document.getElementById('product-name-card');
     const productPrice = document.getElementById('product-price-card');
@@ -123,6 +135,12 @@ async function getProductSizesByProductIdAndSize(productId, size) {
     return productSizes;
 }
 
+async function getAllCardsByCurrentUserId() {
+    let userId = localStorage.getItem('userId');
+    const cartList = await getRequest(`https://localhost:7073/api/v1/carts/getByUserId/${parseInt(userId)}`);
+    return cartList;
+}
+
 addPrdouctToCartBtn.addEventListener('click', async () => {
     const seller = await getUserByLogin(sellerLogin);
     const product = await getProductByNameAndUserId(productName, seller.id);   
@@ -130,13 +148,27 @@ addPrdouctToCartBtn.addEventListener('click', async () => {
 
     if(activeSize != null) {
         const productSizes = await getProductSizesByProductIdAndSize(product.id, activeSize.textContent);
-            let cartCreateModel = {
-                productId: product.id,
-                userId: seller.id,
-                productSizesId: productSizes.id
-            };
+        const cartList = await getAllCardsByCurrentUserId();
 
-            postRequest(`https://localhost:7073/api/v1/carts/create`, cartCreateModel)
+        let cartCreateModel = {
+            productId: product.id,
+            userId: seller.id,
+            productSizesId: productSizes.id,
+            count: 1,
+        };
+
+        for (const cart of cartList) {
+            if(cart.productId == cartCreateModel.productId && 
+               cart.userId == cartCreateModel.userId &&
+               cart.productSizesId == cartCreateModel.productSizesId) 
+            {
+                ++cartCreateModel.count;
+                await putRequest(`https://localhost:7073/api/v1/carts/update/${cart.id}`, cartCreateModel);
+                return;  
+            }
+        }
+
+        postRequest(`https://localhost:7073/api/v1/carts/create`, cartCreateModel)
             .then(code => {
                 if(code == 201) {
                     alert('Вы добавили товар в корзину');

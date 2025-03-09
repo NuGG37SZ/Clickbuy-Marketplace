@@ -58,6 +58,8 @@ namespace CartService.Service
             {
                 currentCartDTO.ProductId = cartDTO.ProductId;
                 currentCartDTO.UserId = cartDTO.UserId;
+                currentCartDTO.ProductSizesId = cartDTO.ProductSizesId;
+                currentCartDTO.Count = cartDTO.Count;
                 await _cartRepository.Update(id, CartMapper.MapCartDTOToCart(currentCartDTO));
             }
         }

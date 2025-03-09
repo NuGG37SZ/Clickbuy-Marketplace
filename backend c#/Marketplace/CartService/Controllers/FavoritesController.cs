@@ -11,17 +11,7 @@ namespace CartService.Controllers
     {
         private readonly IFavoritesService _favoriteService;
 
-        private readonly UserClient _userClient;
-
-        private readonly ProductClient _productClient;
-
-        public FavoritesController(IFavoritesService favoriteService, ProductClient productClient, 
-            UserClient userClient)
-        {
-            _favoriteService = favoriteService;
-            _productClient = productClient;
-            _userClient = userClient;
-        }
+        public FavoritesController(IFavoritesService favoriteService) => _favoriteService = favoriteService;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -59,21 +49,9 @@ namespace CartService.Controllers
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] FavoritesDTO favoritesDTO)
         {
-            UserDTO? userDTO = await _userClient.GetUserById(favoritesDTO.UserId);
-            ProductDTO? productDTO = await _productClient.GetProductById(favoritesDTO.ProductId);
-
-            if (userDTO == null && productDTO == null)
-                return NotFound("User and Product Not Found.");
-            else if (userDTO == null)
-                return NotFound("User Not Found.");
-            else if (productDTO == null)
-                return NotFound("Product Not Found.");
-
             await _favoriteService.Create(favoritesDTO);
             return Created("create", favoritesDTO);
         }
-
-
 
         [HttpPut]
         [Route("update/{id}")]
