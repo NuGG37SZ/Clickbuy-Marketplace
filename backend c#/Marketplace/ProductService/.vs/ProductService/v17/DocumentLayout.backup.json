@@ -4,6 +4,7 @@
   "Documents": [
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\productservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,6 +19,8 @@
     {
       "AbsoluteMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\productservice\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
 =======
+=======
+>>>>>>> Stashed changes
       "AbsoluteMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\productservice\\controllers\\productsizescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{53A25C1E-BAB0-4E0B-9F2A-3802BF64E9EF}|ProductService.csproj|solutionrelative:controllers\\productsizescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -42,6 +45,7 @@
           "Children": [
             {
               "$type": "Bookmark",
+<<<<<<< Updated upstream
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
@@ -97,6 +101,38 @@
 =======
               "DocumentIndex": 1,
 >>>>>>> Stashed changes
+=======
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductSizesController.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductSizesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductSizesController.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductSizesController.cs",
+              "RelativeToolTip": "Controllers\\ProductSizesController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAABsAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T11:48:02.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T11:42:39.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+>>>>>>> Stashed changes
               "Title": "ProductSizesDTO.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\ProductService\\DTO\\ProductSizesDTO.cs",
               "RelativeDocumentMoniker": "DTO\\ProductSizesDTO.cs",
@@ -107,6 +143,9 @@
               "Icon": "00000000-0000-0000-0000-000000000000.000000|",
 =======
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
               "WhenOpened": "2025-03-08T08:28:17.839Z"
             }
