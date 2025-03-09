@@ -1,4 +1,3 @@
-using CartService.Client;
 using CartService.DTO;
 using CartService.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -7,24 +6,9 @@ namespace CartService.Controllers
 {
     [ApiController]
     [Route("api/v1/carts")]
-    public class CartController : Controller
+    public class CartController(ICartService cartService) : Controller
     {
-        private readonly ICartService _cartService;
-
-        private readonly UserClient _userClient;
-
-        private readonly ProductClient _productClient;
-
-        private readonly ProductSizesClient _productSizesClient;
-
-        public CartController(ICartService cartService, ProductClient productClient, 
-            UserClient userClient, ProductSizesClient productSizesClient)
-        {
-            _cartService = cartService;
-            _productClient = productClient; 
-            _userClient = userClient;
-            _productSizesClient = productSizesClient;
-        }
+        private readonly ICartService _cartService = cartService;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -60,19 +44,6 @@ namespace CartService.Controllers
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] CartDTO cartDTO)
         {
-            UserDTO? userDTO = await _userClient.GetUserById(cartDTO.UserId);
-            ProductDTO? productDTO = await _productClient.GetProductById(cartDTO.ProductId);
-            ProductSizesDTO? productSizesDTO = await _productSizesClient.GetProductSizesById(cartDTO.ProductSizesId);
-
-            if (userDTO == null && productDTO == null && productSizesDTO == null)
-                return NotFound("User, Product, ProductSizes Not Found.");
-            else if (userDTO == null)
-                return NotFound("User Not Found.");
-            else if (productDTO == null)
-                return NotFound("Product Not Found.");
-            else if (productSizesDTO == null)
-                return NotFound("ProductSizes Not Found.");
-
             await _cartService.Create(cartDTO);
             return Created("create", cartDTO);
         }

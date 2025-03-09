@@ -1102,3 +1102,8 @@ body {
     background-color: #5A67D8;
     color: white;
 }
+
+.delete-product-cart {
+    display: flex;
+    justify-content: end;
+}

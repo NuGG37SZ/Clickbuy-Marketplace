@@ -17,6 +17,7 @@ builder.Services.AddHttpClient<ProductClient, ProductClient>();
 builder.Services.AddHttpClient<ProductSizesClient, ProductSizesClient>();
 builder.Services.AddCors();
 builder.Services.AddControllersWithViews();
+AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
 var app = builder.Build();
 app.UseRouting();
