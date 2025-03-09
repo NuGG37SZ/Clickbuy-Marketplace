@@ -1,25 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\",
+  "WorkspaceRootPath": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\cartservice\\controllers\\favoritescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\cartservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\cartservice\\controllers\\favoritescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|solutionrelative:controllers\\favoritescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\cartservice\\service\\cartserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\cartservice\\service\\cartserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|solutionrelative:service\\cartserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\cartservice\\repository\\cartrepositoryimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\cartservice\\repository\\cartrepositoryimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|solutionrelative:repository\\cartrepositoryimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\cartservice\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\cartservice\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\cartservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\cartservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C03F1A37-D123-4E85-AD47-FF9545876A40}|CartService.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -34,72 +38,85 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T17:07:42.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "FavoritesController.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\FavoritesController.cs",
+              "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\FavoritesController.cs",
               "RelativeDocumentMoniker": "Controllers\\FavoritesController.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\FavoritesController.cs",
+              "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\FavoritesController.cs",
               "RelativeToolTip": "Controllers\\FavoritesController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA0AAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwA0AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-09T08:28:48.425Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CartServiceImpl.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Service\\CartServiceImpl.cs",
+              "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Service\\CartServiceImpl.cs",
               "RelativeDocumentMoniker": "Service\\CartServiceImpl.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Service\\CartServiceImpl.cs",
+              "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Service\\CartServiceImpl.cs",
               "RelativeToolTip": "Service\\CartServiceImpl.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAAAD0AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T08:08:51.066Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CartRepositoryImpl.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Repository\\CartRepositoryImpl.cs",
-              "RelativeDocumentMoniker": "Repository\\CartRepositoryImpl.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Repository\\CartRepositoryImpl.cs",
-              "RelativeToolTip": "Repository\\CartRepositoryImpl.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T08:08:11.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T08:08:51.066Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\CartController.cs",
-              "RelativeToolTip": "Controllers\\CartController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAAADsAAAAxAAAAAAAAAA==",
+              "Title": "CartRepositoryImpl.cs",
+              "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Repository\\CartRepositoryImpl.cs",
+              "RelativeDocumentMoniker": "Repository\\CartRepositoryImpl.cs",
+              "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Repository\\CartRepositoryImpl.cs",
+              "RelativeToolTip": "Repository\\CartRepositoryImpl.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T07:29:37.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T08:08:11.258Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
+              "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Controllers\\CartController.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAADsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T07:29:37.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Properties\\launchSettings.json",
+              "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Properties\\launchSettings.json",
               "RelativeToolTip": "Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-09T07:29:30.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-09T07:29:30.21Z"
             }
           ]
         }

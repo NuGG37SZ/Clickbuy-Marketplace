@@ -163,8 +163,8 @@ document.querySelector("#card-method").addEventListener("change", function() {
 document.querySelector("#sbp-method").addEventListener("change", function() {
     if (this.checked) {
         document.querySelector("#qr-code").style.display = "block";
+        document.querySelector("#card-details").style.display = "none";
         document.querySelector("#pay-btn").style.display = "none";
-        document.querySelector("#payment-details").style.display = "none";
     }
 });
 
