@@ -4,7 +4,6 @@ let sumPayment = document.querySelector('.sum-payment');
 const continuePaymentBtn = document.getElementById('continue-btn');
 const nextPaymentBtn = document.getElementById('next-payment-btn');
 const payBtn = document.getElementById("pay-btn");
-
 const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
 const paymentDetails = document.getElementById('payment-details');
 const cardDetails = document.getElementById('card-details');
@@ -74,19 +73,13 @@ async function insertAllProductForCurrentUser() {
 }
 
 continuePaymentBtn.addEventListener('click', () => {
-    const personDataDiv = document.querySelector('.person-data');
-    personDataDiv.style.display = 'block';
-}) 
-
-nextPaymentBtn.addEventListener('click', () => {
     const paymentMethodsDiv = document.querySelector('.payment-methods');
     paymentMethodsDiv.style.display = 'block';
-})
+}) 
 
 payBtn.addEventListener('click', () => {
     location.href = 'index.html';
 })
-
 
 paymentDetails.style.display = 'none';
 cardDetails.style.display = 'none';

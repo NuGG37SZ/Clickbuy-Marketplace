@@ -39,6 +39,7 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< Updated upstream
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\ProductService\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -48,6 +49,29 @@
               "Icon": "00000000-0000-0000-0000-000000000000.000000|",
               "WhenOpened": "2025-03-09T17:07:35.388Z",
               "EditorCaption": ""
+=======
+              "Title": "ProductSizesController.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductSizesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductSizesController.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductSizesController.cs",
+              "RelativeToolTip": "Controllers\\ProductSizesController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAABsAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T11:48:02.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\ProductService\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T11:42:39.233Z"
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
@@ -83,7 +107,11 @@
               "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\ProductService\\DTO\\ProductSizesDTO.cs",
               "RelativeToolTip": "DTO\\ProductSizesDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+<<<<<<< Updated upstream
               "Icon": "00000000-0000-0000-0000-000000000000.000000|",
+=======
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+>>>>>>> Stashed changes
               "WhenOpened": "2025-03-08T08:28:17.839Z"
             }
           ]

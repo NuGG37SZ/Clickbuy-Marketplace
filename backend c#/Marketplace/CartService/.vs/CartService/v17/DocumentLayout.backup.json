@@ -65,7 +65,11 @@
               "RelativeDocumentMoniker": "Controllers\\FavoritesController.cs",
               "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\FavoritesController.cs",
               "RelativeToolTip": "Controllers\\FavoritesController.cs",
+<<<<<<< Updated upstream
               "ViewState": "AgIAAAkAAAAAAAAAAAAqwA0AAAAWAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwA0AAAAWAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-09T08:28:48.425Z",
               "EditorCaption": ""
@@ -81,6 +85,21 @@
               "ViewState": "AgIAADIAAAAAAAAAAAAAAD0AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-09T08:08:51.066Z"
+<<<<<<< Updated upstream
+=======
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CartRepositoryImpl.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Repository\\CartRepositoryImpl.cs",
+              "RelativeDocumentMoniker": "Repository\\CartRepositoryImpl.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Repository\\CartRepositoryImpl.cs",
+              "RelativeToolTip": "Repository\\CartRepositoryImpl.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T08:08:11.258Z"
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
@@ -92,7 +111,11 @@
               "RelativeToolTip": "Repository\\CartRepositoryImpl.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< Updated upstream
               "WhenOpened": "2025-03-09T08:08:11.258Z"
+=======
+              "WhenOpened": "2025-03-09T07:29:37.281Z"
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",

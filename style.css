@@ -1253,3 +1253,32 @@ input.card-cvv {
     margin-top: 10px;
     border-radius: 8px;
 }
+
+.up-panel {
+    height: 35px;
+}
+
+.items-up-panel {
+    width: 1300px;
+    margin: 0 auto;
+}
+
+.modal-body {
+    margin: 0 auto;
+}
+
+.pick-up-points {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-check-input:checked {
+    background-color: #5A67D8;
+    border-color: #5A67D8;
+}
+
+.form-check-input, .form-check-label {
+    font-size: 20px;
+}
+
+
