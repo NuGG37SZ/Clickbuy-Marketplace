@@ -3,7 +3,18 @@ const currentUserId = localStorage.getItem('userId');
 let sumPayment = document.querySelector('.sum-payment');
 const continuePaymentBtn = document.getElementById('continue-btn');
 const nextPaymentBtn = document.getElementById('next-payment-btn');
-const payBtn = document.getElementById('pay-btn');
+const payBtn = document.getElementById("pay-btn");
+
+const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+const paymentDetails = document.getElementById('payment-details');
+const cardDetails = document.getElementById('card-details');
+const qrCode = document.getElementById('qr-code');
+const cardNumberInput = document.getElementById("card-number");
+const cardDateInput = document.getElementById("card-date");
+const cardCVVInput = document.getElementById("card-cvv");
+const cardLogo = document.getElementById("card-logo");
+
+cardLogo.style.display = "none";
 
 insertAllProductForCurrentUser();
 
@@ -75,3 +86,92 @@ nextPaymentBtn.addEventListener('click', () => {
 payBtn.addEventListener('click', () => {
     location.href = 'index.html';
 })
+
+
+paymentDetails.style.display = 'none';
+cardDetails.style.display = 'none';
+qrCode.style.display = 'none';
+payBtn.style.display = 'none';
+
+paymentMethods.forEach(method => {
+    method.addEventListener('change', (event) => {
+        paymentDetails.style.display = 'none';
+        cardDetails.style.display = 'none';
+        qrCode.style.display = 'none';
+        payBtn.style.display = 'none';
+
+        if (event.target.id === "card-method") {
+            cardDetails.style.display = 'block';
+            paymentDetails.style.display = 'block';
+            payBtn.style.display = 'block';
+        } else if (event.target.id === "sbp-method") { 
+            qrCode.style.display = 'block';
+            paymentDetails.style.display = 'block';
+            payBtn.style.display = 'none';
+        } else if (event.target.id === "yandex-money-method") {
+            paymentDetails.style.display = 'none';
+            qrCode.style.display = 'none';
+            payBtn.style.display = 'block';
+        }
+    });
+});
+
+cardCVVInput.addEventListener("input", (e) => {
+    cardCVVInput.value = "*".repeat(cardCVVInput.value.length);
+});
+
+cardNumberInput.addEventListener("input", (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+    value = value.replace(/(.{4})/g, "$1 ").trim();
+    e.target.value = value.slice(0, 19);
+
+    if (value.length === 0) {
+        cardLogo.style.display = "none";
+    } else {
+        cardLogo.style.display = "block";
+    }
+
+    if (/^2/.test(value)) {
+        cardLogo.src = "source/icons8-mir-48.png";
+    } else if (/^4/.test(value)) {
+        cardLogo.src = "source/icons8-visa-48.png";
+    } else if (/^5/.test(value)) {
+        cardLogo.src = "source/icons8-mastercard-48.png";
+    } else {
+        cardLogo.style.display = "none";
+    }
+});
+
+cardDateInput.addEventListener("input", (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length >= 2) {
+        value = value.slice(0, 2) + "/" + value.slice(2);
+    }
+
+    e.target.value = value.slice(0, 5);
+});
+
+document.querySelector("#card-method").addEventListener("change", function() {
+    if (this.checked) {
+        document.querySelector("#payment-details").style.display = "block"; 
+        document.querySelector("#pay-btn").style.display = "block"; 
+        document.querySelector("#qr-code").style.display = "none";
+    }
+});
+
+document.querySelector("#sbp-method").addEventListener("change", function() {
+    if (this.checked) {
+        document.querySelector("#qr-code").style.display = "block";
+        document.querySelector("#pay-btn").style.display = "none";
+        document.querySelector("#payment-details").style.display = "none";
+    }
+});
+
+document.querySelector("#yandex-money-method").addEventListener("change", function() {
+    if (this.checked) {
+        document.querySelector("#pay-btn").style.display = "block";
+        document.querySelector("#payment-details").style.display = "none";
+        document.querySelector("#qr-code").style.display = "none";
+    }
+});
