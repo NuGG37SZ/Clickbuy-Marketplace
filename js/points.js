@@ -71,9 +71,9 @@ saveActivePointBtn.addEventListener('click', async () => {
         isActive: true
     }
 
-    console.log(userPointUpdateModel);
-
-    let code = putRequest(`https://localhost:7049/api/v1/userPoints/update/${userPoint.id}`, userPointUpdateModel);
+    let code = await putRequest(`https://localhost:7049/api/v1/userPoints/update/${userPoint.id}`, userPointUpdateModel);
 
     if(code == 200) alert('Активный пункт установлен');
 })
+
+

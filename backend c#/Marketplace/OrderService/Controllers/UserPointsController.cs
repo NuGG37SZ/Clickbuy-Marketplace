@@ -66,6 +66,7 @@ namespace OrderService.Controllers
             if (currentUserPoints == null)
                 return NotFound("UserPoints Not Found.");
 
+            await _userPointsService.Update(id, userPointsDTO);
             return Ok(userPointsDTO);
         }
 

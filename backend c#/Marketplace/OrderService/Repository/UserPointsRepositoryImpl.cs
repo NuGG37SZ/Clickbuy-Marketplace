@@ -61,7 +61,7 @@ namespace OrderService.Repository
                 currentUserPoints.UserId = userPoints.UserId;
                 currentUserPoints.PointsId = userPoints.PointsId;
                 currentUserPoints.IsActive = userPoints.IsActive;
-                _orderContext.UserPoints.Update(userPoints);
+                _orderContext.UserPoints.Update(currentUserPoints);
                 await _orderContext.SaveChangesAsync();
             }
         }
