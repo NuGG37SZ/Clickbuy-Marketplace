@@ -42,7 +42,10 @@ namespace OrderService.Service
 
         public async Task Update(int id, OrderDTO orderDTO)
         {
-            await _orderRepository.Update(id, OrderMapper.MapOrderDTOToOrder(orderDTO)); 
+            OrderDTO? currentOrderDTO = await GetById(id);
+
+            if(currentOrderDTO != null) 
+                await _orderRepository.Update(id, OrderMapper.MapOrderDTOToOrder(orderDTO)); 
         }
     }
 }

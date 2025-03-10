@@ -60,6 +60,41 @@ namespace OrderService.Migrations
                     b.ToTable("OrderProducts");
                 });
 
+            modelBuilder.Entity("OrderService.Entity.Points", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Points");
+                });
+
+            modelBuilder.Entity("OrderService.Entity.UserPoints", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PointsId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserPoints");
+                });
+
             modelBuilder.Entity("OrderService.Entity.OrderProduct", b =>
                 {
                     b.HasOne("OrderService.Entity.Order", "Order")

@@ -1,5 +1,7 @@
 body {
     background-color: #F5F7FA;
+    margin: 0;
+    padding: 0;
 }
 .navbar {
     background-color: #FFFFFF;
@@ -1281,4 +1283,44 @@ input.card-cvv {
     font-size: 20px;
 }
 
+.left-panel-points {
+    width: 450px;
+    height: 737px;
+}
 
+.map {
+    display: flex;
+}
+
+.map-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.map-container p {
+    margin-bottom: 0px;
+}
+
+.point:hover {
+    background-color: #5A67D8;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.point {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 250px;
+    padding-bottom: 25px;
+    cursor: pointer;
+}
+
+.footer-point {
+    display: flex;
+    align-items: baseline;
+    width: 150px;
+    margin: 0 auto;
+}
