@@ -45,6 +45,13 @@ namespace OrderService.Repository
             return userPoints;
         }
 
+        public async Task<UserPoints?> GetByUserIdAndPointsId(int userId, int pointsId)
+        {
+            return await _orderContext.UserPoints
+                            .Where(us => us.UserId == userId && us.PointsId == pointsId)
+                            .FirstOrDefaultAsync();
+        }
+
         public async Task Update(int id, UserPoints userPoints)
         {
             UserPoints? currentUserPoints = await GetById(id);

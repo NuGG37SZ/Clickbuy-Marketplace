@@ -9,6 +9,8 @@ namespace OrderService.Repository
         Task<UserPoints?> GetById(int id);
 
         Task<List<UserPoints>> GetByUserId(int userId);
+
+        Task<UserPoints?> GetByUserIdAndPointsId(int userId, int pointsId); 
         
         Task Create(UserPoints userPoints);
 

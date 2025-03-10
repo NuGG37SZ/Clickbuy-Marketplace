@@ -29,6 +29,16 @@ namespace OrderService.Service
                      .ToList();
         }
 
+        public async Task<PointsDTO?> GetByAddress(string address)
+        {
+            Points? points = await _pointsRepository.GetByAddress(address);
+
+            if(points != null)
+                return PointsMapper.MapPointsToPointsDTO(points);
+
+            return null;
+        }
+
         public async Task<PointsDTO?> GetById(int id)
         {
             Points? points = await _pointsRepository.GetById(id);

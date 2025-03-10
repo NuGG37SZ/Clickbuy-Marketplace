@@ -32,6 +32,13 @@ namespace OrderService.Repository
             return await _orderContext.Points.ToListAsync();
         }
 
+        public async Task<Points?> GetByAddress(string address)
+        {
+            return await _orderContext.Points
+                            .Where(p => p.Address == address)
+                            .FirstOrDefaultAsync();
+        }
+
         public async Task<Points?> GetById(int id)
         {
             return await _orderContext.Points.FindAsync(id);

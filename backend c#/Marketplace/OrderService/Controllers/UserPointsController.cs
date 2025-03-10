@@ -37,6 +37,18 @@ namespace OrderService.Controllers
             return Ok(await _userPointsService.GetByUserId(userId));
         }
 
+        [HttpGet]
+        [Route("getByUserIdAndPointsId/{userId}/{pointId}")]
+        public async Task<IActionResult> GetByUserIdAndPointsId(int userId, int pointId)
+        {
+            UserPointsDTO? userPointsDTO = await _userPointsService.GetByUserIdAndPointsId(userId, pointId);
+
+            if(userPointsDTO != null)
+                return Ok(userPointsDTO);
+
+            return Ok(new UserPointsDTO());
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] UserPointsDTO userPointsDTO)

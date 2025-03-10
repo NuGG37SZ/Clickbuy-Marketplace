@@ -1324,3 +1324,36 @@ input.card-cvv {
     width: 150px;
     margin: 0 auto;
 }
+
+.add-point-redirect {
+    margin-top: 30px;
+}
+
+.add-point-redirect a {
+    text-decoration: none;
+    color: black;
+}
+
+.add-point-redirect a:hover {
+    color: #5A67D8;
+}
+
+.redirect-mainpage {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    background-color: #666;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.redirect-mainpage:hover {
+    background-color: #5A67D8;
+}
+
+.left-panel-points {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 790px;
+}

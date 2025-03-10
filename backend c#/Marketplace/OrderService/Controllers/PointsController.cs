@@ -30,6 +30,18 @@ namespace OrderService.Controllers
             return Ok(pointsDTO);
         }
 
+        [HttpGet]
+        [Route("getByAddress/{address}")]
+        public async Task<IActionResult> GetByAddress(string address)
+        {
+            PointsDTO? pointsDTO = await _pointsService.GetByAddress(address);
+
+            if(pointsDTO == null)
+                return NotFound("Points Not Found.");
+
+            return Ok(pointsDTO);
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] PointsDTO pointsDTO)

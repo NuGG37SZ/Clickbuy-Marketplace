@@ -8,6 +8,8 @@ namespace OrderService.Service
 
         Task<UserPointsDTO?> GetById(int id);
 
+        Task<UserPointsDTO?> GetByUserIdAndPointsId(int userId, int pointsId);
+
         Task<List<UserPointsDTO>> GetByUserId(int userId);
 
         Task Create(UserPointsDTO userPointsDTO);

@@ -8,6 +8,8 @@ namespace OrderService.Service
 
         Task<PointsDTO?> GetById(int id);
 
+        Task<PointsDTO?> GetByAddress(string address);
+
         Task Create(PointsDTO pointsDTO);
 
         Task Update(int id, PointsDTO pointsDTO);

@@ -201,6 +201,22 @@
   },
   {
     "ContainingType": "OrderService.Controllers.PointsController",
+    "Method": "GetByAddress",
+    "RelativePath": "api/v1/points/getByAddress/{address}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "address",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrderService.Controllers.PointsController",
     "Method": "GetById",
     "RelativePath": "api/v1/points/getById/{id}",
     "HttpMethod": "GET",
@@ -304,6 +320,27 @@
     "Parameters": [
       {
         "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrderService.Controllers.UserPointsController",
+    "Method": "GetByUserIdAndPointsId",
+    "RelativePath": "api/v1/userPoints/getByUserIdAndPointsId/{userId}/{pointId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pointId",
         "Type": "System.Int32",
         "IsRequired": true
       }

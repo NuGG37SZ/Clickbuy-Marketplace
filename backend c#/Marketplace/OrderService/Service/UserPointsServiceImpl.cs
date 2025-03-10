@@ -50,6 +50,16 @@ namespace OrderService.Service
                       .ToList();
         }
 
+        public async Task<UserPointsDTO?> GetByUserIdAndPointsId(int userId, int pointsId)
+        {
+            UserPoints? userPoint = await _userPointsRepository.GetByUserIdAndPointsId(userId, pointsId);
+
+            if (userPoint != null)
+                return UserPointsMapper.MapUserPointsToUserPointsDTO(userPoint);
+
+            return null;
+        }
+
         public async Task Update(int id, UserPointsDTO userPointsDTO)
         {
             UserPointsDTO? currentUserPoints = await GetById(id);
