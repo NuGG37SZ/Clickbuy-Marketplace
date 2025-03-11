@@ -9,8 +9,10 @@ namespace OrderService.Mapper
         {
             OrderProductDTO orderProductDTO = new OrderProductDTO();
             orderProductDTO.Id = orderProduct.Id;
-            orderProductDTO.CartId = orderProduct.CartId;
             orderProductDTO.OrderId = orderProduct.OrderId;
+            orderProductDTO.ProductId = orderProduct.ProductId;
+            orderProductDTO.ProductSizesId = orderProduct.ProductSizesId;
+            orderProductDTO.Count = orderProduct.Count;
             return orderProductDTO;
         }
 
@@ -18,7 +20,9 @@ namespace OrderService.Mapper
         {
             OrderProduct orderProduct = new OrderProduct();
             orderProduct.OrderId = orderProductDTO.OrderId;
-            orderProduct.CartId = orderProductDTO.CartId;
+            orderProduct.ProductId = orderProductDTO.ProductId;
+            orderProduct.ProductSizesId = orderProductDTO.ProductSizesId;
+            orderProduct.Count = orderProductDTO.Count;
             return orderProduct;
         }
     }

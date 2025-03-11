@@ -27,6 +27,12 @@ namespace CartService.Repository
             }
         }
 
+        public async Task DeleteRange(List<Cart> carts)
+        {
+            _cartContext.Carts.RemoveRange(carts);
+            await _cartContext.SaveChangesAsync();
+        }
+
         public async Task<List<Cart>> GetAll()
         {
             return await _cartContext.Carts.ToListAsync();

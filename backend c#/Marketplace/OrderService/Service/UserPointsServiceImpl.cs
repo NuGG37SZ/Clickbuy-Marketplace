@@ -41,6 +41,16 @@ namespace OrderService.Service
             return null;
         }
 
+        public async Task<UserPointsDTO?> GetByIsActive(bool isActive)
+        {
+            UserPoints? userPoints = await _userPointsRepository.GetByIsActive(isActive);
+
+            if (userPoints != null)
+                return UserPointsMapper.MapUserPointsToUserPointsDTO(userPoints);
+
+            return null;
+        }
+
         public async Task<List<UserPointsDTO>> GetByUserId(int userId)
         {
             List<UserPoints> userPoints = await _userPointsRepository.GetByUserId(userId);

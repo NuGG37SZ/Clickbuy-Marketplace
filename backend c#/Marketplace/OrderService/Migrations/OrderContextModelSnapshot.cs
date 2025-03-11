@@ -47,10 +47,16 @@ namespace OrderService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CartId")
+                    b.Property<int>("Count")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("OrderId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductSizesId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -91,6 +97,12 @@ namespace OrderService.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PointsId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("UserPoints");
                 });

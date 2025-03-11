@@ -37,6 +37,13 @@ namespace OrderService.Repository
             return await _orderContext.UserPoints.FindAsync(id); 
         }
 
+        public async Task<UserPoints?> GetByIsActive(bool isActive)
+        {
+            return await _orderContext.UserPoints
+                            .Where(up => up.IsActive == isActive)
+                            .FirstOrDefaultAsync();
+        }
+
         public async Task<List<UserPoints>> GetByUserId(int userId)
         {
             List<UserPoints> userPoints = await _orderContext.UserPoints

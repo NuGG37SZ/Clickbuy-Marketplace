@@ -12,6 +12,8 @@ namespace OrderService.Service
 
         Task<List<UserPointsDTO>> GetByUserId(int userId);
 
+        Task<UserPointsDTO?> GetByIsActive(bool isActive);
+
         Task Create(UserPointsDTO userPointsDTO);
 
         Task Update(int id, UserPointsDTO userPointsDTO);

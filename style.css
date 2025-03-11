@@ -1242,7 +1242,7 @@ input.card-cvv {
 }
 
 .up-panel {
-    height: 35px;
+    height: 40px;
 }
 
 .items-up-panel {
@@ -1409,4 +1409,25 @@ input.card-cvv {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+#address-point-btn:hover {
+    color: #5A67D8;
+}
+
+.thanks-payment {
+    width: 300px;
+    margin: 200px auto;
+    background: rgba(251, 249, 249, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+    border-radius: 10px;
+    border: 1px solid transparent;
+    height: 300px;
+    padding: 15px;
+}
+
+.thanks-payment p {
+    text-align: center;
 }

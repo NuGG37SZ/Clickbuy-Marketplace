@@ -30,6 +30,13 @@ namespace OrderService.Controllers
             return Ok(orderDTO);
         }
 
+        [HttpGet]
+        [Route("getByUserId/{userId}")]
+        public async Task<IActionResult> GetByUserId(int userId)
+        {
+            return Ok(await _orderService.GetByUserId(userId));
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] OrderDTO orderDTO)

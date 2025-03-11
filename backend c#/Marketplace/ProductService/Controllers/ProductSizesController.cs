@@ -94,5 +94,19 @@ namespace ProductService.Controllers
             await _productSizesService.Update(productId, productSizes);
             return Ok(productSizes);
         }
+
+        [HttpPut]
+        [Route("updateById/{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] ProductSizesDTO productSizesDTO)
+        {
+            ProductSizesDTO? currentProductSizesDTO = await _productSizesService.GetById(id);
+
+            if( currentProductSizesDTO == null)
+                return NotFound("ProductSizes Not Found.");
+
+            await _productSizesService.Update(id, productSizesDTO);
+            return Ok(productSizesDTO);
+        }
     }
 }
+

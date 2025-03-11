@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OrderService.Client;
 using OrderService.DTO;
 using OrderService.Service;
 
@@ -11,17 +10,8 @@ namespace OrderService.Controllers
     {
         private readonly IOrderProductService _orderProductService;
 
-        private readonly CartClient _cartClient;
-
-        private readonly IOrderService _orderService;
-
-        public OrderProductController(IOrderProductService orderProductService, 
-            CartClient cartClient, IOrderService orderService)
-        {
+        public OrderProductController(IOrderProductService orderProductService) => 
             _orderProductService = orderProductService;
-            _cartClient = cartClient;
-            _orderService = orderService;
-        }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -41,20 +31,17 @@ namespace OrderService.Controllers
             return Ok(orderProductDTO);
         }
 
+        [HttpGet]
+        [Route("getByOrderId/{orderId}")]
+        public async Task<IActionResult> GetByOrderId(int orderId)
+        {
+            return Ok(await _orderProductService.GetByOrderId(orderId));
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] OrderProductDTO orderProductDTO)
         {
-            CartDTO? cartDTO = await _cartClient.GetCartById(orderProductDTO.CartId);
-            OrderDTO orderDTO = await _orderService.GetById(orderProductDTO.OrderId);
-
-            if (cartDTO == null && orderDTO == null)
-                return NotFound("Cart and Order Not Found.");
-            else if (cartDTO == null)
-                return NotFound("Cart Not Found.");
-            else if(orderDTO == null)
-                return NotFound("Order Not Found.");
-
             await _orderProductService.Create(orderProductDTO);
             return Created("create", orderProductDTO);
         }
@@ -63,17 +50,9 @@ namespace OrderService.Controllers
         [Route("update/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] OrderProductDTO orderProductDTO)
         {
-            CartDTO? cartDTO = await _cartClient.GetCartById(orderProductDTO.CartId);
-            OrderDTO orderDTO = await _orderService.GetById(orderProductDTO.OrderId);
             OrderProductDTO? currentOrderProduct = await _orderProductService.GetById(id);
 
-            if (cartDTO == null && orderDTO == null && currentOrderProduct == null)
-                return NotFound("Cart, Order, OrderProduct Not Found.");
-            else if (cartDTO == null)
-                return NotFound("Cart Not Found.");
-            else if (orderDTO == null)
-                return NotFound("Order Not Found.");
-            else if (currentOrderProduct == null)
+            if (currentOrderProduct == null)
                 return NotFound("OrderProduct Not Found.");
 
             await _orderProductService.Update(id, orderProductDTO);

@@ -17,5 +17,7 @@ namespace ProductService.Service
         Task DeleteById(int id);
 
         Task Update(int productId, List<ProductSizesDTO> newProductsSizes);
+
+        Task Update(int id, ProductSizesDTO productSizesDTO);
     }
 }

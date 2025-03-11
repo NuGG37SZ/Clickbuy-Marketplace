@@ -24,6 +24,14 @@ namespace CartService.Service
                 await _cartRepository.DeleteById(id);
         }
 
+        public async Task DeleteRange(List<CartDTO> cartDTOs)
+        {
+            List<Cart> carts = cartDTOs
+                    .Select(CartMapper.MapCartDTOToCart)
+                    .ToList();
+            await _cartRepository.DeleteRange(carts);
+        }
+
         public async Task<List<CartDTO>> GetAll()
         {
             List<Cart> carts = await _cartRepository.GetAll();

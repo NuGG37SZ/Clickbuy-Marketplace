@@ -40,6 +40,15 @@ namespace OrderService.Service
             return null;
         }
 
+        public async Task<List<OrderDTO>> GetByUserId(int userId)
+        {
+             List<Order> order = await _orderRepository.GetByUserId(userId);
+
+            return order
+                    .Select(OrderMapper.MapOrderToOrderDTO)
+                    .ToList();
+        }
+
         public async Task Update(int id, OrderDTO orderDTO)
         {
             OrderDTO? currentOrderDTO = await GetById(id);

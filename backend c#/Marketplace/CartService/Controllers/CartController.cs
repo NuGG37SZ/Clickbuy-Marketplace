@@ -6,9 +6,11 @@ namespace CartService.Controllers
 {
     [ApiController]
     [Route("api/v1/carts")]
-    public class CartController(ICartService cartService) : Controller
+    public class CartController : Controller
     {
-        private readonly ICartService _cartService = cartService;
+        private readonly ICartService _cartService;
+
+        public CartController(ICartService cartService) => _cartService = cartService;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -73,6 +75,15 @@ namespace CartService.Controllers
             await _cartService.DeleteById(id);
             return NoContent();
         }
-        
+
+        [HttpDelete]
+        [Route("deleteRange")]
+        public async Task<IActionResult> DeleteRange([FromBody] List<CartDTO> cartDTOs)
+        {
+            await _cartService.DeleteRange(cartDTOs);
+            return NoContent();
+        }
+
+
     }
 }

@@ -16,6 +16,7 @@ const cardLogo = document.getElementById("card-logo");
 cardLogo.style.display = "none";
 
 insertAllProductForCurrentUser();
+generateQrCode();
 
 function insertTableProductPayment(product, seller, productSize, countProduct) {
   return `
@@ -35,6 +36,41 @@ function insertTableProductPayment(product, seller, productSize, countProduct) {
 async function getRequest(url) {
     const response = await fetch(url);
     return await response.json();
+}
+
+async function postRequest(url, obj) {
+    const response = await fetch(url, { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(obj)
+    });
+    let result = await response.status;
+    return result;
+}
+
+async function putRequest(url, obj) {
+    const response = await fetch(url, { 
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(obj)
+    });
+    let result = await response.status;
+    return result;
+}
+
+async function deleteRequest(url) {
+    const response = await fetch(url, { 
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        }
+    });
+    let result = await response.status;
+    return result;
 }
 
 async function getAllCartByCurrentUser() {
@@ -57,6 +93,21 @@ async function getProductSizesById(id) {
     return productSizes;  
 }
 
+async function getAllOrdersByUserId(userId) {
+    const orderList = await getRequest(`https://localhost:7049/api/v1/orders/getByUserId/${userId}`);
+    return orderList;
+}
+
+async function getAllOrderProductByOrderId(orderId) {
+    const orderProductList = await getRequest(`https://localhost:7049/api/v1/orderProduct/getByOrderId/${orderId}`);
+    return orderProductList;
+}
+
+async function getProductSizesById(id) {
+    const productSizes = await getRequest(`https://localhost:58841/api/v1/productSizes/getById/${id}`);
+    return productSizes;
+}
+
 async function insertAllProductForCurrentUser() {
     let sum = 0;
     const listCart = await getAllCartByCurrentUser();
@@ -77,9 +128,62 @@ continuePaymentBtn.addEventListener('click', () => {
     paymentMethodsDiv.style.display = 'block';
 }) 
 
-payBtn.addEventListener('click', () => {
-    location.href = 'index.html';
+payBtn.addEventListener('click', async () => {
+    let now = new Date();
+    let dateStr = formatDate(now);
+    let dateObj = parseDateFromString(dateStr);
+
+    let orderCreateModel = {
+        userId: parseInt(currentUserId),
+        createOrder: dateObj,
+        updateOrder: dateObj,
+        status: "В сборке"
+    }
+    let code = await postRequest(`https://localhost:7049/api/v1/orders/create`, orderCreateModel);
+
+    if (code === 201) {
+        let orderListByCurrentUser = await getAllOrdersByUserId(currentUserId);
+        const listCart = await getAllCartByCurrentUser();
+
+        for (const currentOrder of orderListByCurrentUser) {
+            let orderProductListByCurrentOrder = await getAllOrderProductByOrderId(currentOrder.id);
+
+            if (orderProductListByCurrentOrder.length === 0) {
+               
+                for (const cart of listCart) {
+                    let orderProductCreateModel = {
+                        orderId: currentOrder.id,
+                        productId: cart.productId,
+                        productSizesId: cart.productSizesId,
+                        count: cart.count
+                    };
+                    await postRequest(`https://localhost:7049/api/v1/orderProduct/create`, orderProductCreateModel);
+                    let productSizes = await getProductSizesById(cart.productSizesId);
+                    productSizes.count -= orderProductCreateModel.count;
+                    await putRequest(`https://localhost:58841/api/v1/productSizes/updateById/${productSizes.id}`, productSizes);
+                    await deleteRequest(`https://localhost:7073/api/v1/carts/delete/${cart.id}`);
+                }
+            }
+        }
+    }
+    location.href = 'check.html';
 })
+
+function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return `${day}.${month}.${year} ${hours}:${minutes}`;
+}
+
+function parseDateFromString(dateString) {
+    const [datePart, timePart] = dateString.split(' ');
+    const [day, month, year] = datePart.split('.');
+    const [hours, minutes] = timePart.split(':');
+    return new Date(year, month - 1, day, hours, minutes);
+}
 
 paymentDetails.style.display = 'none';
 cardDetails.style.display = 'none';
@@ -108,6 +212,16 @@ paymentMethods.forEach(method => {
         }
     });
 });
+
+function generateQrCode() {
+    const url = "check.html";
+
+    new QRCode(document.getElementById("qrcode"), {
+        text: url,
+        width: 200, 
+        height: 200
+    });   
+}
 
 cardCVVInput.addEventListener("input", (e) => {
     cardCVVInput.value = "*".repeat(cardCVVInput.value.length);

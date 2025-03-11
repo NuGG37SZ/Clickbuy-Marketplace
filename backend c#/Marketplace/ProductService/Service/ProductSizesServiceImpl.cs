@@ -58,5 +58,16 @@ namespace ProductService.Service
 
             await _productSizesRepository.Update(productId, productSizes);
         }
+
+        public async Task Update(int id, ProductSizesDTO productSizesDTO)
+        {
+            ProductSizesDTO? currentProductSizes = await GetById(id);
+
+            if (currentProductSizes != null)
+            {
+                await _productSizesRepository.Update(id, 
+                    ProductSizesMapper.MapProductSizesDTOToProductSizes(productSizesDTO));
+            }
+        }
     }
 }

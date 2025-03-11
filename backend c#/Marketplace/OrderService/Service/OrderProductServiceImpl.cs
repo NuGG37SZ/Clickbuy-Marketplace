@@ -43,6 +43,15 @@ namespace OrderService.Service
             return null;
         }
 
+        public async Task<List<OrderProductDTO>> GetByOrderId(int orderId)
+        {
+            List<OrderProduct> orderProducts = await _orderProductRepository.GetByOrderId(orderId);
+
+            return orderProducts
+                    .Select(OrderProductMapper .MapOrderProductToOrderProductDTO)
+                    .ToList();
+        }
+
         public async Task Update(int id, OrderProductDTO orderProductDTO)
         {
             OrderProductDTO? currentProductDTO = await GetById(id);

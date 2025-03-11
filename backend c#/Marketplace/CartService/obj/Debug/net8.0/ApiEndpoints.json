@@ -43,6 +43,22 @@
   },
   {
     "ContainingType": "CartService.Controllers.CartController",
+    "Method": "DeleteRange",
+    "RelativePath": "api/v1/carts/deleteRange",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartDTOs",
+        "Type": "System.Collections.Generic.List\u00601[[CartService.DTO.CartDTO, CartService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CartService.Controllers.CartController",
     "Method": "GetById",
     "RelativePath": "api/v1/carts/getById/{id}",
     "HttpMethod": "GET",

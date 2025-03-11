@@ -49,6 +49,18 @@ namespace OrderService.Controllers
             return Ok(new UserPointsDTO());
         }
 
+        [HttpGet]
+        [Route("getByIsActive/{isActive}")]
+        public async Task<IActionResult> GetByIsActive(bool isActive)
+        {
+            UserPointsDTO? userPointsDTO = await _userPointsService.GetByIsActive(isActive);
+
+            if(userPointsDTO != null) 
+                return Ok(userPointsDTO);
+
+            return Ok(new UserPointsDTO());
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] UserPointsDTO userPointsDTO)

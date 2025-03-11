@@ -6,6 +6,10 @@
 
         public int OrderId { get; set; }
 
-        public int CartId { get; set; }
+        public int ProductId { get; set; }
+
+        public int ProductSizesId { get; set; }
+
+        public int Count { get; set; }
     }
 }

@@ -11,6 +11,8 @@ namespace OrderService.Repository
         Task<List<UserPoints>> GetByUserId(int userId);
 
         Task<UserPoints?> GetByUserIdAndPointsId(int userId, int pointsId); 
+
+        Task<UserPoints?> GetByIsActive(bool isActive);
         
         Task Create(UserPoints userPoints);
 

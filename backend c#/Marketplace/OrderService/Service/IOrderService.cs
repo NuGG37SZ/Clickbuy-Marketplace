@@ -8,6 +8,8 @@ namespace OrderService.Service
 
         Task<OrderDTO> GetById(int id);
 
+        Task<List<OrderDTO>> GetByUserId(int userId);
+
         Task Create(OrderDTO orderDTO);
 
         Task Update(int id, OrderDTO orderDTO);

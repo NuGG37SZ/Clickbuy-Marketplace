@@ -65,5 +65,19 @@ namespace ProductService.Repository
             _productContext.ProductSizes.UpdateRange(productSizesList);
             await _productContext.SaveChangesAsync();
         }
+
+        public async Task Update(int id, ProductSizes productSizes)
+        {
+            ProductSizes? currentProductSizes = await GetById(id);
+
+            if (currentProductSizes != null)
+            {
+                currentProductSizes.ProductId = productSizes.ProductId;
+                currentProductSizes.Size = productSizes.Size;
+                currentProductSizes.Count = productSizes.Count;
+                _productContext.Update(currentProductSizes);
+                await _productContext.SaveChangesAsync();
+            }
+        }
     }
 }

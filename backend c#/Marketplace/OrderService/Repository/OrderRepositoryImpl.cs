@@ -41,6 +41,13 @@ namespace OrderService.Repository
             return null;
         }
 
+        public async Task<List<Order>> GetByUserId(int userId)
+        {
+            return await _orderContext.Orders
+                            .Where(o => o.UserId == userId)
+                            .ToListAsync();
+        }
+
         public async Task Update(int id, Order order)
         {
             Order? currentOrder = await GetById(id);

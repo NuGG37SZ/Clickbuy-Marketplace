@@ -15,5 +15,7 @@ namespace CartService.Repository
         Task Update(int id, Cart cart);
 
         Task DeleteById(int id);
+
+        Task DeleteRange(List<Cart> carts);
     }
 }

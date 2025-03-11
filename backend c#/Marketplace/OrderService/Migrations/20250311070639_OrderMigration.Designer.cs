@@ -11,31 +11,14 @@ using OrderService.Db;
 namespace OrderService.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20250310061555_orderMigrationV2")]
-    partial class orderMigrationV2
+    [Migration("20250311070639_OrderMigration")]
+    partial class OrderMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
-
-            modelBuilder.Entity("OrderService.Entity.ActiveUserPoint", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("PointsId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ActiveUserPoint");
-                });
 
             modelBuilder.Entity("OrderService.Entity.Order", b =>
                 {
@@ -67,10 +50,16 @@ namespace OrderService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CartId")
+                    b.Property<int>("Count")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("OrderId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductSizesId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -101,6 +90,9 @@ namespace OrderService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("PointsId")
                         .HasColumnType("INTEGER");
 
@@ -108,6 +100,12 @@ namespace OrderService.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PointsId")
+                        .IsUnique();
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("UserPoints");
                 });

@@ -15,5 +15,7 @@ namespace CartService.Service
         Task Update(int id, CartDTO cartDTO);
 
         Task DeleteById(int id);
+
+        Task DeleteRange(List<CartDTO> cartDTOs);
     }
 }

@@ -9,10 +9,14 @@ namespace OrderService.Entity
         [Required]
         public int OrderId { get; set; }
 
-        [Required]
-        public int CartId { get; set; }
-
         public Order? Order { get; set; }
 
+        [Required]
+        public int ProductId { get; set; }
+
+        [Required]
+        public int ProductSizesId { get; set; }
+
+        public int Count { get; set; }
     }
 }
