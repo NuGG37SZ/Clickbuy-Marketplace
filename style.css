@@ -1431,3 +1431,9 @@ input.card-cvv {
 .thanks-payment p {
     text-align: center;
 }
+
+.radio-point {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

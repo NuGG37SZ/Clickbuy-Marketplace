@@ -21,7 +21,7 @@ function getAllProductCartOnCurrentUser() {
                     let userLogin = await getUserLoginByProduct(currentProduct);
                     let size = await getProductSizesSizeByCart(cart);
                     let count = cart.count;
-                    cartContainer.insertAdjacentHTML('beforeend' ,insertCardProduct(currentProduct, userLogin, size, count))
+                    cartContainer.insertAdjacentHTML('beforeend', insertCardProduct(currentProduct, userLogin, size, count))
                     
                     sum += currentProduct.price * count;
                     countInOrder += count;

@@ -10,7 +10,17 @@ function insertRadioPoint(address) {
     return `
         <div class="radio-point">
             <input class="form-check-input" type="radio" name="flexRadioDefault">
-            <label class="form-check-label">${address}</label> 
+            <label class="form-check-label">${address}</label>
+            <div class="dropdown">
+                <a class="btn" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="#" id="delete-point">Удалить</a></li>
+                    <li><a class="dropdown-item" href="point.html">Показать на карте</a></li>
+                </ul>
+            </div>
         </div>
     `
 }
@@ -27,6 +37,17 @@ async function putRequest(url, obj) {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(obj)
+    });
+    let result = await response.status;
+    return result;
+}
+
+async function deleteRequest(url) {
+    const response = await fetch(url, { 
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        }
     });
     let result = await response.status;
     return result;
@@ -70,6 +91,23 @@ pickUpPoints.addEventListener('click', async (event) => {
     if(event.target.closest('.radio-point')) {
         let pointAddress = event.target.closest('.radio-point').children[1].textContent;
         point = await getPointByAddress(pointAddress);
+    }
+
+    if(event.target.closest('#delete-point')) {
+        let currentBtn = event.target.closest('#delete-point');
+        let currentPointDiv = currentBtn.parentNode.parentNode.parentNode.parentNode;
+        let addressPoint = currentPointDiv.children[1].textContent;
+        
+        let point = await getPointByAddress(addressPoint);
+        let userPoint = await getUserPointByUserIdAndPointId(parseInt(userId), point.id);
+
+        let confirmWindow = confirm('Вы точно хотите удалить текущий пункт выдачи?');
+        if(confirmWindow) {
+            let code = await deleteRequest(`https://localhost:7049/api/v1/userPoints/delete/${userPoint.id}`);
+            if(code == 204) {
+                alert('Вы удалили пункт выдачи!');
+            }
+        }
     }
 })
 
