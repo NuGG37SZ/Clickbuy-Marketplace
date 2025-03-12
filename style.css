@@ -1446,31 +1446,30 @@ input.card-cvv {
     align-items: center;
 }
 
-.all-order-seller {
-    width: 500px;
-    display: none;
+.accordion-body a {
+    text-decoration: none;
+    color: #333;
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease;
 }
 
-.filter-orders {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 170px;
+.accordion-body a:hover {
+    color: #007bff;
 }
-
-.filter-orders input {
+/* glow effect */
+.accordion-body a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    height: 2px;
+    background-color: #007bff;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
-.order-seller {
-    margin-top: 25px;
-}
-
-.card-right-panel {
-    cursor: pointer;
-}
-
-.card-right-panel:hover {
-    color: #5A67D8;
-    transform: scale(1.05);
+.accordion-body a:hover::after {
+    transform: scaleX(1);
 }
