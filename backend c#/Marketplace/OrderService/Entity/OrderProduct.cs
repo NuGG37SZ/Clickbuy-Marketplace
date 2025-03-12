@@ -15,6 +15,9 @@ namespace OrderService.Entity
         public int ProductId { get; set; }
 
         [Required]
+        public int UserId { get; set; }
+
+        [Required]
         public int ProductSizesId { get; set; }
 
         public int Count { get; set; }

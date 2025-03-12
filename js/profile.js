@@ -1,9 +1,19 @@
 const loginUserProfile = document.getElementById('user-login');
 const panelRoles = document.querySelector('.panels-roles');
+const delivery = document.querySelector('.delivery');
+const countFavorite = document.getElementById('count-goods');
+const rightPanel = document.querySelectorAll('.card-right-panel');
+const favoriteDiv = rightPanel[0];
 let userId = localStorage.getItem('userId');
 
-document.addEventListener("DOMContentLoaded", ()  => {
+document.addEventListener("DOMContentLoaded", async ()  => {
     checkAuthUser();
+    insertDelivery();
+    countFavorite.textContent = `${await getCountFavorites()}`;
+})
+
+favoriteDiv.addEventListener('click', () => {
+    location.href = 'favorite.html';
 })
 
 function checkAuthUser() {
@@ -39,3 +49,70 @@ function hideElementForRoleUser(role) {
             break;
     }
 }
+
+function insertDeliveryCard(order, product, date) {
+    return `
+        <div class="delivery-card">
+            <img src="${product.imageUrl}" width="150px" height="140px" style="margin-top: 5px">
+            <div class="title-price-delivery">
+                <p style="font-size: 20px" id="status-delivery"><b>Заказ №${order.id}</b></p>
+                <p style="font-size: 20px" id="status-delivery">${order.status}</p>
+                <p style="font-size: 16px" id="date-delivery">Приедет ${date}</p>
+            </div>
+        </div>   
+    `
+}
+
+async function getRequest(url) {
+    const response = await fetch(url);
+    return await response.json();
+}
+
+async function getOrderListByUserId(userId) {
+    const orderList = await getRequest(`https://localhost:7049/api/v1/orders/getByUserId/${userId}`);
+    return orderList;  
+}
+
+async function getOrderProductListByOrderId(orderId) {
+    const orderProductList = await getRequest(`https://localhost:7049/api/v1/orderProduct/getByOrderId/${orderId}`);
+    return orderProductList;  
+}
+
+async function getProductById(id) {
+    const product = await getRequest(`https://localhost:58841/api/v1/products/getById/${id}`);
+    return product;  
+}
+
+async function getFavoriteListByUserId(userId) {
+    const favorites = await getRequest(`https://localhost:7073/api/v1/favorites/getByUserId/${userId}`);
+    return favorites;  
+}
+
+async function insertDelivery() {
+    let orderList = await getOrderListByUserId(parseInt(userId));
+    
+    for (const order of orderList) {
+        if(order.status != 'Отменен' || order.status != 'Получен') {
+            let orderProductList = await getOrderProductListByOrderId(order.id);
+            let orderProduct = orderProductList[0];
+            let date = getDate(order.createOrder, 11);
+            let product = await getProductById(orderProduct.productId);
+            delivery.insertAdjacentHTML('beforeend', insertDeliveryCard(order, product, date));
+        }
+    }
+} 
+
+function getDate(dateStr, days) {
+    const dateFirst = moment(dateStr, "YYYY-MM-DD HH:mm:ss");
+    dateFirst.add(days, 'days');
+    return dateFirst.format('DD.MM.YYYY');
+}
+
+async function getCountFavorites() {
+    const favoriteList = await getFavoriteListByUserId(parseInt(userId));
+    const count = favoriteList.length;
+    return count;
+}
+
+
+

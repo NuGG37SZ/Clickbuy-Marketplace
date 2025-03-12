@@ -83,7 +83,7 @@ pointsContainer.addEventListener('click', async (event) => {
             let address = currentPoint.querySelector('.address-point').textContent;
             let point = await getPointByAddress(address);
 
-            let userPoint = await getUserPointByUserIdAndPointId(userId, point.id);
+            let userPoint = await getUserPointByUserIdAndPointId(parseInt(userId), point.id);
 
             if(userPoint.userId != 0 && userPoint.pointsId != 0) {
                 alert('У вас же есть этот пункт выдачи!');
@@ -91,10 +91,10 @@ pointsContainer.addEventListener('click', async (event) => {
             } 
             
             let userPointCreateModel = {
-                userId: userId,
+                userId: parseInt(userId),
                 pointsId: point.id,
                 isActive: false
-            }
+            };
 
             let code = await postRequest(`https://localhost:7049/api/v1/userPoints/create`, userPointCreateModel);
 

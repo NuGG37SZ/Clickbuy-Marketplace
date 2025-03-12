@@ -13,6 +13,7 @@ namespace OrderService.Mapper
             orderProductDTO.ProductId = orderProduct.ProductId;
             orderProductDTO.ProductSizesId = orderProduct.ProductSizesId;
             orderProductDTO.Count = orderProduct.Count;
+            orderProductDTO.UserId = orderProduct.UserId;
             return orderProductDTO;
         }
 
@@ -23,6 +24,7 @@ namespace OrderService.Mapper
             orderProduct.ProductId = orderProductDTO.ProductId;
             orderProduct.ProductSizesId = orderProductDTO.ProductSizesId;
             orderProduct.Count = orderProductDTO.Count;
+            orderProduct.UserId = orderProductDTO.UserId;
             return orderProduct;
         }
     }

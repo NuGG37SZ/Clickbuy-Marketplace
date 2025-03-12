@@ -1,5 +1,7 @@
 const addUpdProductBtn = document.getElementById('add-upd-productBtn');
 const listProductBtn = document.getElementById('list-productBtn');
+const listOrderBtn = document.getElementById('list-ordersBtn');
+const allOrderSellerDiv = document.querySelector('.all-order-seller');
 const formAddUpdProduct = document.getElementById('create-update-product');
 const allProductsDiv = document.querySelector('.all-product-seller');
 const createBtnForm = document.getElementById('create-product');
@@ -10,30 +12,39 @@ const categorySelect = document.getElementById('category');
 let subcategorySelect = document.getElementById('subcategory');
 const productSellerDiv = document.querySelector('.products-seller');
 const deleteProductBtn = document.getElementById('delete-product');
+const orderSellerDiv = document.querySelector('.orders-seller');
+const userId = localStorage.getItem('userId');
 
 document.addEventListener('DOMContentLoaded', () => {
     fillProductsSelect();
     fillBrandSelect();
     fillCategoriesSelect();
+    startElements();
 })
 
+function startElements() {
+    formAddUpdProduct.style.display = 'block';
+    allProductsDiv.style.display = 'none';
+    allOrderSellerDiv.style.display = 'none';
+}
+
 addUpdProductBtn.addEventListener('click', () => {
-    hideElementsOnClickAddUpdBtn();
+    formAddUpdProduct.style.display = 'block';
+    allProductsDiv.style.display = 'none';
+    allOrderSellerDiv.style.display = 'none';
 })
 
 listProductBtn.addEventListener('click', () => {
-    hideElementsOnClickAllProductsBtn();
-})
-
-function hideElementsOnClickAddUpdBtn() {
-    formAddUpdProduct.style.display = 'block';
-    allProductsDiv.style.display = 'none';
-}
-
-function hideElementsOnClickAllProductsBtn() {
     allProductsDiv.style.display = 'block';
     formAddUpdProduct.style.display = 'none';
-}
+    allOrderSellerDiv.style.display = 'none';
+})
+
+listOrderBtn.addEventListener('click', () => {
+    allOrderSellerDiv.style.display = 'block';
+    allProductsDiv.style.display = 'none';
+    formAddUpdProduct.style.display = 'none';
+})
 
 createBtnForm.addEventListener('click', () => {
     let nameInpt = document.getElementById('name');
@@ -367,9 +378,9 @@ function cardInsertHtml(product) {
 }
 
 function sizeCardInsert(productSizes) {
-    return `<div class="size-card">
-                <p>${productSizes.size}</p>
-            </div>`
+    return `<ul>
+                <li>${productSizes.size} - ${productSizes.count} шт.</li>
+            <ul>`
 }
 
 listProductBtn.addEventListener('click', () => { 
@@ -408,5 +419,117 @@ productSellerDiv.addEventListener('click', (event) => {
     }
 })
 
+function insertOrder(orderId) {
+    return `
+        <div class="order-seller">
+            <p style="font-size: 20px; margin-bottom: 0; font-weight: bold;">Заказ: №${orderId}</p>
 
+            <div class="card-order"> 
 
+            </div>
+
+            <div style="display: flex; justify-content: end;">
+                <button class="btn btn-success" id="confirm-order-btn">Передал в службу доствки</button>
+            </div>
+        </div>
+    `
+}
+
+function insertCardProduct(product, productSizes, count) {
+    return `
+                <div class="card mb-3" style="max-width: 540px; margin-top: 30px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="${product.imageUrl}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text">${product.description}</p>
+                            <p class="card-text" id="price-product">Цена: ${product.price}₽</p>  
+                            <ul>
+                                <li>${productSizes.size} - ${count} шт.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    `
+}
+
+async function getRequest(url) {
+    const response = await fetch(url);
+    return await response.json();
+}
+
+async function getOrderList() {
+    const orderList = await getRequest(`https://localhost:7049/api/v1/orders`);
+    return orderList;  
+}
+
+async function getOrderProductListByOrderId(orderId) {
+    const orderProductList = await getRequest(`https://localhost:7049/api/v1/orderProduct/getByOrderId/${orderId}`);
+    return orderProductList;  
+}
+
+async function getOrderById(id) {
+    const order = await getRequest(`https://localhost:7049/api/v1/orders/getById/${id}`);
+    return order;  
+}
+
+async function getProductById(id) {
+    const product = await getRequest(`https://localhost:58841/api/v1/products/getById/${id}`);
+    return product;  
+}
+
+async function getProductSizesById(id) {
+    const productSizes = await getRequest(`https://localhost:58841/api/v1/productSizes/getById/${id}`);
+    return productSizes;  
+}
+
+async function insertAllOrderProduct() {
+    let orderList = await getOrderList();
+
+    for (const order of orderList) {
+        if(order.status == 'В сборке') {
+            orderSellerDiv.insertAdjacentHTML('beforeend', insertOrder(order.id));
+            let orderProductList = await getOrderProductListByOrderId(order.id);
+    
+            for (const orderProduct of orderProductList) {
+                let cardOrderArray = orderSellerDiv.querySelectorAll('.card-order');
+                let lastOrderCard = cardOrderArray[cardOrderArray.length - 1];
+                let product = await getProductById(orderProduct.productId);
+                let productSizes = await getProductSizesById(orderProduct.productSizesId);
+                lastOrderCard.insertAdjacentHTML('beforeend', insertCardProduct(product, productSizes, orderProduct.count));
+            }
+        }
+    }
+}
+
+listOrderBtn.addEventListener('click', () => {
+    orderSellerDiv.innerHTML = '';
+    insertAllOrderProduct();
+})
+
+orderSellerDiv.addEventListener('click', async (event) => {
+    if(event.target.closest('#confirm-order-btn')) {
+        let ordetTitle = event.target.closest('#confirm-order-btn').parentNode.parentNode.children[0];
+        let orderTitleStr = ordetTitle.textContent;
+        let orderId = parseInt(orderTitleStr.replace(/\D+/g, ''));
+        let order = await getOrderById(orderId);
+        let now = new Date();
+
+        let orderUpdateModel = {
+            userId: order.userId,
+            pointId: order.pointId,
+            createOrder: order.createOrder,
+            updateOrder: now,
+            status: "Собрано и передано в службу доставки"
+        }
+
+        let code = await putRequest(`https://localhost:7049/api/v1/orders/update/${order.id}`, orderUpdateModel);
+
+        if(code == 200) {
+            alert('Вы успешно изменили статус заказа!');
+        }
+    }
+})

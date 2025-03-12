@@ -12,7 +12,7 @@ namespace OrderService.Repository
 
         Task<UserPoints?> GetByUserIdAndPointsId(int userId, int pointsId); 
 
-        Task<UserPoints?> GetByIsActive(bool isActive);
+        Task<UserPoints?> GetByIsActiveAndUserId(bool isActive, int userId);
         
         Task Create(UserPoints userPoints);
 

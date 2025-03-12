@@ -13,6 +13,7 @@ namespace OrderService.Mapper
             orderDTO.UpdateOrder = order.UpdateOrder;
             orderDTO.UserId = order.UserId;
             orderDTO.Status = order.Status;
+            orderDTO.PointId = order.PointId;
             return orderDTO;
         }
 
@@ -23,6 +24,7 @@ namespace OrderService.Mapper
             order.UpdateOrder = orderDTO.UpdateOrder;
             order.UserId = orderDTO.UserId;
             order.Status = orderDTO.Status;
+            order.PointId = orderDTO.PointId;
             return order;
         }
     }

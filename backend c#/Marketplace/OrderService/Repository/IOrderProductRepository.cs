@@ -10,6 +10,8 @@ namespace OrderService.Repository
 
         Task<List<OrderProduct>> GetByOrderId (int orderId);
 
+        Task<List<OrderProduct>> GetByUserId(int userId);
+
         Task Create(OrderProduct orderProduct);  
 
         Task Update(int id, OrderProduct orderProduct);

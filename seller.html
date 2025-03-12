@@ -109,17 +109,17 @@
   </div>
 
   <div class="seller-container">
-      <div class="left-panel-seller">
+    <div class="left-panel-seller">
         <div class="sales-operation">
             <p style="text-align: center; font-weight: bold; font-size: 24px;">Операции</p>
             <button id="add-upd-productBtn">Добавление/Редактирование товаров</button>
             <button id="list-productBtn">Список товаров</button>
             <button id="list-ordersBtn">Ваши заказы</button>
         </div>
-      </div>
-      <div class="lines-seller"></div>
-      <div class="right-panel-seller">
-          <form id="create-update-product">
+    </div>
+    <div class="lines-seller"></div>
+    <div class="right-panel-seller">
+      <form id="create-update-product">
             <p style="font-size: 24px; font-weight: bold; text-align: center;">Добавление/Редактирование товара</p>
             <div>
               <label>Номер товара <b>(Выбрать при редактировании)</b></label>
@@ -173,12 +173,37 @@
                   <input type="search" placeholder="Поиск"/>
                 </div>
               </div>
-              <div class="products-seller">
-                </div>
-              </div>
+              <div class="products-seller"></div>
           </div>
-      </div>
+        
+          <div class="all-order-seller">
+            <p style="font-size: 24px; font-weight: bold; text-align: center;">Ваши заказы</p>
+
+            <div class="filter-orders">
+              <div>
+                <label>Сортировка по дате</label>
+                <input type="date">
+              </div>
+              <div>
+                <label>Номер заказа</label>
+                <input type="text">
+              </div>
+              <div>
+                <label>По статусу</label>
+                <select name="" id="">
+                  <option>В сборке</option>
+                  <option>Собрано и передано в службу доставки</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="orders-seller">
+
+            </div>
+        </div>
+    </div>
   </div>
+
 
   <!-- Подвал -->
   <footer class="footer mt-5 py-4 text-light animated-footer">

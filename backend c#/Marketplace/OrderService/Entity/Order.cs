@@ -9,6 +9,8 @@ namespace OrderService.Entity
         [Required]
         public int UserId { get; set; }
 
+        public int PointId { get; set; }
+
         [Required]
         public DateTime CreateOrder {  get; set; }
 

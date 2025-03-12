@@ -368,9 +368,8 @@ body {
 .delivery-card {
     display: flex;
     background-color: #F5F7FA;
-    width: 300px;
-    height: 120px;
-    margin-top: 35px;
+    width: 420px;
+    height: 150px;
     border-radius: 20px;
 }
 
@@ -821,6 +820,9 @@ body {
 
 .right-panel-seller {
     margin-left: 100px;
+    overflow-y: auto;
+    max-height: 1100px;
+    width: 600px;
 }
 
 .right-panel-seller form {
@@ -902,6 +904,7 @@ body {
 
 .sizes-cards {
     display: flex;
+    flex-direction: column;
 }
 
 .size-card {
@@ -1131,7 +1134,12 @@ body {
     font-weight: bold;
     font-size: 24px;
     text-align: end;
-    margin-right: 15px;
+}
+
+.address-order-payment {
+    font-size: 24px;
+    text-align: end;
+    font-weight: bold;
 }
 
 #continue-payment {
@@ -1436,4 +1444,33 @@ input.card-cvv {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.all-order-seller {
+    width: 500px;
+    display: none;
+}
+
+.filter-orders {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 170px;
+}
+
+.filter-orders input {
+    width: 100%;
+}
+
+.order-seller {
+    margin-top: 25px;
+}
+
+.card-right-panel {
+    cursor: pointer;
+}
+
+.card-right-panel:hover {
+    color: #5A67D8;
+    transform: scale(1.05);
 }

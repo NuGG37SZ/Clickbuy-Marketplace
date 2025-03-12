@@ -349,7 +349,7 @@
   },
   {
     "ContainingType": "ProductService.Controllers.ProductController",
-    "Method": "getByNameAndUserId",
+    "Method": "GetByNameAndUserId",
     "RelativePath": "api/v1/products/getByNameAndUserId/{name}/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -360,6 +360,22 @@
         "Type": "System.String",
         "IsRequired": true
       },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.ProductController",
+    "Method": "GetByUserId",
+    "RelativePath": "api/v1/products/getByUserId/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "userId",
         "Type": "System.Int32",

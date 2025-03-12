@@ -26,6 +26,9 @@ namespace OrderService.Migrations
                     b.Property<DateTime>("CreateOrder")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("PointId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -57,6 +60,9 @@ namespace OrderService.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductSizesId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -97,12 +103,6 @@ namespace OrderService.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PointsId")
-                        .IsUnique();
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("UserPoints");
                 });

@@ -45,6 +45,13 @@ namespace OrderService.Repository
                             .ToListAsync();
         }
 
+        public async Task<List<OrderProduct>> GetByUserId(int userId)
+        {
+            return await _orderContext.OrderProducts
+                            .Where(op => op.UserId == userId)
+                            .ToListAsync();
+        }
+
         public async Task Update(int id, OrderProduct orderProduct)
         {
             OrderProduct? currentOrderProduct = await GetById(id);
@@ -55,6 +62,7 @@ namespace OrderService.Repository
                 currentOrderProduct.ProductId = orderProduct.ProductId;
                 currentOrderProduct.ProductSizesId = orderProduct.ProductSizesId;
                 currentOrderProduct.Count = orderProduct.Count;
+                currentOrderProduct.UserId = orderProduct.UserId;
                 _orderContext.Update(currentOrderProduct);
                 await _orderContext.SaveChangesAsync();
             }

@@ -11,15 +11,12 @@ namespace ProductService.Controllers
     {
         private readonly IProductService _productService;
 
-        private readonly IUserClient _userClient;
-
         private readonly IBrandSubcategoriesService _brandSubcategoriesService;
 
-        public ProductController(IProductService productService, IUserClient userClient,
+        public ProductController(IProductService productService,
             IBrandSubcategoriesService brandSubcategoriesService)
         {
             _productService = productService;
-            _userClient = userClient;
             _brandSubcategoriesService = brandSubcategoriesService;
         }
 
@@ -43,9 +40,16 @@ namespace ProductService.Controllers
 
         [HttpGet]
         [Route("getByNameAndUserId/{name}/{userId}")]
-        public async Task<IActionResult> getByNameAndUserId(string name, int userId)
+        public async Task<IActionResult> GetByNameAndUserId(string name, int userId)
         {
             return Ok(await _productService.GetByProductNameAndUserId(name, userId));
+        }
+
+        [HttpGet]
+        [Route("getByUserId/{userId}")]
+        public async Task<IActionResult> GetByUserId(int userId)
+        {
+            return Ok(await _productService.GetByUserId(userId));
         }
 
         [HttpPost]
@@ -54,9 +58,8 @@ namespace ProductService.Controllers
         {
             BrandsSubcategoriesDTO? brandSubcategoriesDTO =  
                 await _brandSubcategoriesService.GetById(productDTO.BrandsSubcategoriesId);
-            UserDTO userDTO = await _userClient.GetUserById(productDTO.UserId);
 
-            if (userDTO == null || brandSubcategoriesDTO == null)
+            if (brandSubcategoriesDTO == null)
                 return NotFound("Error: double check the data");
 
             await _productService.Create(productDTO);
@@ -69,10 +72,9 @@ namespace ProductService.Controllers
         {
             BrandsSubcategoriesDTO? brandSubcategoriesDTO =
                 await _brandSubcategoriesService.GetById(productDTO.BrandsSubcategoriesId);
-            UserDTO userDTO = await _userClient.GetUserById(productDTO.UserId);
             ProductDTO? currentProductDTO = await _productService.GetById(id);
 
-            if (userDTO == null || brandSubcategoriesDTO == null)
+            if (brandSubcategoriesDTO == null)
                 return NotFound("Error: double check the data");
 
             await _productService.Update(id, productDTO);

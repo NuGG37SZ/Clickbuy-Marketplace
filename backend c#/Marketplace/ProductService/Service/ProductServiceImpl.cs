@@ -61,6 +61,15 @@ namespace ProductService.Service
             );
         }
 
+        public async Task<List<ProductDTO>> GetByUserId(int userId)
+        {
+            List<Product> products = await _productRepository.GetByUserId(userId);
+
+            return products
+                    .Select(ProductMapper.MapProductToProductDTO) 
+                    .ToList();
+        }
+
         public async Task Update(int id, ProductDTO productDTO)
         {
             Product? product = await _productRepository.GetById(id);

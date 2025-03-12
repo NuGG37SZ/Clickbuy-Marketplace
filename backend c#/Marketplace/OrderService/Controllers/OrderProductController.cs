@@ -38,6 +38,13 @@ namespace OrderService.Controllers
             return Ok(await _orderProductService.GetByOrderId(orderId));
         }
 
+        [HttpGet]
+        [Route("getByUserId/{userId}")]
+        public async Task<IActionResult> GetByUserId(int userId)
+        {
+            return Ok(await _orderProductService.GetByUserId(userId));
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] OrderProductDTO orderProductDTO)

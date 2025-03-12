@@ -10,6 +10,8 @@ namespace ProductService.Service
 
         Task<ProductDTO?> GetByProductNameAndUserId(string name, int userId);
 
+        Task<List<ProductDTO>> GetByUserId(int userId); 
+
         Task Create(ProductDTO productDTO);
 
         Task Update(int id, ProductDTO productDTO);

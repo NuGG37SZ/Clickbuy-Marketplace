@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using ProductService.Db;
 using ProductService.Entity;
 
@@ -66,6 +65,13 @@ namespace ProductService.Repository
                             .Where(p => p.Name == name)
                             .Where (p => p.UserId == userId)
                             .FirstOrDefaultAsync();
+        }
+
+        public Task<List<Product>> GetByUserId(int userId)
+        {
+            return _productContext.Products
+                        .Where(p => p.UserId == userId)
+                        .ToListAsync();
         }
 
         public async Task Update(int id, Product product)

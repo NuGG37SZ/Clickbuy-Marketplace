@@ -48,7 +48,16 @@ namespace OrderService.Service
             List<OrderProduct> orderProducts = await _orderProductRepository.GetByOrderId(orderId);
 
             return orderProducts
-                    .Select(OrderProductMapper .MapOrderProductToOrderProductDTO)
+                    .Select(OrderProductMapper.MapOrderProductToOrderProductDTO)
+                    .ToList();
+        }
+
+        public async Task<List<OrderProductDTO>> GetByUserId(int userId)
+        {
+            List<OrderProduct> orderProducts = await _orderProductRepository.GetByUserId(userId);
+
+            return orderProducts
+                    .Select(OrderProductMapper.MapOrderProductToOrderProductDTO)
                     .ToList();
         }
 

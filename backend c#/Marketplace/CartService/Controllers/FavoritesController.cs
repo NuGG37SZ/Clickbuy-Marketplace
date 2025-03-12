@@ -1,5 +1,4 @@
-﻿using CartService.Client;
-using CartService.DTO;
+﻿using CartService.DTO;
 using CartService.Service;
 using Microsoft.AspNetCore.Mvc;
 

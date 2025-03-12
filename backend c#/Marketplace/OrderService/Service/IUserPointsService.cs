@@ -12,7 +12,7 @@ namespace OrderService.Service
 
         Task<List<UserPointsDTO>> GetByUserId(int userId);
 
-        Task<UserPointsDTO?> GetByIsActive(bool isActive);
+        Task<UserPointsDTO?> GetByIsActiveAndUserId(bool isActive, int userId);
 
         Task Create(UserPointsDTO userPointsDTO);
 

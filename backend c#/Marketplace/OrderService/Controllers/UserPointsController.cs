@@ -50,10 +50,10 @@ namespace OrderService.Controllers
         }
 
         [HttpGet]
-        [Route("getByIsActive/{isActive}")]
-        public async Task<IActionResult> GetByIsActive(bool isActive)
+        [Route("getByIsActiveAndUserId/{isActive}/{userId}")]
+        public async Task<IActionResult> GetByIsActiveAndUserId(bool isActive, int userId)
         {
-            UserPointsDTO? userPointsDTO = await _userPointsService.GetByIsActive(isActive);
+            UserPointsDTO? userPointsDTO = await _userPointsService.GetByIsActiveAndUserId(isActive, userId);
 
             if(userPointsDTO != null) 
                 return Ok(userPointsDTO);

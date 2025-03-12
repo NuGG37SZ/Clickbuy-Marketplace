@@ -75,6 +75,22 @@
   },
   {
     "ContainingType": "OrderService.Controllers.OrderProductController",
+    "Method": "GetByUserId",
+    "RelativePath": "api/v1/orderProduct/getByUserId/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrderService.Controllers.OrderProductController",
     "Method": "Update",
     "RelativePath": "api/v1/orderProduct/update/{id}",
     "HttpMethod": "PUT",
@@ -344,8 +360,8 @@
   },
   {
     "ContainingType": "OrderService.Controllers.UserPointsController",
-    "Method": "GetByIsActive",
-    "RelativePath": "api/v1/userPoints/getByIsActive/{isActive}",
+    "Method": "GetByIsActiveAndUserId",
+    "RelativePath": "api/v1/userPoints/getByIsActiveAndUserId/{isActive}/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -353,6 +369,11 @@
       {
         "Name": "isActive",
         "Type": "System.Boolean",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

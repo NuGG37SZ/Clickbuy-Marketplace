@@ -73,8 +73,8 @@ async function getPointById(id) {
     return point;
 }
 
-async function getUserPointsByIsActive(isActive) {
-    const userPoint = await getRequest(`https://localhost:7049/api/v1/userPoints/getByIsActive/${isActive}`);
+async function getUserPointsByIsActiveAndUserId(isActive, userId) {
+    const userPoint = await getRequest(`https://localhost:7049/api/v1/userPoints/getByIsActiveAndUserId/${isActive}/${userId}`);
     return userPoint;
 }
 
@@ -113,8 +113,8 @@ pickUpPoints.addEventListener('click', async (event) => {
 
 saveActivePointBtn.addEventListener('click', async () => {
     let currentPoint = await getPointById(point.id);
-    let userPoint = await getUserPointByUserIdAndPointId(userId, currentPoint.id);
-    let activeUserPoint = await getUserPointsByIsActive(true);
+    let userPoint = await getUserPointByUserIdAndPointId(parseInt(userId), currentPoint.id);
+    let activeUserPoint = await getUserPointsByIsActiveAndUserId(true, parseInt(userId));
 
     if(activeUserPoint.pointsId != userPoint.pointsId) {
         activeUserPoint.isActive = false;
@@ -132,7 +132,7 @@ saveActivePointBtn.addEventListener('click', async () => {
 })
 
 async function changeNameBtnToActivePoint() {
-    let activeUserPoint = await getUserPointsByIsActive(true);
+    let activeUserPoint = await getUserPointsByIsActiveAndUserId(true, parseInt(userId));
     let point = await getPointById(activeUserPoint.pointsId)
     addressPointBtn.textContent = point.address;
 }

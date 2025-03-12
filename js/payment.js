@@ -12,6 +12,8 @@ const cardNumberInput = document.getElementById("card-number");
 const cardDateInput = document.getElementById("card-date");
 const cardCVVInput = document.getElementById("card-cvv");
 const cardLogo = document.getElementById("card-logo");
+const addressOrder = document.querySelector('.address-order-payment');
+const userId = localStorage.getItem('userId');
 
 cardLogo.style.display = "none";
 
@@ -108,9 +110,26 @@ async function getProductSizesById(id) {
     return productSizes;
 }
 
+async function getActiveUserPoint(isActive, userId) {
+    const userPoint = await getRequest(`https://localhost:7049/api/v1/userPoints/getByIsActiveAndUserId/${isActive}/${userId}`);
+    return userPoint;
+}
+
+async function getPointById(id) {
+    const point = await getRequest(`https://localhost:7049/api/v1/points/getById/${id}`);
+    return point;
+}
+
+async function getActivePoint() {
+    const activeUserPoint = await getActiveUserPoint(true, parseInt(userId));
+    const point = await getPointById(activeUserPoint.pointsId);
+    if(point != null) return point;
+}
+
 async function insertAllProductForCurrentUser() {
     let sum = 0;
     const listCart = await getAllCartByCurrentUser();
+    const point = await getActivePoint();
 
     listCart.forEach(async cart => {
         let product = await getProductById(cart.productId);
@@ -121,6 +140,7 @@ async function insertAllProductForCurrentUser() {
         tbodyPayment.insertAdjacentHTML('beforeend', insertTableProductPayment(product, seller, productSizes.size, cart.count));
         sumPayment.textContent = `Итого: ${sum} ₽`;
     })
+    addressOrder.textContent = `Пункт выдачи: ${point.address}`;
 }
 
 continuePaymentBtn.addEventListener('click', () => {
@@ -132,9 +152,11 @@ payBtn.addEventListener('click', async () => {
     let now = new Date();
     let dateStr = formatDate(now);
     let dateObj = parseDateFromString(dateStr);
+    const point = await getActivePoint();
 
     let orderCreateModel = {
         userId: parseInt(currentUserId),
+        pointId: point.id,
         createOrder: dateObj,
         updateOrder: dateObj,
         status: "В сборке"
@@ -151,12 +173,16 @@ payBtn.addEventListener('click', async () => {
             if (orderProductListByCurrentOrder.length === 0) {
                
                 for (const cart of listCart) {
+                    let product = await getProductById(cart.productId);
+
                     let orderProductCreateModel = {
                         orderId: currentOrder.id,
-                        productId: cart.productId,
+                        productId: product.id,
                         productSizesId: cart.productSizesId,
+                        userId: product.userId,
                         count: cart.count
                     };
+                    
                     await postRequest(`https://localhost:7049/api/v1/orderProduct/create`, orderProductCreateModel);
                     let productSizes = await getProductSizesById(cart.productSizesId);
                     productSizes.count -= orderProductCreateModel.count;

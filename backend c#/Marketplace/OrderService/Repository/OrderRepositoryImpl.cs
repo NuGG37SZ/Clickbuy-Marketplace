@@ -58,6 +58,7 @@ namespace OrderService.Repository
                 currentOrder.CreateOrder = order.CreateOrder;
                 currentOrder.UserId = order.UserId;
                 currentOrder.Status = order.Status;
+                currentOrder.PointId = order.PointId;
                 _orderContext.Orders.Update(currentOrder);
                 await _orderContext.SaveChangesAsync();
             }

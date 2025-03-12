@@ -3,11 +3,10 @@ const userId = localStorage.getItem('userId');
 
 insertAllOrders();
 
-function insertOrder(order, firstDate, secondDate) {
+function insertOrder(order, firstDate, secondDate, point) {
     return `
-        <div class="order">
-            <h3>Заказ №${order.id}. Приедет примерно ${firstDate} - ${secondDate}
-           </h3>
+        <div class="order" style="margin-top: 15px;">
+            <h4>Заказ №${order.id}. Приедет примерно ${firstDate} - ${secondDate}, в пункт выдачи по адресу ${point.address}</h4>
             <table class="all-product-for-payment">
                 <thead>
                     <tr>
@@ -24,6 +23,48 @@ function insertOrder(order, firstDate, secondDate) {
                         
                 </tbody>
             </table>
+
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: baseline">
+                <div style="display: flex; justify-content: space-between; font-size: 20px; font-weight: bold; width: 465px;">
+                    <p>Статус: </p>
+                    <p style="color: #5ab84b;">${order.status}</p>
+                </div>
+
+                <div style="display: flex;">
+                    <button type="button" class="btn btn-danger" id="cancel-order-btn">Отменить заказ</button>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+function insertCancelOrder(order, firstDate, secondDate, point) {
+    return `
+        <div class="order" style="margin-top: 15px;">
+            <h4>Заказ №${order.id}. Приедет примерно ${firstDate} - ${secondDate}, в пункт выдачи по адресу ${point.address}</h4>
+            <table class="all-product-for-payment">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Продавец</th>
+                        <th>Размер</th>
+                        <th>Описание</th>
+                        <th>Количество</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody-orders">
+                        
+                </tbody>
+            </table>
+
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: baseline">
+                <div style="display: flex; justify-content: space-between; font-size: 20px; font-weight: bold; width: 160px;">
+                    <p>Статус: </p>
+                    <p style="color:rgb(252, 20, 63);">${order.status}</p>
+                </div>
+            </div>
         </div>
     `
 }
@@ -41,6 +82,18 @@ function insertProduct(product, seller, productSize, countProduct) {
               <td>${product.description}</td>
               <td>Количество: ${countProduct}</td>
           </tr>`
+}
+
+async function putRequest(url, obj) {
+    const response = await fetch(url, { 
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(obj)
+    });
+    let result = await response.status;
+    return result;
 }
 
 async function getRequest(url) {
@@ -73,25 +126,40 @@ async function getUserById(id) {
     return user;
 }
 
+async function getPointById(id) {
+    const point = await getRequest(`https://localhost:7049/api/v1/points/getById/${id}`);
+    return point;
+}
+
+async function getOrderById(id) {
+    const order = await getRequest(`https://localhost:7049/api/v1/orders/getById/${id}`);
+    return order;
+}
+
 async function insertAllOrders() {
     let orderList = await getOrdersByUserId(parseInt(userId));
 
     for (const order of orderList) {
-        if(order.status != 'Получен' || order.status != 'Отменен') {
-            let firstDate = getDate(order.createOrder, 10);
-            let secondDate = getDate(order.createOrder, 12);
-            ordersDiv.insertAdjacentHTML('beforeend', insertOrder(order, firstDate, secondDate));
-            let orderDivs = ordersDiv.querySelectorAll('.order');
-            let lastOrderDiv = orderDivs[orderDivs.length - 1];
-            let tbody = lastOrderDiv.querySelector('.tbody-orders');
-            let orderProducts = await getOrderProductByOrderId(order.id);
-            
-            for (const orderProduct of orderProducts) {     
-                let product = await getProductById(orderProduct.productId);
-                let productSizes = await getProductSizesById(orderProduct.productSizesId);
-                let seller = await getUserById(product.userId);
-                tbody.insertAdjacentHTML('beforeend', insertProduct(product, seller, productSizes.size, orderProduct.count));
-            }
+        let firstDate = getDate(order.createOrder, 10);
+        let secondDate = getDate(order.createOrder, 12);
+        let point = await getPointById(order.pointId);
+
+        if(order.status != 'Отменен') {
+            ordersDiv.insertAdjacentHTML('beforeend', insertOrder(order, firstDate, secondDate, point));
+        } else {
+            ordersDiv.insertAdjacentHTML('beforeend', insertCancelOrder(order, firstDate, secondDate, point));
+        }
+
+        let orderDivs = ordersDiv.querySelectorAll('.order');
+        let lastOrderDiv = orderDivs[orderDivs.length - 1];
+        let tbody = lastOrderDiv.querySelector('.tbody-orders');
+        let orderProducts = await getOrderProductByOrderId(order.id);
+        
+        for (const orderProduct of orderProducts) {     
+            let product = await getProductById(orderProduct.productId);
+            let productSizes = await getProductSizesById(orderProduct.productSizesId);
+            let seller = await getUserById(product.userId);
+            tbody.insertAdjacentHTML('beforeend', insertProduct(product, seller, productSizes.size, orderProduct.count));
         }
     }
 }
@@ -102,3 +170,27 @@ function getDate(dateStr, days) {
     return dateFirst.format('DD.MM.YYYY');
 }
 
+ordersDiv.addEventListener('click', async (event) => {
+    if(event.target.closest('#cancel-order-btn')) {
+        let currentOrder = event.target.closest('#cancel-order-btn').parentNode.parentNode.parentNode;
+        let titleOrder = currentOrder.children[0].textContent;
+        let arrayTitle = titleOrder.split('.');
+        let orderId = arrayTitle[0].replace(/\D+/g, '');
+        let order = await getOrderById(orderId);
+        order.status = 'Отменен';
+        let code = await putRequest(`https://localhost:7049/api/v1/orders/update/${order.id}`, order);
+        
+        if(code == 200) {
+            let orderProducts = await getOrderProductByOrderId(order.id);
+
+            for (const orderProduct of orderProducts) {
+                let productSizes = await getProductSizesById(orderProduct.productSizesId);
+                productSizes.count += orderProduct.count;
+                await putRequest(`https://localhost:58841/api/v1/productSizes/updateById/${productSizes.id}`, productSizes);
+            }
+
+            alert('Заказ отменен :с');
+            location.reload();
+        }
+    }
+})
