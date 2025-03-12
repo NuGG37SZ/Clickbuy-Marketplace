@@ -1474,3 +1474,31 @@ input.card-cvv {
     transform: scaleX(1);
 }
 
+.all-order-seller {
+    width: 500px;
+    display: none;
+}
+
+.filter-orders {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 170px;
+}
+
+.filter-orders input {
+    width: 100%;
+}
+
+.order-seller {
+    margin-top: 25px;
+}
+
+.card-right-panel {
+    cursor: pointer;
+}
+
+.card-right-panel:hover {
+    color: #5A67D8;
+    transform: scale(1.05);
+}
