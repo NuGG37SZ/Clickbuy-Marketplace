@@ -1,0 +1,192 @@
+[
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/ratingProduct",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "Create",
+    "RelativePath": "api/v1/ratingProduct/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ratingProductDTO",
+        "Type": "RatingService.DTO.RatingProductDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "DeleteById",
+    "RelativePath": "api/v1/ratingProduct/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/ratingProduct/getById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "GetByProductId",
+    "RelativePath": "api/v1/ratingProduct/getByProdcutId/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "Update",
+    "RelativePath": "api/v1/ratingProduct/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ratingProductDTO",
+        "Type": "RatingService.DTO.RatingProductDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingSellerController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/ratingSeller",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingSellerController",
+    "Method": "Create",
+    "RelativePath": "api/v1/ratingSeller/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ratingSellerDTO",
+        "Type": "RatingService.DTO.RatingSellerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingSellerController",
+    "Method": "DeleteById",
+    "RelativePath": "api/v1/ratingSeller/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingSellerController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/ratingSeller/getById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingSellerController",
+    "Method": "GetByProductId",
+    "RelativePath": "api/v1/ratingSeller/getByUserId/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingSellerController",
+    "Method": "Update",
+    "RelativePath": "api/v1/ratingSeller/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ratingSellerDTO",
+        "Type": "RatingService.DTO.RatingSellerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
