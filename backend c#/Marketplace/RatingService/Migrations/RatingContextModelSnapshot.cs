@@ -30,6 +30,9 @@ namespace RatingService.Migrations
                     b.Property<DateTime>("DateCreateComment")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("OrderId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("INTEGER");
 

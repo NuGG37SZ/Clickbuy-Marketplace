@@ -49,6 +49,30 @@ namespace RatingService.Repository
                                     .ToListAsync();
         }
 
+        public async Task<RatingProduct?> GetByProductIdAndProductSizesIdAndOrderId(int productId, 
+            int productSizesId, int orderId)
+        {
+            return await _ratingContext.RatingProducts
+                                   .Where(rp => rp.ProductId == productId && 
+                                        rp.ProductSizesId == productSizesId &&
+                                        rp.OrderId == orderId)
+                                   .FirstOrDefaultAsync();
+        }
+
+        public async Task<List<RatingProduct>> GetByUserId(int userId)
+        {
+            return await _ratingContext.RatingProducts
+                                    .Where(rp => rp.UserId == userId)
+                                    .ToListAsync();
+        }
+
+        public async Task<double> AvgRatingByProductId(int productId)
+        {
+            return await _ratingContext.RatingProducts
+                            .Where(rp => rp.ProductId == productId)
+                            .AverageAsync(rp => rp.Rating);
+        }
+
         public async Task Update(int id, RatingProduct ratingProduct)
         {
             RatingProduct? currentRatingProduct = await GetById(id);
@@ -60,10 +84,19 @@ namespace RatingService.Repository
                 currentRatingProduct.UserId = ratingProduct.UserId;
                 currentRatingProduct.Rating = ratingProduct.Rating;
                 currentRatingProduct.Comment = ratingProduct.Comment;
+                currentRatingProduct.OrderId = ratingProduct.OrderId;
                 currentRatingProduct.DateCreateComment = ratingProduct.DateCreateComment;
                 _ratingContext.RatingProducts.Update(currentRatingProduct);
                 await _ratingContext.SaveChangesAsync();
             }
+        }
+
+        public async Task<double> CountRatingByUserIdAndEmptyComment(int userId)
+        {
+            return await _ratingContext.RatingProducts
+                            .Where(rp => rp.UserId == userId && rp.Comment == "")
+                            .CountAsync();
+
         }
     }
 }

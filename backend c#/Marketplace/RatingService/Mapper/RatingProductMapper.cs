@@ -12,6 +12,7 @@ namespace RatingService.Mapper
             ratingProductDTO.ProductId = ratingProduct.ProductId;
             ratingProductDTO.ProductSizesId = ratingProduct.ProductSizesId;
             ratingProductDTO.UserId = ratingProduct.UserId;
+            ratingProductDTO.OrderId = ratingProduct.OrderId;
             ratingProductDTO.Rating = ratingProduct.Rating;
             ratingProductDTO.Comment = ratingProduct.Comment;
             ratingProductDTO.DateCreateComment = ratingProduct.DateCreateComment;
@@ -25,6 +26,7 @@ namespace RatingService.Mapper
             ratingProduct.ProductSizesId = ratingProductDTO.ProductSizesId;
             ratingProduct.UserId = ratingProductDTO.UserId;
             ratingProduct.Rating = ratingProductDTO.Rating;
+            ratingProduct.OrderId = ratingProductDTO.OrderId;
             ratingProduct.Comment = ratingProductDTO.Comment;
             ratingProduct.DateCreateComment = ratingProductDTO.DateCreateComment;
             return ratingProduct;

@@ -6,7 +6,9 @@ insertAllOrders();
 function insertOrder(order, firstDate, secondDate, point) {
     return `
         <div class="order" style="margin-top: 15px;">
-            <h4>Заказ №${order.id}. Приедет примерно ${firstDate} - ${secondDate}, в пункт выдачи по адресу ${point.address}</h4>
+            <h4>Заказ №${order.id}. ${ order.status == 'Получен' ?
+                `Заказ получен в пункте выдачи по адресу ${point.address}` :
+                 `Приедет примерно ${firstDate} - ${secondDate}, в пункт выдачи по адресу ${point.address}` }</h4>
             <table class="all-product-for-payment">
                 <thead>
                     <tr>
@@ -25,13 +27,13 @@ function insertOrder(order, firstDate, secondDate, point) {
             </table>
 
             <div style="display: flex; justify-content: space-between; width: 100%; align-items: baseline">
-                <div style="display: flex; justify-content: space-between; font-size: 20px; font-weight: bold; width: 465px;">
+                <div style="display: flex; font-size: 20px; font-weight: bold; width: 470px;">
                     <p>Статус: </p>
-                    <p style="color: #5ab84b;">${order.status}</p>
+                    <p style="color: #5ab84b; padding-left: 7px;">${order.status}</p>
                 </div>
 
                 <div style="display: flex;">
-                    <button type="button" class="btn btn-danger" id="cancel-order-btn">Отменить заказ</button>
+                    ${order.status == 'Получен' ? '' : '<button type="button" class="btn btn-danger" id="cancel-order-btn">Отменить заказ</button>' }
                 </div>
             </div>
         </div>

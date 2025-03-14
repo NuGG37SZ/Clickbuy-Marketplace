@@ -11,6 +11,22 @@
   },
   {
     "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "CountRatingByUserIdAndEmptyComment",
+    "RelativePath": "api/v1/ratingProduct/countRatingByUserIdAndEmptyComment/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
     "Method": "Create",
     "RelativePath": "api/v1/ratingProduct/create",
     "HttpMethod": "POST",
@@ -43,6 +59,22 @@
   },
   {
     "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "GetSumRatingByProductId",
+    "RelativePath": "api/v1/ratingProduct/getAvgRatingByProductId/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
     "Method": "GetById",
     "RelativePath": "api/v1/ratingProduct/getById/{id}",
     "HttpMethod": "GET",
@@ -67,6 +99,48 @@
     "Parameters": [
       {
         "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "GetByProductIdAndProductSizesIdAndOrderId",
+    "RelativePath": "api/v1/ratingProduct/getByProductIdAndProductSizesIdAndOrderId/{productId}/{productSizesId}/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "productSizesId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "GetByUserId",
+    "RelativePath": "api/v1/ratingProduct/getByUserId/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
         "Type": "System.Int32",
         "IsRequired": true
       }

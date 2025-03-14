@@ -187,6 +187,19 @@ payBtn.addEventListener('click', async () => {
                     let productSizes = await getProductSizesById(cart.productSizesId);
                     productSizes.count -= orderProductCreateModel.count;
                     await putRequest(`https://localhost:58841/api/v1/productSizes/updateById/${productSizes.id}`, productSizes);
+                    let date = new Date();
+
+                    let ratingProductModel = {
+                        productId: product.id,
+                        productSizesId: cart.productSizesId,
+                        userId: parseInt(currentUserId),
+                        orderId: currentOrder.id,
+                        rating: 0.0,
+                        comment: '',
+                        dateCreateComment: date
+                    }
+
+                    await postRequest(`https://localhost:7029/api/v1/ratingProduct/create`, ratingProductModel);
                     await deleteRequest(`https://localhost:7073/api/v1/carts/delete/${cart.id}`);
                 }
             }

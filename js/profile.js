@@ -1,16 +1,31 @@
 const loginUserProfile = document.getElementById('user-login');
 const panelRoles = document.querySelector('.panels-roles');
-const delivery = document.querySelector('.delivery');
+const delivery = document.querySelector('.deliveries');
 const countFavorite = document.getElementById('count-goods');
 const rightPanel = document.querySelectorAll('.card-right-panel');
+const goodsNoCommentText = document.getElementById('goods-no-comment');
 const favoriteDiv = rightPanel[0];
 let userId = localStorage.getItem('userId');
+const wordForms = ['товар', 'товара', 'товаров'];
 
 document.addEventListener("DOMContentLoaded", async ()  => {
     checkAuthUser();
     insertDelivery();
-    countFavorite.textContent = `${await getCountFavorites()}`;
+    getFavoriteProductsText();
+    getProductNoCommentText();
 })
+
+async function getFavoriteProductsText() {
+    let favoriteCount = await getCountFavorites();
+    let text = getPluralForm(favoriteCount, wordForms)
+    countFavorite.textContent = `${favoriteCount} ${text}`;
+}
+
+async function getProductNoCommentText() {
+    let productNoComment = await getCountRatingProductByEmptyCommentAndUserId(parseInt(userId));
+    let text = getPluralForm(productNoComment, wordForms)
+    goodsNoCommentText.textContent = `${productNoComment} ${text}`;
+}
 
 favoriteDiv.addEventListener('click', () => {
     location.href = 'favorite.html';
@@ -88,16 +103,24 @@ async function getFavoriteListByUserId(userId) {
     return favorites;  
 }
 
+async function getCountRatingProductByEmptyCommentAndUserId(userId) {
+    const count = await getRequest(`https://localhost:7029/api/v1/ratingProduct/countRatingByUserIdAndEmptyComment/${userId}`);
+    return count;
+}
+
 async function insertDelivery() {
     let orderList = await getOrderListByUserId(parseInt(userId));
     
-    for (const order of orderList) {
-        if(order.status != 'Отменен' || order.status != 'Получен') {
+    for (let i = 0; i < 3; i++) {
+        if(orderList[i].status != 'Отменен' && orderList[i].status != 'Получен') {
             let orderProductList = await getOrderProductListByOrderId(order.id);
             let orderProduct = orderProductList[0];
-            let date = getDate(order.createOrder, 11);
+            let date = getDate(orderList[i].createOrder, 11);
             let product = await getProductById(orderProduct.productId);
-            delivery.insertAdjacentHTML('beforeend', insertDeliveryCard(order, product, date));
+            delivery.insertAdjacentHTML('beforeend', insertDeliveryCard(orderList[i], product, date));
+        } else {
+            delivery.insertAdjacentHTML('beforeend', '<p style="font-weight:bold; font-size:32px;">Пока пусто 😭</p>');
+            return;
         }
     }
 } 
@@ -112,6 +135,23 @@ async function getCountFavorites() {
     const favoriteList = await getFavoriteListByUserId(parseInt(userId));
     const count = favoriteList.length;
     return count;
+}
+
+function getPluralForm(number, words) {
+    const lastDigit = number % 10;
+    const lastTwoDigits = number % 100;
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+        return words[2];
+    }
+
+    if (lastDigit === 1) {
+        return words[0];
+    } else if (lastDigit >= 2 && lastDigit <= 4) {
+        return words[1];
+    } else {
+        return words[2];
+    }
 }
 
 

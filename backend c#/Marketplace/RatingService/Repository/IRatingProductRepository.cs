@@ -8,7 +8,15 @@ namespace RatingService.Repository
 
         Task<RatingProduct?> GetById(int id);
 
+        Task<RatingProduct?> GetByProductIdAndProductSizesIdAndOrderId(int productId, int productSizesId, int orderId);
+
         Task<List<RatingProduct>> GetByProductId(int productId);
+
+        Task<List<RatingProduct>> GetByUserId(int userId);
+
+        Task<double> AvgRatingByProductId(int productId);
+
+        Task<double> CountRatingByUserIdAndEmptyComment(int userId);
 
         Task Create(RatingProduct ratingProduct);
 

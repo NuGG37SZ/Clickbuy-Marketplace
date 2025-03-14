@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     insertCards();
 })
 
-function insertCardProductIndex(product, seller, inFavorite) {
+function insertCardProductIndex(product, seller, inFavorite, rating, comment) {
     return `
         <div class="col-6 col-md-3">
             <div class="product-card">
@@ -30,8 +30,8 @@ function insertCardProductIndex(product, seller, inFavorite) {
                     <p class="product-description">${product.description}</p>
 
                     <div class="rating-reviews">
-                        <span class="star">⭐ 4.7</span>
-                        <span class="reviews" id="reviews-1" data-count="120">💬</span>
+                        <span class="star">⭐ ${rating}</span>
+                        <span class="reviews" id="reviews-1" data-count="120">💬 ${comment}</span>
                     </div>                    
                 </div>
             </div>
@@ -42,6 +42,16 @@ function insertCardProductIndex(product, seller, inFavorite) {
 async function getRequest(url) {
     const response = await fetch(url);
     return await response.json();
+}
+
+async function getRatingProductByProductId(productId) {
+    const ratingProductList = await getRequest(`https://localhost:7029/api/v1/ratingProduct/getByProdcutId/${productId}`);
+    return ratingProductList;
+}
+
+async function getAvgRatingByProductId(productId) {
+    const ratingProductSum = await getRequest(`https://localhost:7029/api/v1/ratingProduct/getAvgRatingByProductId/${productId}`);
+    return ratingProductSum;
 }
 
 async function postRequest(url, obj) {
@@ -77,11 +87,33 @@ function insertCards() {
 
 function checkFavoriteProduct(seller, product) {
     getRequest(`https://localhost:7073/api/v1/favorites/getByUserIdAndProductId/${userId}/${product.id}`)
-        .then(fp => {
-            if (fp && fp.productId === product.id) {
-                productContainer.insertAdjacentHTML('beforeend', insertCardProductIndex(product, seller.login, true));
+        .then(async fp => {
+            let ratingProductList = await getRatingProductByProductId(product.id);
+            
+            // пофиксить пустые комменты, товаром которые еще не получили
+            if(ratingProductList.length != 0) {
+                let countComment = ratingProductList.length;
+                let ratingProductAvg = await getAvgRatingByProductId(product.id);
+
+                if (fp && fp.productId === product.id) {
+                    productContainer.insertAdjacentHTML('beforeend', 
+                        insertCardProductIndex(product, seller.login, true, ratingProductAvg, countComment)
+                    );
+                } else {
+                    productContainer.insertAdjacentHTML('beforeend', 
+                        insertCardProductIndex(product, seller.login, false, ratingProductAvg, countComment)
+                    );
+                }
             } else {
-                productContainer.insertAdjacentHTML('beforeend', insertCardProductIndex(product, seller.login, false));
+                if (fp && fp.productId === product.id) {
+                    productContainer.insertAdjacentHTML('beforeend', 
+                        insertCardProductIndex(product, seller.login, true, 0, 0)
+                    );
+                } else {
+                    productContainer.insertAdjacentHTML('beforeend', 
+                        insertCardProductIndex(product, seller.login, false, 0, 0)
+                    );
+                }
             }
         })
 }

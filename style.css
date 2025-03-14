@@ -352,6 +352,12 @@ body {
     border-radius: 20px;
 }
 
+.deliveries {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
 .delivery p {
     font-size: 24px;
 }
@@ -841,6 +847,9 @@ body {
 
 .right-panel-seller form div textarea {
     height: 200px;
+}
+
+textarea {
     resize: none;
 }
 
@@ -1046,6 +1055,7 @@ body {
     background-color: white;
     border-radius: 20px;
     padding: 15px;
+    margin-top: 10px;
 }
 
 .header-review {
@@ -1501,4 +1511,65 @@ input.card-cvv {
 .card-right-panel:hover {
     color: #5A67D8;
     transform: scale(1.05);
+}
+
+#rating-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 500px;
+}
+
+.rating-icons i {
+    font-size: 1.2rem;
+    color: black;
+    margin-right: 5px;
+    transition: color 0.3s ease;
+}
+
+.rating-icons.active i {
+    color: gold;
+}
+
+.modal-window {
+    display: none;  
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-content-window {
+    background-color: #fefefe;
+    margin: 15px auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px; 
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.modal-window-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }

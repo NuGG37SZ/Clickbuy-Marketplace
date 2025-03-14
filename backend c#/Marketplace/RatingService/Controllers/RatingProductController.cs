@@ -27,6 +27,13 @@ namespace RatingService.Controllers
         }
 
         [HttpGet]
+        [Route("getByUserId/{userId}")]
+        public async Task<IActionResult> GetByUserId(int userId)
+        {
+            return Ok(await _ratingProductService.GetByUserId(userId));
+        }
+
+        [HttpGet]
         [Route("getById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -36,6 +43,35 @@ namespace RatingService.Controllers
                 return NotFound("RatingProduct Not Found.");
 
             return Ok(ratingProductDTO);
+        }
+
+        [HttpGet]
+        [Route("getByProductIdAndProductSizesIdAndOrderId/{productId}/{productSizesId}/{orderId}")]
+        public async Task<IActionResult> GetByProductIdAndProductSizesIdAndOrderId(int productId,
+            int productSizesId, int orderId)
+        {
+            RatingProductDTO? ratingProductDTO = 
+                await _ratingProductService.GetByProductIdAndProductSizesIdAndOrderId(
+                    productId, productSizesId, orderId);
+
+            if (ratingProductDTO == null)
+                return NotFound("RatingProduct Not Found.");
+
+            return Ok(ratingProductDTO);
+        }
+
+        [HttpGet]
+        [Route("getAvgRatingByProductId/{productId}")]
+        public async Task<IActionResult> GetSumRatingByProductId(int productId)
+        {
+            return Ok(await _ratingProductService.AvgRatingByProductId(productId));
+        }
+
+        [HttpGet]
+        [Route("countRatingByUserIdAndEmptyComment/{userId}")]
+        public async Task<IActionResult> CountRatingByUserIdAndEmptyComment(int userId)
+        {
+            return Ok(await _ratingProductService.CountRatingByUserIdAndEmptyComment(userId));
         }
 
         [HttpPost]

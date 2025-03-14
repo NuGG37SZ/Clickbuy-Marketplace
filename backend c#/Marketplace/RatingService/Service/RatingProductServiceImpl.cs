@@ -55,6 +55,32 @@ namespace RatingService.Service
                        .ToList();
         }
 
+        public async Task<RatingProductDTO?> GetByProductIdAndProductSizesIdAndOrderId(int productId, 
+            int productSizesId, int orderId)
+        {
+            RatingProduct? ratingProduct = await _ratingProductRepository
+                .GetByProductIdAndProductSizesIdAndOrderId(productId, productSizesId, orderId);
+
+            if (ratingProduct != null)
+                return RatingProductMapper.MapRatingProductToRatingProductDTO(ratingProduct);
+
+            return null;
+        }
+
+        public async Task<List<RatingProductDTO>> GetByUserId(int userId)
+        {
+            List<RatingProduct> ratingProducts = await _ratingProductRepository.GetByUserId(userId);
+
+            return ratingProducts
+                       .Select(RatingProductMapper.MapRatingProductToRatingProductDTO)
+                       .ToList();
+        }
+
+        public async Task<double> AvgRatingByProductId(int productId)
+        {
+            return await _ratingProductRepository.AvgRatingByProductId(productId);
+        }
+
         public async Task Update(int id, RatingProductDTO ratingProductDTO)
         {
             RatingProductDTO? currentRatingProductDTO = await GetById(id);
@@ -64,6 +90,11 @@ namespace RatingService.Service
                 await _ratingProductRepository.Update(id, 
                     RatingProductMapper.MapRatingProductDTOToRatingProduct(ratingProductDTO));
             }
+        }
+
+        public async Task<double> CountRatingByUserIdAndEmptyComment(int userId)
+        {
+            return await _ratingProductRepository.CountRatingByUserIdAndEmptyComment(userId);
         }
     }
 }
