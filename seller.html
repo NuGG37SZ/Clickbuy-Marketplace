@@ -170,7 +170,7 @@
               <div class="navigation-seller-items">
                 <p style="font-size: 24px; font-weight: bold; text-align: center;">Список товаров</p>
                 <div>
-                  <input type="search" placeholder="Поиск"/>
+                  <input type="search" placeholder="Поиск по имени товара" id="search-item-seller"/>
                 </div>
               </div>
               <div class="products-seller"></div>
@@ -180,21 +180,7 @@
             <p style="font-size: 24px; font-weight: bold; text-align: center;">Ваши заказы</p>
 
             <div class="filter-orders">
-              <div>
-                <label>Сортировка по дате</label>
-                <input type="date">
-              </div>
-              <div>
-                <label>Номер заказа</label>
-                <input type="text">
-              </div>
-              <div>
-                <label>По статусу</label>
-                <select name="" id="">
-                  <option>В сборке</option>
-                  <option>Собрано и передано в службу доставки</option>
-                </select>
-              </div>
+                <input type="text" class="num-order-filter" placeholder="Поиск по номеру заказа">
             </div>
 
             <div class="orders-seller">

@@ -33,8 +33,7 @@ namespace ProductService.Repository
         public async Task DeleteByProductNameAndUserId(string name, int userId)
         {
             Product? currentProduct = await _productContext.Products
-                                        .Where(p => p.Name == name)
-                                        .Where(p => p.UserId == userId)
+                                        .Where(p => p.Name == name && p.UserId == userId)
                                         .FirstOrDefaultAsync();
 
             if(currentProduct != null)
@@ -59,11 +58,19 @@ namespace ProductService.Repository
             return null;
         }
 
+        public async Task<List<Product>> GetByNameAndUserId(string name, int userId)
+        {
+            return await _productContext.Products
+                            .Where(p => p.UserId == userId && 
+                            EF.Functions.Like(p.Name, $"%{name}%"))
+                            .ToListAsync();
+                            
+        }
+
         public async Task<Product?> GetByProductNameAndUserId(string name, int userId)
         {
             return await _productContext.Products
-                            .Where(p => p.Name == name)
-                            .Where (p => p.UserId == userId)
+                            .Where(p => p.Name == name && p.UserId == userId)
                             .FirstOrDefaultAsync();
         }
 

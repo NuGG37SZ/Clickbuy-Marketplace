@@ -14,6 +14,9 @@ const productSellerDiv = document.querySelector('.products-seller');
 const deleteProductBtn = document.getElementById('delete-product');
 const orderSellerDiv = document.querySelector('.orders-seller');
 const userId = localStorage.getItem('userId');
+const searchItemsSeller = document.getElementById('search-item-seller');
+const filterOrders = document.querySelector('.filter-orders');
+const numberOrderFilterInpt = document.querySelector('.num-order-filter');
 
 document.addEventListener('DOMContentLoaded', () => {
     fillProductsSelect();
@@ -533,3 +536,67 @@ orderSellerDiv.addEventListener('click', async (event) => {
         }
     }
 })
+
+async function insertProductByList(productList) {
+    for (const product of productList) {
+        if(productSellerDiv.children.length != productList.length) {
+            productSellerDiv.insertAdjacentHTML('beforeend', cardInsertHtml(product)); 
+            const lastCard = productSellerDiv.lastElementChild;
+    
+            getRequest(`https://localhost:58841/api/v1/productSizes/getAllByProductId/${product.id}`)
+                .then(prodcutSizesList => {
+                    prodcutSizesList.sort((a, b) => a.size - b.size);
+                    prodcutSizesList.forEach(productSize => {
+                        const sizesCardContainer = lastCard.querySelector('.sizes-cards');
+                        sizesCardContainer.insertAdjacentHTML('beforeend', sizeCardInsert(productSize));
+                    })  
+                })
+        }
+    }
+}
+
+async function getProductListByNameAndUserId(name, userId) {
+    const productList = await getRequest(`https://localhost:58841/api/v1/products/getProductListByNameAndUserId/${name}/${userId}`)
+    return productList;
+}
+
+searchItemsSeller.addEventListener('change', async () => {
+    productSellerDiv.innerHTML = '';
+    let valueSelect = searchItemsSeller.value;
+    console.log(valueSelect);
+    let productList = await getProductListByNameAndUserId(valueSelect, parseInt(userId));
+    await insertProductByList(productList);
+})
+
+async function insertOrderProductByOrderId(orderId) {
+    let order = await getOrderById(parseInt(orderId));
+
+        if(order.status == 'В сборке') {
+            orderSellerDiv.insertAdjacentHTML('beforeend', insertOrder(order.id));
+            let orderProductList = await getOrderProductListByOrderId(order.id);
+
+            for (const orderProduct of orderProductList) {
+                let cardOrderArray = orderSellerDiv.querySelectorAll('.card-order');
+                let lastOrderCard = cardOrderArray[cardOrderArray.length - 1];
+                let product = await getProductById(orderProduct.productId);
+                let productSizes = await getProductSizesById(orderProduct.productSizesId);
+                lastOrderCard.insertAdjacentHTML('beforeend', insertCardProduct(product, productSizes, orderProduct.count));
+            }
+        }
+}
+
+numberOrderFilterInpt.addEventListener('change', async () => {
+    orderSellerDiv.innerHTML = '';
+    let valueSelect = numberOrderFilterInpt.value;
+
+    if(!isNaN(valueSelect) && valueSelect.length != 0) {
+        await insertOrderProductByOrderId(parseInt(valueSelect));
+    } else if (valueSelect.length == 0) {
+        await insertAllOrderProduct();
+    } else {
+        alert('Введите число!');
+        return;
+    }
+})
+
+

@@ -52,6 +52,14 @@ namespace ProductService.Controllers
             return Ok(await _productService.GetByUserId(userId));
         }
 
+        [HttpGet]
+        [Route("getProductListByNameAndUserId/{name}/{userId}")]
+        public async Task<IActionResult> GetProductListByNameAndUserId(string name, int userId)
+        {
+            return Ok(await _productService.GetByNameAndUserId(name, userId));
+        }
+
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] ProductDTO productDTO)

@@ -12,14 +12,11 @@ namespace ProductService.Service
 
         private readonly IUserClient _userClient;
 
-        private readonly IBrandSubcategoriesService _brandSubcategoriesService;
 
-        public ProductServiceImpl(IProductRepository productRepository, IUserClient userClient,
-            IBrandSubcategoriesService brandSubcategoriesService)
+        public ProductServiceImpl(IProductRepository productRepository, IUserClient userClient)
         {
             _productRepository = productRepository;
             _userClient = userClient;
-            _brandSubcategoriesService = brandSubcategoriesService;
         }
 
         public async Task Create(ProductDTO productDTO)
@@ -32,7 +29,10 @@ namespace ProductService.Service
 
         public async Task DeleteById(int id)
         {
-            await _productRepository.DeleteById(id);
+            ProductDTO? productDTO = await GetById(id);
+
+            if(productDTO != null) 
+                await _productRepository.DeleteById(id);
         }
 
         public async Task DeleteByProductNameAndUserId(string name, int userId)
@@ -51,14 +51,30 @@ namespace ProductService.Service
         public async Task<ProductDTO?> GetById(int id)
         {
             Product? product = await _productRepository.GetById(id);
-            return ProductMapper.MapProductToProductDTO(product);
+
+            if(product != null) 
+                return ProductMapper.MapProductToProductDTO(product);
+
+            return null;
+        }
+
+        public async Task<List<ProductDTO>> GetByNameAndUserId(string name, int userId)
+        {
+            List<Product> products = await _productRepository.GetByNameAndUserId(name, userId);
+
+            return products
+                    .Select(ProductMapper.MapProductToProductDTO)
+                    .ToList();
         }
 
         public async Task<ProductDTO?> GetByProductNameAndUserId(string name, int userId)
         { 
-            return ProductMapper.MapProductToProductDTO(
-                await _productRepository.GetByProductNameAndUserId(name, userId)
-            );
+            Product? product = await _productRepository.GetByProductNameAndUserId(name, userId);
+
+            if (product != null)
+                return ProductMapper.MapProductToProductDTO(product);
+
+            return null;
         }
 
         public async Task<List<ProductDTO>> GetByUserId(int userId)
