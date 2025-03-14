@@ -41,6 +41,14 @@ namespace OrderService.Repository
             return null;
         }
 
+        public async Task<List<Order>> GetByOrderStatusAndUserId(string status, int userId)
+        {
+            return await _orderContext.Orders
+                            .Where(o => o.Status == status && o.UserId == userId)
+                            .OrderBy(o => o.CreateOrder)
+                            .ToListAsync();
+        }
+
         public async Task<List<Order>> GetByUserId(int userId)
         {
             return await _orderContext.Orders

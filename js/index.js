@@ -49,6 +49,11 @@ async function getRatingProductByProductId(productId) {
     return ratingProductList;
 }
 
+async function getEmptyCommentByProductId(productId) {
+    const countEmptyComment = await getRequest(`https://localhost:7029/api/v1/ratingProduct/countEmptyCommentByProductId/${productId}`);
+    return countEmptyComment;
+}
+
 async function getAvgRatingByProductId(productId) {
     const ratingProductSum = await getRequest(`https://localhost:7029/api/v1/ratingProduct/getAvgRatingByProductId/${productId}`);
     return ratingProductSum;
@@ -90,9 +95,9 @@ function checkFavoriteProduct(seller, product) {
         .then(async fp => {
             let ratingProductList = await getRatingProductByProductId(product.id);
             
-            // пофиксить пустые комменты, товаром которые еще не получили
             if(ratingProductList.length != 0) {
-                let countComment = ratingProductList.length;
+                let emptyCommentsCount = await getEmptyCommentByProductId(product.id);
+                let countComment = ratingProductList.length - emptyCommentsCount;
                 let ratingProductAvg = await getAvgRatingByProductId(product.id);
 
                 if (fp && fp.productId === product.id) {

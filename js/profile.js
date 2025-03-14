@@ -21,10 +21,21 @@ async function getFavoriteProductsText() {
     countFavorite.textContent = `${favoriteCount} ${text}`;
 }
 
+// сделать метод для получение всех ratingProducts по userId и получать заказы и проверять их на статус 'Получен'
 async function getProductNoCommentText() {
-    let productNoComment = await getCountRatingProductByEmptyCommentAndUserId(parseInt(userId));
-    let text = getPluralForm(productNoComment, wordForms)
-    goodsNoCommentText.textContent = `${productNoComment} ${text}`;
+    let count = 0;
+    let ratingProductList = await getRatingProductListByUserId(parseInt(userId));
+
+    for (const ratingProduct of ratingProductList) {
+        let order = await getOrderById(ratingProduct.orderId);
+
+        if(order.status == 'Получен' && ratingProduct.comment == '') {
+            count++;
+        }
+    }  
+    console.log(count);
+    let text = getPluralForm(count, wordForms)
+    goodsNoCommentText.textContent = `${count} ${text}`;
 }
 
 favoriteDiv.addEventListener('click', () => {
@@ -106,6 +117,11 @@ async function getFavoriteListByUserId(userId) {
 async function getCountRatingProductByEmptyCommentAndUserId(userId) {
     const count = await getRequest(`https://localhost:7029/api/v1/ratingProduct/countRatingByUserIdAndEmptyComment/${userId}`);
     return count;
+}
+
+async function getRatingProductListByUserId(userId) {
+    const ratingProductList = await getRequest(`https://localhost:7029/api/v1/ratingProduct/getByUserId/${userId}`);
+    return ratingProductList;
 }
 
 async function insertDelivery() {

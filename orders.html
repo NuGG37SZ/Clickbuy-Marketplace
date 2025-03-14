@@ -211,11 +211,15 @@
     <div class="container mt-4">
         <div style="display: flex; justify-content: space-between; align-items: baseline;">
             <h2 class="mb-3">Ваши заказы</h2>
-            <select name="" id="" style="width: 250px; height: 30px;">
-                <option>Выберите пункт</option>
+            <select id="order-status-select" style="width: 250px; height: 30px;">
+                <option value="default" disabled selected>Выберите пункт</option>
                 <option>Все заказы</option>
-                <option>Новые</option>
+                <option>В сборке</option>
+                <option>Собрано и передано в службу доставки</option>
+                <option>В пункте выдачи</option>
+                <option>Получен</option>
                 <option>Отмененные</option>
+                <option>Возврат</option>
             </select>
         </div>
         <div class="orders">

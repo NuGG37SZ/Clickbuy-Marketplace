@@ -74,6 +74,13 @@ namespace RatingService.Controllers
             return Ok(await _ratingProductService.CountRatingByUserIdAndEmptyComment(userId));
         }
 
+        [HttpGet]
+        [Route("countEmptyCommentByProductId/{productId}")]
+        public async Task<IActionResult> CountEmptyCommentByProductId(int productId)
+        {
+            return Ok(await _ratingProductService.CountEmptyCommentByProductId(productId));
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] RatingProductDTO ratingProductDTO)

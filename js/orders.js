@@ -1,5 +1,6 @@
 const ordersDiv = document.querySelector('.orders');
 const userId = localStorage.getItem('userId');
+const orderStatusSelect = document.getElementById('order-status-select');
 
 insertAllOrders();
 
@@ -40,10 +41,10 @@ function insertOrder(order, firstDate, secondDate, point) {
     `
 }
 
-function insertCancelOrder(order, firstDate, secondDate, point) {
+function insertCancelOrder(order) {
     return `
         <div class="order" style="margin-top: 15px;">
-            <h4>Заказ №${order.id}. Приедет примерно ${firstDate} - ${secondDate}, в пункт выдачи по адресу ${point.address}</h4>
+            <h4>Заказ №${order.id}. ${order.status}</h4>
             <table class="all-product-for-payment">
                 <thead>
                     <tr>
@@ -138,6 +139,11 @@ async function getOrderById(id) {
     return order;
 }
 
+async function getOrderListByStatusAndUserId(status, userId) {
+    const orderList = await getRequest(`https://localhost:7049/api/v1/orders/getByOrderStatusAndUserId/${status}/${userId}`);
+    return orderList;
+}
+
 async function insertAllOrders() {
     let orderList = await getOrdersByUserId(parseInt(userId));
 
@@ -149,9 +155,49 @@ async function insertAllOrders() {
         if(order.status != 'Отменен') {
             ordersDiv.insertAdjacentHTML('beforeend', insertOrder(order, firstDate, secondDate, point));
         } else {
-            ordersDiv.insertAdjacentHTML('beforeend', insertCancelOrder(order, firstDate, secondDate, point));
+            ordersDiv.insertAdjacentHTML('beforeend', insertCancelOrder(order));
         }
 
+        let orderDivs = ordersDiv.querySelectorAll('.order');
+        let lastOrderDiv = orderDivs[orderDivs.length - 1];
+        let tbody = lastOrderDiv.querySelector('.tbody-orders');
+        let orderProducts = await getOrderProductByOrderId(order.id);
+        
+        for (const orderProduct of orderProducts) {     
+            let product = await getProductById(orderProduct.productId);
+            let productSizes = await getProductSizesById(orderProduct.productSizesId);
+            let seller = await getUserById(product.userId);
+            tbody.insertAdjacentHTML('beforeend', insertProduct(product, seller, productSizes.size, orderProduct.count));
+        }
+    }
+}
+
+async function insertOrderCancelList(orderList) {
+    for (const order of orderList) {
+        ordersDiv.insertAdjacentHTML('beforeend', insertCancelOrder(order));
+       
+        let orderDivs = ordersDiv.querySelectorAll('.order');
+        let lastOrderDiv = orderDivs[orderDivs.length - 1];
+        let tbody = lastOrderDiv.querySelector('.tbody-orders');
+        let orderProducts = await getOrderProductByOrderId(order.id);
+        
+        for (const orderProduct of orderProducts) {     
+            let product = await getProductById(orderProduct.productId);
+            let productSizes = await getProductSizesById(orderProduct.productSizesId);
+            let seller = await getUserById(product.userId);
+            tbody.insertAdjacentHTML('beforeend', insertProduct(product, seller, productSizes.size, orderProduct.count));
+        }
+    }
+}
+
+async function insertOrderList(orderList) {
+    for (const order of orderList) {
+        let firstDate = getDate(order.createOrder, 10);
+        let secondDate = getDate(order.createOrder, 12);
+        let point = await getPointById(order.pointId);
+
+        ordersDiv.insertAdjacentHTML('beforeend', insertOrder(order, firstDate, secondDate, point));
+       
         let orderDivs = ordersDiv.querySelectorAll('.order');
         let lastOrderDiv = orderDivs[orderDivs.length - 1];
         let tbody = lastOrderDiv.querySelector('.tbody-orders');
@@ -194,5 +240,21 @@ ordersDiv.addEventListener('click', async (event) => {
             alert('Заказ отменен :с');
             location.reload();
         }
+    }
+})
+
+orderStatusSelect.addEventListener('change', async () => {
+    ordersDiv.innerHTML = '';
+    let valueSelect = orderStatusSelect.value;
+    console.log(valueSelect);
+    let orderList = await getOrderListByStatusAndUserId(valueSelect, parseInt(userId));
+    console.log()
+
+    if(valueSelect == 'Отменено' &&  valueSelect == 'Возврат') {
+        insertOrderCancelList(orderList);
+    } else if(valueSelect == 'Все заказы') {
+        await insertAllOrders();
+    }else {
+        insertOrderList(orderList);
     }
 })
