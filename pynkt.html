@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click&Buy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="fontawesome-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            width: 350px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+
+        #toggleForm:checked ~ .login-wrapper {
+            display: none;
+        }
+
+        #toggleForm:checked ~ .orders-container {
+            display: block;
+        }
+
+        .orders-container {
+            display: none;
+        }
+
+        .search-123 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-input {
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .search-button {    
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }   
+
+        .search-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-button i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="checkbox" id="toggleForm" style="display: none;">
+
+    <div class="login-wrapper">
+        <div class="login-container">
+            <form class="row g-3">
+                <div class="col-auto">
+                    <label for="inputKey2" class="visually-hidden">Введите ключ</label>
+                    <input type="key" class="form-control" id="inputKey2" placeholder="Введите ключ" required>
+                </div>
+                <div class="col-auto">
+                    <label for="toggleForm" class="btn btn-primary mb-3">Войти</label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Каталог товаров -->
+    <div class="orders-container">
+        <div class="container mt-4">    
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <h2 class="mb-3">Заказы</h2>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="search-123">
+                        <input type="text" class="search-input" placeholder="Поиск пользователей...">
+                        <button class="search-button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+
+                    <select name="" id="" style="width: 250px; height: 30px;">
+                        <option>Выберите пункт</option>
+                        <option>Все заказы</option>
+                        <option>Новые</option>
+                        <option>Отмененные</option>
+                    </select>
+                </div>
+            </div>
+            <div class="orders">
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
