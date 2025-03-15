@@ -3,28 +3,8 @@
   "WorkspaceRootPath": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\db\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:db\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\entity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:entity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\migrations\\usercontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:migrations\\usercontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\migrations\\20250226184858_mig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:migrations\\20250226184858_mig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\repository\\userrepositoryimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,20 +15,44 @@
       "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\service\\userserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:service\\userserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\migrations\\usercontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:migrations\\usercontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\entity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:entity\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\db\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:db\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\migrations\\20250226184858_mig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:migrations\\20250226184858_mig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\service\\userserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:service\\userserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|solutionrelative:service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A9B52AE-FB05-4F53-B249-90DC11102FDA}|UserService.csproj|d:\\work\\marketplace\\marketplace\\backend c#\\marketplace\\userservice\\utils\\hashfunc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "UserContext.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Db\\UserContext.cs",
               "RelativeDocumentMoniker": "Db\\UserContext.cs",
@@ -82,12 +86,11 @@
               "RelativeToolTip": "Db\\UserContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:33:17.042Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:33:17.042Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "UserDTO.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\DTO\\UserDTO.cs",
               "RelativeDocumentMoniker": "DTO\\UserDTO.cs",
@@ -100,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Entity\\User.cs",
               "RelativeDocumentMoniker": "Entity\\User.cs",
@@ -119,14 +122,14 @@
               "RelativeDocumentMoniker": "Migrations\\UserContextModelSnapshot.cs",
               "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Migrations\\UserContextModelSnapshot.cs",
               "RelativeToolTip": "Migrations\\UserContextModelSnapshot.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wA8AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwA8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-14T14:32:46.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "20250226184858_mig.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Migrations\\20250226184858_mig.cs",
               "RelativeDocumentMoniker": "Migrations\\20250226184858_mig.cs",
@@ -134,12 +137,11 @@
               "RelativeToolTip": "Migrations\\20250226184858_mig.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:32:36.855Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:32:36.855Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "UserRepositoryImpl.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Repository\\UserRepositoryImpl.cs",
               "RelativeDocumentMoniker": "Repository\\UserRepositoryImpl.cs",
@@ -152,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Repository\\IUserRepository.cs",
               "RelativeDocumentMoniker": "Repository\\IUserRepository.cs",
@@ -165,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -178,28 +180,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAgwFIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T11:43:45.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-14T14:31:51.788Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAYwFQAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T11:43:45.259Z",
+              "DocumentIndex": 7,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-15T12:00:15.308Z",
               "EditorCaption": ""
             },
             {
@@ -208,30 +223,19 @@
             },
             {
               "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "HashFunc.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Utils\\HashFunc.cs",
               "RelativeDocumentMoniker": "Utils\\HashFunc.cs",
               "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Utils\\HashFunc.cs",
               "RelativeToolTip": "Utils\\HashFunc.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-=======
-              "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAgwCMAAAAaAAAAAAAAAA==",
->>>>>>> 760d2292387c413a1e70d143ca5dee1a12ea8ecf
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:31:51.19Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:31:51.19Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "UserServiceImpl.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Service\\UserServiceImpl.cs",
               "RelativeDocumentMoniker": "Service\\UserServiceImpl.cs",
@@ -239,12 +243,11 @@
               "RelativeToolTip": "Service\\UserServiceImpl.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAYwDAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:31:24.448Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:31:24.448Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "IUserService.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Service\\IUserService.cs",
               "RelativeDocumentMoniker": "Service\\IUserService.cs",
@@ -252,12 +255,11 @@
               "RelativeToolTip": "Service\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:31:20.56Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:31:20.56Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "UserMapper.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Mapper\\UserMapper.cs",
               "RelativeDocumentMoniker": "Mapper\\UserMapper.cs",
@@ -265,8 +267,7 @@
               "RelativeToolTip": "Mapper\\UserMapper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T14:30:14.993Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T14:30:14.993Z"
             }
           ]
         }
