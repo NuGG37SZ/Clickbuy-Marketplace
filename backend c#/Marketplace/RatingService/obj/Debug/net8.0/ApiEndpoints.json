@@ -11,6 +11,22 @@
   },
   {
     "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "CountEmptyCommentByProductId",
+    "RelativePath": "api/v1/ratingProduct/countEmptyCommentByProductId/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
     "Method": "CountRatingByUserIdAndEmptyComment",
     "RelativePath": "api/v1/ratingProduct/countRatingByUserIdAndEmptyComment/{userId}",
     "HttpMethod": "GET",

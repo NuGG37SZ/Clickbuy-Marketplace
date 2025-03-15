@@ -208,6 +208,7 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 12,
               "Title": "HashFunc.cs",
               "DocumentMoniker": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Utils\\HashFunc.cs",
@@ -215,6 +216,15 @@
               "ToolTip": "D:\\Work\\Marketplace\\Marketplace\\backend c#\\Marketplace\\UserService\\Utils\\HashFunc.cs",
               "RelativeToolTip": "Utils\\HashFunc.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+=======
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAgwCMAAAAaAAAAAAAAAA==",
+>>>>>>> 760d2292387c413a1e70d143ca5dee1a12ea8ecf
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-14T14:31:51.19Z",
               "EditorCaption": ""

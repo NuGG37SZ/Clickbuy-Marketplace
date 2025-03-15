@@ -96,7 +96,13 @@ namespace RatingService.Repository
             return await _ratingContext.RatingProducts
                             .Where(rp => rp.UserId == userId && rp.Comment == "")
                             .CountAsync();
+        }
 
+        public async Task<double> CountEmptyCommentByProductId(int productId)
+        {
+            return await _ratingContext.RatingProducts
+                            .Where(rp => rp.ProductId == productId && rp.Comment == "")
+                            .CountAsync();
         }
     }
 }

@@ -96,5 +96,10 @@ namespace RatingService.Service
         {
             return await _ratingProductRepository.CountRatingByUserIdAndEmptyComment(userId);
         }
+
+        public async Task<double> CountEmptyCommentByProductId(int productId)
+        {
+            return await _ratingProductRepository.CountEmptyCommentByProductId(productId);
+        }
     }
 }

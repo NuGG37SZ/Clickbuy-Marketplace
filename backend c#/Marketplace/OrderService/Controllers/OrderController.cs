@@ -22,7 +22,7 @@ namespace OrderService.Controllers
         [Route("getById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            OrderDTO orderDTO = await _orderService.GetById(id);
+            OrderDTO? orderDTO = await _orderService.GetById(id);
 
             if(orderDTO == null) 
                 return NotFound("Order Not Found.");
@@ -35,6 +35,13 @@ namespace OrderService.Controllers
         public async Task<IActionResult> GetByUserId(int userId)
         {
             return Ok(await _orderService.GetByUserId(userId));
+        }
+
+        [HttpGet]
+        [Route("getByOrderStatusAndUserId/{status}/{userId}")]
+        public async Task<IActionResult> GetByOrderStatusAndUserId(string status, int userId)
+        {
+            return Ok(await _orderService.GetByOrderStatusAndUserId(status, userId));
         }
 
         [HttpPost]

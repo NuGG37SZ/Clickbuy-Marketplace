@@ -170,6 +170,27 @@
   },
   {
     "ContainingType": "OrderService.Controllers.OrderController",
+    "Method": "GetByOrderStatusAndUserId",
+    "RelativePath": "api/v1/orders/getByOrderStatusAndUserId/{status}/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrderService.Controllers.OrderController",
     "Method": "GetByUserId",
     "RelativePath": "api/v1/orders/getByUserId/{userId}",
     "HttpMethod": "GET",

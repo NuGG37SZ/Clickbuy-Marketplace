@@ -18,6 +18,8 @@ namespace RatingService.Repository
 
         Task<double> CountRatingByUserIdAndEmptyComment(int userId);
 
+        Task<double> CountEmptyCommentByProductId(int productId);
+
         Task Create(RatingProduct ratingProduct);
 
         Task Update(int id, RatingProduct ratingProduct);

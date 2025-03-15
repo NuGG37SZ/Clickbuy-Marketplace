@@ -30,7 +30,7 @@ namespace OrderService.Service
                     .ToList();
         }
 
-        public async Task<OrderDTO> GetById(int id)
+        public async Task<OrderDTO?> GetById(int id)
         {
             Order? order = await _orderRepository.GetById(id);
 
@@ -38,6 +38,15 @@ namespace OrderService.Service
                 return OrderMapper.MapOrderToOrderDTO(await _orderRepository.GetById(id));
 
             return null;
+        }
+
+        public async Task<List<OrderDTO>> GetByOrderStatusAndUserId(string status, int userId)
+        {
+            List<Order> orders = await _orderRepository.GetByOrderStatusAndUserId(status, userId);
+
+            return orders
+                    .Select(OrderMapper.MapOrderToOrderDTO)
+                    .ToList();
         }
 
         public async Task<List<OrderDTO>> GetByUserId(int userId)

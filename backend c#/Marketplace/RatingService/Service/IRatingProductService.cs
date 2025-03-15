@@ -19,6 +19,8 @@ namespace RatingService.Service
 
         Task<double> CountRatingByUserIdAndEmptyComment(int userId);
 
+        Task<double> CountEmptyCommentByProductId(int productId);
+
         Task Create(RatingProductDTO ratingProductDTO);
 
         Task Update(int id, RatingProductDTO ratingProductDTO);

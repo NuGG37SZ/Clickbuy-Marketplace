@@ -116,7 +116,9 @@ async function fillProduct(product) {
 
     if(ratingProductList.length != 0) {
         let ratingProductAvg = await getAvgRatingByProductId(product.id);
-        commentProduct.textContent = `💬 ${ratingProductList.length}`;
+        let emptyCommentsCount = await getEmptyCommentByProductId(product.id);
+        let commentCount = ratingProductList.length - emptyCommentsCount;
+        commentProduct.textContent = `💬 ${commentCount}`;
         startProduct.textContent = `⭐ ${ratingProductAvg}`;
     } else {
         commentProduct.textContent = `💬 ${0}`;
@@ -188,6 +190,11 @@ async function getAllCardsByCurrentUserId() {
 async function getRatingProductByProductId(productId) {
     const ratingProductList = await getRequest(`https://localhost:58841/api/v1/ratingProduct/getByProdcutId/${productId}`);
     return ratingProductList;
+}
+
+async function getEmptyCommentByProductId(productId) {
+    const countEmptyComment = await getRequest(`https://localhost:7029/api/v1/ratingProduct/countEmptyCommentByProductId/${productId}`);
+    return countEmptyComment;
 }
 
 addPrdouctToCartBtn.addEventListener('click', async () => {

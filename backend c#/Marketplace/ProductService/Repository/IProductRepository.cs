@@ -12,6 +12,8 @@ namespace ProductService.Repository
 
         Task<List<Product>> GetByUserId(int userId);
 
+        Task<List<Product>> GetByNameAndUserId(string name, int userId);
+
         Task Create(Product product);
 
         Task Update(int id, Product product);

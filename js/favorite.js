@@ -3,7 +3,7 @@ let productContainer = document.querySelector('.row');
 
 getAllFavoriteByUserId();
 
-function insertCardProductFavorite(product, seller) {
+function insertCardProductFavorite(product, seller, rating, comment) {
     return `
         <div class="col-6 col-md-3">
             <div class="product-card">
@@ -26,8 +26,8 @@ function insertCardProductFavorite(product, seller) {
                     <p class="product-description">${product.description}</p>
 
                     <div class="rating-reviews">
-                        <span class="star">⭐ 4.7</span>
-                        <span class="reviews" id="reviews-1" data-count="120">💬</span>
+                        <span class="star">⭐ ${rating}</span>
+                        <span class="reviews" id="reviews-1" data-count="120">💬 ${comment}</span>
                     </div>                    
                 </div>
             </div>
@@ -40,6 +40,21 @@ async function getRequest(url) {
     return await response.json();
 }
 
+async function getRatingProductByProductId(productId) {
+    const ratingProductList = await getRequest(`https://localhost:7029/api/v1/ratingProduct/getByProdcutId/${productId}`);
+    return ratingProductList;
+}
+
+async function getEmptyCommentByProductId(productId) {
+    const countEmptyComment = await getRequest(`https://localhost:7029/api/v1/ratingProduct/countEmptyCommentByProductId/${productId}`);
+    return countEmptyComment;
+}
+
+async function getAvgRatingByProductId(productId) {
+    const ratingProductSum = await getRequest(`https://localhost:7029/api/v1/ratingProduct/getAvgRatingByProductId/${productId}`);
+    return ratingProductSum;
+}
+
 function getAllFavoriteByUserId() {
     getRequest(`https://localhost:7073/api/v1/favorites/getByUserId/${userId}`)
         .then(favoriteList => {
@@ -47,8 +62,20 @@ function getAllFavoriteByUserId() {
                 getRequest(`https://localhost:58841/api/v1/products/getById/${favorite.productId}`)
                     .then(product => {
                         getRequest(`https://localhost:5098/api/v1/users/${product.userId}`)
-                            .then(seller => {
-                                productContainer.insertAdjacentHTML('beforeend', insertCardProductFavorite(product, seller.login));
+                            .then(async seller => {
+                                let ratingProductList = await getRatingProductByProductId(product.id);
+
+                                if(ratingProductList.length != 0) {
+                                    let emptyCommentsCount = await getEmptyCommentByProductId(product.id);
+                                    let countComment = ratingProductList.length - emptyCommentsCount;
+                                    let ratingProductAvg = await getAvgRatingByProductId(product.id);
+
+                                    productContainer.insertAdjacentHTML('beforeend', 
+                                        insertCardProductFavorite(product, seller.login, ratingProductAvg, countComment)
+                                    );
+                                } else {
+                                    productContainer.insertAdjacentHTML('beforeend', insertCardProductFavorite(product, seller.login, 0, 0));
+                                }                                
                             })
                     })
             });
