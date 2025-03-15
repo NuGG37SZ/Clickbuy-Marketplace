@@ -88,9 +88,6 @@
     </style>
 </head>
 <body>
-
-    <input type="checkbox" id="toggleForm" style="display: none;">
-
     <div class="login-wrapper">
         <div class="login-container">
             <form class="row g-3">
@@ -99,7 +96,7 @@
                     <input type="key" class="form-control" id="inputKey2" placeholder="Введите ключ" required>
                 </div>
                 <div class="col-auto">
-                    <label for="toggleForm" class="btn btn-primary mb-3">Войти</label>
+                    <button type="button" class="btn btn-primary mb-3" id="auth-with-token-btn">Войти</button>
                 </div>
             </form>
         </div>
@@ -109,20 +106,24 @@
     <div class="orders-container">
         <div class="container mt-4">    
             <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                <h2 class="mb-3">Заказы</h2>
+                <h2 id="point-title">Заказы</h2>
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <div class="search-123">
-                        <input type="text" class="search-input" placeholder="Поиск пользователей...">
+                        <input type="text" class="search-input" placeholder="Поиск пользователей..." id="search-inpt">
                         <button class="search-button">
                             <i class="bi bi-search"></i>
                         </button>
                     </div>
 
-                    <select name="" id="" style="width: 250px; height: 30px;">
-                        <option>Выберите пункт</option>
+                    <select id="order-status-select-adm" style="width: 250px; height: 30px;">
+                        <option disabled selected>Выберите статус</option>
                         <option>Все заказы</option>
-                        <option>Новые</option>
+                        <option>В сборке</option>
+                        <option>Собрано и передано в службу доставки</option>
+                        <option>В пункте выдачи</option>
+                        <option>Получен</option>
                         <option>Отмененные</option>
+                        <option>Возврат</option>
                     </select>
                 </div>
             </div>
@@ -133,5 +134,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/keyAuth.js"></script>
+    <script src="js/pointAdmin.js"></script>
 </body>
 </html>

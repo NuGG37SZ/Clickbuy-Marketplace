@@ -302,6 +302,22 @@
   },
   {
     "ContainingType": "OrderService.Controllers.PointsController",
+    "Method": "GetByToken",
+    "RelativePath": "api/v1/points/getByToken/{token}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OrderService.Controllers.PointsController",
     "Method": "Update",
     "RelativePath": "api/v1/points/update/{id}",
     "HttpMethod": "PUT",

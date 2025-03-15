@@ -97,7 +97,6 @@ pickUpPoints.addEventListener('click', async (event) => {
         let currentBtn = event.target.closest('#delete-point');
         let currentPointDiv = currentBtn.parentNode.parentNode.parentNode.parentNode;
         let addressPoint = currentPointDiv.children[1].textContent;
-        
         let point = await getPointByAddress(addressPoint);
         let userPoint = await getUserPointByUserIdAndPointId(parseInt(userId), point.id);
 

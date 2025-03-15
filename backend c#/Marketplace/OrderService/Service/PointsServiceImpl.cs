@@ -1,4 +1,6 @@
-﻿using OrderService.DTO;
+﻿using System.Net;
+using System.Text;
+using OrderService.DTO;
 using OrderService.Entity;
 using OrderService.Mapper;
 using OrderService.Repository;
@@ -12,6 +14,8 @@ namespace OrderService.Service
         public PointsServiceImpl(IPointsRepository pointsRepository) => _pointsRepository = pointsRepository;
         public async Task Create(PointsDTO pointsDTO)
         {
+            string token = GenerateRandomToken();
+            pointsDTO.Token = token;
             await _pointsRepository.Create(PointsMapper.MapPointsDTOToPoints(pointsDTO));
         }
 
@@ -55,6 +59,32 @@ namespace OrderService.Service
 
             if (currentPointsDTO != null)
                 await _pointsRepository.Update(id, PointsMapper.MapPointsDTOToPoints(pointsDTO));
+        }
+
+        public async Task<PointsDTO?> GetByToken(string token)
+        {
+            Points? points = await _pointsRepository.GetByToken(token);
+
+            if (points != null)
+                return PointsMapper.MapPointsToPointsDTO(points);
+
+            return null;
+        }
+
+        public string GenerateRandomToken()
+        {
+            int length = 9;
+            const string validChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            StringBuilder tokenBuilder = new StringBuilder();
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                int index = random.Next(validChars.Length);
+                tokenBuilder.Append(validChars[index]);
+            }
+
+            return tokenBuilder.ToString();
         }
     }
 }

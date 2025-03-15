@@ -10,6 +10,7 @@ namespace OrderService.Mapper
             PointsDTO pointsDTO = new PointsDTO();
             pointsDTO.Id = points.Id;
             pointsDTO.Address = points.Address;
+            pointsDTO.Token = points.Token;
             return pointsDTO;
         }
 
@@ -17,6 +18,7 @@ namespace OrderService.Mapper
         {
             Points points = new Points();
             points.Address = pointsDTO.Address;
+            points.Token = pointsDTO.Token;
             return points;
         }
     }

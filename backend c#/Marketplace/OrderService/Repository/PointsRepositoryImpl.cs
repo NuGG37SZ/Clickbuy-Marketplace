@@ -44,6 +44,13 @@ namespace OrderService.Repository
             return await _orderContext.Points.FindAsync(id);
         }
 
+        public async Task<Points?> GetByToken(string token)
+        {
+            return await _orderContext.Points
+                            .Where(p => p.Token.Equals(token))
+                            .FirstOrDefaultAsync();
+        }
+
         public async Task Update(int id, Points points)
         {
             Points? currentPoints = await GetById(id);
@@ -51,6 +58,7 @@ namespace OrderService.Repository
             if (currentPoints != null)
             {
                 currentPoints.Address = points.Address;
+                currentPoints.Token = points.Token;
                 _orderContext.Update(currentPoints);
                 await _orderContext.SaveChangesAsync();
             }

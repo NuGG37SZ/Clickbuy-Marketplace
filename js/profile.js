@@ -11,8 +11,8 @@ const wordForms = ['товар', 'товара', 'товаров'];
 document.addEventListener("DOMContentLoaded", async ()  => {
     checkAuthUser();
     insertDelivery();
-    getFavoriteProductsText();
-    getProductNoCommentText();
+    await getFavoriteProductsText();
+    await getProductNoCommentText();
 })
 
 async function getFavoriteProductsText() {
@@ -21,10 +21,10 @@ async function getFavoriteProductsText() {
     countFavorite.textContent = `${favoriteCount} ${text}`;
 }
 
-// сделать метод для получение всех ratingProducts по userId и получать заказы и проверять их на статус 'Получен'
 async function getProductNoCommentText() {
     let count = 0;
     let ratingProductList = await getRatingProductListByUserId(parseInt(userId));
+    console.log(ratingProductList);
 
     for (const ratingProduct of ratingProductList) {
         let order = await getOrderById(ratingProduct.orderId);
@@ -33,7 +33,6 @@ async function getProductNoCommentText() {
             count++;
         }
     }  
-    console.log(count);
     let text = getPluralForm(count, wordForms)
     goodsNoCommentText.textContent = `${count} ${text}`;
 }
@@ -127,19 +126,28 @@ async function getRatingProductListByUserId(userId) {
 async function insertDelivery() {
     let orderList = await getOrderListByUserId(parseInt(userId));
     
-    for (let i = 0; i < 3; i++) {
-        if(orderList[i].status != 'Отменен' && orderList[i].status != 'Получен') {
-            let orderProductList = await getOrderProductListByOrderId(order.id);
-            let orderProduct = orderProductList[0];
-            let date = getDate(orderList[i].createOrder, 11);
-            let product = await getProductById(orderProduct.productId);
-            delivery.insertAdjacentHTML('beforeend', insertDeliveryCard(orderList[i], product, date));
-        } else {
-            delivery.insertAdjacentHTML('beforeend', '<p style="font-weight:bold; font-size:32px;">Пока пусто 😭</p>');
-            return;
+    if(orderList.length <= 3) {
+        for (const order of orderList) {
+            insertCardDelivery(order);
         }
+    } else {
+        let order = orderList[0];
+        insertCardDelivery(order);
     }
 } 
+
+async function insertCardDelivery(order) {
+    if(order.status != 'Отменен' && order.status != 'Получен') {
+        let orderProductList = await getOrderProductListByOrderId(order.id);
+        let orderProduct = orderProductList[0];
+        let date = getDate(order.createOrder, 11);
+        let product = await getProductById(orderProduct.productId);
+        delivery.insertAdjacentHTML('beforeend', insertDeliveryCard(order, product, date));
+    } else {
+        delivery.insertAdjacentHTML('beforeend', '<p style="font-weight:bold; font-size:32px;">Пока пусто 😭</p>');
+        return;
+    }
+}
 
 function getDate(dateStr, days) {
     const dateFirst = moment(dateStr, "YYYY-MM-DD HH:mm:ss");

@@ -42,6 +42,18 @@ namespace OrderService.Controllers
             return Ok(pointsDTO);
         }
 
+        [HttpGet]
+        [Route("getByToken/{token}")]
+        public async Task<IActionResult> GetByToken(string token)
+        {
+            PointsDTO? pointsDTO = await _pointsService.GetByToken(token);
+
+            if (pointsDTO == null)
+                return NotFound("Points Not Found.");
+
+            return Ok(pointsDTO);
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] PointsDTO pointsDTO)

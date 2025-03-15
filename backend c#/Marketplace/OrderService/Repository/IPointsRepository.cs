@@ -10,6 +10,8 @@ namespace OrderService.Repository
 
         Task<Points?> GetByAddress(string address);
 
+        Task<Points?> GetByToken(string token);
+
         Task Create(Points points);
 
         Task Update(int id, Points points);
