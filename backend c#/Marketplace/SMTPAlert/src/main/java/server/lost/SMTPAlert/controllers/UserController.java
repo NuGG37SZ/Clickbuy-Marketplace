@@ -1,22 +1,21 @@
 package server.lost.SMTPAlert.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
-import server.lost.SMTPAlert.UserServices.UserClientService;
-import server.lost.SMTPAlert.UserServices.UserDTO;
+import org.springframework.http.ResponseEntity;
+import server.lost.SMTPAlert.UserServices.UserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/v1/users")
 public class UserController {
+    private final UserService userService;
 
-    private final UserClientService userClientService;
-
-    public UserController(UserClientService userClientService) {
-        this.userClientService = userClientService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/getByLogin/{login}")
-    public Mono<UserDTO> getUserByLogin(@PathVariable String login) {
-        return userClientService.getUserByLogin(login);
+    @GetMapping("/email/{login}")
+    public ResponseEntity<String> getEmail(@PathVariable String login) {
+        String email = userService.getEmailByLogin(login);
+        return email != null ? ResponseEntity.ok(email) : ResponseEntity.notFound().build();
     }
 }
