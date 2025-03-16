@@ -50,8 +50,7 @@
               "RelativeToolTip": "Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-15T18:44:48.187Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-15T18:44:48.187Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "Repository\\OrderRepositoryImpl.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T16:10:59.508Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T16:10:59.508Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "Controllers\\OrderController.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAAACEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T16:04:12.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T16:04:12.684Z"
             }
           ]
         }

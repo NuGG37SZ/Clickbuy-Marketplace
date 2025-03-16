@@ -59,6 +59,13 @@ namespace ProductService.Controllers
             return Ok(await _productService.GetByNameAndUserId(name, userId));
         }
 
+        [HttpGet]
+        [Route("getByBrandSubcategoryId/{brandSubcategoryId}")]
+        public async Task<IActionResult> GetByBrandSubcategoryId(int brandSubcategoryId)
+        {
+            return Ok(await _productService.GetByBrandSubcategoryId(brandSubcategoryId));
+        }
+
 
         [HttpPost]
         [Route("create")]

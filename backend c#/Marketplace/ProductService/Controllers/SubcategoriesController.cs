@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductService.DTO;
+using ProductService.Entity;
 using ProductService.Service;
 
 namespace ProductService.Controllers
@@ -47,6 +48,18 @@ namespace ProductService.Controllers
                 return NotFound("Category Not Found.");
 
             return Ok(await _subcategoriesService.GetSubcategoriesByCategoryId(categoryId));
+        }
+
+        [HttpGet]
+        [Route("getSubcategoriesByName/{name}")]
+        public async Task<IActionResult> GetSubcategoryByName(string name)
+        {
+            SubcategoriesDTO? currentSubcategoriesDTO = await _subcategoriesService.GetByName(name);
+
+            if (currentSubcategoriesDTO == null)
+                return NotFound("Subcategories Not Found.");
+
+            return Ok(await _subcategoriesService.GetByName(name));
         }
 
         [HttpPost]

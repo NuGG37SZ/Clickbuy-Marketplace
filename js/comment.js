@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function insertCardComment(product, productSizes, order) {
     return `
         <div class="card-rating">
-            <div>
+            <div class="card-rating-body">
                 <div style="position: relative;">
                     <img src="${product.imageUrl}" width="200px" height="200px">
                     <p style="margin-bottom: 0;" id="title-product-rating">${product.name}</p>
@@ -111,46 +111,47 @@ async function insertAllCardRating() {
 }
 
 commentDiv.addEventListener('click', () => {
-    const cardRating = document.querySelectorAll('.card-rating');
-    const allStar = document.querySelectorAll('.rating-icons');
+    const allCards = document.querySelectorAll('.card-rating');
     const modal = document.getElementById('modal');
     const openModalBtnList = document.querySelectorAll('.rating-icons.openModalBtn');
     const closeModalBtn = document.getElementById('closeModalButton');
 
-    allStar.forEach(star => {
-        star.addEventListener('mouseenter', () => {
-            const rating = star.getAttribute('data-star');
-            highlightStars(rating);
-        })
+    allCards.forEach(card => {
+        const stars = card.querySelectorAll('.rating-icons');
     
-        star.addEventListener('click', async () => {
-            const rating = star.getAttribute('data-star');
-            highlightStars(rating);
-
-            starCount = rating;
-
-            let productId = parseInt(document.querySelector('#product-id-rating').textContent);
-            let size = replaceAllLetters(document.querySelector('#size-product-rating').textContent);
-            let orderId = replaceAllLetters(document.querySelector('#num-order-rating').textContent);
-
-            let product = await getProductById(productId);
-            let productSizes = await getProductSizesByProductIdAndSize(product.id, size.toString());
-            modalWindowBody.insertAdjacentHTML('beforeend', insertProductRating(product));
-
-            prodcutIdUpdate = product.id;
-            orderIdUpdate = orderId;
-            productSizesIdUpdate = productSizes.id;
-        })
-    })
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', () => {
+                const rating = star.getAttribute('data-star');
+                highlightStars(stars, rating);
+            });
     
-    cardRating.forEach(card => {
+            star.addEventListener('click', async () => {
+                const rating = star.getAttribute('data-star');
+                highlightStars(stars, rating);
+    
+                starCount = rating;
+    
+                let productId = parseInt(card.querySelector('#product-id-rating').textContent);
+                let size = replaceAllLetters(card.querySelector('#size-product-rating').textContent);
+                let orderId = replaceAllLetters(card.querySelector('#num-order-rating').textContent);
+    
+                let product = await getProductById(productId);
+                let productSizes = await getProductSizesByProductIdAndSize(product.id, size.toString());
+                modalWindowBody.insertAdjacentHTML('beforeend', insertProductRating(product));
+    
+                prodcutIdUpdate = product.id;
+                orderIdUpdate = orderId;
+                productSizesIdUpdate = productSizes.id;
+            });
+        });
+    
         card.addEventListener('mouseleave', () => {
-            resetStars();
-        })
-    })
+            resetStars(stars);
+        });
+    });
     
-    function highlightStars(rating) {
-        allStar.forEach(star => {
+    function highlightStars(stars, rating) {
+        stars.forEach(star => {
             const starRating = star.getAttribute('data-star');
             if (starRating <= rating) {
                 star.classList.add('active'); 
@@ -160,13 +161,12 @@ commentDiv.addEventListener('click', () => {
         });
     }
     
-    function resetStars() {
-        allStar.forEach(star => {
+    function resetStars(stars) {
+        stars.forEach(star => {
             star.classList.remove('active');
         });
     }
 
-    // Модальное окно
     openModalBtnList.forEach(openModalBtn => {
         openModalBtn.addEventListener('click', () => {
             const modalContent = document.querySelector('.modal-content');

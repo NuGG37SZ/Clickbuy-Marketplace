@@ -43,9 +43,20 @@ namespace ProductService.Service
         public async Task<List<ProductDTO>> GetAll()
         {
             List<Product> products = await _productRepository.GetAll();
-            return products.Select(ProductMapper.MapProductToProductDTO)
-                            .ToList();
 
+            return products
+                     .Select(ProductMapper.MapProductToProductDTO)
+                     .ToList();
+
+        }
+
+        public async Task<List<ProductDTO>> GetByBrandSubcategoryId(int brandSubcategoryId)
+        {
+            List<Product> products = await _productRepository.GetByBrandSubcategoryId(brandSubcategoryId);
+
+            return products
+                    .Select(ProductMapper.MapProductToProductDTO)
+                    .ToList();
         }
 
         public async Task<ProductDTO?> GetById(int id)

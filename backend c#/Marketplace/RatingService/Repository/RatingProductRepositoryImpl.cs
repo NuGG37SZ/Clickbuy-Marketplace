@@ -69,7 +69,7 @@ namespace RatingService.Repository
         public async Task<double> AvgRatingByProductId(int productId)
         {
             return await _ratingContext.RatingProducts
-                            .Where(rp => rp.ProductId == productId)
+                            .Where(rp => rp.ProductId == productId && rp.Comment != "" && rp.Rating != 0.0)
                             .AverageAsync(rp => rp.Rating);
         }
 

@@ -24,7 +24,6 @@ async function getFavoriteProductsText() {
 async function getProductNoCommentText() {
     let count = 0;
     let ratingProductList = await getRatingProductListByUserId(parseInt(userId));
-    console.log(ratingProductList);
 
     for (const ratingProduct of ratingProductList) {
         let order = await getOrderById(ratingProduct.orderId);
@@ -143,9 +142,6 @@ async function insertCardDelivery(order) {
         let date = getDate(order.createOrder, 11);
         let product = await getProductById(orderProduct.productId);
         delivery.insertAdjacentHTML('beforeend', insertDeliveryCard(order, product, date));
-    } else {
-        delivery.insertAdjacentHTML('beforeend', '<p style="font-weight:bold; font-size:32px;">Пока пусто 😭</p>');
-        return;
     }
 }
 

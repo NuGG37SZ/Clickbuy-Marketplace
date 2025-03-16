@@ -86,5 +86,15 @@ namespace ProductService.Service
             }
             return [];
         }
+
+        public async Task<SubcategoriesDTO?> GetByName(string name)
+        {
+            Subcategories? subcategories = await _subcategoriesRepository.GetByName(name);
+
+            if (subcategories != null)
+                return SubcategoriesMapper.MapSubcategoriesToSubcategoriesDTO(subcategories);
+
+            return null;
+        }
     }
 }

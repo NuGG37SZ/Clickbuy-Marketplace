@@ -333,6 +333,22 @@
   },
   {
     "ContainingType": "ProductService.Controllers.ProductController",
+    "Method": "GetByBrandSubcategoryId",
+    "RelativePath": "api/v1/products/getByBrandSubcategoryId/{brandSubcategoryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "brandSubcategoryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.ProductController",
     "Method": "GetById",
     "RelativePath": "api/v1/products/getById/{id}",
     "HttpMethod": "GET",
@@ -616,6 +632,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.SubcategoriesController",
+    "Method": "GetSubcategoryByName",
+    "RelativePath": "api/v1/subcategories/getSubcategoriesByName/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

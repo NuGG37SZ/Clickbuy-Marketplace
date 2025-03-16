@@ -10,6 +10,8 @@ namespace ProductService.Service
 
         Task<List<SubcategoriesDTO>> GetSubcategoriesByCategoryId(int categoryId);
 
+        Task<SubcategoriesDTO?> GetByName(string name);
+
         Task Create(SubcategoriesDTO subcategoryDTO);
 
         Task Update(int id, SubcategoriesDTO subcategoryDTO);

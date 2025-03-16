@@ -48,6 +48,13 @@ namespace ProductService.Repository
             return await _productContext.Products.ToListAsync();
         }
 
+        public async Task<List<Product>> GetByBrandSubcategoryId(int brandSubcategoryId)
+        {
+            return await _productContext.Products
+                               .Where(p => p.BrandsSubcategoriesId == brandSubcategoryId)
+                               .ToListAsync();
+        }
+
         public async Task<Product?> GetById(int id)
         {
             Product? currentProduct = await _productContext.Products.FindAsync(id);

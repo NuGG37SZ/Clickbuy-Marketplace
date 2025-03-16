@@ -1,10 +1,13 @@
 const productContainer = document.querySelector('.row');
 let userId = localStorage.getItem('userId');
 let productCard = document.querySelector('.product-card');
+const categoriesDiv = document.querySelector('#categoriesAccordion');
 
 document.addEventListener('DOMContentLoaded', () => {
     insertCards();
 })
+
+insertAllCategories();
 
 function insertCardProductIndex(product, seller, inFavorite, rating, comment) {
     return `
@@ -44,6 +47,16 @@ async function getRequest(url) {
     return await response.json();
 }
 
+async function getAllCategories() {
+    const categoriesList = await getRequest(`https://localhost:58841/api/v1/categories`);
+    return categoriesList;
+}
+
+async function getAllSubcategoriesByCategoryId(categoryId) {
+    const subCategoriesList = await getRequest(`https://localhost:58841/api/v1/subcategories/getSubcategoryByCategoryId/${categoryId}`);
+    return subCategoriesList;
+}
+
 async function getRatingProductByProductId(productId) {
     const ratingProductList = await getRequest(`https://localhost:7029/api/v1/ratingProduct/getByProdcutId/${productId}`);
     return ratingProductList;
@@ -57,6 +70,26 @@ async function getEmptyCommentByProductId(productId) {
 async function getAvgRatingByProductId(productId) {
     const ratingProductSum = await getRequest(`https://localhost:7029/api/v1/ratingProduct/getAvgRatingByProductId/${productId}`);
     return ratingProductSum;
+}
+
+async function getSubcategoriesByName(name) {
+    const subCategories = await getRequest(`https://localhost:58841/api/v1/subcategories/getSubcategoriesByName/${name}`);
+    return subCategories;
+}
+
+async function getBrandSubcategoriesListBySubcategoryId(subcategoryId) {
+    const brandsSubcategoriesList = await getRequest(`https://localhost:58841/api/v1/brandsSubcategories/getBySubcategoriesId/${subcategoryId}`);
+    return brandsSubcategoriesList;
+}
+
+async function getProductListByBrandSubcategoryId(brandSubcategoryId) {
+    const productList = await getRequest(`https://localhost:58841/api/v1/products/getByBrandSubcategoryId/${brandSubcategoryId}`);
+    return productList;
+}
+
+async function getUserById(id) {
+    const user = await getRequest(`https://localhost:5098/api/v1/users/${id}`);
+    return user;
 }
 
 async function postRequest(url, obj) {
@@ -210,3 +243,60 @@ function declineReviews(number) {
         return "отзывов";
     }
 }
+
+function insertCategory(category) {
+    return `
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading${category.id}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                            data-bs-target="#collapse${category.id}" aria-expanded="false" aria-controls="collapse${category.id}">
+                            ${category.name}    
+                        </button>
+                    </h2>
+                    <div id="collapse${category.id}" class="accordion-collapse collapse" aria-labelledby="heading${category.id}" 
+                        data-bs-parent="#categoriesAccordion">
+                        <div class="accordion-body">
+                            
+                        </div>
+                    </div>
+                </div>
+    `
+}
+
+function insertSubCategory(subcategory) {
+    return `<a href="#" class="subcategory-link">${subcategory.name}</a><br>`
+}
+
+async function insertAllCategories() {
+    let categoriesList = await getAllCategories();
+
+    for (const category of categoriesList) {
+        categoriesDiv.insertAdjacentHTML('beforeend', insertCategory(category));
+        let accordionBody = categoriesDiv.querySelectorAll('.accordion-body');
+        let lastAccordionBody = accordionBody[accordionBody.length - 1];
+        let subcategoryList = await getAllSubcategoriesByCategoryId(category.id);
+        
+        for (const subcategory of subcategoryList) {
+            lastAccordionBody.insertAdjacentHTML('beforeend', insertSubCategory(subcategory));
+        }
+    }   
+}
+
+categoriesDiv.addEventListener('click', async (event) => {
+    if(event.target.closest('.subcategory-link')) {
+        productContainer.innerHTML = '';
+        let subcategoryName = event.target.closest('.subcategory-link').textContent;
+        let subcategories = await getSubcategoriesByName(subcategoryName);
+        let brandsSubcategoriesList = await getBrandSubcategoriesListBySubcategoryId(subcategories.id);
+
+        for (const brandSubcategory of brandsSubcategoriesList) {
+            let productList = await getProductListByBrandSubcategoryId(brandSubcategory.id);
+            console.log(productList[0]);
+            
+            for(const product of productList) {
+                let user = await getUserById(product.userId);
+                checkFavoriteProduct(user, product);
+            }
+        }
+    }
+})

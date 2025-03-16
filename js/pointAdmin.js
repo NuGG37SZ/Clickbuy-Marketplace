@@ -238,6 +238,7 @@ ordersDiv.addEventListener('click', async (event) => {
             let confirmWindow = confirm('Вы точно хотите изменить статус заказа?');
 
             if(confirmWindow) await putRequest(`https://localhost:7049/api/v1/orders/update/${order.id}`, order);
+            insertAllOrders();
         }
     }
 })

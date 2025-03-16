@@ -112,6 +112,7 @@ namespace ProductService.Service
             {
                 List<BrandsSubcategories> subcategories =
                     await _brandSubcategoriesRepository.GetBySubcategoriesId(id);
+
                 return subcategories
                     .Select(BrandSubcategoriesMapper.MapBrandSubcategoriesToBrandSubcategoriesDTO)
                     .ToList();
