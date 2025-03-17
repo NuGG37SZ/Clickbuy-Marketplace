@@ -15,6 +15,9 @@ namespace RatingService.Service
 
         Task<List<RatingProductDTO>> GetByUserId(int userId);
 
+        Task<RatingProductDTO?> GetByUserIdAndProductIdAndDateCreateComment(int userId,
+            int productId, DateTime dateCreateComment);
+
         Task<double> AvgRatingByProductId(int productId);
 
         Task<double> CountRatingByUserIdAndEmptyComment(int userId);

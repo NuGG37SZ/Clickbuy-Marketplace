@@ -101,5 +101,13 @@ namespace RatingService.Service
         {
             return await _ratingProductRepository.CountEmptyCommentByProductId(productId);
         }
+
+        public async Task<RatingProductDTO?> GetByUserIdAndProductIdAndDateCreateComment(int userId, 
+            int productId, DateTime dateCreateComment)
+        {
+            return RatingProductMapper.MapRatingProductToRatingProductDTO(await _ratingProductRepository
+                .GetByUserIdAndProductIdAndDateCreateComment(userId,productId, dateCreateComment)
+            );
+        }
     }
 }

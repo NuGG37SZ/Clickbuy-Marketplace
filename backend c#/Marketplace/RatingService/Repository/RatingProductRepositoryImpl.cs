@@ -104,5 +104,15 @@ namespace RatingService.Repository
                             .Where(rp => rp.ProductId == productId && rp.Comment == "")
                             .CountAsync();
         }
+
+        public async Task<RatingProduct?> GetByUserIdAndProductIdAndDateCreateComment(int userId, 
+            int productId, DateTime dateCreateComment)
+        {
+            return await _ratingContext.RatingProducts
+                            .Where(rp => rp.UserId == userId &&
+                                    rp.ProductId == productId &&
+                                    rp.DateCreateComment == dateCreateComment)
+                            .FirstOrDefaultAsync();
+        }
     }
 }

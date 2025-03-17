@@ -81,6 +81,22 @@ namespace RatingService.Controllers
             return Ok(await _ratingProductService.CountEmptyCommentByProductId(productId));
         }
 
+        [HttpGet]
+        [Route("getByUserIdAndProductIdAndDateCreateComment/{userId}/{productId}/{dateCreateComment}")]
+        public async Task<IActionResult> GetByUserIdAndProductIdAndDateCreateComment(int userId, 
+            int productId, DateTime dateCreateComment)
+        {
+            RatingProductDTO? ratingProductDTO = await 
+                _ratingProductService.GetByUserIdAndProductIdAndDateCreateComment(
+                    userId, productId, dateCreateComment
+                );
+
+            if(ratingProductDTO == null)
+                return NotFound("RatingProduct Not Found.");
+
+            return Ok(ratingProductDTO);
+        }
+
         [HttpPost]
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] RatingProductDTO ratingProductDTO)

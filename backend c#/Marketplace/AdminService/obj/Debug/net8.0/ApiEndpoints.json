@@ -1,0 +1,250 @@
+[
+  {
+    "ContainingType": "AdminService.Controllers.CategoryReportController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/categoryReport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.CategoryReportController",
+    "Method": "Create",
+    "RelativePath": "api/v1/categoryReport/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryReportDTO",
+        "Type": "AdminService.View.DTO.CategoryReportDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.CategoryReportController",
+    "Method": "DeleteById",
+    "RelativePath": "api/v1/categoryReport/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.CategoryReportController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/categoryReport/getById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.CategoryReportController",
+    "Method": "GetByName",
+    "RelativePath": "api/v1/categoryReport/getByName/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.CategoryReportController",
+    "Method": "Update",
+    "RelativePath": "api/v1/categoryReport/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "categoryReportDTO",
+        "Type": "AdminService.View.DTO.CategoryReportDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.ReportController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.ReportController",
+    "Method": "Create",
+    "RelativePath": "api/v1/report/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reportDTO",
+        "Type": "AdminService.View.DTO.ReportDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.ReportController",
+    "Method": "DeleteById",
+    "RelativePath": "api/v1/report/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.ReportController",
+    "Method": "GetByCategoryReportAndStatusAndUserId",
+    "RelativePath": "api/v1/report/getByCategoryReportAndStatusAndUserId/{categoryReportId}/{userId}/{status}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryReportId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.ReportController",
+    "Method": "GetByCategoryReportId",
+    "RelativePath": "api/v1/report/getByCategoryReportId/{categoryReportId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryReportId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.ReportController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/report/getById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.ReportController",
+    "Method": "GetByStatus",
+    "RelativePath": "api/v1/report/getByStatus/{status}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.ReportController",
+    "Method": "GetByUserId",
+    "RelativePath": "api/v1/report/getByUserId/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminService.Controllers.ReportController",
+    "Method": "Update",
+    "RelativePath": "api/v1/report/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "reportDTO",
+        "Type": "AdminService.View.DTO.ReportDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -211,10 +211,7 @@ body {
 .btn-primary:hover {
     background-color: #4C51BF;
 }
-.btn-success {
-    background-color: #5861ac;
-    border: none;
-}
+
 .btn-success:hover {
     background-color: #22A760;
 }
@@ -1565,4 +1562,34 @@ input.card-cvv {
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+.moderator-container {
+    margin: 0 auto;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.reports-moderator {
+    margin: 20px auto;
+    width: 450px;
+}
+
+.comments-moderator {
+    margin: 20px auto;
+    width: 450px;
+    display: none;
+}
+
+.products-moderator {
+    margin: 20px auto;
+    width: 450px;
+    display: none;
+}
+
+.users-moderator {
+    margin: 20px auto;
+    width: 450px;
+    display: none;
 }

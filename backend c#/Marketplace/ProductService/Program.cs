@@ -26,11 +26,11 @@ builder.Services.AddCors();
 var app = builder.Build();
 
 app.UseRouting();
-app.UseCors(builder =>
-    builder.AllowAnyOrigin()
-           .AllowAnyMethod()
-           .AllowAnyHeader()
-);
-app.UseEndpoints(endpoints => endpoints.MapControllers());
+    app.UseCors(builder =>
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+    );
+    app.UseEndpoints(endpoints => endpoints.MapControllers());
 
 app.Run();

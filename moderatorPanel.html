@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click&Buy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="fontawesome-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold me-3" href="index.html">Click&Buy</a>
+
+            <button class="btn btn-outline-primary me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
+                <i class="bi bi-list"></i> Каталог
+            </button>
+
+            <form class="search-form">
+                <div class="input-group">
+                    <input class="form-control search-input" type="search" placeholder="Ищи лучшее на Click&Buy" aria-label="Поиск">
+                    <button class="search-btn" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="d-flex align-items-center">
+                <ul class="navbar-nav d-flex align-items-center">
+
+                    <li class="nav-item me-3">
+                        <a class="nav-link d-flex align-items-center" href="registration.html" id="sign-up-btn">
+                            <i class="bi bi-person fs-5 me-1"></i> Войти
+                        </a>
+                    </li>
+
+                    <li class="nav-item me-3" id="profile" style="display: none;">
+                        <a class="nav-link d-flex align-items-center" href="profile.html">
+                            <i class="bi bi-person-circle fs-5 me-1"></i> Мой профиль
+                        </a>
+                    </li>
+
+                    <li class="nav-item me-3" id="exit-btn" style="display: none;">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class="bi bi-box-arrow-right fs-5 me-1"></i> Выход
+                        </a>
+                    </li>
+
+                    <li class="nav-item me-3">
+                        <a class="nav-link d-flex align-items-center" href="orders.html">
+                            <i class="bi bi-box-seam fs-5 me-1"></i> Заказы
+                        </a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link d-flex align-items-center" href="favorite.html">
+                            <i class="bi bi-heart fs-5 me-1"></i> Избранное
+                        </a>
+                    </li>
+                    <li class="nav-item" id="cart-btn-header">
+                        <a class="nav-link d-flex align-items-center" href="#" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight">
+                            <i class="bi bi-cart fs-5 me-1"></i> Корзина
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Корзина -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Моя корзина</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="cart-items">
+
+            </div>
+        </div>
+
+        <div class="info-order">
+            <p id="sum-order"></p>
+            <p id="count-product-on-cart"></p>
+            <button type="button" class="btn btn-outline-primary" id="buy-order-btn">Перейти к оплате</button>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Категории</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="accordion" id="categoriesAccordion">
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка для открытия чата -->
+    <div id="chatbox">
+        <button class="btn btn-primary" id="openChatBtn">
+            <i class="bi bi-chat-dots"></i> Чат с поддержкой
+        </button>
+    </div>
+
+    <!-- Панель чата -->
+    <div id="chatPanel">
+        <!-- Хедер чата -->
+        <div class="chat-header">
+            <img src="source/robot.png" id="operatorPhoto" class="operator-photo" alt="Оператор">
+            <div>
+                <strong id="operatorName">Андрей Иванов</strong><br>
+                <small id="operatorRole">Техническая поддержка</small>
+            </div>
+            <button class="btn-close ms-auto" id="closeChatBtn"></button>
+        </div>
+
+        <!-- Сообщения -->
+        <div class="chat-messages">
+            <div class="chat-date">28.02.2025</div>
+        
+            <div class="message support-message">
+                <div class="support-photo">
+                    <img src="source/operator.jpg" alt="Оператор">
+                </div>
+                <div class="support-text">Добрый день! Чем могу помочь?
+                    <span class="message-time">12:12</span>
+                </div>
+            </div>
+            <div class="message user-message">
+                У меня вопрос по заказу.
+                <span class="message-time">12:13</span>
+            </div>
+        </div>    
+
+        <div class="chat-input">
+            <textarea class="form-control" placeholder="Напишите сообщение"></textarea>
+            <button class="btn btn-primary">Отправить</button>
+        </div>
+    </div>
+
+    <div class="moderator-container">
+        <div class="btn-group" role="group" aria-label="Basic outlined example" style="margin-top: 20px;">
+            <button type="button" class="btn btn-outline-primary" id="reports-moderator-btn">Репорты</button>
+            <button type="button" class="btn btn-outline-primary" id="comments-moderator-btn">Комментарии</button>
+            <button type="button" class="btn btn-outline-primary" id="products-moderator-btn">Товары</button>
+            <button type="button" class="btn btn-outline-primary" id="users-moderator-btn">Пользователи</button>
+        </div>
+
+        <div class="moderator-content">
+            <div class="reports-moderator">
+                <h3 style="text-align: center;">Репорты</h3>
+                <div style="display: flex; flex-direction: column; height: 200px; justify-content: space-between;">
+                    <input type="text" placeholder="Поиск по пользователю" style="width: 100%; margin-top: 10px;" id="users-report-inpt">
+                    <div>
+                        <label>Поиск по категории: </label>
+                        <select style="width: 100%; height: 30px;" id="category-report-select">
+                            <option disabled selected></option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Поиск по статусу: </label>
+                        <select style="width: 100%; height: 30px;" id="status-report-select">
+                            <option disabled selected></option>
+                            <option>Открыт</option>
+                            <option>Закрыт</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; justify-content: end;">
+                        <button type="button" class="btn btn-primary" id="search-report-btn">Поиск</button>
+                    </div>
+                </div>
+                <div class="reports-div">
+                    
+                </div>
+            </div>
+
+            <div class="comments-moderator">
+                <h2 style="text-align: center;">Комментарии</h2>
+                <div style="display: flex; flex-direction: column; height: 205px; justify-content: space-between;" id="comment-filter-div">
+                    <input type="text" placeholder="Поиск по пользователям" style="width: 100%; margin-top: 10px;">
+                    <div>
+                        <label>Товар: </label>
+                        <select style="width: 100%; height: 30px;"></select>
+                    </div>
+                    <div>
+                        <label>Дата создания комментария: </label>
+                        <input type="date" style="width: 100%; margin-top: 10px;">
+                    </div>
+                    <div style="display: flex; justify-content: end;">
+                        <button type="button" class="btn btn-primary">Поиск</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 15px;" class="comment-div">
+                    
+                </div>
+            </div>
+
+                <div class="products-moderator">
+                    <h2 style="text-align: center;">Товары</h2>
+                    <div style="display: flex; flex-direction: column; height: 130px; justify-content: space-between;">
+                        <input type="text" placeholder="Поиск по пользователям" style="width: 100%; margin-top: 10px;">
+                        <input type="text" placeholder="Название товара" style="width: 100%; margin-top: 10px;">
+                        <div style="display: flex; justify-content: end;">
+                            <button type="button" class="btn btn-primary">Поиск</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card mb-3" style="max-width: 540px; margin-top: 30px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="source/short.jpg" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                    <h5 class="card-title">${product.name}</h5>
+                                    <p class="card-text">${product.description}</p>
+                                    <p class="card-text" id="price-product">Цена: ${product.price}₽</p>  
+                                    <div class="sizes-cards">
+                                    </div>
+                                    <div style="display: flex; justify-content: end;">
+                                        <button class="btn btn-outline-danger" id="delete-product"><i class="bi bi-x-circle-fill"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>       
+            </div>
+
+            <div class="users-moderator">
+                <h2 style="text-align: center;">Пользователи</h2>
+                <div style="display: flex; flex-direction: column; height: 90px; justify-content: space-between;">
+                    <input type="text" placeholder="Поиск по пользователям" style="width: 100%; margin-top: 10px;">
+                    <div style="display: flex; justify-content: end;">
+                        <button type="button" class="btn btn-primary">Поиск</button>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <div style="border: 1px solid black; padding: 15px; border-radius: 20px;">
+                        <p>Пользователь: User1</p>
+                        <p>Роль: Продавец</p>
+                        <button type="button" class="btn btn-success">Заблокировать</button>
+                        <button type="button" class="btn btn-danger">Разблокировать</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="footer mt-5 py-4 text-light animated-footer">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Click&Buy</h5>
+                    <p>Покупайте с удовольствием!</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Полезные ссылки</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">О нас</a></li>
+                        <li><a href="#" class="footer-link">Контакты</a></li>
+                        <li><a href="#" class="footer-link">Доставка</a></li>
+                        <li><a href="#" class="footer-link">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Мы в соцсетях</h5>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="mb-0">&copy; 2025 Click&Buy. Все права защищены.</p>
+        </div>
+    </footer>   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/moderatorScript.js"></script>
+    <script src="js/moderatorReports.js"></script>
+    <script src="js/moderatorComment.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/support.js"></script>
+</body>
+</html>
