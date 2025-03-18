@@ -23,18 +23,23 @@ authBtn.addEventListener('click', () => {
     
     requestGetUserByLogin(loginInput.value)
         .then(user => {
-            localStorage.setItem('userId', user.id);
-            
-            requestConfirmPassword(user.login, passwordInput.value)
-                .then(response => {
-                    if(response == 200) {
-                        localStorage.setItem('isAuth', 'true');
-                        location.href='index.html';
-                        alert('Вы успешно вошли!');
-                    } else {
-                        alert('Перепроверьте данные!');
-                    }
-                });
+            if(user.isBanned == false) {
+                localStorage.setItem('userId', user.id);
+                
+                requestConfirmPassword(user.login, passwordInput.value)
+                    .then(response => {
+                        if(response == 200) {
+                            localStorage.setItem('isAuth', 'true');
+                            location.href='index.html';
+                            alert('Вы успешно вошли!');
+                        } else {
+                            alert('Перепроверьте данные!');
+                        }
+                    });
+            } else {
+                alert('Ваш аккаунт заблокирован!');
+                return;
+            }
         });
 })
 

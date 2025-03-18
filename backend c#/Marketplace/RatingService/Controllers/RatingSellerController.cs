@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RatingService.DTO;
-using RatingService.Service;
+using RatingService.Model.Service;
+using RatingService.View.DTO;
 
 namespace RatingService.Controllers
 {

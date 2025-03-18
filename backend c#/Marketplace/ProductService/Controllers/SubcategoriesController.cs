@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductService.DTO;
-using ProductService.Entity;
-using ProductService.Service;
+using ProductService.Model.Entity;
+using ProductService.Model.Service;
+using ProductService.View.DTO;
 
 namespace ProductService.Controllers
 {

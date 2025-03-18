@@ -1,5 +1,5 @@
-using CartService.DTO;
-using CartService.Service;
+using CartService.Model.Service;
+using CartService.View.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CartService.Controllers

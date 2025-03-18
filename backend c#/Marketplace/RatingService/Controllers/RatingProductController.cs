@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using RatingService.DTO;
-using RatingService.Service;
+using RatingService.Model.Service;
+using RatingService.View.DTO;
 
 namespace RatingService.Controllers
 {
@@ -82,19 +82,10 @@ namespace RatingService.Controllers
         }
 
         [HttpGet]
-        [Route("getByUserIdAndProductIdAndDateCreateComment/{userId}/{productId}/{dateCreateComment}")]
-        public async Task<IActionResult> GetByUserIdAndProductIdAndDateCreateComment(int userId, 
-            int productId, DateTime dateCreateComment)
+        [Route("getByUserIdAndProductId/{userId}/{productId}")]
+        public async Task<IActionResult> GetByUserIdAndProductId(int userId, int productId)
         {
-            RatingProductDTO? ratingProductDTO = await 
-                _ratingProductService.GetByUserIdAndProductIdAndDateCreateComment(
-                    userId, productId, dateCreateComment
-                );
-
-            if(ratingProductDTO == null)
-                return NotFound("RatingProduct Not Found.");
-
-            return Ok(ratingProductDTO);
+            return Ok(await _ratingProductService.GetByUserIdAndProductId(userId, productId));
         }
 
         [HttpPost]

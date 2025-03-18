@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using RatingService.Db;
-using RatingService.Repository;
-using RatingService.Service;
+using RatingService.Model.Db;
+using RatingService.Model.Repository;
+using RatingService.Model.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 SQLitePCL.Batteries.Init();

@@ -1,6 +1,5 @@
 let sellerLogin = localStorage.getItem('userLogin');
 let productName = localStorage.getItem('productName');
-let userId = localStorage.getItem('userId');
 const sizesProduct = document.querySelector('.sizes-product');
 const descriptionButton = document.getElementById('description-product-btn');
 const productDescription = document.getElementById('product-description-card');
@@ -115,9 +114,18 @@ async function fillProduct(product) {
     imgProduct.src = product.imageUrl;
 
     if(ratingProductList.length != 0) {
-        let ratingProductAvg = await getAvgRatingByProductId(product.id);
-        let emptyCommentsCount = await getEmptyCommentByProductId(product.id);
-        let commentCount = ratingProductList.length - emptyCommentsCount;
+        let commentCount = 0;
+        let rating = 0;
+        let ratingProductAvg = 0;
+
+        for (const ratingProduct of ratingProductList) {
+            if(ratingProduct.comment != '' && ratingProduct.rating != 0.0) {
+                commentCount += 1;
+                rating += ratingProduct.rating;
+                ratingProductAvg = rating / commentCount;
+            }
+        }
+
         commentProduct.textContent = `💬 ${commentCount}`;
         startProduct.textContent = `⭐ ${ratingProductAvg}`;
     } else {

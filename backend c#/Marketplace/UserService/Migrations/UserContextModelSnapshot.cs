@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using UserService.Db;
+using UserService.Model.Db;
 
 #nullable disable
 
@@ -16,7 +16,7 @@ namespace UserService.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
 
-            modelBuilder.Entity("UserService.Entity.User", b =>
+            modelBuilder.Entity("UserService.Model.Entity.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,6 +37,9 @@ namespace UserService.Migrations
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("isBanned")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

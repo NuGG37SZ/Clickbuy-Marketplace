@@ -1,10 +1,10 @@
 const productContainer = document.querySelector('.row');
-let userId = localStorage.getItem('userId');
 let productCard = document.querySelector('.product-card');
 const categoriesDiv = document.querySelector('#categoriesAccordion');
 
 document.addEventListener('DOMContentLoaded', () => {
     insertCards();
+    if(userId == null) addressPointBtn.value = 'Пункт выдачи';
 })
 
 insertAllCategories();
@@ -127,21 +127,29 @@ function checkFavoriteProduct(seller, product) {
     getRequest(`https://localhost:7073/api/v1/favorites/getByUserIdAndProductId/${userId}/${product.id}`)
         .then(async fp => {
             let ratingProductList = await getRatingProductByProductId(product.id);
+            let commentCount = 0;
+            let rating = 0;
+            let ratingProductAvg = 0;
             
             if(ratingProductList.length != 0) {
-                let emptyCommentsCount = await getEmptyCommentByProductId(product.id);
-                let countComment = ratingProductList.length - emptyCommentsCount;
-                let ratingProductAvg = await getAvgRatingByProductId(product.id);
-
+                for (const ratingProduct of ratingProductList) {
+                    if(ratingProduct.comment != '' && ratingProduct.rating != 0.0) {
+                        commentCount += 1;
+                        rating += ratingProduct.rating;
+                        ratingProductAvg = rating / commentCount;
+                    }
+                }
+                
                 if (fp && fp.productId === product.id) {
                     productContainer.insertAdjacentHTML('beforeend', 
-                        insertCardProductIndex(product, seller.login, true, ratingProductAvg, countComment)
+                        insertCardProductIndex(product, seller.login, true, ratingProductAvg, commentCount)
                     );
                 } else {
                     productContainer.insertAdjacentHTML('beforeend', 
-                        insertCardProductIndex(product, seller.login, false, ratingProductAvg, countComment)
+                        insertCardProductIndex(product, seller.login, false, ratingProductAvg, commentCount)
                     );
                 }
+                
             } else {
                 if (fp && fp.productId === product.id) {
                     productContainer.insertAdjacentHTML('beforeend', 

@@ -1,7 +1,7 @@
 using CartService.Client;
-using CartService.Db;
-using CartService.Repository;
-using CartService.Service;
+using CartService.Model.Db;
+using CartService.Model.Repository;
+using CartService.Model.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

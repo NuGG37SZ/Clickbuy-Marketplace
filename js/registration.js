@@ -10,7 +10,8 @@ registerBtn.addEventListener('click', async () => {
             login: loginInpt.value,
             password: passwordInpt.value,
             email: emailInpt.value,
-            role: 'user'
+            role: 'user',
+            isBanned: false
         }
         const result = await createUserRequest(user);
 

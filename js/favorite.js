@@ -1,4 +1,3 @@
-let userId = localStorage.getItem('userId');
 let productContainer = document.querySelector('.row');
 
 getAllFavoriteByUserId();

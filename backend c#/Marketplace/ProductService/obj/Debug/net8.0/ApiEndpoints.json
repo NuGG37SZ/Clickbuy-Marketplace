@@ -19,7 +19,7 @@
     "Parameters": [
       {
         "Name": "brandDTO",
-        "Type": "ProductService.DTO.BrandsDTO",
+        "Type": "ProductService.View.DTO.BrandsDTO",
         "IsRequired": true
       }
     ],
@@ -72,7 +72,7 @@
       },
       {
         "Name": "brandDTO",
-        "Type": "ProductService.DTO.BrandsDTO",
+        "Type": "ProductService.View.DTO.BrandsDTO",
         "IsRequired": true
       }
     ],
@@ -98,7 +98,7 @@
     "Parameters": [
       {
         "Name": "brandSubcategoriesDTO",
-        "Type": "ProductService.DTO.BrandsSubcategoriesDTO",
+        "Type": "ProductService.View.DTO.BrandsSubcategoriesDTO",
         "IsRequired": true
       }
     ],
@@ -209,7 +209,7 @@
     "Parameters": [
       {
         "Name": "categoryDTO",
-        "Type": "ProductService.DTO.CategoryDTO",
+        "Type": "ProductService.View.DTO.CategoryDTO",
         "IsRequired": true
       }
     ],
@@ -262,7 +262,7 @@
       },
       {
         "Name": "categoryDTO",
-        "Type": "ProductService.DTO.CategoryDTO",
+        "Type": "ProductService.View.DTO.CategoryDTO",
         "IsRequired": true
       }
     ],
@@ -288,7 +288,7 @@
     "Parameters": [
       {
         "Name": "productDTO",
-        "Type": "ProductService.DTO.ProductDTO",
+        "Type": "ProductService.View.DTO.ProductDTO",
         "IsRequired": true
       }
     ],
@@ -436,7 +436,7 @@
       },
       {
         "Name": "productDTO",
-        "Type": "ProductService.DTO.ProductDTO",
+        "Type": "ProductService.View.DTO.ProductDTO",
         "IsRequired": true
       }
     ],
@@ -462,7 +462,7 @@
     "Parameters": [
       {
         "Name": "productSizesDTO",
-        "Type": "ProductService.DTO.ProductSizesDTO",
+        "Type": "ProductService.View.DTO.ProductSizesDTO",
         "IsRequired": true
       }
     ],
@@ -552,7 +552,7 @@
       },
       {
         "Name": "productSizes",
-        "Type": "System.Collections.Generic.List\u00601[[ProductService.DTO.ProductSizesDTO, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[ProductService.View.DTO.ProductSizesDTO, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -573,7 +573,7 @@
       },
       {
         "Name": "productSizesDTO",
-        "Type": "ProductService.DTO.ProductSizesDTO",
+        "Type": "ProductService.View.DTO.ProductSizesDTO",
         "IsRequired": true
       }
     ],
@@ -599,7 +599,7 @@
     "Parameters": [
       {
         "Name": "subcategoriesDTO",
-        "Type": "ProductService.DTO.SubcategoriesDTO",
+        "Type": "ProductService.View.DTO.SubcategoriesDTO",
         "IsRequired": true
       }
     ],
@@ -684,7 +684,7 @@
       },
       {
         "Name": "subcategoriesDTO",
-        "Type": "ProductService.DTO.SubcategoriesDTO",
+        "Type": "ProductService.View.DTO.SubcategoriesDTO",
         "IsRequired": true
       }
     ],

@@ -13,7 +13,6 @@ const cardDateInput = document.getElementById("card-date");
 const cardCVVInput = document.getElementById("card-cvv");
 const cardLogo = document.getElementById("card-logo");
 const addressOrder = document.querySelector('.address-order-payment');
-const userId = localStorage.getItem('userId');
 
 cardLogo.style.display = "none";
 

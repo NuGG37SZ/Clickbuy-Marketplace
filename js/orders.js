@@ -1,5 +1,4 @@
 const ordersDiv = document.querySelector('.orders');
-const userId = localStorage.getItem('userId');
 const orderStatusSelect = document.getElementById('order-status-select');
 
 insertAllOrders();

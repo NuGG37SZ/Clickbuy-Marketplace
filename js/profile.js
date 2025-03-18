@@ -1,11 +1,11 @@
 const loginUserProfile = document.getElementById('user-login');
 const panelRoles = document.querySelector('.panels-roles');
+const mainPanelRoles = document.querySelector('.panel-roles');
 const delivery = document.querySelector('.deliveries');
 const countFavorite = document.getElementById('count-goods');
 const rightPanel = document.querySelectorAll('.card-right-panel');
 const goodsNoCommentText = document.getElementById('goods-no-comment');
 const favoriteDiv = rightPanel[0];
-let userId = localStorage.getItem('userId');
 const wordForms = ['товар', 'товара', 'товаров'];
 
 document.addEventListener("DOMContentLoaded", async ()  => {
@@ -61,7 +61,7 @@ async function getUserByIdRequest(id) {
 function hideElementForRoleUser(role) {
     switch(role) {
         case 'user':
-            panelRoles.style.display = 'none';
+            mainPanelRoles.style.display = 'none';
             break;
         case 'seller':
             panelRoles.children[1].style.display = 'none';

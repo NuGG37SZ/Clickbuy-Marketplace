@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using ProductService.Db;
-using ProductService.Client;
-using ProductService.Repository;
-using ProductService.Service;
+using ProductService.Model.Repository;
+using ProductService.Model.Service;
+using ProductService.Model.Db;
+using ProductService.Model.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 SQLitePCL.Batteries.Init();

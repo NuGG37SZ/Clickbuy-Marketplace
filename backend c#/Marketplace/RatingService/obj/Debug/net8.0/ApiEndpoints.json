@@ -51,7 +51,7 @@
     "Parameters": [
       {
         "Name": "ratingProductDTO",
-        "Type": "RatingService.DTO.RatingProductDTO",
+        "Type": "RatingService.View.DTO.RatingProductDTO",
         "IsRequired": true
       }
     ],
@@ -165,6 +165,27 @@
   },
   {
     "ContainingType": "RatingService.Controllers.RatingProductController",
+    "Method": "GetByUserIdAndProductId",
+    "RelativePath": "api/v1/ratingProduct/getByUserIdAndProductId/{userId}/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RatingService.Controllers.RatingProductController",
     "Method": "Update",
     "RelativePath": "api/v1/ratingProduct/update/{id}",
     "HttpMethod": "PUT",
@@ -178,7 +199,7 @@
       },
       {
         "Name": "ratingProductDTO",
-        "Type": "RatingService.DTO.RatingProductDTO",
+        "Type": "RatingService.View.DTO.RatingProductDTO",
         "IsRequired": true
       }
     ],
@@ -204,7 +225,7 @@
     "Parameters": [
       {
         "Name": "ratingSellerDTO",
-        "Type": "RatingService.DTO.RatingSellerDTO",
+        "Type": "RatingService.View.DTO.RatingSellerDTO",
         "IsRequired": true
       }
     ],
@@ -273,7 +294,7 @@
       },
       {
         "Name": "ratingSellerDTO",
-        "Type": "RatingService.DTO.RatingSellerDTO",
+        "Type": "RatingService.View.DTO.RatingSellerDTO",
         "IsRequired": true
       }
     ],

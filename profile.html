@@ -11,6 +11,38 @@
 
 <body>
 
+    <div class="up-panel navbar-light bg-white">
+        <div class="items-up-panel">
+            <img src="source/placeholder.png">
+            <button type="button" class="btn bg-white" data-bs-toggle="modal" data-bs-target="#exampleModal" id="address-point-btn">
+                Пункт выдачи
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Пункты выдачи заказов</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="pick-up-points">
+                           
+                </div>
+                <div class="add-point-redirect">
+                    <img src="source/add.png" alt="" width="32px" height="32px">
+                    <a href="point.html">Добавить пункт выдачи</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="save-active-point-btn">Выбрать пункт как активный</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <!-- Навигация -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
@@ -51,12 +83,12 @@
                     </li>
 
                     <li class="nav-item me-3">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                        <a class="nav-link d-flex align-items-center" href="orders.html">
                             <i class="bi bi-box-seam fs-5 me-1"></i> Заказы
                         </a>
                     </li>
                     <li class="nav-item me-3">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                        <a class="nav-link d-flex align-items-center" href="favorite.html">
                             <i class="bi bi-heart fs-5 me-1"></i> Избранное
                         </a>
                     </li>
@@ -94,36 +126,8 @@
      <div class="panel-roles">
         <div class="panels-roles">
             <a href="seller.html">Панель продавца</a>
-            <a href="moderator.html">Панель модератора</a>
-            <a href="admin.html">Панель администратора</a>
-        </div>
-    </div>
-
-    <!-- Категории -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Категории</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-        <div class="mt-3">
-            <div class="category">
-                <img src="source/love.png" width="32px" height="32px">
-                <a href="#">Обувь</a>
-            </div>
-            <div class="category">
-                <img src="source/love.png" width="32px" height="32px">
-                <a href="#">Обувь</a>
-            </div>
-            <div class="category">
-                <img src="source/love.png" width="32px" height="32px">
-                <a href="#">Обувь</a>
-            </div>
-            <div class="category">
-                <img src="source/love.png" width="32px" height="32px">
-                <a href="#">Обувь</a>
-            </div>
-        </div>
+            <a href="moderatorPanel.html">Панель модератора</a>
+            <a href="adminPanel.html">Панель администратора</a>
         </div>
     </div>
 
@@ -204,7 +208,7 @@
             <div class="feedback">
                 <p style="font-size: 24px; font-weight: bold;">Сервис и помощь</p>
                 <div class="services">
-                    <div class="service">
+                    <div class="service" id="openModalButton">
                         <div class="items-service">
                             <img src="source/comment.png" width="32px" height="32px">
                             <p><b>Поддержка</b></p>
@@ -251,12 +255,45 @@
             </div>
         </div>
     </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Категории</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="accordion" id="categoriesAccordion">
+                
+            </div>
+        </div>
+    </div>
       
+    <div id="myModalWindow" class="modalWindowSecond">
+        <div class="modal-content-second">
+            <span class="close-second">&times;</span>
+            <p style="font-size: 20px;"><b>Создать репорт</b></p>
+            <div class="report-body">
+                <div>
+                    <label>Категория репорта</label>
+                    <select style="height: 30px;" id="category-report-select"></select>
+                </div>
+                <div>
+                    <label>Тема репорта</label>
+                    <input type="text" id="subject-report-inpt">
+                </div>
+                <div>
+                    <label>Описание</label>
+                    <textarea id="description-report-area"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" id="send-report-btn">Отправить</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Подвал -->
     <footer class="footer mt-5 py-4 text-light animated-footer">
         <div class="container text-center">
-            <div class="row">
+            <div style="display: flex;">
                 <div class="col-md-4">
                     <h5>Click&Buy</h5>
                     <p>Покупайте с удовольствием!</p>
@@ -285,11 +322,13 @@
     </footer>
 
    
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="js/report.js"></script>
+    <script src="js/points.js"></script>
     <script src="js/script.js"></script>
     <script src="js/comment.js"></script>
     <script src="js/profile.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/index.js"></script>
 </body>

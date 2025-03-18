@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\ratingservice\\service\\ratingproductserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|solutionrelative:service\\ratingproductserviceimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\ratingservice\\controllers\\ratingproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|solutionrelative:controllers\\ratingproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\ratingservice\\repository\\iratingproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|solutionrelative:repository\\iratingproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\ratingservice\\dto\\ratingproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|solutionrelative:dto\\ratingproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|c:\\users\\fdafw\\onedrive\\\u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\github\\marketplace\\backend c#\\marketplace\\ratingservice\\model\\service\\iratingproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82F60DF5-417E-48B6-8BDC-B2D2F012F784}|RatingService.csproj|solutionrelative:model\\service\\iratingproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,41 +34,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RatingProductServiceImpl.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\Service\\RatingProductServiceImpl.cs",
-              "RelativeDocumentMoniker": "Service\\RatingProductServiceImpl.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\Service\\RatingProductServiceImpl.cs",
-              "RelativeToolTip": "Service\\RatingProductServiceImpl.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAG0AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T19:54:00.35Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IRatingProductRepository.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\Repository\\IRatingProductRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\IRatingProductRepository.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\Repository\\IRatingProductRepository.cs",
-              "RelativeToolTip": "Repository\\IRatingProductRepository.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAABEAAAA3AAAAAAAAAA==",
+              "Title": "IRatingProductService.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\Model\\Service\\IRatingProductService.cs",
+              "RelativeDocumentMoniker": "Model\\Service\\IRatingProductService.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\Model\\Service\\IRatingProductService.cs",
+              "RelativeToolTip": "Model\\Service\\IRatingProductService.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T19:52:46.944Z",
+              "WhenOpened": "2025-03-18T06:26:22.88Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RatingProductDTO.cs",
-              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\DTO\\RatingProductDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\RatingProductDTO.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\DTO\\RatingProductDTO.cs",
-              "RelativeToolTip": "DTO\\RatingProductDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "RatingProductController.cs",
+              "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\Controllers\\RatingProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RatingProductController.cs",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\RatingService\\Controllers\\RatingProductController.cs",
+              "RelativeToolTip": "Controllers\\RatingProductController.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAA1wFcAAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T11:38:37.256Z",
+              "WhenOpened": "2025-03-17T19:56:59.091Z",
               "EditorCaption": ""
             }
           ]

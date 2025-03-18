@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using UserService.DTO;
-using UserService.Service;
-using UserService.Utils;
+using UserService.Model.Service;
+using UserService.Model.Utils;
+using UserService.View.DTO;
 
 namespace Marketplace.Controllers
 {

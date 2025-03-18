@@ -1,6 +1,7 @@
 const pickUpPoints = document.querySelector('.pick-up-points');
 const saveActivePointBtn = document.getElementById('save-active-point-btn');
 const addressPointBtn = document.getElementById('address-point-btn');
+let userId = localStorage.getItem('userId');
 let point;
 
 insertAllRadioPoints();
@@ -23,6 +24,11 @@ function insertRadioPoint(address) {
             </div>
         </div>
     `
+}
+
+async function getRequest(url) {
+    const response = await fetch(url);
+    return await response.json();
 }
 
 async function getPointById(id) {

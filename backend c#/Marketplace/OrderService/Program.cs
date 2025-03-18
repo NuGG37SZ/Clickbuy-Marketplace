@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using OrderService.Db;
-using OrderService.Repository;
-using OrderService.Service;
+using OrderService.Model.Db;
+using OrderService.Model.Repository;
+using OrderService.Model.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 SQLitePCL.Batteries.Init();

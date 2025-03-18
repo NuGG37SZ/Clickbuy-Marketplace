@@ -1,4 +1,4 @@
-﻿using CartService.DTO;
+﻿using CartService.View.DTO;
 
 namespace CartService.Client
 {

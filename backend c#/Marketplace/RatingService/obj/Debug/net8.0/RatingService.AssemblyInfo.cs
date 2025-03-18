@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RatingService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee1dca658597a54d245f132390fd81738c90e495")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c2039a6294f00e3def5ea0eea807cbd4531626b")]
 [assembly: System.Reflection.AssemblyProductAttribute("RatingService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RatingService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

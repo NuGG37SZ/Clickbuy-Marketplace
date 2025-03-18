@@ -182,18 +182,14 @@
 
             <div class="comments-moderator">
                 <h2 style="text-align: center;">Комментарии</h2>
-                <div style="display: flex; flex-direction: column; height: 205px; justify-content: space-between;" id="comment-filter-div">
-                    <input type="text" placeholder="Поиск по пользователям" style="width: 100%; margin-top: 10px;">
+                <div style="display: flex; flex-direction: column; height: 150px; justify-content: space-between;" id="comment-filter-div">
+                    <input type="text" placeholder="Поиск по пользователям" style="width: 100%; margin-top: 10px;" id="users-comment-inpt">
                     <div>
                         <label>Товар: </label>
-                        <select style="width: 100%; height: 30px;"></select>
-                    </div>
-                    <div>
-                        <label>Дата создания комментария: </label>
-                        <input type="date" style="width: 100%; margin-top: 10px;">
+                        <select style="width: 100%; height: 30px;" id="product-select-comment"></select>
                     </div>
                     <div style="display: flex; justify-content: end;">
-                        <button type="button" class="btn btn-primary">Поиск</button>
+                        <button type="button" class="btn btn-primary" id="search-comment-btn">Поиск</button>
                     </div>
                 </div>
 
@@ -204,31 +200,19 @@
 
                 <div class="products-moderator">
                     <h2 style="text-align: center;">Товары</h2>
-                    <div style="display: flex; flex-direction: column; height: 130px; justify-content: space-between;">
-                        <input type="text" placeholder="Поиск по пользователям" style="width: 100%; margin-top: 10px;">
-                        <input type="text" placeholder="Название товара" style="width: 100%; margin-top: 10px;">
+                    <div style="display: flex; flex-direction: column; height: 140px; justify-content: space-between;">
+                        <input type="text" placeholder="Поиск по пользователю" style="width: 100%; margin-top: 10px;" id="product-user-inpt">
+                        <div>
+                            <label>Товар: </label>
+                            <select style="width: 100%; height: 30px;" id="product-name-select"></select>
+                        </div>
                         <div style="display: flex; justify-content: end;">
-                            <button type="button" class="btn btn-primary">Поиск</button>
+                            <button type="button" class="btn btn-primary" id="search-product-moder-btn">Поиск</button>
                         </div>
                     </div>
                     <div>
-                        <div class="card mb-3" style="max-width: 540px; margin-top: 30px;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="source/short.jpg" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                    <h5 class="card-title">${product.name}</h5>
-                                    <p class="card-text">${product.description}</p>
-                                    <p class="card-text" id="price-product">Цена: ${product.price}₽</p>  
-                                    <div class="sizes-cards">
-                                    </div>
-                                    <div style="display: flex; justify-content: end;">
-                                        <button class="btn btn-outline-danger" id="delete-product"><i class="bi bi-x-circle-fill"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="cards-product-div">
+                            
                         </div>
                     </div>
                 </div>       
@@ -237,18 +221,13 @@
             <div class="users-moderator">
                 <h2 style="text-align: center;">Пользователи</h2>
                 <div style="display: flex; flex-direction: column; height: 90px; justify-content: space-between;">
-                    <input type="text" placeholder="Поиск по пользователям" style="width: 100%; margin-top: 10px;">
+                    <input type="text" placeholder="Поиск по пользователям" style="width: 100%; margin-top: 10px;" id="search-user-inpt">
                     <div style="display: flex; justify-content: end;">
                         <button type="button" class="btn btn-primary">Поиск</button>
                     </div>
                 </div>
-                <div style="margin-top: 20px;">
-                    <div style="border: 1px solid black; padding: 15px; border-radius: 20px;">
-                        <p>Пользователь: User1</p>
-                        <p>Роль: Продавец</p>
-                        <button type="button" class="btn btn-success">Заблокировать</button>
-                        <button type="button" class="btn btn-danger">Разблокировать</button>
-                    </div>
+                <div style="margin-top: 20px;" id="users-div">
+                    
                 </div>
             </div>
 
@@ -290,6 +269,8 @@
     <script src="js/moderatorScript.js"></script>
     <script src="js/moderatorReports.js"></script>
     <script src="js/moderatorComment.js"></script>
+    <script src="js/moderatorProduct.js"></script>
+    <script src="js/moderatorUser.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/script.js"></script>
     <script src="js/support.js"></script>
