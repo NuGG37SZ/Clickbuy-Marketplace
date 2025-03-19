@@ -280,7 +280,7 @@ body {
 .left-panel {
     background-color: white;
     border-radius: 20px;
-    height: 320px;
+    height: 250px;
     width: 350px;
     padding: 20px;
 }
@@ -325,6 +325,11 @@ body {
     margin-top: 10px;
     border-radius: 20px;
     padding: 5px;
+}
+
+.user-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .user-card img {

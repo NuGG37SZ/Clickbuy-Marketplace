@@ -49,171 +49,179 @@ listOrderBtn.addEventListener('click', () => {
     formAddUpdProduct.style.display = 'none';
 })
 
-createBtnForm.addEventListener('click', () => {
+async function getBrandSubcategoriesByBrandIdAndSubcategoriesId(brandId, subcategoriesId) {
+    const brandsSubcategories = 
+        await getRequest(
+            `https://localhost:58841/api/v1/brandsSubcategories/getByBrandAndSubcategories/${brandId}/${subcategoriesId}`
+        );
+    return brandsSubcategories;
+}
+
+async function getProductByNameAndUserId(name, userId) {
+    const product = await getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${name}/${userId}`);
+    return product;
+}
+
+async function getProductSizesListByProductId(productId) {
+    const productSizeList = await getRequest(`https://localhost:58841/api/v1/productSizes/getAllByProductId/${productId}`);
+    return productSizeList;
+}
+
+async function getBrandSubcategoriesById(id) {
+    const brandSubcategories = await getRequest(`https://localhost:58841/api/v1/brandsSubcategories/getById/${id}`);
+    return brandSubcategories;
+}
+
+async function getSubcategoriesById(id) {
+    const subcategories = await getRequest(`https://localhost:58841/api/v1/subcategories/getById/${id}`);
+    return subcategories;
+}
+
+async function getCategoryById(id) {
+    const category = await getRequest(`https://localhost:58841/api/v1/categories/getById/${id}`);
+    return category;
+}
+
+createBtnForm.addEventListener('click', async () => {
     let nameInpt = document.getElementById('name');
     let priceInpt = document.getElementById('price');
     let countInpt = document.getElementById('count');
     let descriptionArea = document.getElementById('description');
     let fileInpt = document.getElementById('image-product');
     let sizeInpt = document.getElementById('size');
-
     let confirmWindow = confirm('Вы точно хотите добавить новый товар?');
+
     if(confirmWindow) {
-        getRequest(`https://localhost:58841/api/v1/brandsSubcategories/getByBrandAndSubcategories/${brandSelect.value}/${subcategorySelect.value}`)
-            .then(bs => {
-                let userId = localStorage.getItem('userId');
-                let file = fileInpt.files[0];
-                let reader = new FileReader();
-                reader.readAsDataURL(file);
+        const brandsSubcategories = await getBrandSubcategoriesByBrandIdAndSubcategoriesId(brandSelect.value, subcategorySelect.value);
+        let file = fileInpt.files[0];
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
                 
-                reader.onload = function(event) {
-                    let imageUrl = event.target.result;
+        reader.onload = async (event) => {
+            let imageUrl = event.target.result;
 
-                    let productCreateModel = {
-                        userId: parseInt(userId),
-                        brandsSubcategoriesId: bs.id,
-                        name: nameInpt.value,
-                        price: parseInt(priceInpt.value),
-                        count: parseInt(countInpt.value),
-                        description: descriptionArea.value,
-                        imageUrl: imageUrl
-                    }
-                    let result = postRequest(`https://localhost:58841/api/v1/products/create`, productCreateModel);
-                    result.then(code => {
-                        if(code === 201) {
-                            getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${nameInpt.value}/${userId}`)
-                            .then(product => {
-                                let sizeText = sizeInpt.value;
-                                let sizes = sizeText.split(', ');
-                                let countText = countInpt.value;
-                                let counts = countText.split(', ');
+            let productCreateModel = {
+                userId: parseInt(userId),
+                brandsSubcategoriesId: brandsSubcategories.id,
+                name: nameInpt.value,
+                price: parseInt(priceInpt.value),
+                count: parseInt(countInpt.value),
+                description: descriptionArea.value,
+                imageUrl: imageUrl
+            }
 
-                                if(sizes.length == counts.length) {
-                                    for(let i = 0; i < sizes.length; i++) {
-                                        let currentSize = sizes[i];
-                                        let currentCount = parseInt(counts[i]);
+            let code = await postRequest(`https://localhost:58841/api/v1/products/create`, productCreateModel);
+            if(code === 201) {
+                let product = await getProductByNameAndUserId(nameInpt.value, userId);
+                let sizeText = sizeInpt.value;
+                let sizes = sizeText.split(', ');
+                let countText = countInpt.value;
+                let counts = countText.split(', ');
 
-                                        if(currentCount <= 100) {
-                                            let productSizes = {
-                                                productId: parseInt(product.id),
-                                                size: currentSize,
-                                                count: currentCount,
-                                            }
-                                            postRequest(`https://localhost:58841/api/v1/productSizes/create`, productSizes);
-                                        } else {
-                                            alert('Максимальное количество товаров 100!');
-                                        }
-                                    }
-                                }
-                                alert('Вы успешно добавили товар!');
-                                location.reload();
-                            })
+                if(sizes.length == counts.length) {
+                    for(let i = 0; i < sizes.length; i++) {
+                        let currentSize = sizes[i];
+                        let currentCount = parseInt(counts[i]);
+
+                        if(currentCount <= 100) {
+                            let productSizes = {
+                                productId: parseInt(product.id),
+                                size: currentSize,
+                                count: currentCount,
+                            }
+                            await postRequest(`https://localhost:58841/api/v1/productSizes/create`, productSizes);
+                        } else {
+                            alert('Максимальное количество товаров 100!');
                         }
-                    })
+                    }
                 }
-                        
-            })
+                alert('Вы успешно добавили товар!');
+                location.reload(); 
+            }
+        }            
     }
 })
 
-productSelect.addEventListener('change', () => {
+productSelect.addEventListener('change', async () => {
     let id = productSelect.value;
-    getRequest(`https://localhost:58841/api/v1/products/getById/${id}`)
-        .then(product => {
-            let nameInpt = document.getElementById('name');
-            nameInpt.value = product.name;
-            let priceInpt = document.getElementById('price');
-            priceInpt.value = product.price;
-            let descriptionArea = document.getElementById('description');
-            descriptionArea.value = product.description;
-            let sizeInpt = document.getElementById('size');
-            let countInpt = document.getElementById('count');
-            sizeInpt.value = '';
-            countInpt.value = '';
-            
-            getRequest(`https://localhost:58841/api/v1/productSizes/getAllByProductId/${product.id}`)
-                .then(productSizesList => {
-                    productSizesList.forEach(productSize => {
-                        sizeInpt.value += productSize.size + ', ';
-                        countInpt.value += productSize.count + ', ';
-                    })
-                    sizeInpt.value = sliceString(sizeInpt.value);
-                    countInpt.value = sliceString(countInpt.value);
-                }) 
+    let product = await getProductById(id);
+    let nameInpt = document.getElementById('name');
+    let priceInpt = document.getElementById('price');
+    let descriptionArea = document.getElementById('description');
+    let sizeInpt = document.getElementById('size');
+    let countInpt = document.getElementById('count');
 
-            getRequest(`https://localhost:58841/api/v1/brandsSubcategories/getById/${product.brandsSubcategoriesId}`)
-                .then(bs => {
-                    let brandId = bs.brandsId;
-                    let subcategoriesId = bs.subcategoriesId;
+    nameInpt.value = product.name;
+    priceInpt.value = product.price;
+    descriptionArea.value = product.description;
+    sizeInpt.value = '';
+    countInpt.value = '';
+    
+    let productSizesList = await getProductSizesListByProductId(product.id);
+    for (const productSizes of productSizesList) {
+        sizeInpt.value += productSizes.size + ', ';
+        countInpt.value += productSizes.count + ', ';
+    }
+    sizeInpt.value = sliceString(sizeInpt.value);
+    countInpt.value = sliceString(countInpt.value);
+    
+    let brandsSubcategories = await getBrandSubcategoriesById(product.brandsSubcategoriesId)
+    let brandId = brandsSubcategories.brandsId;
+    let subcategoriesId = brandsSubcategories.subcategoriesId;
+    let subcategories = await getSubcategoriesById(subcategoriesId);
+    let category = await getCategoryById(subcategories.categoryId);
 
-                    getRequest(`https://localhost:58841/api/v1/subcategories/getById/${subcategoriesId}`)
-                        .then(sc => {
-                            getRequest(`https://localhost:58841/api/v1/categories/getById/${sc.categoryId}`)
-                                .then(c => {
-                                    categorySelect.value = c.id;
-                                    subcategorySelect.options.length = 0;
-                                    brandSelect.value = brandId;
-                                    fillSubcategoriesSelect(c.id);
-                                })
-                        })
-                })    
-        })
+    categorySelect.value = category.id;
+    subcategorySelect.options.length = 0;
+    brandSelect.value = brandId;
+    fillSubcategoriesSelect(category.id);            
 })
 
-updateBtnForm.addEventListener('click', () => {
+updateBtnForm.addEventListener('click', async () => {
     let nameInpt = document.getElementById('name');
     let priceInpt = document.getElementById('price');
     let descriptionArea = document.getElementById('description');
     let fileInpt = document.getElementById('image-product');
     let userId = localStorage.getItem('userId');
+    let brandsSubcategories = await getBrandSubcategoriesByBrandIdAndSubcategoriesId(brandSelect.value, subcategorySelect.value);
+    let product = await getProductById(productSelect.value);
 
-    getRequest(`https://localhost:58841/api/v1/brandsSubcategories/getByBrandAndSubcategories/${brandSelect.value}/${subcategorySelect.value}`)
-        .then(bs => {
-            let file;
+    if(fileInpt.files[0] == undefined) {
+        let updateProductModel = {
+            userId: parseInt(userId),
+            brandsSubcategoriesId: brandsSubcategories.id,
+            name: nameInpt.value,
+            price: parseInt(priceInpt.value),
+            description: descriptionArea.value,
+            imageUrl: product.imageUrl
+        }
+        let code = await putRequest(`https://localhost:58841/api/v1/products/update/${productSelect.value}`, updateProductModel)
+        if(code == 200) updateProductSizes(code, product)
+                
+    } else {
+        let file = fileInpt.files[0];
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
 
-            if(fileInpt.files[0] == undefined) {
-                getRequest(`https://localhost:58841/api/v1/products/getById/${productSelect.value}`)
-                .then(product => {
-                    file = product.imageUrl;
+        reader.onload = async (event) => {
+            let imageUrl = event.target.result;
 
-                    let updateProductModel = {
-                        userId: parseInt(userId),
-                        brandsSubcategoriesId: bs.id,
-                        name: nameInpt.value,
-                        price: parseInt(priceInpt.value),
-                        description: descriptionArea.value,
-                        imageUrl: file
-                    }
-
-                    putRequest(`https://localhost:58841/api/v1/products/update/${productSelect.value}`, updateProductModel)
-                        .then(code => { updateProductSizes(code, product) })
-                }) 
-            } else {
-                getRequest(`https://localhost:58841/api/v1/products/getById/${productSelect.value}`)
-                .then(product => {
-                    let file = fileInpt.files[0];
-                    let reader = new FileReader();
-                    reader.readAsDataURL(file);
-
-                    reader.onload = function(event) {
-                        let imageUrl = event.target.result;
-
-                        let updateProductModel = {
-                            userId: parseInt(userId),
-                            brandsSubcategoriesId: bs.id,
-                            name: nameInpt.value,
-                            price: parseInt(priceInpt.value),
-                            description: descriptionArea.value,
-                            imageUrl: imageUrl
-                        }
-        
-                        putRequest(`https://localhost:58841/api/v1/products/update/${productSelect.value}`, updateProductModel)
-                            .then(code => { updateProductSizes(code, product) })
-                        location.reload();
-                    }
-                })
+            let updateProductModel = {
+                userId: parseInt(userId),
+                brandsSubcategoriesId: bs.id,
+                name: nameInpt.value,
+                price: parseInt(priceInpt.value),
+                description: descriptionArea.value,
+                imageUrl: imageUrl
             }
-        })
+
+            let code = await putRequest(`https://localhost:58841/api/v1/products/update/${productSelect.value}`, updateProductModel)
+            if(code == 200) updateProductSizes(code, product);
+            location.reload();
+        }
+                
+    }
+        
 })
 
 function sliceString(str) {
@@ -223,7 +231,7 @@ function sliceString(str) {
     return str;
 }
 
-function updateProductSizes(code, product) {
+async function updateProductSizes(code, product) {
     let sizeInpt = document.getElementById('size');
     let countInpt = document.getElementById('count');
 
@@ -252,8 +260,8 @@ function updateProductSizes(code, product) {
                     arrayProductSizes[i] = productSizes;
                 }
             }
-            putRequest(`https://localhost:58841/api/v1/productSizes/update/${product.id}`, arrayProductSizes); 
-            alert('Вы успешно обновили товар!');  
+            let code = await putRequest(`https://localhost:58841/api/v1/productSizes/update/${product.id}`, arrayProductSizes);
+            if(code == 200) alert('Вы успешно обновили товар!');  
         }
     }
 }
@@ -563,7 +571,6 @@ async function getProductListByNameAndUserId(name, userId) {
 searchItemsSeller.addEventListener('change', async () => {
     productSellerDiv.innerHTML = '';
     let valueSelect = searchItemsSeller.value;
-    console.log(valueSelect);
     let productList = await getProductListByNameAndUserId(valueSelect, parseInt(userId));
     await insertProductByList(productList);
 })

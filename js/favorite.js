@@ -54,56 +54,72 @@ async function getAvgRatingByProductId(productId) {
     return ratingProductSum;
 }
 
-function getAllFavoriteByUserId() {
-    getRequest(`https://localhost:7073/api/v1/favorites/getByUserId/${userId}`)
-        .then(favoriteList => {
-            favoriteList.forEach(favorite => {
-                getRequest(`https://localhost:58841/api/v1/products/getById/${favorite.productId}`)
-                    .then(product => {
-                        getRequest(`https://localhost:5098/api/v1/users/${product.userId}`)
-                            .then(async seller => {
-                                let ratingProductList = await getRatingProductByProductId(product.id);
-
-                                if(ratingProductList.length != 0) {
-                                    let emptyCommentsCount = await getEmptyCommentByProductId(product.id);
-                                    let countComment = ratingProductList.length - emptyCommentsCount;
-                                    let ratingProductAvg = await getAvgRatingByProductId(product.id);
-
-                                    productContainer.insertAdjacentHTML('beforeend', 
-                                        insertCardProductFavorite(product, seller.login, ratingProductAvg, countComment)
-                                    );
-                                } else {
-                                    productContainer.insertAdjacentHTML('beforeend', insertCardProductFavorite(product, seller.login, 0, 0));
-                                }                                
-                            })
-                    })
-            });
-        })
+async function getUserByLogin(login) {
+    const user = await getRequest(`https://localhost:5098/api/v1/users/getByLogin/${login}`);
+    return user;
 }
 
-productContainer.addEventListener('click', function(event) {
+async function getUserById(id) {
+    const user = await getRequest(`https://localhost:5098/api/v1/users/${id}`);
+    return user;
+}
+
+async function getFavoriteListByUserId(userId) {
+    const favoriteList = await getRequest(`https://localhost:7073/api/v1/favorites/getByUserId/${userId}`);
+    return favoriteList;
+}
+
+async function getProductByNameAndUserId(name, userId) {
+    const product = await getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${name}/${userId}`);
+    return product;
+}
+
+async function getProductById(id) {
+    const product = await getRequest(`https://localhost:58841/api/v1/products/getById/${id}`);
+    return product;
+}
+
+async function getFavoriteProductByUserIdAndProductId(userId, productId) {
+    const favoriteProduct = await getRequest(`https://localhost:7073/api/v1/favorites/getByUserIdAndProductId/${userId}/${productId}`);
+    return favoriteProduct;
+}
+
+async function getAllFavoriteByUserId() {
+    let favoriteList = await getFavoriteListByUserId(parseInt(userId));
+    for (const favorite of favoriteList) {
+        let product = await getProductById(favorite.productId);
+        let seller = await getUserById(product.userId);
+        let ratingProductList = await getRatingProductByProductId(product.id);
+
+        if(ratingProductList.length != 0) {
+            let emptyCommentsCount = await getEmptyCommentByProductId(product.id);
+            let countComment = ratingProductList.length - emptyCommentsCount;
+            let ratingProductAvg = await getAvgRatingByProductId(product.id);
+
+            productContainer.insertAdjacentHTML('beforeend', 
+                insertCardProductFavorite(product, seller.login, ratingProductAvg, countComment)
+            );
+        } else {
+            productContainer.insertAdjacentHTML('beforeend', insertCardProductFavorite(product, seller.login, 0, 0));
+        } 
+    } 
+}
+
+productContainer.addEventListener('click', async (event) => {
     if (event.target.closest('.favorite')) {
         const icon = event.target.closest('.favorite'); 
         const card = icon.parentElement; 
         const cardName = card.querySelector('.product-title').textContent;
-        const seller = card.querySelector('.product-creater').textContent;
-
-        getRequest(`https://localhost:5098/api/v1/users/getByLogin/${seller}`)
-            .then(s => {
-                getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${cardName}/${s.id}`)
-                    .then(p => {
-                        getRequest(`https://localhost:7073/api/v1/favorites/getByUserIdAndProductId/${userId}/${p.id}`)
-                            .then(fp => {
-                                deleteRequest(`https://localhost:7073/api/v1/favorites/delete/${fp.id}`)
-                                    .then(code => {
-                                        if(code == 204) {
-                                            alert('Вы успешно удалили товар из избранного!');
-                                            card.parentElement.remove();
-                                        }
-                                    })
-                            })
-                    });
-            });
+        const sellerLogin = card.querySelector('.product-creater').textContent;
+        let seller =  await getUserByLogin(sellerLogin);
+        let product = await getProductByNameAndUserId(cardName, seller.id);
+        let favoriteProduct = await getFavoriteProductByUserIdAndProductId(userId, product.id);
+        let code = await deleteRequest(`https://localhost:7073/api/v1/favorites/delete/${favoriteProduct.id}`);
+        
+        if(code == 204) {
+            alert('Вы успешно удалили товар из избранного!');
+            card.parentElement.remove();
+        }  
     }
 
     if (event.target.closest('.product-info')) {

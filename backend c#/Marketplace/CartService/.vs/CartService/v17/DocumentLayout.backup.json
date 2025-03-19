@@ -58,12 +58,11 @@
               "Title": "FavoritesRepositoryImpl.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Model\\Repository\\FavoritesRepositoryImpl.cs",
               "RelativeDocumentMoniker": "Model\\Repository\\FavoritesRepositoryImpl.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Model\\Repository\\FavoritesRepositoryImpl.cs*",
-              "RelativeToolTip": "Model\\Repository\\FavoritesRepositoryImpl.cs*",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Model\\Repository\\FavoritesRepositoryImpl.cs",
+              "RelativeToolTip": "Model\\Repository\\FavoritesRepositoryImpl.cs",
               "ViewState": "AgIAABwAAAAAAAAAAABOwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T06:41:01.603Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T06:41:01.603Z"
             },
             {
               "$type": "Document",
@@ -71,9 +70,9 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAARAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwBYAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T06:32:03.42Z",
               "EditorCaption": ""
@@ -96,12 +95,11 @@
               "Title": "FavoritesController.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\FavoritesController.cs",
               "RelativeDocumentMoniker": "Controllers\\FavoritesController.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\FavoritesController.cs*",
-              "RelativeToolTip": "Controllers\\FavoritesController.cs*",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\FavoritesController.cs",
+              "RelativeToolTip": "Controllers\\FavoritesController.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAABOwCEAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T19:39:47.213Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T19:39:47.213Z"
             },
             {
               "$type": "Document",
@@ -109,12 +107,11 @@
               "Title": "CartRepositoryImpl.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Model\\Repository\\CartRepositoryImpl.cs",
               "RelativeDocumentMoniker": "Model\\Repository\\CartRepositoryImpl.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Model\\Repository\\CartRepositoryImpl.cs*",
-              "RelativeToolTip": "Model\\Repository\\CartRepositoryImpl.cs*",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Model\\Repository\\CartRepositoryImpl.cs",
+              "RelativeToolTip": "Model\\Repository\\CartRepositoryImpl.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAYwB8AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T08:20:53.351Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-11T08:20:53.351Z"
             },
             {
               "$type": "Document",
@@ -122,12 +119,11 @@
               "Title": "CartController.cs",
               "DocumentMoniker": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\CartController.cs",
               "RelativeDocumentMoniker": "Controllers\\CartController.cs",
-              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\CartController.cs*",
-              "RelativeToolTip": "Controllers\\CartController.cs*",
+              "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\CartService\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Controllers\\CartController.cs",
               "ViewState": "AgIAADsAAAAAAAAAAIBGwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T07:57:09.303Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-11T07:57:09.303Z"
             },
             {
               "$type": "Document",

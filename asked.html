@@ -122,128 +122,43 @@
         </div>
     </div>
 
-     <!-- Панель -->
-     <div class="panel-roles">
-        <div class="panels-roles">
-            <a href="seller.html">Панель продавца</a>
-            <a href="moderatorPanel.html">Панель модератора</a>
-            <a href="adminPanel.html">Панель администратора</a>
-        </div>
-    </div>
-
-    <!-- Оснвной контент -->
-    <div class="profile-container">
-        <div class="left-panel">
-            <div class="img-name-div">
-                <div>
-                    <img src="source/profile-user.png" width="40px" height="40px">
-                    <a href="#" id="user-login">Имя</a>
-                </div>
-                <div>
-                    <a href="#"><img src="source/bell.png" width="32px" height="32px"></a>
-                </div>
-            </div>
-            
-            <div class="title-category">
-                <label>Финансы</label>
-            </div>
-            <div class="user-card">
-                <img src="source/credit-card.png">
-                <label>Способы оплаты</label>
-            </div>
-            <div class="user-card">
-                <img src="source/list.png">
-                <label>Реквизиты</label>
-            </div>
-        </div>
-        <div class="right-panel">
-            <div class="delivery">
-                <div class="title-delivery">
-                    <p><b>Доставки</b></p>
-                    <a href="orders.html">Все</a>
-                </div>
-                <div class="deliveries">
-
-                </div>
-                  
-            </div>
-            <div class="cards-right-panel">
-                <div class="card-right-panel">
-                    <div class="favorite-div">
-                        <p style="font-size: 20px;"><b>Избранное</b></p>
-                        <p id="count-goods">18 товаров</p>
-                    </div>
-                    <div>
-                        <img src="source/love.png" width="32px" height="32px">
-                    </div>
-                </div>
-                <div class="card-right-panel">
-                    <div>
-                        <p style="font-size: 20px;"><b>Покупки</b></p>
-                        <p id="my-goods">Смотреть</p>
-                    </div>
-                    <div>
-                        <img src="source/bag.png" width="32px" height="32px">
-                    </div>
-                </div>
-                <div class="card-right-panel" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    <div>
-                        <p style="font-size: 20px;"><b>Ждут оценки</b></p>
-                        <p id="goods-no-comment">0 товаров</p>
-                    </div>
-                    <div>
-                        <img src="source/star.png" width="32px" height="32px">
-                    </div>
-                </div>
-            </div>
-            <div class="feedback">
-                <p style="font-size: 24px; font-weight: bold;">Сервис и помощь</p>
-                <div class="services">
-                    <div class="service" id="openModalButton">
-                        <div class="items-service">
-                            <img src="source/comment.png" width="32px" height="32px">
-                            <p><b>Поддержка</b></p>
-                        </div>
-                    </div>
-                    <div class="service">
-                        <div class="items-service">
-                            <img src="source/package.png" width="32px" height="32px">
-                            <p><b>Вернуть товар</b></p>
-                        </div>
-                    </div>
-                    <div class="service">
-                        <div class="items-service">
-                            <img src="source/question-mark.png" width="32px" height="32px">
-                            <p><b>Вопросы и ответы</b></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 
-     aria-labelledby="staticBackdropLabel" aria-hidden="true"> 
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Товари, ждущие вашей оценки!!</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="rating-container">
-                
-            </div>
-          </div>
-        </div>
-
-        <div id="modal" class="modal-window">
-            <div class="modal-content-window">
-                <span id="closeModalButton" class="close-modal-btn">&times;</span>
-                <h2>Отзыв</h2>
-                <div class="modal-window-body">
-                   
-                </div>
-            </div>
+    <div style="width: 1000px; margin: 0 auto;">
+        <div style="display: flex; justify-content: center; flex-direction: column;">
+            <p style="margin-top: 30px; font-size: 32px; font-weight: bold; text-align: center;">Часто задаваемые вопросы (FAQ)</p>
+            <p style="font-size: 24px; font-weight: bold;">Как оформить заказ?</p>
+            <ul style="font-size: 18px;">
+                <li>Перейдите в каталог товаров, выберите нужный товар и нажмите кнопку "Добавить в корзину".</li>
+                <li>Перейдите в корзину, проверьте заказ и нажмите "Оформить заказ".</li>
+                <li>Выберите способ оплаты, затем подтвердите заказ.</li>
+            </ul>
+            <p style="font-size: 24px; font-weight: bold;">Шаги для возврата</p>
+            <ul style="font-size: 18px;">
+                <li>Заполните заявление на возврат.</li>
+                <li>Упакуйте товар.</li>
+                <li>Отправьте товар.</li>
+                <li>Ожидайте обработки.</li>
+            </ul>
+            <p style="font-size: 24px; font-weight: bold;">Как отследить статус заказа?</p>
+            <ul style="font-size: 18px;">
+                <li>Войдите в личный кабинет и перейдите в раздел "Мои заказы".</li>
+                <li>Выберите нужный заказ, чтобы увидеть его текущий статус.</li>
+                <li>Если статус не обновляется, свяжитесь с нашей службой поддержки.</li>
+            </ul>
+            <p style="font-size: 24px; font-weight: bold;">Какие способы оплаты доступны?</p>
+            <ul style="font-size: 18px;">
+                <li>Банковские карты (Visa, MasterCard, МИР).</li>
+            </ul>
+            <p style="font-size: 24px; font-weight: bold;">Как изменить или отменить заказ?</p>
+            <ul style="font-size: 18px;">
+                <li>Если заказ еще не собран, вы можете отменить его в личном кабинете в разделе "Мои заказы".</li>
+                <li>Если заказ уже собран, свяжитесь с нашей службой поддержки как можно скорее.</li>
+            </ul>
+            <p style="font-size: 24px; font-weight: bold;"> Как вернуть товар?</p>
+            <ul style="font-size: 18px;">
+                <li>Оформите заявление на возврат в личном кабинете.</li>
+                <li>Упакуйте товар в оригинальную упаковку и отправьте его нам.</li>
+                <li>Подробная инструкция доступна в разделе "Как вернуть товар".</li>
+            </ul>
         </div>
     </div>
 

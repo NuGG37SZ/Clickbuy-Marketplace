@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "Model\\Repository\\UserRepositoryImpl.cs",
               "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\UserService\\Model\\Repository\\UserRepositoryImpl.cs",
               "RelativeToolTip": "Model\\Repository\\UserRepositoryImpl.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAuwDcAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADcAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-18T09:49:35.688Z",
               "EditorCaption": ""
@@ -63,8 +63,7 @@
               "RelativeToolTip": "Model\\Service\\UserServiceImpl.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T09:17:41.51Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T09:17:41.51Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "Model\\Entity\\User.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAAABYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-18T09:12:40.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-18T09:12:40.943Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "Controllers\\UserController.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAuwCMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T11:43:45.259Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-08T11:43:45.259Z"
             }
           ]
         }

@@ -6,6 +6,9 @@ const countFavorite = document.getElementById('count-goods');
 const rightPanel = document.querySelectorAll('.card-right-panel');
 const goodsNoCommentText = document.getElementById('goods-no-comment');
 const favoriteDiv = rightPanel[0];
+const services = document.querySelector('.services').children;
+const backProductDiv = services[1];
+const questionstDiv = services[2];
 const wordForms = ['товар', 'товара', 'товаров'];
 
 document.addEventListener("DOMContentLoaded", async ()  => {
@@ -13,6 +16,14 @@ document.addEventListener("DOMContentLoaded", async ()  => {
     insertDelivery();
     await getFavoriteProductsText();
     await getProductNoCommentText();
+})
+
+backProductDiv.addEventListener('click', () => {
+    location.href = 'backProduct.html';
+})
+
+questionstDiv.addEventListener('click', () => {
+    location.href = 'asked.html';
 })
 
 async function getFavoriteProductsText() {
