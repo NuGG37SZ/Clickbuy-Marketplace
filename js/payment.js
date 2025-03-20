@@ -79,6 +79,11 @@ async function getAllCartByCurrentUser() {
     return listCart;
 }
 
+async function getUserById(id) {
+    const user = await getRequest(`https://localhost:5098/api/v1/users/${id}`);
+    return user;
+}
+
 async function getProductById(id) {
     const product = await getRequest(`https://localhost:58841/api/v1/products/getById/${id}`);
     return product;  
@@ -198,7 +203,25 @@ payBtn.addEventListener('click', async () => {
                         dateCreateComment: date
                     }
 
+                    let user = await getUserById(parseInt(currentUserId));
+                    let table = document.querySelector('.all-product-for-payment');
+                    table.setAttribute("border", "1");
+                    let checkBody = table.outerHTML;
+
+                    let message = {
+                        to: [user.email],
+                        bcc: ["Anezer20@yandex.ru"],
+                        cc: ["Anezer20@yandex.ru"],
+                        from: "Anezer20@yandex.ru",
+                        displayName: "ClickBuy",
+                        replyTo: "",
+                        replyToName: "ClickBuy",
+                        subject: "Чек",
+                        body: checkBody,
+                    }
+
                     await postRequest(`https://localhost:7029/api/v1/ratingProduct/create`, ratingProductModel);
+                    await postRequest(`https://localhost:7160/api/v1/notificationMail/sendmail`, message);
                     await deleteRequest(`https://localhost:7073/api/v1/carts/delete/${cart.id}`);
                 }
             }

@@ -52,7 +52,7 @@ namespace Marketplace.Controllers
             string? storedHashedPassword = userDTO.Password;
             bool isPasswordValid = HashFunc.VerifyPassword(password, storedHashedPassword);
 
-            if (isPasswordValid)
+            if (isPasswordValid) 
                 return Ok("Authenticated successfully.");
 
             return Unauthorized("Invalid credentials.");

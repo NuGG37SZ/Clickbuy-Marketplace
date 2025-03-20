@@ -37,7 +37,7 @@ namespace OrderService.Controllers
             PointsDTO? pointsDTO = await _pointsService.GetByAddress(address);
 
             if(pointsDTO == null)
-                return NotFound("Points Not Found.");
+                return Ok(new PointsDTO());
 
             return Ok(pointsDTO);
         }

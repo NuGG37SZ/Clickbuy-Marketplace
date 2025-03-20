@@ -467,3 +467,4 @@ D:\Work\Marketplace\Marketplace\backend c#\Marketplace\UserService\obj\Debug\net
 D:\Work\Marketplace\Marketplace\backend c#\Marketplace\UserService\obj\Debug\net8.0\UserService.pdb
 D:\Work\Marketplace\Marketplace\backend c#\Marketplace\UserService\obj\Debug\net8.0\UserService.genruntimeconfig.cache
 D:\Work\Marketplace\Marketplace\backend c#\Marketplace\UserService\obj\Debug\net8.0\ref\UserService.dll
+C:\Users\fdafw\OneDrive\Документы\GitHub\Marketplace\backend c#\Marketplace\UserService\bin\Debug\net8.0\Otp.NET.dll

@@ -6,20 +6,22 @@ const registerBtn = document.getElementById('registation-btn');
 
 registerBtn.addEventListener('click', async () => {
     if(passwordInpt.value === confirmPasswordInpt.value) {
-        let user = {
-            login: loginInpt.value,
-            password: passwordInpt.value,
-            email: emailInpt.value,
-            role: 'user',
-            isBanned: false
-        }
-        const result = await createUserRequest(user);
-
-        if(result == 201) {
-            localStorage.setItem('userLogin', user.login);
-            localStorage.setItem('isAuth', 'true');
-            alert('Вы успешно зарегистрировались!');
-            location.href='index.html';
+        if(!emailInpt.value.includes('@yandex.ru')) {
+            alert('Пожалуйста, введите почту yandex для того, чтобы получать информацию о покупках на почту!');
+            return;
+        } else {
+            let user = {
+                login: loginInpt.value,
+                password: passwordInpt.value,
+                email: emailInpt.value,
+                role: 'user',
+                isBanned: false
+            }
+            const result = await createUserRequest(user);
+    
+            if(result == 201) {
+                alert('Вы успешно зарегистрировались!');
+            }
         }
     } else {
         alert('Пароли не совпадают!');

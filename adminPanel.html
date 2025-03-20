@@ -101,56 +101,15 @@
         </div>
     </div>
 
-    <!-- Кнопка для открытия чата -->
-    <div id="chatbox">
-        <button class="btn btn-primary" id="openChatBtn">
-            <i class="bi bi-chat-dots"></i> Чат с поддержкой
-        </button>
-    </div>
-
-    <!-- Панель чата -->
-    <div id="chatPanel">
-        <!-- Хедер чата -->
-        <div class="chat-header">
-            <img src="source/robot.png" id="operatorPhoto" class="operator-photo" alt="Оператор">
-            <div>
-                <strong id="operatorName">Андрей Иванов</strong><br>
-                <small id="operatorRole">Техническая поддержка</small>
-            </div>
-            <button class="btn-close ms-auto" id="closeChatBtn"></button>
-        </div>
-
-        <!-- Сообщения -->
-        <div class="chat-messages">
-            <div class="chat-date">28.02.2025</div>
-        
-            <div class="message support-message">
-                <div class="support-photo">
-                    <img src="source/operator.jpg" alt="Оператор">
-                </div>
-                <div class="support-text">Добрый день! Чем могу помочь?
-                    <span class="message-time">12:12</span>
-                </div>
-            </div>
-            <div class="message user-message">
-                У меня вопрос по заказу.
-                <span class="message-time">12:13</span>
-            </div>
-        </div>    
-
-        <div class="chat-input">
-            <textarea class="form-control" placeholder="Напишите сообщение"></textarea>
-            <button class="btn btn-primary">Отправить</button>
-        </div>
-    </div>
-
     <div class="admin-container">
         <div class="buttons-links">
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary">Изменить права доступа</button>
+                <button type="button" class="btn btn-outline-primary" id="change-role-div-btn">Изменить права доступа</button>
+                <button type="button" class="btn btn-outline-primary" id="point-div-btn">Пункты выдачи</button>
             </div>
         </div>
-        <div>
+
+        <div id="roles-div">
             <h3 style="text-align: center; margin-top: 20px;">Изменить права доступа</h3>
             <div class="change-role-items">
                 <div>
@@ -166,7 +125,23 @@
                     </select>
                 </div>
                 <div style="margin-top: 20px; display: flex; justify-content: end;">
-                    <button type="button" class="btn btn-primary" id="save-change-role-btn">Сохранить</button>
+                    <button type="button" class="btn btn-success" id="save-change-role-btn">Сохранить</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: none; justify-content: center; flex-direction: column;" id="points-div">
+            <h3 style="text-align: center; margin-top: 20px;">Пункты выдачи</h3>
+            <div style="margin: 0 auto;">
+                <div style="width: 350px;">
+                    <label>Адрес пункта: </label>
+                    <input type="text" style="width: 100%;" id="point-address-inpt">
+                </div>
+                <div style="width: 350px;">
+                    <div style="margin-top: 15px; display: flex; justify-content: end;">
+                        <button type="button" class="btn btn-success" style="margin-right: 15px;" id="create-point-btn">Создать</button>
+                        <button type="button" class="btn btn-danger" id="delete-point-btn">Удалить</button>
+                    </div>
                 </div>
             </div>
         </div>

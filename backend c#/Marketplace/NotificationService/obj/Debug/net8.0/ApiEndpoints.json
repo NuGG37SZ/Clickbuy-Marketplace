@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "NotificationService.Controllers.MailController",
+    "Method": "SendMailAsync",
+    "RelativePath": "api/v1/notificationMail/sendmail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mailData",
+        "Type": "NotificationService.Models.Entity.MailData",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1000,7 +1000,7 @@ textarea {
 }
 
 .seller-info {
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -1290,7 +1290,7 @@ input.card-cvv {
 
 .left-panel-points {
     width: 450px;
-    height: 737px;
+    margin: 0 auto;
 }
 
 .map {
@@ -1301,6 +1301,7 @@ input.card-cvv {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 100%;
 }
 
 .map-container p {
@@ -1309,15 +1310,15 @@ input.card-cvv {
 
 .point:hover {
     background-color: #5A67D8;
-    margin: 0 auto;
-    border-radius: 20px;
 }
 
 .point {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
+    background-color: white;
+    margin: 10px auto;
+    border-radius: 20px;
     width: 250px;
     padding-bottom: 25px;
     cursor: pointer;
@@ -1347,20 +1348,16 @@ input.card-cvv {
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-size: 20px;
-    background-color: #666;
+    background-color: #5A67D8;
     padding: 15px;
     border-radius: 20px;
-}
-
-.redirect-mainpage:hover {
-    background-color: #5A67D8;
 }
 
 .left-panel-points {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 790px;
+    height: 700px;
 }
 
 .category-container {

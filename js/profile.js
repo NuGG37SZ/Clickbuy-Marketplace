@@ -136,7 +136,7 @@ async function getRatingProductListByUserId(userId) {
 async function insertDelivery() {
     let orderList = await getOrderListByUserId(parseInt(userId));
     
-    if(orderList.length <= 3) {
+    if(orderList.length <= 2) {
         for (const order of orderList) {
             insertCardDelivery(order);
         }

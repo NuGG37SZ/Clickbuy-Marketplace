@@ -7,27 +7,26 @@ const progressBar = document.querySelector('.progress-bar');
 const countProduct = document.getElementById('product-count-card');
 const addPrdouctToCartBtn = document.getElementById('add-product-cart');
 const allReviews = document.querySelector('.all-reviews');
+const sellerInfoDiv = document.querySelector('.seller-info');
 let hideDescription = 0;
 
-fillCardProduct();
-insertAllComments();
+document.addEventListener('DOMContentLoaded', async () => {
+    await fillCardProduct();
+    await insertAllComments();
+    await insertUserInfo();
+})
 
-function fillCardProduct() {
-    getRequest(`https://localhost:5098/api/v1/users/getByLogin/${sellerLogin}`)
-        .then(seller => {
-            getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${productName}/${seller.id}`)
-                .then(product => {
-                    fillProduct(product);
-        
-                    getRequest(`https://localhost:58841/api/v1/productSizes/getAllByProductId/${product.id}`)
-                        .then(sizes => {
-                            sizes.sort((a, b) => a.size - b.size);
-                            sizes.forEach(size => {
-                                sizesProduct.insertAdjacentHTML('beforeend', insertSizeProduct(size.size));
-                            });
-                        })
-                })
-        })
+async function fillCardProduct() {
+    let seller = await getUserByLogin(sellerLogin);
+    console.log(seller);
+    let product = await getProductByNameAndUserId(productName, seller.id);
+    fillProduct(product);
+    let productSizesList = await getAllSizesByProductId(product.id);
+    productSizesList.sort((a, b) => a.size - b.size);
+
+    for (const productSizes of productSizesList) {
+        sizesProduct.insertAdjacentHTML('beforeend', insertSizeProduct(productSizes.size));
+    }
 }
 
 function insertSizeProduct(size) {
@@ -73,6 +72,11 @@ async function getUserByLogin(login) {
     return user;
 }
 
+async function getAllSizesByProductId(productId) {
+    const productSizesList = await getRequest(`https://localhost:58841/api/v1/productSizes/getAllByProductId/${productId}`);
+    return productSizesList;
+}
+
 async function getUserById(id) {
     const user = await getRequest(`https://localhost:5098/api/v1/users/${id}`);
     return user;
@@ -98,10 +102,14 @@ async function getAvgRatingByProductId(productId) {
     return ratingProductSum;
 }
 
+async function getRatingProductListByUserId(userId) {
+    const ratingProductList = await getRequest(`https://localhost:7029/api/v1/ratingProduct/getByUserId/${userId}`);
+    return ratingProductList;
+}
+
 async function fillProduct(product) {
     const productTitle = document.getElementById('product-name-card');
     const productPrice = document.getElementById('product-price-card');
-    const seller = document.getElementById('seller-product');
     const imgProduct = document.getElementById('product-img-card');
     const commentProduct = document.querySelector('.comments-product');
     const startProduct = document.querySelector('.star-product');
@@ -109,7 +117,6 @@ async function fillProduct(product) {
 
     productTitle.textContent = product.name;
     productPrice.textContent = `${product.price} ₽`;
-    seller.textContent = sellerLogin;
     productDescription.textContent = product.description;
     imgProduct.src = product.imageUrl;
 
@@ -147,30 +154,31 @@ descriptionButton.addEventListener('click', () => {
     }
 })
 
-sizesProduct.addEventListener('click', (event) => {
+sizesProduct.addEventListener('click', async (event) => {
     if(event.target.closest('.size-product')) {
         let activeSize = document.querySelector('.active-size');
         let currentSize = event.target.closest('.size-product').children[0];
         let size = parseInt(currentSize.textContent);
 
-        if(activeSize) activeSize.classList.remove('active-size');
+        if(activeSize) {
+            activeSize.classList.remove('active-size');
+            activeSize.parentNode.style.backgroundColor = 'transparent';
+            activeSize.style.color = 'black';
+        }
         
-        getRequest(`https://localhost:5098/api/v1/users/getByLogin/${sellerLogin}`)
-            .then(seller => {
-                getRequest(`https://localhost:58841/api/v1/products/getByNameAndUserId/${productName}/${seller.id}`)
-                    .then(product => {
-                        getRequest(`https://localhost:58841/api/v1/productSizes/getAllByProductId/${product.id}`)
-                            .then(productSizeList => {
-                                productSizeList.forEach(sizeObj => {
-                                    if(size == parseInt(sizeObj.size)) {
-                                        currentSize.classList.add('active-size');
-                                        progressBar.style.width = `${sizeObj.count}%`;
-                                        countProduct.textContent = `Осталось ${sizeObj.count} шт.`;
-                                    }
-                                })
-                            })
-                    })
-            })
+        let user = await getUserByLogin(sellerLogin);
+        let product = await getProductByNameAndUserId(productName, user.id);
+        let productSizesList = await getAllSizesByProductId(product.id);
+        
+        for (const productSize of productSizesList) {
+            if(size == parseInt(productSize.size)) {
+                currentSize.classList.add('active-size');
+                currentSize.parentNode.style.backgroundColor = 'black';
+                currentSize.style.color = 'white';
+                progressBar.style.width = `${productSize.count}%`;
+                countProduct.textContent = `Осталось ${productSize.count} шт.`;
+            }
+        } 
     }
 })
 
@@ -216,7 +224,7 @@ addPrdouctToCartBtn.addEventListener('click', async () => {
 
         let cartCreateModel = {
             productId: product.id,
-            userId: seller.id,
+            userId: parseInt(userId),
             productSizesId: productSizes.id,
             count: 1,
         };
@@ -268,6 +276,16 @@ function insertComment(productSizes, ratingProduct, user) {
     `
 }
 
+async function insertUserInfo() {
+    sellerInfoDiv.insertAdjacentHTML('beforeend', `
+        <div>
+            <img src="source/store.png">
+            <a href="#" id="seller-product">${sellerLogin}</a>
+            <span class="star-product">⭐ ${await getRatingUserProduct()}</span>
+        </div>
+    `)
+}
+
 function insertFillStar() {
     return `<img src="source/starYellow.png" class="rating-product" width="24px" style="margin-left: 5px">`
 }
@@ -303,5 +321,21 @@ async function insertAllComments() {
             }
         }
     }
+}
+
+async function getRatingUserProduct() {
+    let user = await getUserByLogin(sellerLogin);
+    let ratingProductList = await getRatingProductListByUserId(user.id);
+    let rating = 0;
+    let countProduct = 0;
+
+    for (const ratingProduct of ratingProductList) {
+        if(ratingProduct.rating != 0.0 && ratingProduct.comment != '') {
+            rating += ratingProduct.rating;
+            countProduct++;
+        }
+    }
+
+    return rating / countProduct;
 }
 

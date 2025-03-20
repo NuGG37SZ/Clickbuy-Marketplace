@@ -40,7 +40,7 @@ namespace OrderService.Model.Service
             if (points != null)
                 return PointsMapper.MapPointsToPointsDTO(points);
 
-            return null;
+            return new PointsDTO();
         }
 
         public async Task<PointsDTO?> GetById(int id)
