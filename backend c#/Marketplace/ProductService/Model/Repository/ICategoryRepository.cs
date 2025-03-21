@@ -8,6 +8,8 @@ namespace ProductService.Model.Repository
 
         Task<Category?> GetById(int id);
 
+        Task<Category?> GetByName(string name);
+
         Task Create(Category category);
 
         Task Update(int id, Category category);

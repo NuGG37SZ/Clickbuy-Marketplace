@@ -8,6 +8,8 @@ namespace ProductService.Model.Repository
 
         Task<Brands?> GetById(int id);
 
+        Task<Brands?> GetByName(string name);
+
         Task Create(Brands brand);
 
         Task Update(int id, Brands brand);

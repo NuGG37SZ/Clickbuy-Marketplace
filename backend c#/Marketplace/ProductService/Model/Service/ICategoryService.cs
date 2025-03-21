@@ -8,6 +8,8 @@ namespace ProductService.Model.Service
 
         Task<CategoryDTO?> GetById(int id);
 
+        Task<CategoryDTO?> GetByName(string name);
+
         Task Create(CategoryDTO categoryDTO);
 
         Task Update(int id, CategoryDTO categoryDTO);

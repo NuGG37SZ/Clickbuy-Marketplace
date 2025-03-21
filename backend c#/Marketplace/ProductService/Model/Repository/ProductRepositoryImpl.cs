@@ -65,6 +65,13 @@ namespace ProductService.Model.Repository
             return null;
         }
 
+        public async Task<List<Product>> GetByName(string name)
+        {
+            return await _productContext.Products
+                            .Where(p => EF.Functions.Like(p.Name, $"%{name}%"))
+                            .ToListAsync();
+        }
+
         public async Task<List<Product>> GetByNameAndUserId(string name, int userId)
         {
             return await _productContext.Products

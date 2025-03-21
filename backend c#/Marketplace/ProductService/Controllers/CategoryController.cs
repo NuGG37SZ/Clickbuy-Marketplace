@@ -2,6 +2,7 @@
 using ProductService.Model.DTO;
 using ProductService.Model.Mapper;
 using ProductService.Model.Service;
+using ProductService.View;
 
 namespace ProductService.Controllers
 {
@@ -30,6 +31,18 @@ namespace ProductService.Controllers
                 return NotFound("Category Not Found.");
                
             return Ok(CategoryMapper.MapCategoryDTOToCategoryView(currentCategoryDTO));
+        }
+
+        [HttpGet]
+        [Route("getByName/{name}")]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            CategoryDTO? categoryDTO = await _categoryService.GetByName(name);
+
+            if(categoryDTO == null)
+                return Ok(new CategoryView());
+
+            return Ok(CategoryMapper.MapCategoryDTOToCategoryView(categoryDTO));
         }
 
         [HttpPost]

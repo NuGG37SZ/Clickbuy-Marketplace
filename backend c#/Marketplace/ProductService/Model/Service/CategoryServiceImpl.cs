@@ -41,6 +41,16 @@ namespace ProductService.Model.Service
             return null;
         }
 
+        public async Task<CategoryDTO?> GetByName(string name)
+        {
+            Category? category  = await _categoryRepository.GetByName(name);
+
+            if (category != null)
+                return CategoryMapper.MapCategoryToCategoryDTO(category);
+
+            return null;
+        }
+
         public async Task Update(int id, CategoryDTO categoryDTO)
         {
             CategoryDTO? currentCategoryDTO = await GetById(id);

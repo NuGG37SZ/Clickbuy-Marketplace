@@ -94,7 +94,8 @@ namespace ProductService.Controllers
                     brandsSubcategoriesDTO.SubcategoriesId = subcategoryId;
                     brandsSubcategoriesDTO.BrandsId = brandId;
                     await _brandSubcategoriesService.Create(brandsSubcategoriesDTO);
-                    return Created($"getByBrandAndSubcategories/{brandId}/{subcategoryId}", brandsSubcategoriesDTO);
+                    return Created($"getByBrandAndSubcategories/{brandId}/{subcategoryId}", 
+                        brandsSubcategoriesDTO);
                 } 
                 else
                     return Ok(BrandSubcategoriesMapper.MapBrandSubcategoriesDTOToBrandSubcategoriesView(

@@ -12,6 +12,8 @@ namespace ProductService.Model.Service
 
         Task<List<ProductDTO>> GetByUserId(int userId);
 
+        Task<List<ProductDTO>> GetByName(string name);
+
         Task<List<ProductDTO>> GetByNameAndUserId(string name, int userId);
 
         Task<List<ProductDTO>> GetByBrandSubcategoryId(int brandSubcategoryId);

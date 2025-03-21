@@ -75,6 +75,14 @@ namespace ProductService.Controllers
             )));
         }
 
+        [HttpGet]
+        [Route("getByName/{name}")]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            return Ok((ProductMapper.MapProductDTOListToProductViewList(
+                await _productService.GetByName(name)
+            )));
+        }
 
         [HttpPost]
         [Route("create")]

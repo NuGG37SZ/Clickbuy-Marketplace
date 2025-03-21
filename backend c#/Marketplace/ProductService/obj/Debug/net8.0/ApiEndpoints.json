@@ -59,6 +59,22 @@
   },
   {
     "ContainingType": "ProductService.Controllers.BrandController",
+    "Method": "GetByName",
+    "RelativePath": "api/v1/brands/getByName/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.BrandController",
     "Method": "Update",
     "RelativePath": "api/v1/brands/update/{id}",
     "HttpMethod": "PUT",
@@ -249,6 +265,22 @@
   },
   {
     "ContainingType": "ProductService.Controllers.CategoryController",
+    "Method": "GetByName",
+    "RelativePath": "api/v1/categories/getByName/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.CategoryController",
     "Method": "Update",
     "RelativePath": "api/v1/categories/update/{id}",
     "HttpMethod": "PUT",
@@ -358,6 +390,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProductService.Controllers.ProductController",
+    "Method": "GetByName",
+    "RelativePath": "api/v1/products/getByName/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

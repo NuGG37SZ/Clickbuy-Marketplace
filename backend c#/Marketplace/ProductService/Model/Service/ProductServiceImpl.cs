@@ -62,6 +62,15 @@ namespace ProductService.Model.Service
             return null;
         }
 
+        public async Task<List<ProductDTO>> GetByName(string name)
+        {
+            List<Product> productsList = await _productRepository.GetByName(name);
+
+            return productsList
+                    .Select(ProductMapper.MapProductToProductDTO)
+                    .ToList();
+        }
+
         public async Task<List<ProductDTO>> GetByNameAndUserId(string name, int userId)
         {
             List<Product> products = await _productRepository.GetByNameAndUserId(name, userId);

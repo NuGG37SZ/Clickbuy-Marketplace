@@ -42,6 +42,13 @@ namespace ProductService.Model.Repository
             return null;
         }
 
+        public async Task<Brands?> GetByName(string name)
+        {
+            return await _productContext.Brands
+                            .Where(b => b.Name.Equals(name))
+                            .FirstOrDefaultAsync();
+        }
+
         public async Task Update(int id, Brands brand)
         {
             Brands? currentBrand = await GetById(id);

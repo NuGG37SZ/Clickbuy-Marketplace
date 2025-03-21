@@ -45,6 +45,13 @@ namespace ProductService.Model.Repository
             return null;
         }
 
+        public async Task<Category?> GetByName(string name)
+        {
+            return await _productContext.Categories
+                            .Where(c => c.Name.Equals(name))
+                            .FirstOrDefaultAsync();
+        }
+
         public async Task Update(int id, Category category)
         {
             Category? currentCategory = await GetById(id);

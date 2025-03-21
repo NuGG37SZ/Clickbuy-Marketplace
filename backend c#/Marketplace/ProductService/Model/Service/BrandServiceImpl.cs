@@ -38,6 +38,16 @@ namespace ProductService.Model.Service
             return null;
         }
 
+        public async Task<BrandsDTO?> GetByName(string name)
+        {
+            Brands? brands = await _brandRepository.GetByName(name);
+
+            if (brands != null)
+                return BrandMapper.MapBrandToBrandDTO(brands);
+
+            return null;
+        }
+
         public async Task Update(int id, BrandsDTO brandDTO)
         {
             BrandsDTO? currentBrandDTO = await GetById(id);

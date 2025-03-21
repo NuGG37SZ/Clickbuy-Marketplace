@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductService.Model.DTO;
-using ProductService.Model.Entity;
+using ProductService.Model.Mapper;
 using ProductService.Model.Service;
+using ProductService.View;
 
 namespace ProductService.Controllers
 {
@@ -23,7 +24,9 @@ namespace ProductService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _subcategoriesService.GetAll());
+            return Ok(SubcategoriesMapper.MapSubcategoriesDTOListToSubcategoriesViewList(
+                await _subcategoriesService.GetAll()
+            ));
         }
 
         [HttpGet]
@@ -35,19 +38,16 @@ namespace ProductService.Controllers
             if(currentSubcategoriesDTO == null)
                 return NotFound("Subcategories Not Found.");
 
-            return Ok(currentSubcategoriesDTO);
+            return Ok(SubcategoriesMapper.MapSubcategoriesDTOToSubcategoriesView(currentSubcategoriesDTO));
         }
 
         [HttpGet]
         [Route("getSubcategoryByCategoryId/{categoryId}")]
         public async Task<IActionResult> GetSubcategoryByCategoryId(int categoryId)
         {
-            CategoryDTO? categoryDTO = await _categoryService.GetById(categoryId);
-             
-            if(categoryDTO == null)
-                return NotFound("Category Not Found.");
-
-            return Ok(await _subcategoriesService.GetSubcategoriesByCategoryId(categoryId));
+            return Ok(SubcategoriesMapper.MapSubcategoriesDTOListToSubcategoriesViewList(
+                await _subcategoriesService.GetSubcategoriesByCategoryId(categoryId)
+            ));
         }
 
         [HttpGet]
@@ -57,9 +57,11 @@ namespace ProductService.Controllers
             SubcategoriesDTO? currentSubcategoriesDTO = await _subcategoriesService.GetByName(name);
 
             if (currentSubcategoriesDTO == null)
-                return NotFound("Subcategories Not Found.");
+                return Ok(new SubcategoriesView());
 
-            return Ok(await _subcategoriesService.GetByName(name));
+            return Ok(SubcategoriesMapper.MapSubcategoriesDTOToSubcategoriesView(
+                currentSubcategoriesDTO
+            ));
         }
 
         [HttpPost]
@@ -71,9 +73,9 @@ namespace ProductService.Controllers
             if(currentCategoryDTO != null)
             {
                 await _subcategoriesService.Create(subcategoriesDTO);
-                return Ok(subcategoriesDTO);
+                return Ok(SubcategoriesMapper.MapSubcategoriesDTOToSubcategoriesView(subcategoriesDTO));
             }
-            return BadRequest("Categories Not Found.");
+            return NotFound("Categories Not Found.");
         }
 
         [HttpPut]
@@ -91,7 +93,7 @@ namespace ProductService.Controllers
                 return NotFound("Subcategories Not Found.");
 
             await _subcategoriesService.Update(id, subcategoriesDTO);
-            return Ok(subcategoriesDTO);
+            return Ok(SubcategoriesMapper.MapSubcategoriesDTOToSubcategoriesView(subcategoriesDTO));
         }
 
         [HttpDelete]

@@ -2,6 +2,7 @@
 using ProductService.Model.DTO;
 using ProductService.Model.Mapper;
 using ProductService.Model.Service;
+using ProductService.View;
 
 namespace ProductService.Controllers
 {
@@ -29,6 +30,18 @@ namespace ProductService.Controllers
                 return NotFound("Brand Not Found.");
 
             return Ok(BrandMapper.MapBrandsDTOToBrandsView(brandDTO));
+        }
+
+        [HttpGet]
+        [Route("getByName/{name}")]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            BrandsDTO? brandsDTO = await _brandService.GetByName(name);
+
+            if (brandsDTO == null)
+                return Ok(new BrandsView());
+
+            return Ok(BrandMapper.MapBrandsDTOToBrandsView(brandsDTO));
         }
 
         [HttpPost]
