@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrderService.Model.DTO;
+using OrderService.Model.Mapper;
 using OrderService.Model.Service;
-using OrderService.View.DTO;
 
 namespace OrderService.Controllers
 {
@@ -15,7 +16,7 @@ namespace OrderService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _pointsService.GetAll());
+            return Ok(PointsMapper.MapPointsDTOListToPointsViewList(await _pointsService.GetAll()));
         }
 
         [HttpGet]
@@ -27,7 +28,7 @@ namespace OrderService.Controllers
             if (pointsDTO == null)
                 return NotFound("Points Not Found.");
 
-            return Ok(pointsDTO);
+            return Ok(PointsMapper.MapPointsDTOToPointsView(pointsDTO));
         }
 
         [HttpGet]
@@ -39,7 +40,7 @@ namespace OrderService.Controllers
             if(pointsDTO == null)
                 return Ok(new PointsDTO());
 
-            return Ok(pointsDTO);
+            return Ok(PointsMapper.MapPointsDTOToPointsView(pointsDTO));
         }
 
         [HttpGet]
@@ -51,7 +52,7 @@ namespace OrderService.Controllers
             if (pointsDTO == null)
                 return NotFound("Points Not Found.");
 
-            return Ok(pointsDTO);
+            return Ok(PointsMapper.MapPointsDTOToPointsView(pointsDTO));
         }
 
         [HttpPost]
@@ -59,7 +60,7 @@ namespace OrderService.Controllers
         public async Task<IActionResult> Create([FromBody] PointsDTO pointsDTO)
         {
             await _pointsService.Create(pointsDTO);
-            return Created("create", pointsDTO);
+            return Created("create", PointsMapper.MapPointsDTOToPointsView(pointsDTO));
         }
 
         [HttpPut]
@@ -72,7 +73,7 @@ namespace OrderService.Controllers
                 return NotFound("Points Not Found.");
 
             await _pointsService.Update(id, pointsDTO);
-            return Ok(pointsDTO);
+            return Ok(PointsMapper.MapPointsDTOToPointsView(pointsDTO));
         }
 
         [HttpDelete]

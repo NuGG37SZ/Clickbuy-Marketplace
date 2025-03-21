@@ -1,7 +1,7 @@
-﻿using ProductService.Model.Entity;
+﻿using ProductService.Model.DTO;
+using ProductService.Model.Entity;
 using ProductService.Model.Mapper;
 using ProductService.Model.Repository;
-using ProductService.View.DTO;
 
 namespace ProductService.Model.Service
 {

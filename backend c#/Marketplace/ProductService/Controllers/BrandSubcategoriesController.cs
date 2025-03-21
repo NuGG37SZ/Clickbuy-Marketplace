@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductService.Model.DTO;
+using ProductService.Model.Mapper;
 using ProductService.Model.Service;
-using ProductService.View.DTO;
 
 namespace ProductService.Controllers
 {
@@ -25,7 +26,9 @@ namespace ProductService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _brandSubcategoriesService.GetAll());
+            return Ok(BrandSubcategoriesMapper.MapBrandsSubcategoriesDTOListToBrandsSubcategoriesViewList(
+                await _brandSubcategoriesService.GetAll()
+            ));
         }
 
         [HttpGet]
@@ -33,23 +36,28 @@ namespace ProductService.Controllers
         public async Task<IActionResult> GetByBrandId(int id)
         {
             BrandsDTO? brandDTO = await _brandService.GetById(id);
+            List<BrandsSubcategoriesDTO> brandsSubcategoriesDTO = await _brandSubcategoriesService.GetByBrandId(id);
 
-            if(brandDTO == null) 
+            if (brandDTO == null) 
                 return NotFound("Brand Not Found.");
 
-            return Ok(await _brandSubcategoriesService.GetByBrandId(id));
+            return Ok(BrandSubcategoriesMapper.MapBrandsSubcategoriesDTOListToBrandsSubcategoriesViewList(
+                brandsSubcategoriesDTO
+            ));
         }
 
         [HttpGet]
         [Route("getById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            BrandsSubcategoriesDTO? brandSubcategoriesDTO = await _brandSubcategoriesService.GetById(id);
+            BrandsSubcategoriesDTO? brandsSubcategoriesDTO = await _brandSubcategoriesService.GetById(id);
 
-            if (brandSubcategoriesDTO == null)
+            if (brandsSubcategoriesDTO == null)
                 return NotFound("BrandSubcategories Not Found.");
 
-            return Ok(await _brandSubcategoriesService.GetById(id));
+            return Ok(BrandSubcategoriesMapper.MapBrandSubcategoriesDTOToBrandSubcategoriesView(
+                brandsSubcategoriesDTO
+            ));
         }
 
         [HttpGet]
@@ -57,11 +65,15 @@ namespace ProductService.Controllers
         public async Task<IActionResult> GetBySubcategoriesdId(int id)
         {
             SubcategoriesDTO? subcategoriesDTO = await _subcategoriesService.GetById(id);
+            List<BrandsSubcategoriesDTO> brandsSubcategoriesDTO =
+                await _brandSubcategoriesService.GetBySubcategoriesId(id);
 
             if (subcategoriesDTO == null)
                 return NotFound("Subcategories Not Found.");
 
-            return Ok(await _brandSubcategoriesService.GetBySubcategoriesId(id));
+            return Ok(BrandSubcategoriesMapper.MapBrandsSubcategoriesDTOListToBrandsSubcategoriesViewList(
+                brandsSubcategoriesDTO
+            ));
         }
 
         [HttpGet]
@@ -84,8 +96,10 @@ namespace ProductService.Controllers
                     await _brandSubcategoriesService.Create(brandsSubcategoriesDTO);
                     return Created($"getByBrandAndSubcategories/{brandId}/{subcategoryId}", brandsSubcategoriesDTO);
                 } 
-                else 
-                    return Ok(brandsSubcategoriesDTO);
+                else
+                    return Ok(BrandSubcategoriesMapper.MapBrandSubcategoriesDTOToBrandSubcategoriesView(
+                        brandsSubcategoriesDTO
+                    ));
             }
             return NotFound("Brands or Subcategories do not exist.");
         }
@@ -106,7 +120,9 @@ namespace ProductService.Controllers
                 return NotFound("Subcategories Not Found.");
 
             await _brandSubcategoriesService.Create(brandSubcategoriesDTO);
-            return Ok(brandSubcategoriesDTO);
+            return Ok(BrandSubcategoriesMapper.MapBrandSubcategoriesDTOToBrandSubcategoriesView(
+                        brandSubcategoriesDTO
+            ));
         }
 
         [HttpDelete]

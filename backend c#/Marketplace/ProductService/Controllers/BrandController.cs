@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductService.Model.DTO;
+using ProductService.Model.Mapper;
 using ProductService.Model.Service;
-using ProductService.View.DTO;
 
 namespace ProductService.Controllers
 {
@@ -15,7 +16,7 @@ namespace ProductService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _brandService.GetAll());
+            return Ok(BrandMapper.MapBrandsDTOListToBrandsViewList(await _brandService.GetAll()));
         }
 
         [HttpGet]
@@ -27,7 +28,7 @@ namespace ProductService.Controllers
             if (brandDTO == null)
                 return NotFound("Brand Not Found.");
 
-            return Ok(brandDTO);
+            return Ok(BrandMapper.MapBrandsDTOToBrandsView(brandDTO));
         }
 
         [HttpPost]
@@ -35,7 +36,7 @@ namespace ProductService.Controllers
         public async Task<IActionResult> Create([FromBody] BrandsDTO brandDTO)
         {
             await _brandService.Create(brandDTO);
-            return Created("create", brandDTO);
+            return Created("create", BrandMapper.MapBrandsDTOToBrandsView(brandDTO));
         }
 
         [HttpPut]
@@ -48,7 +49,7 @@ namespace ProductService.Controllers
                 return NotFound("Brand Not Found.");
 
             await _brandService.Update(id, brandDTO);
-            return Ok(brandDTO);
+            return Ok(BrandMapper.MapBrandsDTOToBrandsView(brandDTO));
         }
 
         [HttpDelete]

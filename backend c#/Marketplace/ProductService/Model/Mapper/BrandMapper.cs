@@ -1,5 +1,6 @@
-﻿using ProductService.Model.Entity;
-using ProductService.View.DTO;
+﻿using ProductService.Model.DTO;
+using ProductService.Model.Entity;
+using ProductService.View;
 
 namespace ProductService.Model.Mapper
 {
@@ -18,6 +19,19 @@ namespace ProductService.Model.Mapper
             Brands brand = new Brands();
             brand.Name = brandDTO.Name;
             return brand;
+        }
+
+        public static BrandsView MapBrandsDTOToBrandsView(BrandsDTO brandDTO)
+        {
+            BrandsView brandsView = new BrandsView();
+            brandsView.Id = brandDTO.Id;
+            brandsView.Name = brandDTO.Name;
+            return brandsView;
+        }
+
+        public static List<BrandsView> MapBrandsDTOListToBrandsViewList(List<BrandsDTO> brandsDTOList)
+        {
+            return brandsDTOList.Select(BrandMapper.MapBrandsDTOToBrandsView).ToList();
         }
     }
 }

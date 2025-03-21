@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using ProductService.Model.DTO;
+using ProductService.Model.Mapper;
 using ProductService.Model.Service;
-using ProductService.View.DTO;
 
 namespace ProductService.Controllers
 {
@@ -22,7 +23,7 @@ namespace ProductService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _productService.GetAll());
+            return Ok(ProductMapper.MapProductDTOListToProductViewList(await _productService.GetAll()));
         }
 
         [HttpGet]
@@ -34,14 +35,19 @@ namespace ProductService.Controllers
             if (productDTO == null)
                 return NotFound("Product Not Found");
             
-            return Ok(productDTO);
+            return Ok(ProductMapper.MapProductDTOToProductView(productDTO));
         }
 
         [HttpGet]
         [Route("getByNameAndUserId/{name}/{userId}")]
         public async Task<IActionResult> GetByNameAndUserId(string name, int userId)
         {
-            return Ok(await _productService.GetByProductNameAndUserId(name, userId));
+            ProductDTO? productDTO = await _productService.GetByProductNameAndUserId(name, userId);
+
+            if (productDTO == null)
+                return NotFound("Product Not Found");
+
+            return Ok(ProductMapper.MapProductDTOToProductView(productDTO));
         }
 
         [HttpGet]
@@ -55,14 +61,18 @@ namespace ProductService.Controllers
         [Route("getProductListByNameAndUserId/{name}/{userId}")]
         public async Task<IActionResult> GetProductListByNameAndUserId(string name, int userId)
         {
-            return Ok(await _productService.GetByNameAndUserId(name, userId));
+            return Ok(ProductMapper.MapProductDTOListToProductViewList(
+                await _productService.GetByNameAndUserId(name, userId)
+            ));
         }
 
         [HttpGet]
         [Route("getByBrandSubcategoryId/{brandSubcategoryId}")]
         public async Task<IActionResult> GetByBrandSubcategoryId(int brandSubcategoryId)
         {
-            return Ok(await _productService.GetByBrandSubcategoryId(brandSubcategoryId));
+            return Ok((ProductMapper.MapProductDTOListToProductViewList(
+                await _productService.GetByBrandSubcategoryId(brandSubcategoryId)
+            )));
         }
 
 
@@ -77,7 +87,7 @@ namespace ProductService.Controllers
                 return NotFound("Error: double check the data");
 
             await _productService.Create(productDTO);
-            return Created("create", productDTO);
+            return Created("create", ProductMapper.MapProductDTOToProductView(productDTO));
         }
 
         [HttpPut]
@@ -92,7 +102,7 @@ namespace ProductService.Controllers
                 return NotFound("Error: double check the data");
 
             await _productService.Update(id, productDTO);
-            return Ok(productDTO);
+            return Ok(ProductMapper.MapProductDTOToProductView(productDTO));
         }
 
         [HttpDelete]

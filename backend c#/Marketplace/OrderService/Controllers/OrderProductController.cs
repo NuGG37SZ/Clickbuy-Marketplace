@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrderService.Model.DTO;
+using OrderService.Model.Mapper;
 using OrderService.Model.Service;
-using OrderService.View.DTO;
 
 namespace OrderService.Controllers
 {
@@ -16,7 +17,9 @@ namespace OrderService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _orderProductService.GetAll());
+            return Ok(OrderProductMapper.MapOrderProductDTOListToOrderProductViewList(
+                await _orderProductService.GetAll()
+            ));
         }
 
         [HttpGet]
@@ -28,21 +31,25 @@ namespace OrderService.Controllers
             if (orderProductDTO == null)
                 return NotFound("OrderProduct Not Found.");
 
-            return Ok(orderProductDTO);
+            return Ok(OrderProductMapper.MapOrderProductDTOToOrderProductView(orderProductDTO));
         }
 
         [HttpGet]
         [Route("getByOrderId/{orderId}")]
         public async Task<IActionResult> GetByOrderId(int orderId)
         {
-            return Ok(await _orderProductService.GetByOrderId(orderId));
+            return Ok(OrderProductMapper.MapOrderProductDTOListToOrderProductViewList(
+                await _orderProductService.GetByOrderId(orderId)
+            ));
         }
 
         [HttpGet]
         [Route("getByUserId/{userId}")]
         public async Task<IActionResult> GetByUserId(int userId)
         {
-            return Ok(await _orderProductService.GetByUserId(userId));
+            return Ok(OrderProductMapper.MapOrderProductDTOListToOrderProductViewList(
+                await _orderProductService.GetByUserId(userId)
+            ));
         }
 
         [HttpPost]
@@ -50,7 +57,8 @@ namespace OrderService.Controllers
         public async Task<IActionResult> Create([FromBody] OrderProductDTO orderProductDTO)
         {
             await _orderProductService.Create(orderProductDTO);
-            return Created("create", orderProductDTO);
+            return Created("create", OrderProductMapper.MapOrderProductDTOToOrderProductView(
+                orderProductDTO));
         }
 
         [HttpPut]
@@ -63,7 +71,7 @@ namespace OrderService.Controllers
                 return NotFound("OrderProduct Not Found.");
 
             await _orderProductService.Update(id, orderProductDTO);
-            return Ok(orderProductDTO);
+            return Ok(OrderProductMapper.MapOrderProductDTOToOrderProductView(orderProductDTO));
         }
 
         [HttpDelete]

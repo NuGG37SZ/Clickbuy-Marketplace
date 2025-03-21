@@ -1,4 +1,5 @@
-﻿using AdminService.Model.Service;
+﻿using AdminService.Model.Mapper;
+using AdminService.Model.Service;
 using AdminService.View.DTO;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,14 +16,16 @@ namespace AdminService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _reportService.GetAll());
+            return Ok(ReportMapper.MapReportDTOListToReportViewList(await _reportService.GetAll()));
         }
 
         [HttpGet]
         [Route("getByCategoryReportId/{categoryReportId}")]
         public async Task<IActionResult> GetByCategoryReportId(int categoryReportId)
         {
-            return Ok(await _reportService.GetByCategoryReport(categoryReportId));
+            return Ok(ReportMapper.MapReportDTOListToReportViewList(
+                await _reportService.GetByCategoryReport(categoryReportId)
+            ));
         }
 
 
@@ -30,7 +33,9 @@ namespace AdminService.Controllers
         [Route("getByStatus/{status}")]
         public async Task<IActionResult> GetByStatus(string status)
         {
-            return Ok(await _reportService.GetByStatus(status));
+            return Ok(ReportMapper.MapReportDTOListToReportViewList(
+                await _reportService.GetByStatus(status)
+            ));
         }
 
 
@@ -38,7 +43,9 @@ namespace AdminService.Controllers
         [Route("getByUserId/{userId}")]
         public async Task<IActionResult> GetByUserId(int userId)
         {
-            return Ok(await _reportService.GetByUserId(userId));
+            return Ok(ReportMapper.MapReportDTOListToReportViewList(
+                await _reportService.GetByUserId(userId)
+            ));
         }
 
         [HttpGet]
@@ -46,7 +53,10 @@ namespace AdminService.Controllers
         public async Task<IActionResult> GetByCategoryReportAndStatusAndUserId(int categoryReportId,
             int userId, string status)
         {
-            return Ok(await _reportService.GetByCategoryReportAndStatusAndUserId(categoryReportId, userId, status));
+            return Ok(ReportMapper.MapReportDTOListToReportViewList(
+                await _reportService.GetByCategoryReportAndStatusAndUserId(
+                    categoryReportId, userId, status)
+            ));
         }
 
         [HttpGet]
@@ -58,7 +68,7 @@ namespace AdminService.Controllers
             if (reportDTO == null)
                 return NotFound("Report Not Found.");
 
-            return Ok(reportDTO);
+            return Ok(ReportMapper.MapReportDTOToReportView(reportDTO));
         }
 
         [HttpPost]
@@ -66,7 +76,7 @@ namespace AdminService.Controllers
         public async Task<IActionResult> Create([FromBody] ReportDTO reportDTO)
         {
             await _reportService.Create(reportDTO);
-            return Created("create", reportDTO);
+            return Created("create", ReportMapper.MapReportDTOToReportView(reportDTO));
         }
 
         [HttpPut]
@@ -79,7 +89,7 @@ namespace AdminService.Controllers
                 return NotFound("Report Not Found.");
 
             await _reportService.Update(id, reportDTO);
-            return Ok(reportDTO);
+            return Ok(ReportMapper.MapReportDTOToReportView(reportDTO));
         }
 
         [HttpDelete]

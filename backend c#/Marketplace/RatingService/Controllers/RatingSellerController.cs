@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RatingService.Model.Mapper;
 using RatingService.Model.Service;
 using RatingService.View.DTO;
 
@@ -16,14 +17,18 @@ namespace RatingService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _ratingSellerService.GetAll());
+            return Ok(RatingSellerMapper.MapRatingSellerDTOListToRatingSellerViewList(
+                await _ratingSellerService.GetAll()
+            ));
         }
 
         [HttpGet]
         [Route("getByUserId/{userId}")]
         public async Task<IActionResult> GetByProductId(int userId)
         {
-            return Ok(await _ratingSellerService.GetByUserId(userId));
+            return Ok(RatingSellerMapper.MapRatingSellerDTOListToRatingSellerViewList(
+                await _ratingSellerService.GetByUserId(userId)
+            ));
         }
 
         [HttpGet]
@@ -35,7 +40,7 @@ namespace RatingService.Controllers
             if (ratingSellerDTO == null)
                 return NotFound("RatingSeller Not Found.");
 
-            return Ok(ratingSellerDTO);
+            return Ok(RatingSellerMapper.MapRatingSellerDTOToRatingSellerView(ratingSellerDTO));
         }
 
         [HttpPost]
@@ -43,7 +48,8 @@ namespace RatingService.Controllers
         public async Task<IActionResult> Create([FromBody] RatingSellerDTO ratingSellerDTO)
         {
             await _ratingSellerService.Create(ratingSellerDTO);
-            return Created("create", ratingSellerDTO);
+            return Created("create", 
+                RatingSellerMapper.MapRatingSellerDTOToRatingSellerView(ratingSellerDTO));
         }
 
         [HttpPut]
@@ -56,7 +62,7 @@ namespace RatingService.Controllers
                 return NotFound("RatingSeller Not Found.");
 
             await _ratingSellerService.Update(id, ratingSellerDTO);
-            return Ok(ratingSellerDTO);
+            return Ok(RatingSellerMapper.MapRatingSellerDTOToRatingSellerView(ratingSellerDTO));
         }
 
         [HttpDelete]

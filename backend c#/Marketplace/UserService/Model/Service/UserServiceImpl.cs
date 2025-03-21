@@ -1,7 +1,7 @@
-﻿using UserService.Model.Entity;
+﻿using UserService.Model.DTO;
+using UserService.Model.Entity;
 using UserService.Model.Mapper;
 using UserService.Model.Repository;
-using UserService.View.DTO;
 
 namespace UserService.Model.Service
 {

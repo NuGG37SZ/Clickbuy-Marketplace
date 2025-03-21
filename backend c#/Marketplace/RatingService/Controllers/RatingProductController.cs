@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RatingService.Model.Mapper;
 using RatingService.Model.Service;
 using RatingService.View.DTO;
 
@@ -16,21 +17,27 @@ namespace RatingService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _ratingProductService.GetAll());
+            return Ok(RatingProductMapper.MapRatingProductDTOListToRatingProductViewList(
+                await _ratingProductService.GetAll()
+            ));
         }
 
         [HttpGet]
         [Route("getByProdcutId/{productId}")]
         public async Task<IActionResult> GetByProductId(int productId)
         {
-            return Ok(await _ratingProductService.GetByProductId(productId));
+            return Ok(RatingProductMapper.MapRatingProductDTOListToRatingProductViewList(
+                await _ratingProductService.GetByProductId(productId)
+            ));
         }
 
         [HttpGet]
         [Route("getByUserId/{userId}")]
         public async Task<IActionResult> GetByUserId(int userId)
         {
-            return Ok(await _ratingProductService.GetByUserId(userId));
+            return Ok(RatingProductMapper.MapRatingProductDTOListToRatingProductViewList(
+                await _ratingProductService.GetByUserId(userId)
+            ));
         }
 
         [HttpGet]
@@ -42,7 +49,7 @@ namespace RatingService.Controllers
             if(ratingProductDTO == null) 
                 return NotFound("RatingProduct Not Found.");
 
-            return Ok(ratingProductDTO);
+            return Ok(RatingProductMapper.MapRatingProductDTOToRatingProductView(ratingProductDTO));
         }
 
         [HttpGet]
@@ -57,7 +64,7 @@ namespace RatingService.Controllers
             if (ratingProductDTO == null)
                 return NotFound("RatingProduct Not Found.");
 
-            return Ok(ratingProductDTO);
+            return Ok(RatingProductMapper.MapRatingProductDTOToRatingProductView(ratingProductDTO));
         }
 
         [HttpGet]
@@ -85,7 +92,9 @@ namespace RatingService.Controllers
         [Route("getByUserIdAndProductId/{userId}/{productId}")]
         public async Task<IActionResult> GetByUserIdAndProductId(int userId, int productId)
         {
-            return Ok(await _ratingProductService.GetByUserIdAndProductId(userId, productId));
+            return Ok(RatingProductMapper.MapRatingProductDTOListToRatingProductViewList(
+                await _ratingProductService.GetByUserIdAndProductId(userId, productId)
+            ));
         }
 
         [HttpPost]
@@ -93,7 +102,8 @@ namespace RatingService.Controllers
         public async Task<IActionResult> Create([FromBody] RatingProductDTO ratingProductDTO)
         {
             await _ratingProductService.Create(ratingProductDTO);
-            return Created("create", ratingProductDTO);
+            return Created("create", 
+                RatingProductMapper.MapRatingProductDTOToRatingProductView(ratingProductDTO));
         }
 
         [HttpPut]
@@ -106,7 +116,7 @@ namespace RatingService.Controllers
                 return NotFound("RatingProduct Not Found.");
 
             await _ratingProductService.Update(id, ratingProductDTO);
-            return Ok(ratingProductDTO);
+            return Ok(RatingProductMapper.MapRatingProductDTOToRatingProductView(ratingProductDTO));
         }
 
         [HttpDelete]

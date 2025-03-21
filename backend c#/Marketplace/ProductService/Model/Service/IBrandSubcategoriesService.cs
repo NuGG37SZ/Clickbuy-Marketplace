@@ -1,4 +1,4 @@
-﻿using ProductService.View.DTO;
+﻿using ProductService.Model.DTO;
 
 namespace ProductService.Model.Service
 {

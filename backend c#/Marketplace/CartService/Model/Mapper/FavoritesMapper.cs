@@ -1,5 +1,6 @@
-﻿using CartService.Model.Entity;
-using CartService.View.DTO;
+﻿using CartService.Model.DTO;
+using CartService.Model.Entity;
+using CartService.View;
 
 namespace CartService.Model.Mapper
 {
@@ -22,6 +23,22 @@ namespace CartService.Model.Mapper
             favorites.UserId = favoritesDTO.UserId;
             favorites.DateAdded = favoritesDTO.DateAdded;
             return favorites;
+        }
+
+        public static FavoritesView MapFavoritesDTOToFavoritesView(FavoritesDTO favoritesDTO)
+        {
+            FavoritesView favoritesView = new FavoritesView();
+            favoritesView.Id = favoritesDTO.Id;
+            favoritesView.ProductId = favoritesDTO.ProductId;
+            favoritesView.UserId = favoritesDTO.UserId;
+            favoritesView.DateAdded = favoritesDTO.DateAdded;
+            return favoritesView;
+        }
+
+        public static List<FavoritesView> MapFavortiesDTOListToFavoritesViewList(
+            List<FavoritesDTO> favortiesDTOList)
+        {
+            return favortiesDTOList.Select(MapFavoritesDTOToFavoritesView).ToList();
         }
     }
 }

@@ -1,5 +1,6 @@
-﻿using CartService.Model.Service;
-using CartService.View.DTO;
+﻿using CartService.Model.DTO;
+using CartService.Model.Mapper;
+using CartService.Model.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CartService.Controllers
@@ -10,12 +11,15 @@ namespace CartService.Controllers
     {
         private readonly IFavoritesService _favoriteService;
 
-        public FavoritesController(IFavoritesService favoriteService) => _favoriteService = favoriteService;
+        public FavoritesController(IFavoritesService favoriteService) => 
+            _favoriteService = favoriteService;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _favoriteService.GetAll());
+            return Ok(FavoritesMapper.MapFavortiesDTOListToFavoritesViewList(
+                await _favoriteService.GetAll()
+            ));
         }
 
         [HttpGet]
@@ -27,21 +31,28 @@ namespace CartService.Controllers
             if (favoritesDTO == null) 
                 return NotFound("Favorites Not Found.");
 
-            return Ok(favoritesDTO);
+            return Ok(FavoritesMapper.MapFavoritesDTOToFavoritesView(favoritesDTO));
         }
 
         [HttpGet]
         [Route("getByUserId/{userId}")]
         public async Task<IActionResult> GetByUserId(int userId)
         {
-            return Ok(await _favoriteService.GetByUserId(userId));
+            return Ok(FavoritesMapper.MapFavortiesDTOListToFavoritesViewList(
+                await _favoriteService.GetByUserId(userId)
+            ));
         }
 
         [HttpGet]
         [Route("getByUserIdAndProductId/{userId}/{productId}")]
         public async Task<IActionResult> GetByUserIdAndProductId(int userId, int productId)
         {
-            return Ok(await _favoriteService.GetByUserIdAndProductId(userId, productId));
+            FavoritesDTO? favoritesDTO = await _favoriteService.GetByUserIdAndProductId(userId, productId);
+            
+            if(favoritesDTO == null)
+                return NotFound("Favorites Not Found.");
+
+            return Ok(FavoritesMapper.MapFavoritesDTOToFavoritesView(favoritesDTO));
         }
 
         [HttpPost]
@@ -49,7 +60,7 @@ namespace CartService.Controllers
         public async Task<IActionResult> Create([FromBody] FavoritesDTO favoritesDTO)
         {
             await _favoriteService.Create(favoritesDTO);
-            return Created("create", favoritesDTO);
+            return Created("create", FavoritesMapper.MapFavoritesDTOToFavoritesView(favoritesDTO));
         }
 
         [HttpPut]
@@ -62,7 +73,7 @@ namespace CartService.Controllers
                 return NotFound("Favorites Not Found.");
 
             await _favoriteService.Update(id, favoritesDTO);
-            return Ok(favoritesDTO);
+            return Ok(FavoritesMapper.MapFavoritesDTOToFavoritesView(favoritesDTO));
         }
 
         [HttpDelete]

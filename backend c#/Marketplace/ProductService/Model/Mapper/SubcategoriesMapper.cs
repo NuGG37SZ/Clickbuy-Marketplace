@@ -1,5 +1,6 @@
-﻿using ProductService.Model.Entity;
-using ProductService.View.DTO;
+﻿using ProductService.Model.DTO;
+using ProductService.Model.Entity;
+using ProductService.View;
 
 namespace ProductService.Model.Mapper
 {
@@ -20,6 +21,21 @@ namespace ProductService.Model.Mapper
             subcategories.CategoryId = subcategoriesDTO.CategoryId;
             subcategories.Name = subcategoriesDTO.Name;
             return subcategories;
+        }
+
+        public static SubcategoriesView MapSubcategoriesDTOToSubcategoriesView(SubcategoriesDTO subcategoriesDTO)
+        {
+            SubcategoriesView subcategoriesView = new SubcategoriesView();
+            subcategoriesDTO.Id = subcategoriesDTO.Id;
+            subcategoriesDTO.CategoryId = subcategoriesDTO.CategoryId;
+            subcategoriesDTO.Name = subcategoriesDTO.Name;
+            return subcategoriesView;
+        }
+
+        public static List<SubcategoriesView> MapSubcategoriesDTOListToSubcategoriesViewList(
+            List<SubcategoriesDTO> subcategoriesDTOList)
+        {
+            return subcategoriesDTOList.Select(MapSubcategoriesDTOToSubcategoriesView).ToList();
         }
     }
 }

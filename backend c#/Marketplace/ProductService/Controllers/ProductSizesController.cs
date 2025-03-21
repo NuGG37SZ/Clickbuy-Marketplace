@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductService.Model.DTO;
+using ProductService.Model.Mapper;
 using ProductService.Model.Service;
-using ProductService.View.DTO;
 
 namespace ProductService.Controllers
 {
@@ -21,7 +22,9 @@ namespace ProductService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _productSizesService.GetAll());
+            return Ok(ProductSizesMapper.MapProductSizesListDTOToProductSizesViewList(
+                await _productSizesService.GetAll()
+            ));
         }
 
         [HttpGet]
@@ -33,19 +36,16 @@ namespace ProductService.Controllers
             if (productSizesDTO == null)
                 return NotFound("ProductSizes Not Found.");
 
-            return Ok(productSizesDTO);
+            return Ok(ProductSizesMapper.MapProductSizesDTOToProductSizesView(productSizesDTO));
         }
 
         [HttpGet]
         [Route("getAllByProductId/{productId}")]
         public async Task<IActionResult> GetAllByProductId(int productId)
         {
-            List<ProductSizesDTO>? productSizesDTOs = await _productSizesService.GetAllByProductId(productId);
-
-            if(productSizesDTOs == null)
-                return NotFound("ProductSizes Not Found.");
-
-            return Ok(productSizesDTOs);
+            return Ok(ProductSizesMapper.MapProductSizesListDTOToProductSizesViewList(
+                await _productSizesService.GetAllByProductId(productId)
+            ));
         }
 
         [HttpGet]
@@ -58,7 +58,7 @@ namespace ProductService.Controllers
                 return NotFound("Product Not Found.");
 
             ProductSizesDTO? productSizesDTO = await _productSizesService.GetByProductIdAndSize(productId, size);
-            return Ok(productSizesDTO);
+            return Ok(ProductSizesMapper.MapProductSizesDTOToProductSizesView(productSizesDTO));
         }
 
         [HttpPost]
@@ -66,7 +66,7 @@ namespace ProductService.Controllers
         public async Task<IActionResult> Create([FromBody] ProductSizesDTO productSizesDTO)
         {
             await _productSizesService.Create(productSizesDTO);
-            return Created("create", productSizesDTO);
+            return Created("create", ProductSizesMapper.MapProductSizesDTOToProductSizesView(productSizesDTO));
         }
 
         [HttpDelete]
@@ -92,7 +92,7 @@ namespace ProductService.Controllers
                 return NotFound("Could not find products by this id");
 
             await _productSizesService.Update(productId, productSizes);
-            return Ok(productSizes);
+            return Ok(ProductSizesMapper.MapProductSizesListDTOToProductSizesViewList(productSizes));
         }
 
         [HttpPut]
@@ -105,7 +105,7 @@ namespace ProductService.Controllers
                 return NotFound("ProductSizes Not Found.");
 
             await _productSizesService.Update(id, productSizesDTO);
-            return Ok(productSizesDTO);
+            return Ok(ProductSizesMapper.MapProductSizesDTOToProductSizesView(currentProductSizesDTO));
         }
     }
 }

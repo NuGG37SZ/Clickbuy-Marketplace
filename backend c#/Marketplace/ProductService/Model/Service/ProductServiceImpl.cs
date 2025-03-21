@@ -2,7 +2,7 @@
 using ProductService.Model.Entity;
 using ProductService.Model.Mapper;
 using ProductService.Model.Client;
-using ProductService.View.DTO;
+using ProductService.Model.DTO;
 
 namespace ProductService.Model.Service
 {

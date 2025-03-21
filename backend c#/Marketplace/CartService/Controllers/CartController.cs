@@ -1,5 +1,6 @@
+using CartService.Model.DTO;
+using CartService.Model.Mapper;
 using CartService.Model.Service;
-using CartService.View.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CartService.Controllers
@@ -15,7 +16,7 @@ namespace CartService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _cartService.GetAll());
+            return Ok(CartMapper.MapCartDTOListToCartViewList(await _cartService.GetAll()));
         }
 
         [HttpGet]
@@ -27,19 +28,14 @@ namespace CartService.Controllers
             if (cartDTO == null)
                 return NotFound("Cart Not Found.");
 
-            return Ok(cartDTO);
+            return Ok(CartMapper.MapCartDTOToCartView(cartDTO));
         }
 
         [HttpGet]
         [Route("getByUserId/{userId}")]
         public async Task<IActionResult> GetByUserId(int userId)
         {
-            List<CartDTO> cartDTOs = await _cartService.GetByUserId(userId);
-
-            if (cartDTOs == null)
-                return NotFound("Cart is empty :ñ");
-
-            return Ok(cartDTOs);
+            return Ok(CartMapper.MapCartDTOListToCartViewList(await _cartService.GetByUserId(userId)));
         }
 
         [HttpPost]
@@ -47,7 +43,7 @@ namespace CartService.Controllers
         public async Task<IActionResult> Create([FromBody] CartDTO cartDTO)
         {
             await _cartService.Create(cartDTO);
-            return Created("create", cartDTO);
+            return Created("create", CartMapper.MapCartDTOToCartView(cartDTO));
         }
 
         [HttpPut]
@@ -60,7 +56,7 @@ namespace CartService.Controllers
                 return NotFound("Cart Not Found.");
 
             await _cartService.Update(id, cartDTO);
-            return Ok(cartDTO);
+            return Ok(CartMapper.MapCartDTOToCartView(cartDTO));
         }
 
         [HttpDelete]
@@ -83,7 +79,5 @@ namespace CartService.Controllers
             await _cartService.DeleteRange(cartDTOs);
             return NoContent();
         }
-
-
     }
 }

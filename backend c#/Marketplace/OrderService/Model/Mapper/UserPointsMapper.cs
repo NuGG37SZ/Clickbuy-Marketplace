@@ -1,5 +1,6 @@
-﻿using OrderService.Model.Entity;
-using OrderService.View.DTO;
+﻿using OrderService.Model.DTO;
+using OrderService.Model.Entity;
+using OrderService.View;
 
 namespace OrderService.Model.Mapper
 {
@@ -22,6 +23,22 @@ namespace OrderService.Model.Mapper
             userPoints.UserId = userPointsDTO.UserId;
             userPoints.IsActive = userPointsDTO.IsActive;
             return userPoints;
+        }
+
+        public static UserPointsView MapUserPointDTOToUserPointsView(UserPointsDTO userPointsDTO)
+        {
+            UserPointsView userPointsView = new UserPointsView();
+            userPointsView.Id = userPointsDTO.Id;
+            userPointsView.PointsId = userPointsDTO.PointsId;
+            userPointsView.UserId = userPointsDTO.UserId;
+            userPointsView.IsActive = userPointsDTO.IsActive;
+            return userPointsView;
+        }
+
+        public static List<UserPointsView> MapUserPointDTOListToUserPointViewList(
+            List<UserPointsDTO> userPointsDTOList)
+        {
+            return userPointsDTOList.Select(MapUserPointDTOToUserPointsView).ToList();
         }
 
     }

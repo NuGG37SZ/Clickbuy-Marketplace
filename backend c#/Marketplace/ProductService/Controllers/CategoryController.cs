@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductService.Model.DTO;
+using ProductService.Model.Mapper;
 using ProductService.Model.Service;
-using ProductService.View.DTO;
 
 namespace ProductService.Controllers
 {
@@ -16,7 +17,7 @@ namespace ProductService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _categoryService.GetAll());
+            return Ok(CategoryMapper.MapCategoryDTOListToCategoryViewList(await _categoryService.GetAll()));
         }
 
         [HttpGet]
@@ -28,7 +29,7 @@ namespace ProductService.Controllers
             if(currentCategoryDTO == null) 
                 return NotFound("Category Not Found.");
                
-            return Ok(currentCategoryDTO);
+            return Ok(CategoryMapper.MapCategoryDTOToCategoryView(currentCategoryDTO));
         }
 
         [HttpPost]
@@ -36,7 +37,7 @@ namespace ProductService.Controllers
         public async Task<IActionResult> Create([FromBody] CategoryDTO categoryDTO)
         {
             await _categoryService.Create(categoryDTO);
-            return Created("categories/create", categoryDTO);
+            return Created("categories/create", CategoryMapper.MapCategoryDTOToCategoryView(categoryDTO));
         }
 
         [HttpPut]
@@ -49,7 +50,7 @@ namespace ProductService.Controllers
                 return NotFound("Category Not Found.");
 
             await _categoryService.Update(id, categoryDTO);
-            return Ok(categoryDTO);
+            return Ok(CategoryMapper.MapCategoryDTOToCategoryView(categoryDTO));
         }
 
         [HttpDelete]

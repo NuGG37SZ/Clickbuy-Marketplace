@@ -1,5 +1,6 @@
-﻿using ProductService.Model.Entity;
-using ProductService.View.DTO;
+﻿using ProductService.Model.DTO;
+using ProductService.Model.Entity;
+using ProductService.View;
 
 namespace ProductService.Model.Mapper
 {
@@ -18,6 +19,19 @@ namespace ProductService.Model.Mapper
             Category category = new Category();
             category.Name = categoryDTO.Name;
             return category;
+        }
+
+        public static CategoryView MapCategoryDTOToCategoryView(CategoryDTO categoryDTO)
+        {
+            CategoryView categoryView = new CategoryView();
+            categoryView.Id = categoryDTO.Id;
+            categoryView.Name = categoryDTO.Name;
+            return categoryView;
+        }
+
+        public static List<CategoryView> MapCategoryDTOListToCategoryViewList(List<CategoryDTO> categoryDTOList)
+        {
+            return categoryDTOList.Select(MapCategoryDTOToCategoryView).ToList();
         }
     }
 }

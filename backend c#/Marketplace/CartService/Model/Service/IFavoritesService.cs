@@ -1,4 +1,4 @@
-﻿using CartService.View.DTO;
+﻿using CartService.Model.DTO;
 
 namespace CartService.Model.Service
 {

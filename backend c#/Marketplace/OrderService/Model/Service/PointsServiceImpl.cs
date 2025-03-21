@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using System.Text;
+using OrderService.Model.DTO;
 using OrderService.Model.Entity;
 using OrderService.Model.Mapper;
 using OrderService.Model.Repository;
-using OrderService.View.DTO;
 
 namespace OrderService.Model.Service
 {

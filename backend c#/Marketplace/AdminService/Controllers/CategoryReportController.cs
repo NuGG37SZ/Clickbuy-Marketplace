@@ -1,3 +1,4 @@
+using AdminService.Model.Mapper;
 using AdminService.Model.Service;
 using AdminService.View.DTO;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,9 @@ namespace AdminService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _categoryReportService.GetAll());
+            return Ok(CategoryReportMapper.MapCategoryReportDTOListToCategoryReportViewList(
+                await _categoryReportService.GetAll())
+            );
         }
 
         [HttpGet]
@@ -28,7 +31,7 @@ namespace AdminService.Controllers
             if(categoryReportDTO == null)
                 return NotFound("CategoryReport Not Found.");
 
-            return Ok(categoryReportDTO); 
+            return Ok(CategoryReportMapper.MapCategoryReportDTOToCategoryReportView(categoryReportDTO)); 
         }
 
         [HttpGet]
@@ -40,7 +43,7 @@ namespace AdminService.Controllers
             if (categoryReportDTO == null)
                 return NotFound("CategoryReport Not Found.");
 
-            return Ok(categoryReportDTO);
+            return Ok(CategoryReportMapper.MapCategoryReportDTOToCategoryReportView(categoryReportDTO));
         }
 
         [HttpPost]
@@ -48,7 +51,8 @@ namespace AdminService.Controllers
         public async Task<IActionResult> Create([FromBody] CategoryReportDTO categoryReportDTO)
         {
             await _categoryReportService.Create(categoryReportDTO);
-            return Created("create", categoryReportDTO);
+            return Created("create", 
+                CategoryReportMapper.MapCategoryReportDTOToCategoryReportView(categoryReportDTO));
         }
 
         [HttpPut]
@@ -61,7 +65,7 @@ namespace AdminService.Controllers
                 return NotFound("CategoryReport Not Found.");
 
             await _categoryReportService.Update(id, categoryReportDTO);
-            return Ok(categoryReportDTO);
+            return Ok(CategoryReportMapper.MapCategoryReportDTOToCategoryReportView(categoryReportDTO));
         }
 
         [HttpDelete]

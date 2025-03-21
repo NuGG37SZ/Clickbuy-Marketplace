@@ -1,5 +1,6 @@
-﻿using OrderService.Model.Entity;
-using OrderService.View.DTO;
+﻿using OrderService.Model.DTO;
+using OrderService.Model.Entity;
+using OrderService.View;
 
 namespace OrderService.Model.Mapper
 {
@@ -20,6 +21,20 @@ namespace OrderService.Model.Mapper
             points.Address = pointsDTO.Address;
             points.Token = pointsDTO.Token;
             return points;
+        }
+
+        public static PointsView MapPointsDTOToPointsView(PointsDTO pointsDTO)
+        {
+            PointsView pointsView = new PointsView();
+            pointsView.Id = pointsDTO.Id;
+            pointsView.Address = pointsDTO.Address;
+            pointsView.Token = pointsDTO.Token;
+            return pointsView;
+        }
+
+        public static List<PointsView> MapPointsDTOListToPointsViewList(List<PointsDTO> pointsDTOs)
+        {
+            return pointsDTOs.Select(MapPointsDTOToPointsView).ToList();
         }
     }
 }

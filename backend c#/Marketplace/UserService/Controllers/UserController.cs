@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using UserService.Model.DTO;
+using UserService.Model.Mapper;
 using UserService.Model.Service;
 using UserService.Model.Utils;
-using UserService.View.DTO;
 
 namespace Marketplace.Controllers
 {
@@ -17,7 +18,7 @@ namespace Marketplace.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _userService.GetAll());
+            return Ok(UserMapper.MapListUserDTOToListUserView(await _userService.GetAll()));
         }
 
         [HttpGet]
@@ -29,7 +30,7 @@ namespace Marketplace.Controllers
             if (userDto == null)
                 return NotFound("User not found.");
 
-            return Ok(userDto);
+            return Ok(UserMapper.MapUserDTOToUserView(userDto));
         }
 
         [HttpGet]
@@ -41,7 +42,7 @@ namespace Marketplace.Controllers
             if(userDto == null)
                 return NotFound("User not found.");
 
-            return Ok(userDto);
+            return Ok(UserMapper.MapUserDTOToUserView(userDto));
         }
 
         [HttpGet]
@@ -63,7 +64,7 @@ namespace Marketplace.Controllers
         public async Task<IActionResult> Create([FromBody] UserDTO userDTO)
         {
             await _userService.Create(userDTO);
-            return Created("create", userDTO);
+            return Created("create", UserMapper.MapUserDTOToUserView(userDTO));
         }
 
         [HttpPut]
@@ -75,7 +76,7 @@ namespace Marketplace.Controllers
             if (currentUser != null)
             {
                 await _userService.Update(id, userDTO);
-                return Ok(currentUser);
+                return Ok(UserMapper.MapUserDTOToUserView(userDTO));
             } 
            
             return NotFound("User Not Found!");

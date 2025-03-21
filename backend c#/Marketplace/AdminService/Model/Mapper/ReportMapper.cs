@@ -1,4 +1,5 @@
 ﻿using AdminService.Model.Entity;
+using AdminService.View;
 using AdminService.View.DTO;
 
 namespace AdminService.Model.Mapper
@@ -26,6 +27,23 @@ namespace AdminService.Model.Mapper
             report.Status = reportDTO.Status;
             report.Description = reportDTO.Description;
             return report;
+        }
+
+        public static ReportView MapReportDTOToReportView(ReportDTO reportDTO)
+        {
+            ReportView reportView = new ReportView();
+            reportView.Id = reportDTO.Id;
+            reportView.UserId = reportDTO.UserId;
+            reportView.CategoryReportId = reportDTO.CategoryReportId;
+            reportView.Subject = reportDTO.Subject;
+            reportView.Status = reportDTO.Status;
+            reportView.Description = reportDTO.Description;
+            return reportView;
+        }
+
+        public static List<ReportView> MapReportDTOListToReportViewList(List<ReportDTO> reportDTO)
+        {
+            return reportDTO.Select(MapReportDTOToReportView).ToList();
         }
     }
 }

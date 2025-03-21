@@ -1,5 +1,6 @@
-﻿using CartService.Model.Entity;
-using CartService.View.DTO;
+﻿using CartService.Model.DTO;
+using CartService.Model.Entity;
+using CartService.View;
 
 namespace CartService.Model.Mapper
 {
@@ -24,6 +25,22 @@ namespace CartService.Model.Mapper
             cart.ProductSizesId = cartDTO.ProductSizesId;
             cart.Count = cartDTO.Count;
             return cart;
+        }
+
+        public static CartView MapCartDTOToCartView(CartDTO cartDTO)
+        {
+            CartView cartView = new CartView();
+            cartView.Id = cartDTO.Id;
+            cartView.ProductId = cartDTO.ProductId;
+            cartView.UserId = cartDTO.UserId;
+            cartView.ProductSizesId = cartDTO.ProductSizesId;
+            cartView.Count = cartDTO.Count;
+            return cartView;
+        }
+
+        public static List<CartView> MapCartDTOListToCartViewList(List<CartDTO> cartDTOs)
+        {
+            return cartDTOs.Select(MapCartDTOToCartView).ToList();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using UserService.View.DTO;
+﻿using UserService.Model.DTO;
 
 namespace UserService.Model.Service
 {

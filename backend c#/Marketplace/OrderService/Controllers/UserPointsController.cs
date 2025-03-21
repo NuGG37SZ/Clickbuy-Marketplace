@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrderService.Model.DTO;
+using OrderService.Model.Mapper;
 using OrderService.Model.Service;
-using OrderService.View.DTO;
+using OrderService.View;
 
 namespace OrderService.Controllers
 {
@@ -10,12 +12,15 @@ namespace OrderService.Controllers
     {
         private readonly IUserPointsService _userPointsService;
 
-        public UserPointsController(IUserPointsService userPointsService) => _userPointsService = userPointsService;
+        public UserPointsController(IUserPointsService userPointsService) => 
+            _userPointsService = userPointsService;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _userPointsService.GetAll());
+            return Ok(UserPointsMapper.MapUserPointDTOListToUserPointViewList(
+                await _userPointsService.GetAll()
+            ));
         }
 
         [HttpGet]
@@ -27,7 +32,7 @@ namespace OrderService.Controllers
             if (userPointsDTO == null)
                 return NotFound("UserPoints Not Found.");
 
-            return Ok(userPointsDTO);
+            return Ok(UserPointsMapper.MapUserPointDTOToUserPointsView(userPointsDTO));
         }
 
         [HttpGet]
@@ -44,9 +49,9 @@ namespace OrderService.Controllers
             UserPointsDTO? userPointsDTO = await _userPointsService.GetByUserIdAndPointsId(userId, pointId);
 
             if(userPointsDTO != null)
-                return Ok(userPointsDTO);
+                return Ok(UserPointsMapper.MapUserPointDTOToUserPointsView(userPointsDTO));
 
-            return Ok(new UserPointsDTO());
+            return Ok(new UserPointsView());
         }
 
         [HttpGet]
@@ -56,9 +61,9 @@ namespace OrderService.Controllers
             UserPointsDTO? userPointsDTO = await _userPointsService.GetByIsActiveAndUserId(isActive, userId);
 
             if(userPointsDTO != null) 
-                return Ok(userPointsDTO);
+                return Ok(UserPointsMapper.MapUserPointDTOToUserPointsView(userPointsDTO));
 
-            return Ok(new UserPointsDTO());
+            return Ok(new UserPointsView());
         }
 
         [HttpPost]
@@ -66,7 +71,7 @@ namespace OrderService.Controllers
         public async Task<IActionResult> Create([FromBody] UserPointsDTO userPointsDTO)
         {
             await _userPointsService.Create(userPointsDTO);
-            return Created("create", userPointsDTO);
+            return Created("create", UserPointsMapper.MapUserPointDTOToUserPointsView(userPointsDTO));
         }
 
         [HttpPut]
@@ -79,7 +84,7 @@ namespace OrderService.Controllers
                 return NotFound("UserPoints Not Found.");
 
             await _userPointsService.Update(id, userPointsDTO);
-            return Ok(userPointsDTO);
+            return Ok(UserPointsMapper.MapUserPointDTOToUserPointsView(userPointsDTO));
         }
 
         [HttpDelete]

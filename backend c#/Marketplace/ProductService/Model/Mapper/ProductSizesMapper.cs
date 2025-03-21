@@ -1,5 +1,6 @@
-﻿using ProductService.Model.Entity;
-using ProductService.View.DTO;
+﻿using ProductService.Model.DTO;
+using ProductService.Model.Entity;
+using ProductService.View;
 
 namespace ProductService.Model.Mapper
 {
@@ -22,6 +23,22 @@ namespace ProductService.Model.Mapper
             productSizes.Size = productSizesDTO.Size;
             productSizes.Count = productSizesDTO.Count;
             return productSizes;
+        }
+
+        public static ProductSizesView MapProductSizesDTOToProductSizesView(ProductSizesDTO productSizesDTO)
+        {
+            ProductSizesView productSizesView = new ProductSizesView();
+            productSizesView.Id = productSizesView.Id;
+            productSizesView.ProductId = productSizesView.ProductId;
+            productSizesView.Size = productSizesView.Size;
+            productSizesView.Count = productSizesView.Count;
+            return productSizesView;
+        }
+
+        public static List<ProductSizesView> MapProductSizesListDTOToProductSizesViewList(
+            List<ProductSizesDTO> productSizesDTOs)
+        {
+            return productSizesDTOs.Select(MapProductSizesDTOToProductSizesView).ToList();
         }
     }
 }

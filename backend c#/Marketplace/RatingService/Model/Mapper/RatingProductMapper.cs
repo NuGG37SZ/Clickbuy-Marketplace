@@ -1,4 +1,5 @@
 ﻿using RatingService.Model.Entity;
+using RatingService.View;
 using RatingService.View.DTO;
 
 namespace RatingService.Model.Mapper
@@ -31,5 +32,27 @@ namespace RatingService.Model.Mapper
             ratingProduct.DateCreateComment = ratingProductDTO.DateCreateComment;
             return ratingProduct;
         }
+
+        public static RatingProductView MapRatingProductDTOToRatingProductView(
+            RatingProductDTO ratingProductDTO)
+        {
+            RatingProductView ratingProductView = new RatingProductView();
+            ratingProductView.Id = ratingProductDTO.Id;
+            ratingProductView.ProductId = ratingProductDTO.ProductId;
+            ratingProductView.ProductSizesId = ratingProductDTO.ProductSizesId;
+            ratingProductView.UserId = ratingProductDTO.UserId;
+            ratingProductView.OrderId = ratingProductDTO.OrderId;
+            ratingProductView.Rating = ratingProductDTO.Rating;
+            ratingProductView.Comment = ratingProductDTO.Comment;
+            ratingProductDTO.DateCreateComment = ratingProductDTO.DateCreateComment;
+            return ratingProductView;
+        }
+
+        public static List<RatingProductView> MapRatingProductDTOListToRatingProductViewList(
+            List<RatingProductDTO> ratingProductDTOList)
+        {
+            return ratingProductDTOList.Select(MapRatingProductDTOToRatingProductView).ToList();
+        }
+
     }
 }

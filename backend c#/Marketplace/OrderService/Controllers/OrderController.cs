@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using OrderService.Model.DTO;
+using OrderService.Model.Mapper;
 using OrderService.Model.Service;
-using OrderService.View.DTO;
 
 namespace OrderService.Controllers
 {
@@ -15,7 +16,7 @@ namespace OrderService.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _orderService.GetAll());
+            return Ok(OrderMapper.MapOrderDTOListToOrderViewList(await _orderService.GetAll()));
         }
 
         [HttpGet]
@@ -27,21 +28,23 @@ namespace OrderService.Controllers
             if(orderDTO == null) 
                 return NotFound("Order Not Found.");
 
-            return Ok(orderDTO);
+            return Ok(OrderMapper.MapOrderDTOToOrderView(orderDTO));
         }
 
         [HttpGet]
         [Route("getByUserId/{userId}")]
         public async Task<IActionResult> GetByUserId(int userId)
         {
-            return Ok(await _orderService.GetByUserId(userId));
+            return Ok(OrderMapper.MapOrderDTOListToOrderViewList(await _orderService.GetByUserId(userId)));
         }
 
         [HttpGet]
         [Route("getByOrderStatusAndUserId/{status}/{userId}")]
         public async Task<IActionResult> GetByOrderStatusAndUserId(string status, int userId)
         {
-            return Ok(await _orderService.GetByOrderStatusAndUserId(status, userId));
+            return Ok(OrderMapper.MapOrderDTOListToOrderViewList(
+                await _orderService.GetByOrderStatusAndUserId(status, userId)
+            ));
         }
 
         [HttpPost]
@@ -49,7 +52,7 @@ namespace OrderService.Controllers
         public async Task<IActionResult> Create([FromBody] OrderDTO orderDTO)
         {
             await _orderService.Create(orderDTO);
-            return Created("create", orderDTO);
+            return Created("create", OrderMapper.MapOrderDTOToOrderView(orderDTO));
         }
 
         [HttpPut]
@@ -62,7 +65,7 @@ namespace OrderService.Controllers
                 return NotFound("Order Not Found.");
 
             await _orderService.Update(id, orderDTO);
-            return Ok(orderDTO);
+            return Ok(OrderMapper.MapOrderDTOToOrderView(orderDTO));
         }
 
         [HttpDelete]

@@ -1,5 +1,8 @@
-﻿using OrderService.Model.Entity;
-using OrderService.View.DTO;
+﻿using System.Net.NetworkInformation;
+using OrderService.Migrations;
+using OrderService.Model.DTO;
+using OrderService.Model.Entity;
+using OrderService.View;
 
 namespace OrderService.Model.Mapper
 {
@@ -26,6 +29,23 @@ namespace OrderService.Model.Mapper
             order.Status = orderDTO.Status;
             order.PointId = orderDTO.PointId;
             return order;
+        }
+
+        public static OrderView MapOrderDTOToOrderView(OrderDTO orderDTO)
+        {
+            OrderView orderView = new OrderView();
+            orderView.Id = orderDTO.Id;
+            orderView.CreateOrder = orderDTO.CreateOrder;
+            orderView.UpdateOrder = orderDTO.UpdateOrder;
+            orderView.UserId = orderDTO.UserId;
+            orderView.Status = orderDTO.Status;
+            orderView.PointId = orderDTO.PointId;
+            return orderView;
+        }
+
+        public static List<OrderView> MapOrderDTOListToOrderViewList(List<OrderDTO> orderDTOList)
+        {
+            return orderDTOList.Select(MapOrderDTOToOrderView).ToList();
         }
     }
 }
