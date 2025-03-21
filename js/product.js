@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function fillCardProduct() {
     let seller = await getUserByLogin(sellerLogin);
-    console.log(seller);
     let product = await getProductByNameAndUserId(productName, seller.id);
     fillProduct(product);
     let productSizesList = await getAllSizesByProductId(product.id);

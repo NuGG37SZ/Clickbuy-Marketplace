@@ -13,7 +13,8 @@ namespace ProductService.Controllers
 
         private readonly IProductService _productService;
 
-        public ProductSizesController(IProductSizesService productSizesService, IProductService productService)
+        public ProductSizesController(IProductSizesService productSizesService, 
+            IProductService productService)
         {
             _productSizesService = productSizesService;
             _productService = productService;

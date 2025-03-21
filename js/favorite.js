@@ -1,6 +1,8 @@
 let productContainer = document.querySelector('.row');
+const categoriesDiv = document.querySelector('#categoriesAccordion');
 
 getAllFavoriteByUserId();
+insertAllCategories();
 
 function insertCardProductFavorite(product, seller, rating, comment) {
     return `
@@ -84,6 +86,16 @@ async function getFavoriteProductByUserIdAndProductId(userId, productId) {
     return favoriteProduct;
 }
 
+async function getAllCategories() {
+    const categoriesList = await getRequest(`https://localhost:58841/api/v1/categories`);
+    return categoriesList;
+}
+
+async function getAllSubcategoriesByCategoryId(categoryId) {
+    const subCategoriesList = await getRequest(`https://localhost:58841/api/v1/subcategories/getSubcategoryByCategoryId/${categoryId}`);
+    return subCategoriesList;
+}
+
 async function getAllFavoriteByUserId() {
     let favoriteList = await getFavoriteListByUserId(parseInt(userId));
     for (const favorite of favoriteList) {
@@ -141,4 +153,42 @@ async function deleteRequest(url) {
     });
     let result = await response.status;
     return result;
+}
+
+function insertCategory(category) {
+    return `
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading${category.id}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                            data-bs-target="#collapse${category.id}" aria-expanded="false" aria-controls="collapse${category.id}">
+                            ${category.name}    
+                        </button>
+                    </h2>
+                    <div id="collapse${category.id}" class="accordion-collapse collapse" aria-labelledby="heading${category.id}" 
+                        data-bs-parent="#categoriesAccordion">
+                        <div class="accordion-body">
+                            
+                        </div>
+                    </div>
+                </div>
+    `
+}
+
+function insertSubCategory(subcategory) {
+    return `<a href="#" class="subcategory-link">${subcategory.name}</a><br>`
+}
+
+async function insertAllCategories() {
+    let categoriesList = await getAllCategories();
+
+    for (const category of categoriesList) {
+        categoriesDiv.insertAdjacentHTML('beforeend', insertCategory(category));
+        let accordionBody = categoriesDiv.querySelectorAll('.accordion-body');
+        let lastAccordionBody = accordionBody[accordionBody.length - 1];
+        let subcategoryList = await getAllSubcategoriesByCategoryId(category.id);
+        
+        for (const subcategory of subcategoryList) {
+            lastAccordionBody.insertAdjacentHTML('beforeend', insertSubCategory(subcategory));
+        }
+    }   
 }

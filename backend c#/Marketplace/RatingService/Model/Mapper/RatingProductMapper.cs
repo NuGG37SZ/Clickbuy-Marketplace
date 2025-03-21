@@ -44,7 +44,7 @@ namespace RatingService.Model.Mapper
             ratingProductView.OrderId = ratingProductDTO.OrderId;
             ratingProductView.Rating = ratingProductDTO.Rating;
             ratingProductView.Comment = ratingProductDTO.Comment;
-            ratingProductDTO.DateCreateComment = ratingProductDTO.DateCreateComment;
+            ratingProductView.DateCreateComment = ratingProductDTO.DateCreateComment;
             return ratingProductView;
         }
 

@@ -26,9 +26,9 @@ namespace ProductService.Model.Mapper
         public static SubcategoriesView MapSubcategoriesDTOToSubcategoriesView(SubcategoriesDTO subcategoriesDTO)
         {
             SubcategoriesView subcategoriesView = new SubcategoriesView();
-            subcategoriesDTO.Id = subcategoriesDTO.Id;
-            subcategoriesDTO.CategoryId = subcategoriesDTO.CategoryId;
-            subcategoriesDTO.Name = subcategoriesDTO.Name;
+            subcategoriesView.Id = subcategoriesDTO.Id;
+            subcategoriesView.CategoryId = subcategoriesDTO.CategoryId;
+            subcategoriesView.Name = subcategoriesDTO.Name;
             return subcategoriesView;
         }
 

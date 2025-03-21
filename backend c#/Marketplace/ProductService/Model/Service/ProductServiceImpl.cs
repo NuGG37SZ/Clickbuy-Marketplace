@@ -1,7 +1,6 @@
 ﻿using ProductService.Model.Repository;
 using ProductService.Model.Entity;
 using ProductService.Model.Mapper;
-using ProductService.Model.Client;
 using ProductService.Model.DTO;
 
 namespace ProductService.Model.Service
@@ -10,21 +9,15 @@ namespace ProductService.Model.Service
     {
         private readonly IProductRepository _productRepository;
 
-        private readonly IUserClient _userClient;
 
-
-        public ProductServiceImpl(IProductRepository productRepository, IUserClient userClient)
+        public ProductServiceImpl(IProductRepository productRepository)
         {
             _productRepository = productRepository;
-            _userClient = userClient;
         }
 
         public async Task Create(ProductDTO productDTO)
         {
-            UserDTO userDTO = await _userClient.GetUserById(productDTO.UserId);
-
-            if (userDTO != null)
-                await _productRepository.Create(ProductMapper.MapProductDTOToProduct(productDTO));
+            await _productRepository.Create(ProductMapper.MapProductDTOToProduct(productDTO));
         }
 
         public async Task DeleteById(int id)

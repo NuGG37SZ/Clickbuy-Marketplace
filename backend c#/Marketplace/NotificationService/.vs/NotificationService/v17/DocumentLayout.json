@@ -50,8 +50,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-20T09:47:33.06Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T09:47:33.06Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T09:47:33.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T09:47:33.539Z"
             },
             {
               "$type": "Document",
@@ -74,7 +72,7 @@
               "RelativeDocumentMoniker": "Controllers\\MailController.cs",
               "ToolTip": "C:\\Users\\fdafw\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\GitHub\\Marketplace\\backend c#\\Marketplace\\NotificationService\\Controllers\\MailController.cs",
               "RelativeToolTip": "Controllers\\MailController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAuwBEAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAADwvxEAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-20T09:39:37.411Z",
               "EditorCaption": ""
@@ -89,8 +87,7 @@
               "RelativeToolTip": "Models\\Service\\IMailService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T09:33:24.742Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-20T09:33:24.742Z"
             }
           ]
         }

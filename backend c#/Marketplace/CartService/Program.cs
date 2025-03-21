@@ -1,4 +1,3 @@
-using CartService.Client;
 using CartService.Model.Db;
 using CartService.Model.Repository;
 using CartService.Model.Service;
@@ -12,9 +11,6 @@ builder.Services.AddScoped<ICartRepository, CartRepositoryImpl>();
 builder.Services.AddScoped<ICartService, CartServiceImpl>();
 builder.Services.AddScoped<IFavoritesRepository, FavoritesRepositoryImpl>();
 builder.Services.AddScoped<IFavoritesService, FavoritesServiceImpl>();
-builder.Services.AddHttpClient<UserClient, UserClient>();
-builder.Services.AddHttpClient<ProductClient, ProductClient>();
-builder.Services.AddHttpClient<ProductSizesClient, ProductSizesClient>();
 builder.Services.AddCors();
 builder.Services.AddControllersWithViews();
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);

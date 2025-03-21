@@ -28,10 +28,10 @@ namespace ProductService.Model.Mapper
         public static ProductSizesView MapProductSizesDTOToProductSizesView(ProductSizesDTO productSizesDTO)
         {
             ProductSizesView productSizesView = new ProductSizesView();
-            productSizesView.Id = productSizesView.Id;
-            productSizesView.ProductId = productSizesView.ProductId;
-            productSizesView.Size = productSizesView.Size;
-            productSizesView.Count = productSizesView.Count;
+            productSizesView.Id = productSizesDTO.Id;
+            productSizesView.ProductId = productSizesDTO.ProductId;
+            productSizesView.Size = productSizesDTO.Size;
+            productSizesView.Count = productSizesDTO.Count;
             return productSizesView;
         }
 

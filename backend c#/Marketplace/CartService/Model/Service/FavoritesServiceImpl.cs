@@ -1,5 +1,4 @@
-﻿using CartService.Client;
-using CartService.Model.DTO;
+﻿using CartService.Model.DTO;
 using CartService.Model.Entity;
 using CartService.Model.Mapper;
 using CartService.Model.Repository;
